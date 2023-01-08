@@ -1,0 +1,1333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{579E87D5-AB98-6C51-E61F-AF854002F892}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\Bin\Debug\</OutputPath>
+    <DefineConstants>UNITY_2021_3_10;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;COLONY_SIMULATOR;UNITY_POST_PROCESSING_STACK_V2;MAPMAGIC2;MM_NATIVE;CROSS_PLATFORM_INPUT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UnityProjectGenerator>Package</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2021.3.10f1</UnityVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Trader.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CharacterAttack.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Character Movement Kit\Input\View\TopDownView.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\WorkLine.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\InspectorStyles.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\WebGLTool.cs" />
+    <Compile Include="Assets\PlacerGridManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\ExampleGridObject.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\AnimFX.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\SaveData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\MainBar.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Wander.cs" />
+    <Compile Include="Assets\FantasyIconsPackFree\Demo\IconViewer.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\DeviceVisibility.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Paint Mode Demo\Grid Input Definitions\MouseHoverInputDefinition.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionMove.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\GridCoordinates\GridCoordinateManager.cs" />
+    <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Large Grid Demo\Scripts\LargeGridGameManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Gatherable.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\PhysicExtension.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\DialogueMessage.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\SaveQuestData.cs" />
+    <Compile Include="Assets\MapMagic\Compatibility\CTS\CTSOutput.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ConstructingPanel.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\Structs\SerializeVector3.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\ButtonAudio.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Generator\BiomeData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_CurrentMode.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Input Definitions\RightClickMouseInput.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_UI_Tooltip.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Spawnable.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\CraftGroupData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UIManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_Pieces_Selection.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Billboard.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\UIPanel.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\00 Jump\ClickToJump.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_MoveGridLeft.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\ListExtension.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ZonePanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TabFilter.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Multiple Grids Demo\Scripts\GameManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateRight.cs" />
+    <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ShopPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Conditions\ExternalCollisionCondition.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionUse.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Validation Demo\Scripts\Wall.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Controls\TheControlsMobile.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\EquipWeapon.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\Data\CustomCondition.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\CustomPlacementManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\Enums\BuildMode.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Health\IHealth.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Condition\ConditionAttribute.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTargetUI.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_XRController.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\BlackPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Piece\Enums\StateType.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\GameUI.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventLine.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\QuestUI.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\Defender.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\JumpAttacker.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\CannonLike.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Scriptables\Blueprint\BlueprintTemplate.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\MaterialExtension.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\TowerAttack.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionStore.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Add Programatically Demo\Scripts\GridObjectSpawnData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshModifier.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonistAttribute.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\TechData.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\ScriptableObjectExtension.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Helpers\SceneHelper.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\SelectionFX.cs" />
+    <Compile Include="Assets\MapMagic\Compatibility\RTP\RTPOutput.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\ExampleGridObject.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_MouseLook.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\GridMovementManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\Data\PieceData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Addons\AddonTheForestLike.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\SimpleHealth.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\AddonInspector.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\InventoryUI.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\UniqueID.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_CancelPlacement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\EquipAttach.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Generator\GeneratorObject.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_LoadGridObjects.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_MoveGridRight.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\UpgradeInfoPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ActionButton.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_PivotBasedCameraRig.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Core\Projectile.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Socket\Data\Offset.cs" />
+    <Compile Include="Assets\Spawner.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_CancelPlacement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkFight.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\01 NavMeshLink_OffMeshLink Jump\WASDude.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ItemSlot.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\Helper.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\SavingAndLoading\GridSaveManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\Enums\MovementType.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionShop.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_RotateRight.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Factory.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Area\Enums\AreaShape.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_RotateRight.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Conditions\ExternalGeneralCondition.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Basic_Interaction.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_UI_CurrentObjectsCount.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\TurnOffGodMode.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\00 Jump\JumpTester.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\SavingAndLoading\GridSaveManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\DynamicUI.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Character.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Survival Like\Scripts\Demo_DestructionEffect.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Region.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionGather.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Constants.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_OpenChangeAlignmentOptions.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_ProtectCameraFromWallClip.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Projectile.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\NavMeshComponents\Scripts\AddonNavMesh.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Runtime\Grid Input Actions\MouseInputDefinition.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\HousePanel.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\SavingAndLoading\GridSaveManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Condition\Helper\ConditionHelper.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_InputHandler.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Socket\SocketBehaviour.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_FreeLookCam.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Destructible.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ColonistPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Conditions\ExternalPhysicsCondition.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_CurrentSelection.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemProjData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ColonistSkinData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ProgressBar.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\MaterialTool.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Construction.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Addon\Helper\AddonHelper.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Runtime\Grid Input Actions\TouchInputDefinition.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonyManager.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\Misc\SceneLoader.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Buildable.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_Delete.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Character Movement Kit\CharacterMovement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventEffect.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionBuild.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionTake.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TechSlotButton.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\EconomyLine.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_OrbitCamera.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_OpenPlacementSettings.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\NavMeshTool.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Headquarter.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\GameObjectExtension.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Saving and Loading\Button_SaveGridObjects.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ItemIcon.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\UI\DialoguePanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\NPCData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\Enums\RaycastType.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Paint Mode Demo\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Upgradable_Interaction.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\PhysicsTool.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\Enums\StorageType.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Projectile Behaviour Base\ProjectileBehaviour.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\MapMinimapWrap.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\PlacementAnimationType.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\DialogueChoice.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Generator\BiomeGenerator.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\BonusAura.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Piece\Enums\SurfaceType.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Scriptables\Collection\PieceCollection.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\BagPanel2.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\TheAudio.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\InventoryData.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\WeaponPack.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\FactoryPanel.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\01 NavMeshLink_OffMeshLink Jump\NMJump.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\EconomyPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\FloatNumberFX.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Addon\AddonBehaviour.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\Data\CustomEffect.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\GridControlManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_SaveGridObjects.cs" />
+    <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+    <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Group\GroupBehaviour.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\QuestLine.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\SaveSystem.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_RotateRight.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\IdleButton.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkHarvest.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\Misc\RPTester.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Controls\TheControls.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Zone.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TechSlot.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonistManager.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\PickableController.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\WorkPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\BagPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\Enums\SupportType.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\AttributeUI.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventGroup.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\TheCamera.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_Delete.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_AIThirdPersonController.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Colonist.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Health\HealthPack.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\TheData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonistDestructible.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\GameData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\AttributeData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipBox.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\ExampleGridObject.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\Surface\SurfaceCollider.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\SimpleExplosive.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Condition\ConditionBehaviour.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\House.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Addon\Enums\AddonTarget.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ConstructionData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\UISlotPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Inventory.cs" />
+    <Compile Include="Assets\Blobcreate\Shared\Code\Character Movement Kit\Input\Move\InputManagerControl.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Helpers\JsonHelper.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Interactable.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkFactory.cs" />
+    <Compile Include="Assets\Fraktalia\VoxelGenerator\Samples\Scripts\SampleGameController.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_OpenChangeAlignmentOptions.cs" />
+    <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\NPC.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Door_Interaction.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\HPBar.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\GroupData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventTarget.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_AbstractTargetFollower.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_SaveGridObjects.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkBasic.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\ProjectileLauncher.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Paint Mode Demo\Scripts\DeleteGridObjectManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ColonyAttributeUI.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\LightFX.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\QuestManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Scripts\CircularMenu.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_TopDown_Player.cs" />
+    <Compile Include="Assets\Fraktalia\VoxelGenerator\Samples\Scripts\MouseToVoxel.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_Delete.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\VR Models\Oculus Hands\Demo_XRHand.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\Enums\DetectionType.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkBuild.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Condition\Enums\ConditionTarget.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_OpenChangeAlignmentOptions.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\GameTool.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\UpgradePanel.cs" />
+    <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
+    <Compile Include="Assets\ExpandedUIManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Workable.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Storage.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\SelectPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventTrigger.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_SceneChanger.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\TechManager.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_AndroidControls.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Tools\SceneNav.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\BuilderInput.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Add Programatically Demo\Scripts\GameManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\GridControlManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\BuildInfoPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\Vector3Data.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\DestroyPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\BuildManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\ExampleGridObject.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Helpers\FreeCameraHelper.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_CancelPlacement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\SaveEventData.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\BuildStorage.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\Misc\EscMenu.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\UISlot.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Piece\PieceBehaviour.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_FramesPerSecond.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_OpenChangeAlignmentOptions.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\BonusEffectData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_ConfirmPlacementSettings.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\Surface\TerrainManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\GatherBuilding.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_SaveGridObjects.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\AttachFX.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\InfoPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\LevelData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Scripts\CircularButton.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CharacterPathfind.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventCondition.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Selectable.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Area\AreaBehaviour.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\TheGame.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CSObject.cs" />
+    <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\ConditionInspector.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\StoragePanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Generator\GeneratorTool.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\AssetData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\IntSelector.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\UI\DialogueChoiceButton.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\GridCoordinates\GridCoordinateManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CharacterAnim.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Shared Sample Assets\Scripts\EventSystemManager.cs" />
+    <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\LevelsPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\PauseAnim.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\BuildPanel.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Addons\ExternalRemoveGrassAddon.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\EquipItem.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\GridControlManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Interactable.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\UIHandler.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\PlacementSettingsManager.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Validation Demo\Scripts\ExampleValidator.cs" />
+    <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventTool.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\GridControlManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CharacterEquip.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_Delete.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Enemy.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_RotateGridLeft.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\GatherPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\CraftSlot.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ShopSlot.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_TopDown_Camera.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionAttack.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Log_Interaction.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionFactory.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Addon\AddonAttribute.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemUseData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionSleep.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Item.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\QuestData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionBasic.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Addons\ExternalAreaOfEffectAddon.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_RotateGridRight.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Event\BuildEvent.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\Structs\SerializeQuaternion.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\BuilderBehaviour.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_ThirdPersonController.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventManager.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TechPanel.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />
+    <Compile Include="Assets\CameraController.cs" />
+    <Compile Include="Assets\Blobcreate\Projectile Toolkit\Core\TrajectoryPredictor.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ColonistData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_CancelPlacement.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_ThirdPersonControls.cs" />
+    <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\MathExtension.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\CraftData.cs" />
+    <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_FirstPersonController.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\ItemPanel.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Spawner.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemEquipData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Generator\BiomeSpawnData.cs" />
+    <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\FX\SpawnFX.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
+    <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
+    <Compile Include="Assets\TD_Enemy.cs" />
+    <Compile Include="Assets\WaypointManager.cs" />
+    <Compile Include="Assets\TDEnemyManager.cs" />
+    <Compile Include="Assets\TD_Spawner.cs" />
+    <Compile Include="Assets\TD_Spawnable.cs" />
+    <Compile Include="Assets\SpawnWave.cs" />
+    <Compile Include="Assets\WaveEnemyData.cs" />
+    <Compile Include="Assets\WaypointRoute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\NavMeshComponents\Scripts\NavMesh\License.txt" />
+    <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\House Furnitures Kit\License.txt" />
+    <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat_Base.shader" />
+    <None Include="Assets\Easy Build System\Features\Scripts\Core\Templates\ConditionTemplate.txt" />
+    <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader.shader" />
+    <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\Tower Defense Kit\License.txt" />
+    <None Include="Assets\Easy Build System\Features\Scripts\Core\Templates\AddonTemplate.txt" />
+    <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
+    <None Include="Assets\Blobcreate\Projectile Toolkit\Demos\README.txt" />
+    <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Shaders\UIBlur.shader" />
+    <None Include="Assets\ColonySimulator\Licence.txt" />
+    <None Include="Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
+    <None Include="Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.xml" />
+    <None Include="Assets\Easy Build System\Features\Resources\Shaders\EasyBuildSystem_Transparent.shader" />
+    <None Include="Assets\ColonySimulator\Materials\FX\SpriteZ.shader" />
+    <None Include="Assets\ColonySimulator\ReadMe.txt" />
+    <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader2.shader" />
+    <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat.shader" />
+    <None Include="Assets\ColonySimulator\Materials\FX\Outline.shader" />
+    <None Include="Assets\Easy Build System\Features\Resources\Shaders\EasyBuildSystem_ThroughTransparent.shader" />
+    <None Include="Assets\MapMagic\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsNativeModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UIElementsNativeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.DeviceSimulatorModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.DeviceSimulatorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.DiagnosticsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.DiagnosticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GraphViewModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.GraphViewModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PackageManagerUIModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.PackageManagerUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.QuickSearchModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.QuickSearchModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SceneTemplateModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.SceneTemplateModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreFontEngineModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreTextEngineModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIBuilderModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIBuilderModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsSamplesModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIServiceModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UIServiceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UnityConnectModule">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.AppContext">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Concurrent">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.NonGeneric">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.NonGeneric.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Collections.Specialized.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.EventBasedAsync">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.EventBasedAsync.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Console">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Common">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Data.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Contracts">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.FileVersionInfo">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TextWriterTraceListener">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TextWriterTraceListener.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.TraceSource">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.TraceSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Diagnostics.Tracing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Drawing.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Dynamic.Runtime">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Dynamic.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Calendars.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Globalization.Extensions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Globalization.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.ZipFile">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Compression.ZipFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.DriveInfo">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.DriveInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.FileSystem.Watcher.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.IsolatedStorage">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.IsolatedStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.MemoryMappedFiles">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.MemoryMappedFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.Pipes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.IO.UnmanagedMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Expressions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Expressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Parallel">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Parallel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq.Queryable">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Linq.Queryable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NameResolution">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NameResolution.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.NetworkInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Ping">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Ping.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Requests.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Security">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebHeaderCollection">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebHeaderCollection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.WebSockets">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Net.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.DispatchProxy">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.DispatchProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.ILGeneration">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.ILGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Emit.Lightweight">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Emit.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Extensions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Reflection.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Reader">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Reader.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Writer">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Resources.Writer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.VisualC">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.CompilerServices.VisualC.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Handles">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Handles.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Numerics">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Formatters.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Json">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Runtime.Serialization.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Claims">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Claims.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Csp">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Csp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.Principal.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.SecureString">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Security.SecureString.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.Extensions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.Encoding.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Overlapped">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Overlapped.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Parallel">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Tasks.Parallel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.ThreadPool">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.ThreadPool.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Timer">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Threading.Timer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.ReaderWriter">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XDocument">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlSerializer">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XmlSerializer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netstandard\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.IO.Compression.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ServiceModel.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Transactions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Serialization">
+      <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{75766880-7E87-7669-2143-901A6B91238C}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VSCode.Editor.csproj">
+      <Project>{E738C6C0-9119-F0AB-414D-BF222777F7B7}</Project>
+      <Name>Unity.VSCode.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
+      <Project>{5CE6EF90-AC3F-29E8-0B89-5716C1E688EC}</Project>
+      <Name>Unity.TextMeshPro.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
+      <Project>{9565632E-677F-60EF-3B26-A1202C88BDE5}</Project>
+      <Name>Unity.VisualScripting.State.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Searcher.Editor.csproj">
+      <Project>{CA1C22C7-431E-F8FC-AA94-A7DF940BB178}</Project>
+      <Name>Unity.Searcher.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
+      <Project>{C6BA3353-CC19-A990-1F95-918341530580}</Project>
+      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.csproj">
+      <Project>{DB9B2A9B-A946-E15E-55EF-B7719A6E3FDA}</Project>
+      <Name>Unity.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{F5C191C0-CB47-9683-ABAA-7A0093CF9C80}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Core.csproj">
+      <Project>{B3FBC1B1-9019-DA5F-C750-AD6627D4E33E}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
+      <Project>{8F7850C4-B0B0-0DF5-9BE0-DD520CB5E835}</Project>
+      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
+    </ProjectReference>
+    <ProjectReference Include="Den.Tools.Editor.csproj">
+      <Project>{E964B701-676C-BA96-4E4A-AB7F3DFBCFDA}</Project>
+      <Name>Den.Tools.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{B4E55753-31C6-7E64-24FB-C30C91845565}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{E5C96C4D-2F32-B719-333A-554B450C76A9}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor2.csproj">
+      <Project>{9DEDD412-E86B-9C85-41B6-34B9F8F2D3EC}</Project>
+      <Name>NavMeshComponentsEditor2</Name>
+    </ProjectReference>
+    <ProjectReference Include="Internal.csproj">
+      <Project>{EC96E761-19A5-B34A-E0CC-B388FB59B0B2}</Project>
+      <Name>Internal</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
+      <Project>{C7BE9522-431A-2DAE-5013-E6F7B0948EB1}</Project>
+      <Name>Unity.VisualScripting.Flow.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{42B3234E-8728-F1DA-C81D-FFC909E67147}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MapMagic.csproj">
+      <Project>{34E96515-2052-CD9B-AE8E-1D363E41D406}</Project>
+      <Name>MapMagic</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{446BABC8-8410-FF6F-1238-E3FA030224DE}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
+      <Project>{41C16A93-70C3-DE70-049B-CFBC0E6DA16F}</Project>
+      <Name>Unity.Sysroot.Linux_x86_64</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{0BA4B977-88EB-7E4D-25FB-D722FD3B0DFA}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
+      <Project>{6C29CC74-341C-1BBD-F4B6-CD6A66EEFC8C}</Project>
+      <Name>Unity.VisualScripting.Core.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TextMeshPro.csproj">
+      <Project>{A61FAB2D-23CD-418C-ADE1-528D2EC3B2BD}</Project>
+      <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{F4FECDF4-8B7F-D8C9-C5B6-EAB536815B25}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
+      <Project>{6D49A5E9-D602-D31E-4DAC-72B8DF2A97D9}</Project>
+      <Name>Unity.Postprocessing.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
+      <Project>{E781D9AD-94B6-9D7C-7369-9E6AE4AFD091}</Project>
+      <Name>Unity.VisualScripting.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
+      <Project>{B6F350BB-1C3C-E750-4276-E5E519CFE7FB}</Project>
+      <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Services.Core.csproj">
+      <Project>{9A386C04-6226-3127-F70D-C8F8B845E4E3}</Project>
+      <Name>Unity.Services.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
+      <Project>{3B0A5D19-37E2-FA4F-440E-D5E9D2FA4DB8}</Project>
+      <Name>Unity.VisualScripting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{97F815B3-4FD0-328A-2618-37EB3B269996}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Den.Tools.csproj">
+      <Project>{68B83133-9A49-B219-C026-4A29DD640E34}</Project>
+      <Name>Den.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
+      <Project>{D0999E0D-4FD2-C6B3-02A7-F99F86BC8882}</Project>
+      <Name>Unity.Services.Core.Analytics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{01078E5A-F5F2-4343-A21E-B1D35314B1B0}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Postprocessing.Runtime.csproj">
+      <Project>{22D3CA85-33A2-A05B-6CBD-6DBF9B7A7B36}</Project>
+      <Name>Unity.Postprocessing.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
+      <Project>{AD58D618-3A63-4CE4-4D34-FAD205559D43}</Project>
+      <Name>Unity.VisualScripting.Shared.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Services.Core.Environments.csproj">
+      <Project>{154AAA84-AF67-6767-4B27-08C437E9E64E}</Project>
+      <Name>Unity.Services.Core.Environments</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{DAD5D8B3-7DA2-65C9-C644-81A04758FBBB}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MapMagic.Editor.csproj">
+      <Project>{629B7B74-CE96-F9ED-2705-A6547281D142}</Project>
+      <Name>MapMagic.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.csproj">
+      <Project>{3C274A9F-1522-3AD2-B972-58D3E4997B4E}</Project>
+      <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
+      <Project>{81D675CD-33E7-D08E-12E2-CFD7BFEE95A5}</Project>
+      <Name>Unity.SysrootPackage.Editor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
