@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Mediim Enemy
   health: 5
+  moveSpeed: 0.5
   spawnPrefab: {fileID: 6691635458304656441, guid: 2de3a3cf87dc17043a45e2f0e978cd5f,
     type: 3}

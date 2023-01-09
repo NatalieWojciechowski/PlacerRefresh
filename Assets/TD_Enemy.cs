@@ -15,6 +15,7 @@ public class TD_Enemy : MonoBehaviour
     private float _moveSpeed = 1f;
     private float _maxHealth = 1f;
     private Rigidbody _rigidbody;
+    private Animator _animator;
 
     public int currentWaypointIndx = -1;
     [SerializeField]
@@ -31,6 +32,7 @@ public class TD_Enemy : MonoBehaviour
         // TODO: With multi spawners, need find closest
         if (fullRoute == null) fullRoute = WaypointManager.current.GetRoute();
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
+        if (_animator == null) _animator = GetComponent<Animator>();
         if (!prevWaypoint) prevWaypoint = transform;
         //WaypointManager.current.AddEnemyToCircuit(fullRoute);
         UpdateNextWaypoint();
@@ -47,6 +49,7 @@ public class TD_Enemy : MonoBehaviour
     {
         if (ReachedPoint())
         {
+            _animator.SetBool("IsMoving", false);
             Debug.Log("reached next point");
             UpdateNextWaypoint();
             Debug.Log($"Got Next Point: {nextWaypoint}");
@@ -94,6 +97,7 @@ public class TD_Enemy : MonoBehaviour
         {
             currentWaypointIndx++;
             _lastWaypointSwitchTime = Time.time;
+            _animator.SetBool("IsMoving", true);
         }
         else OnReachEnd();
 
