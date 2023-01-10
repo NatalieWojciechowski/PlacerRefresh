@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullRoute: {fileID: 0}
   nextWaypoint: {fileID: 0}
+  DmgToCore: 1
   currentWaypointIndx: -1
   _turnSpeed: 0.5
 --- !u!54 &1859681545445134727
@@ -114,7 +115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 20
   m_CollisionDetection: 0
 --- !u!136 &726998850345993273
 CapsuleCollider:
@@ -165,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 50372183116556880, guid: ed5497376f0569a48982e0980a3a2705,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 50372183116556880, guid: ed5497376f0569a48982e0980a3a2705,
         type: 3}

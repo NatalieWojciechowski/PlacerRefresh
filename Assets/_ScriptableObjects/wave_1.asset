@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa04ddcbe0b571f4590d0d6f7cfd1ded, type: 3}
-  m_Name: wave_0
+  m_Name: wave_1
   m_EditorClassIdentifier: 
   waveContents:
-  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
-  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
-  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
-  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
-  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
+  - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   spawnInterval: 2

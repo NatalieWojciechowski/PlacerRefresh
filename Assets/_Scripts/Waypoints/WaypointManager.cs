@@ -6,7 +6,11 @@ using UnityStandardAssets.Utility;
 
 public class WaypointManager : MonoBehaviour
 {
-    public static WaypointManager current;
+    //public static WaypointManager current;
+
+    /// <summary>
+    /// each map may have multiple Routes. Each route will have its own waypoint manager
+    /// </summary>
 
     [SerializeField]
     private List<WaypointRoute> routes;
@@ -16,16 +20,16 @@ public class WaypointManager : MonoBehaviour
     //private WaypointCircuit _waypointCircuit;
     //private WaypointCircuit.WaypointList waypointList;
 
-    private List<TD_Enemy> _enemies;
     TDEnemyManager tDEnemyManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (current == null) current = this;
-        else Destroy(this);
+        //if (current == null) current = this;
+        //else Destroy(this);
 
         if (routes == null) routes = new();
+        // TODO: There may be more than one of these when we get to more than one route.
         if (!tDEnemyManager) tDEnemyManager = FindObjectOfType<TDEnemyManager>();
     }
 
@@ -45,7 +49,14 @@ public class WaypointManager : MonoBehaviour
 
         //}        
     }
+    //public void AddEnemyToCircuit(WaypointRoute wpRoute)
+    //{
+    //    if (wpRoute) tDEnemyManager.WaypointRoute = wpRoute;
+    //}
 
+
+
+    #region Static
     public static Transform NearestNodeFromPos(WaypointCircuit wpCircuit, Vector3 targetPosition)
     {
         float _closestDist = 1000000f;
@@ -79,10 +90,5 @@ public class WaypointManager : MonoBehaviour
         if (fromWaypointIndx < wpRoute.Waypoints.Count + 1) return wpRoute.Waypoints[fromWaypointIndx + 1];
         return null;
     }
-
-    public void AddEnemyToCircuit(WaypointRoute wpRoute)
-    {
-        if (wpRoute) tDEnemyManager.WaypointRoute = wpRoute;
-    }
-
+    #endregion
 }

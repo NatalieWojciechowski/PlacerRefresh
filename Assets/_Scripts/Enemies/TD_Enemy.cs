@@ -7,11 +7,13 @@ using UnityStandardAssets.Utility;
 public class TD_Enemy : MonoBehaviour
 {
     [SerializeField]
-    protected WaypointRoute fullRoute;
+    public WaypointRoute fullRoute;
     protected Transform prevWaypoint;
     [SerializeField]
     protected Transform nextWaypoint;
+    public int DmgToCore = 1;
     private string _displayName;
+    [SerializeField]
     private float _moveSpeed = 1f;
     private float _maxHealth = 1f;
     private Rigidbody _rigidbody;
@@ -30,12 +32,12 @@ public class TD_Enemy : MonoBehaviour
     void Start()
     {
         // TODO: With multi spawners, need find closest
-        if (fullRoute == null) fullRoute = WaypointManager.current.GetRoute();
+        if (fullRoute == null) fullRoute = FindObjectOfType<TDEnemyManager>().WaypointRoute;
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
         if (_animator == null) _animator = GetComponent<Animator>();
-        if (!prevWaypoint) prevWaypoint = transform;
+        if (!prevWaypoint) prevWaypoint = this.transform;
         //WaypointManager.current.AddEnemyToCircuit(fullRoute);
-        UpdateNextWaypoint();
+        UpdateNextWaypoint(false);
     }
 
     // Update is called once per frame
@@ -43,6 +45,11 @@ public class TD_Enemy : MonoBehaviour
     {
         if (nextWaypoint) MoveToWaypoint();
 
+    }
+
+    public void SetPreviousWaypoint(Transform tLocation)
+    {
+        prevWaypoint = tLocation;
     }
 
     private void MoveToWaypoint()
@@ -58,7 +65,7 @@ public class TD_Enemy : MonoBehaviour
         transform.position = GetLerpPosition();
         //transform.position = lerpPosition();
         //Vector3 nextLookPosition = Vector3.Lerp(transform.position, nextWaypoint.position, 0.15f);
-        //transform.LookAt(nextLookPosition);
+        transform.LookAt(nextWaypoint.position);
         //_rigidbody?.AddRelativeForce(Vector3.forward * _moveSpeed, ForceMode.Force);
     }
 
@@ -75,6 +82,7 @@ public class TD_Enemy : MonoBehaviour
         _displayName = waveEnemyData.displayName;
         _moveSpeed = waveEnemyData.moveSpeed;
         _maxHealth = waveEnemyData.health;
+        DmgToCore = waveEnemyData.dmgToCore;
     }
 
     private bool ReachedPoint()
@@ -89,12 +97,15 @@ public class TD_Enemy : MonoBehaviour
         return false;
     }
 
-    private void UpdateNextWaypoint()
+    private void UpdateNextWaypoint(bool setPrevious = true)
     {
         if (!fullRoute) return;
-        nextWaypoint = fullRoute.NextWaypoint(currentWaypointIndx);
-        if (nextWaypoint != null)
+        Transform nextLocation = fullRoute.NextWaypoint(currentWaypointIndx);
+        // If not at the end
+        if (nextLocation != null)
         {
+            if (setPrevious) prevWaypoint = nextWaypoint;
+            nextWaypoint = nextLocation;
             currentWaypointIndx++;
             _lastWaypointSwitchTime = Time.time;
             _animator.SetBool("IsMoving", true);

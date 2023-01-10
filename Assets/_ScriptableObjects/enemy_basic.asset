@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Basic Enemy
   health: 2
-  moveSpeed: 0.025
+  moveSpeed: 0.5
   spawnPrefab: {fileID: 4016149876344755919, guid: a6070dea2cd260648b52967c9ac20488,
     type: 3}
+  dmgToCore: 1

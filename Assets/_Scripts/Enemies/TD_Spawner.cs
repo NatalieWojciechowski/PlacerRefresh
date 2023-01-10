@@ -5,13 +5,23 @@ using UnityEngine;
 
 public class TD_Spawner : Spawner
 {
+    public WaypointRoute ForRoute;
     public List<SpawnWave> Waves;
+    public bool SpawnAllowed = false;
     private int _nextWaveIndex = 0;
     private int _nextEnemyIndex = 0;
     private List<WaveEnemyData> _enemiesToSpawn;
     [SerializeField]
     private Transform SpawnPosition;
+    /// <summary>
+    ///  How far apart the entities should be before spawning next
+    /// </summary>
     private float spawnDensity = 0.5f;
+
+    private void Awake()
+    {
+        //EventManager.OnWaveStart += (waveIndx) => SpawnNextWave();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +33,12 @@ public class TD_Spawner : Spawner
     // Update is called once per frame
     protected override void Update()
     {
-        if (_enemiesToSpawn.Count == 0) GetWave();
-        if(spawnedEntities.Count < _enemiesToSpawn.Count)
+        if (_enemiesToSpawn.Count > 0)
         {
-            Spawn();
+            if (spawnedEntities.Count < _enemiesToSpawn.Count) Spawn();
+            else EventManager.WaveFinished(_nextWaveIndex - 1);
         }
-        //if (_enemiesLeft.Count > 0)
-        //{
-        //    Debug.Log("Spawn Enemies: " + _enemiesToSpawn);
-        //}
+        else if(SpawnAllowed) SpawnNextWave();
         base.Update();
     }
 
@@ -55,7 +62,10 @@ public class TD_Spawner : Spawner
         if (waveEnemyData && waveEnemyData.spawnPrefab && TimerComplete() && SpawnPlacementValid())
         {
             GameObject lastSpawned = Instantiate<GameObject>(waveEnemyData.spawnPrefab, AdjustedSpawnPosition(), Quaternion.identity);
-            lastSpawned.GetComponent<TD_Enemy>().SetStats(waveEnemyData);
+            TD_Enemy enemyControl = lastSpawned.GetComponent<TD_Enemy>();
+            enemyControl.SetStats(waveEnemyData);
+            enemyControl.fullRoute = ForRoute;
+            enemyControl.SetPreviousWaypoint(SpawnPosition);
             lastSpawned.transform.SetParent(transform);
             spawnedEntities.Add(lastSpawned);
             _nextEnemyIndex++;
@@ -63,15 +73,44 @@ public class TD_Spawner : Spawner
         }
     }
 
-    private void GetWave()
+    public void SpawnNextWave()
     {
-        _enemiesToSpawn = Waves[_nextWaveIndex]?.waveContents;
-        if (_enemiesToSpawn.Count < 1)
-            return;
-        _nextWaveIndex++;
-        spawnedEntities.Clear();
+        AddWave(GetWaveEnemies(_nextWaveIndex), true);
+    }
+
+
+    /// <summary>
+    /// Wrapper for actual access to the wave data
+    /// </summary>
+    /// <param name="waveIndex"></param>
+    /// <returns></returns>
+    private List<WaveEnemyData> GetWaveEnemies(int waveIndex)
+    {
+        if (waveIndex >= Waves.Count) return null;
+        return Waves[waveIndex]?.waveContents;
+        //if (_waveEnemies.Count < 1)
+        //    return null;
+        //return _enemiesToSpawn
         // TODO:
         // Send event for wave start
+    }
+
+    /// <summary>
+    /// Whether a brand new wave or adding (early start) To the existing wave, add to spawn queue.
+    /// </summary>
+    /// <param name="tD_Enemies"></param>
+    /// <param name="clearPrevious">Whether or not to clear out the tracking lists</param>
+    private void AddWave(List<WaveEnemyData> tD_Enemies, bool clearPrevious = true)
+    {
+        if (tD_Enemies.Count < 1) return;
+        if (clearPrevious)
+        {
+            _enemiesToSpawn.Clear();
+            spawnedEntities.Clear();
+        }
+        _enemiesToSpawn.AddRange(tD_Enemies);
+        EventManager.WaveStarted(_nextWaveIndex);
+        _nextWaveIndex++;
     }
 
     protected override Vector3 AdjustedSpawnPosition()

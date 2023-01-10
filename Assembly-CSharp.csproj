@@ -463,29 +463,53 @@
     <Compile Include="Assets\_Scripts\Buildings\TD_BuildingData.cs" />
     <Compile Include="Assets\_Scripts\Managers\PlacerGridManager.cs" />
     <Compile Include="Assets\_Scripts\Waypoints\WaypointManager.cs" />
+    <Compile Include="Assets\_Scripts\Waypoints\TD_Endpoint.cs" />
+    <Compile Include="Assets\_Scripts\Managers\TD_GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Managers\EventManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\NavMeshComponents\Scripts\NavMesh\License.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\House Furnitures Kit\License.txt" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat_Base.shader" />
     <None Include="Assets\Easy Build System\Features\Scripts\Core\Templates\ConditionTemplate.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader.shader" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\Tower Defense Kit\License.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Easy Build System\Features\Scripts\Core\Templates\AddonTemplate.txt" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Blobcreate\Projectile Toolkit\Demos\README.txt" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Shaders\UIBlur.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\ColonySimulator\Licence.txt" />
     <None Include="Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Easy Build System\Features\Resources\Shaders\EasyBuildSystem_Transparent.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\ColonySimulator\Materials\FX\SpriteZ.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\ColonySimulator\ReadMe.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader2.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\ColonySimulator\Materials\FX\Outline.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Easy Build System\Features\Resources\Shaders\EasyBuildSystem_ThroughTransparent.shader" />
     <None Include="Assets\MapMagic\Readme.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
