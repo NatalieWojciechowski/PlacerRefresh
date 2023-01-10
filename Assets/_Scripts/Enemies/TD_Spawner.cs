@@ -16,13 +16,14 @@ public class TD_Spawner : Spawner
     // Start is called before the first frame update
     void Start()
     {
+        if (_enemiesToSpawn == null) _enemiesToSpawn = new();
         if (!SpawnPosition) SpawnPosition = transform;
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        if (_enemiesToSpawn == null) GetWave();
+        if (_enemiesToSpawn.Count == 0) GetWave();
         if(spawnedEntities.Count < _enemiesToSpawn.Count)
         {
             Spawn();
