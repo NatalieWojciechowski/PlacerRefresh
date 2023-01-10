@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: Ballista
   health: 2
   attackSpeed: 1
+  attackRange: 3
   spawnPrefab: {fileID: 1765544224758337656, guid: 103e77877237b6240a6623ec29d182fd,
     type: 3}
   upgradesTo: {fileID: 0}

@@ -6,6 +6,7 @@ public class TD_BuildingData : ScriptableObject
     public string displayName = "Turret";
     public float health = 2f;
     public float attackSpeed = 1f;
+    public float attackRange = 0.5f;
     public GameObject spawnPrefab;
     // TODO: maybe different upgrade paths etc -- currently unusede
     public TD_BuildingData upgradesTo;

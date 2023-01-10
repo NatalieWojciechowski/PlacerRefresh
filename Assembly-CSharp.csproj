@@ -449,6 +449,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TechPanel.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />
+    <Compile Include="Assets\_Scripts\Managers\TD_UIManager.cs" />
     <Compile Include="Assets\_Scripts\Utility\CameraController.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Core\TrajectoryPredictor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\ColonistData.cs" />
@@ -466,7 +467,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\_Scripts\Managers\TD_UIManager.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\RangedTower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
