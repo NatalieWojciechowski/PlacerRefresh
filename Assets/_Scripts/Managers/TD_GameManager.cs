@@ -1,44 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TD_GameManager : MonoBehaviour
 {
-    public GameObject gameStatusUI;
-    public GameObject gameOverDisplay;
-    public GameObject waveStartDisplay;
-    public int coreHealth = 5;
+    public static TD_GameManager current;
+
+    private int coreHealth = 5;
     private int currentWave = 0;
+
+    public TD_UIManager uIManager;
+
+    public int CurrentWave { get => currentWave; }
+    public int CoreHealth { get => coreHealth; }
 
     private void Awake()
     {
         EventManager.OnEnemyPass += (ctx) => TookDmg(ctx);
         EventManager.OnWaveStart+= (ctx) => WaveStarted(ctx);
-        waveStartDisplay.GetComponentInChildren<Button>().onClick.AddListener(() => EventManager.WaveStarted(currentWave));
-        UpdateDisplay();
     }
-
-    private void WaveStarted(int ctx)
+    private void OnDisable()
     {
-        currentWave = ctx;
-        // Any additonal animations, etc?
-        // EX: "LAST WAVE!" indicator or perhaps dialogue events?
-        UpdateDisplay();
-    }
-
-    private void TookDmg(int coreDmg)
-    {
-        coreHealth -= coreDmg;
-        UpdateDisplay();
+        EventManager.OnEnemyPass -= (ctx) => TookDmg(ctx);
+        EventManager.OnWaveStart -= (ctx) => WaveStarted(ctx);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (current != null) Destroy(this);
+        current = this;
+        if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
     }
 
     // Update is called once per frame
@@ -49,14 +42,53 @@ public class TD_GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        UpdateDisplay();
-        //gameOverDisplay.SetActive(true);
+        // TODO: Change this to an event
+        uIManager.UpdateDisplay();
+        //UpdateDisplay();
+        ////gameOverDisplay.SetActive(true);
+    }
+    private void WaveStarted(int ctx)
+    {
+        currentWave = ctx;
+        // Any additonal animations, etc?
+        // EX: "LAST WAVE!" indicator or perhaps dialogue events?
+        uIManager.UpdateDisplay();
     }
 
-    private void UpdateDisplay()
+    private void TookDmg(int coreDmg)
     {
-        if (gameStatusUI) gameStatusUI.GetComponentInChildren<TMP_Text>().text = coreHealth.ToString();
-        if (coreHealth <= 0) gameOverDisplay.SetActive(true);
-        if (waveStartDisplay) waveStartDisplay.GetComponentInChildren<TMP_Text>().text = currentWave.ToString();
+        coreHealth -= coreDmg;
+        uIManager.UpdateDisplay();
+    }
+    public enum GameSpeedOptions
+    {
+        PAUSE,
+        NORMAL,
+        FAST,
+        FASTER
+    }
+
+    public static void SetGameSpeed(GameSpeedOptions gameSpeedRequest)
+    {
+        switch (gameSpeedRequest)
+        {
+            case GameSpeedOptions.PAUSE:
+            Time.timeScale = 0;
+            break;
+
+            case GameSpeedOptions.NORMAL:
+            Time.timeScale = 1;
+            break;
+
+            case GameSpeedOptions.FAST:
+            Time.timeScale = 2;
+            break;
+
+            case GameSpeedOptions.FASTER:
+            Time.timeScale = 4;
+            break;
+
+            default: break;
+        }
     }
 }

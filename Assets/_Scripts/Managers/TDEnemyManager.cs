@@ -26,7 +26,18 @@ public class TDEnemyManager : MonoBehaviour
     private void Awake()
     {
         EventManager.OnWaveFinish += (waveIndx) => StartWaveInterval(waveIndx);
-        EventManager.OnWaveStart += (waveIndx) => _waveActive = true;
+        EventManager.OnWaveStart += (waveIndx) => enableWave();
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnWaveFinish -= (waveIndx) => StartWaveInterval(waveIndx);
+        EventManager.OnWaveStart -= (waveIndx) => enableWave();
+    }
+
+    private void enableWave()
+    {
+        _waveActive = true;
     }
 
     private void StartWaveInterval(int waveIndx)
