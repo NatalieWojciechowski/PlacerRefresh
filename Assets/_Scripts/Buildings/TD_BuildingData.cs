@@ -16,4 +16,6 @@ public class TD_BuildingData : ScriptableObject
     public GameObject projectilePrefab;
     public Vector3 projectileOffset;
     public float projectileDelay = 0.5f;
+    public float baseDamage = 1f;
+    public float aoeActiveDuration = 0.5f;
 }

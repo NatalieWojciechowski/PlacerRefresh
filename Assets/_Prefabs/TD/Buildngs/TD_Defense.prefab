@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4415392401019420030}
   - component: {fileID: 3152206549098373545}
   - component: {fileID: 3602379146642460443}
+  - component: {fileID: 713904803579630943}
   m_Layer: 0
   m_Name: TD_Defense
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1765544224758337656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2620421495671602778}
@@ -43,7 +44,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765544224758337656}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6576b638fdd0e546ac6c176d649d3f9, type: 3}
   m_Name: 
@@ -121,7 +122,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buildingData: {fileID: 0}
   _buildingTarget: {fileID: 0}
+  bAnimator: {fileID: 0}
+  inRangeEffects: {fileID: 0}
   IsRunning: 0
+  IsInRange: 0
+--- !u!65 &713904803579630943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765544224758337656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.82322305, y: 0.5596696, z: 0.6961094}
+  m_Center: {x: -0.004984826, y: 0.25756317, z: 0.10194528}
 --- !u!1 &2065832158366382706
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065832158366382706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.29883432}
+  m_LocalPosition: {x: 0, y: 0.3125, z: 0.617}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -173,7 +190,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfb1d9c4a158a0b45849bb7c53e88189,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19999999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfb1d9c4a158a0b45849bb7c53e88189,
         type: 3}
@@ -219,6 +236,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: weapon_ballista
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220739090611007639, guid: bfb1d9c4a158a0b45849bb7c53e88189,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: bfb1d9c4a158a0b45849bb7c53e88189,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490476400212780538, guid: bfb1d9c4a158a0b45849bb7c53e88189,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb1d9c4a158a0b45849bb7c53e88189, type: 3}

@@ -7,18 +7,22 @@ using UnityEngine;
 public class TD_Building : MonoBehaviour
 {
     [SerializeField]
-    TD_BuildingData _buildingData;
+    protected TD_BuildingData _buildingData;
 
-    private float _attackRange = 0.75f;
+    protected float _attackRange = 0.75f;
     [SerializeField]
-    private TD_Enemy _buildingTarget;
+    protected TD_Enemy _buildingTarget;
 
     protected TargetingType targetingType;
 
+    public Animator bAnimator;
+    public GameObject inRangeEffects;
+
     // TODO: Change this back
     public bool IsRunning = true;
+    public bool IsInRange = false;
 
-    private float _lastAction = 0f;
+    protected float _lastAction = 0f;
 
     protected enum TargetingType
     {
@@ -36,7 +40,7 @@ public class TD_Building : MonoBehaviour
         IsRunning = true;
     }
 
-    private void BulidingInit()
+    protected virtual void BulidingInit()
     {
 
     }
@@ -56,12 +60,14 @@ public class TD_Building : MonoBehaviour
             pieceBehaviour.Category = bData.category;
         }
         // callbacks / Powerup animations/ etc
+        BulidingInit();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (_buildingData == null) _buildingData = GetComponent<TD_BuildingData>();
+        //if (_buildingData == null) _buildingData = GetComponent<TD_BuildingData>();
+        if (!bAnimator) bAnimator = GetComponent<Animator>();
         if (IsRunning == false) SetStats(_buildingData);
         IsRunning = true;
 
@@ -81,6 +87,13 @@ public class TD_Building : MonoBehaviour
     {
         if (IsRunning) CheckTargets();
         if (_buildingTarget) ActOnTarget();
+        if (IsInRange) ToggleEffects(true);
+    }
+
+    private void ToggleEffects(bool shouldShow)
+    {
+        if (bAnimator) bAnimator.SetBool("InRange", shouldShow);
+        if (inRangeEffects) inRangeEffects.SetActive(shouldShow);
     }
 
     protected virtual void CheckTargets()
@@ -101,6 +114,9 @@ public class TD_Building : MonoBehaviour
 
     private void SetTarget(TD_Enemy enemy)
     {
+        IsInRange = enemy != null;
+        // Losing the target
+        if (_buildingTarget && !IsInRange) ToggleEffects(false);
         _buildingTarget = enemy;
         // TODO: any animation / visualization here? 
     }
@@ -120,6 +136,7 @@ public class TD_Building : MonoBehaviour
             GameObject lastProjectile = Instantiate(_buildingData.projectilePrefab, transform);
             lastProjectile.transform.Translate(_buildingData.projectileOffset);
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
+            transform.LookAt(_buildingTarget.transform.position);
             // TODO: assign owner / target? 
             TD_Projectile td_projectile = lastProjectile.GetComponent<TD_Projectile>();
             td_projectile.InitProjectile(this, _buildingTarget);

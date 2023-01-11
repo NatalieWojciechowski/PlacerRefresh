@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86ecce7001aec684ba75ed5b135a687c, type: 3}
-  m_Name: ballista_0
+  m_Name: slowing_tower
   m_EditorClassIdentifier: 
-  displayName: Ballista
+  displayName: TundraTower
   health: 2
   attackSpeed: 1
   attackRange: 3
-  spawnPrefab: {fileID: 1765544224758337656, guid: 103e77877237b6240a6623ec29d182fd,
-    type: 3}
+  spawnPrefab: {fileID: 130804, guid: 743c686d173865a48885cd49ab94cfd7, type: 3}
   upgradesTo: {fileID: 0}
-  icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
-  description: A Ballista =]
-  category: Turret
-  projectilePrefab: {fileID: 3796326392509129271, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
-    type: 3}
-  projectileOffset: {x: 0, y: 3, z: 0.6}
-  projectileDelay: 1
+  icon: {fileID: 21300000, guid: 3b049ed87233722479a2de591c7895a3, type: 3}
+  description: Cold AOE
+  category: Area
+  projectilePrefab: {fileID: 0}
+  projectileOffset: {x: 0, y: 0, z: 0}
+  projectileDelay: 0.5
+  baseDamage: 1
+  aoeActiveDuration: 0.5
