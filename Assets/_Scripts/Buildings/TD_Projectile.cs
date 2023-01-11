@@ -46,7 +46,6 @@ internal class TD_Projectile : MonoBehaviour
 
     private void ExpireProjectile()
     {
-        Debug.Log("Cleanup Projectile");
         Destroy(this.gameObject);
     }
 

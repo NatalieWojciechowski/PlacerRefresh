@@ -82,9 +82,7 @@ public class TD_Enemy : MonoBehaviour
         if (ReachedPoint())
         {
             _animator.SetBool("IsMoving", false);
-            Debug.Log("reached next point");
             UpdateNextWaypoint();
-            Debug.Log($"Got Next Point: {nextWaypoint}");
         }
         if (!nextWaypoint) return;
         transform.position = GetLerpPosition();
@@ -112,7 +110,7 @@ public class TD_Enemy : MonoBehaviour
 
     private bool ReachedPoint()
     {
-        if (Vector3.Distance(transform.position, nextWaypoint.position) < 0.05f)
+        if (Vector3.Distance(transform.position, nextWaypoint.position) < 0.075f)
         {
             // Stop animations? 
             _rigidbody.velocity = Vector3.zero;
@@ -146,6 +144,8 @@ public class TD_Enemy : MonoBehaviour
     {
         // Damage Total health
         // Destroy self 
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        
+        // This will get handled by the endpoint 
     }
 }

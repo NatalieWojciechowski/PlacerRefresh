@@ -78,7 +78,7 @@ public class TDEnemyManager : MonoBehaviour
     {
         foreach (TD_Spawner spawner in _spawners)
         {
-            Debug.Log(spawner);
+            //Debug.Log(spawner);
             spawner.SpawnAllowed = true;
             //if (spawner.Waves.Count > _requestedWaveIndx) spawner.SpawnNextWave();
         }

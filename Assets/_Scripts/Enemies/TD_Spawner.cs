@@ -23,6 +23,11 @@ public class TD_Spawner : Spawner
         //EventManager.OnWaveStart += (waveIndx) => SpawnNextWave();
     }
 
+    private void OnDisable()
+    {
+        EventManager.OnWaveStart -= (waveIndx) => SpawnNextWave();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +38,7 @@ public class TD_Spawner : Spawner
     // Update is called once per frame
     protected override void Update()
     {
-        if (_enemiesToSpawn.Count > 0)
+        if (_enemiesToSpawn.Count > 0 && spawnedEntities.Count != _enemiesToSpawn.Count)
         {
             if (spawnedEntities.Count < _enemiesToSpawn.Count) Spawn();
             else EventManager.WaveFinished(_nextWaveIndex - 1);
@@ -102,9 +107,10 @@ public class TD_Spawner : Spawner
     /// <param name="clearPrevious">Whether or not to clear out the tracking lists</param>
     private void AddWave(List<WaveEnemyData> tD_Enemies, bool clearPrevious = true)
     {
-        if (tD_Enemies.Count < 1) return;
+        if (tD_Enemies == null || tD_Enemies.Count < 1) return;
         if (clearPrevious)
         {
+            _nextEnemyIndex = 0;
             _enemiesToSpawn.Clear();
             spawnedEntities.Clear();
         }

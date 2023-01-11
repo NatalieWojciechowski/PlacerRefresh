@@ -1173,7 +1173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200577899}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.441, y: 0, z: 5.75}
+  m_LocalPosition: {x: -0.522, y: -0.22, z: 5.748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2702,6 +2702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TD_Slowing (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702185055643861488, guid: 57edd59909f377f49b39581d9edaac50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57edd59909f377f49b39581d9edaac50, type: 3}
@@ -5528,6 +5533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TD_Tower 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5151109624705006574, guid: 592cb6f501535e14f80a2f2bb21190b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8815568712108142909, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
       propertyPath: m_RootOrder
@@ -7418,10 +7428,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -8230,6 +8240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TD_Slowing
+      objectReference: {fileID: 0}
+    - target: {fileID: 3702185055643861488, guid: 57edd59909f377f49b39581d9edaac50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57edd59909f377f49b39581d9edaac50, type: 3}
