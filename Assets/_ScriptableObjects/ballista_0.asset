@@ -22,3 +22,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
   description: A Ballista =]
   category: Turret
+  projectilePrefab: {fileID: 3796326392509129271, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+    type: 3}
+  projectileOffset: {x: 0, y: 0.5, z: 0.3}
+  projectileDelay: 1

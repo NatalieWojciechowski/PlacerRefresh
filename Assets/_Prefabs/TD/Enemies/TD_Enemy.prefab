@@ -99,6 +99,7 @@ MonoBehaviour:
   fullRoute: {fileID: 0}
   nextWaypoint: {fileID: 0}
   DmgToCore: 1
+  _moveSpeed: 1
   currentWaypointIndx: -1
   _turnSpeed: 0.5
 --- !u!54 &1859681545445134727
@@ -127,10 +128,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.05
+  m_Radius: 0.125
   m_Height: 0.6
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1001 &3505112694727092157
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -468,6 +468,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
     <Compile Include="Assets\_Scripts\Buildings\RangedTower.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\TD_Projectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

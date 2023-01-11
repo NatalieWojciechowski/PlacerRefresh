@@ -18,6 +18,8 @@ public class TD_Building : MonoBehaviour
     // TODO: Change this back
     public bool IsRunning = true;
 
+    private float _lastAction = 0f;
+
     protected enum TargetingType
     {
         Nearest,
@@ -84,15 +86,17 @@ public class TD_Building : MonoBehaviour
     protected virtual void CheckTargets()
     {
         // TODO: Method to grab all enemies from a manager to iterate over rather than searching
+        TD_Enemy plannedEnemy = null;
         TD_Enemy[] enemies = FindObjectsOfType<TD_Enemy>();
         foreach (TD_Enemy enemy in enemies)
         {
             float _distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (_distance < _attackRange) {
-                SetTarget(enemy);
+                plannedEnemy = enemy;
                 break;
             }
         }
+        SetTarget(plannedEnemy);
     }
 
     private void SetTarget(TD_Enemy enemy)
@@ -103,7 +107,23 @@ public class TD_Building : MonoBehaviour
 
     protected virtual void ActOnTarget()
     {
-
+        if (_buildingData.projectilePrefab && _buildingData.projectileOffset != null)
+        {
+            SpawnProjectile();
+        }
     }
 
+    protected virtual void SpawnProjectile()
+    {
+        if (Time.time - _lastAction > _buildingData.projectileDelay)
+        {
+            GameObject lastProjectile = Instantiate(_buildingData.projectilePrefab, transform);
+            lastProjectile.transform.Translate(_buildingData.projectileOffset);
+            lastProjectile.transform.LookAt(_buildingTarget.transform.position);
+            // TODO: assign owner / target? 
+            TD_Projectile td_projectile = lastProjectile.GetComponent<TD_Projectile>();
+            td_projectile.InitProjectile(this, _buildingTarget);
+            _lastAction = Time.time;
+        }
+    }
 }

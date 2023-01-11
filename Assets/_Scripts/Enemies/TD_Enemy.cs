@@ -15,6 +15,7 @@ public class TD_Enemy : MonoBehaviour
     private string _displayName;
     [SerializeField]
     private float _moveSpeed = 1f;
+    private float _currentHealth;
     private float _maxHealth = 1f;
     private Rigidbody _rigidbody;
     private Animator _animator;
@@ -36,20 +37,44 @@ public class TD_Enemy : MonoBehaviour
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
         if (_animator == null) _animator = GetComponent<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
-        //WaypointManager.current.AddEnemyToCircuit(fullRoute);
+
+        InitEnemy();
+    }
+
+    private void InitEnemy()
+    {
         UpdateNextWaypoint(false);
+        _currentHealth = _maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ShouldDie()) Expire();
         if (nextWaypoint) MoveToWaypoint();
+    }
 
+    private bool ShouldDie()
+    {
+        // TODO: Check invulnerable / undying? 
+        return _currentHealth <= 0;
+    }
+
+    private void Expire()
+    {
+        // TODO: Play animation?
+        Destroy(this.gameObject);
     }
 
     public void SetPreviousWaypoint(Transform tLocation)
     {
         prevWaypoint = tLocation;
+    }
+
+    internal void TakeDamage(float projectileDamage)
+    {
+        _currentHealth -= projectileDamage;
+        // TODO: Update floating bar?
     }
 
     private void MoveToWaypoint()

@@ -13,4 +13,7 @@ public class TD_BuildingData : ScriptableObject
     public Sprite icon;
     public string description;
     public string category;
+    public GameObject projectilePrefab;
+    public Vector3 projectileOffset;
+    public float projectileDelay = 0.5f;
 }
