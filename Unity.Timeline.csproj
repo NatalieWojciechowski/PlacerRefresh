@@ -428,6 +428,9 @@
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
+    <Reference Include="RainbowHierarchy">
+      <HintPath>Assets\Plugins\Borodar\RainbowHierarchy\Assemblies\RainbowHierarchy.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
     </Reference>

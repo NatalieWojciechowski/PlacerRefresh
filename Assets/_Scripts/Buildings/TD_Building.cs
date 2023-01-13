@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TD_Building : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class TD_Building : MonoBehaviour
     public bool IsInRange = false;
 
     protected float _lastAction = 0f;
+
+    public int EnemyKillCount { get; internal set; }
 
     protected enum TargetingType
     {
@@ -61,6 +64,18 @@ public class TD_Building : MonoBehaviour
         }
         // callbacks / Powerup animations/ etc
         BulidingInit();
+    }
+
+    internal bool TrySell()
+    {
+        // May have conditions like "immovable" or corrupted, etc
+        Destroy(this.gameObject);
+        return true;
+    }
+
+    internal TD_BuildingData GetStats()
+    {
+        return this._buildingData;
     }
 
     // Start is called before the first frame update
@@ -142,5 +157,10 @@ public class TD_Building : MonoBehaviour
             td_projectile.InitProjectile(this, _buildingTarget);
             _lastAction = Time.time;
         }
+    }
+
+    private void OnMouseUp()
+    {
+        EventManager.OnTowerSelect(this);
     }
 }
