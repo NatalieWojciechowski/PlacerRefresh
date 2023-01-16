@@ -44,6 +44,15 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1177e480-ee16-4a70-986a-5166b5fdb136"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -90,6 +99,61 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""e4a0e4f5-eafc-40d1-b355-80216689cf68"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2"",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""45ac036a-ad15-4979-8831-3bd5103f3617"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6f70fae5-ae3f-4e92-b1ff-ca697f3baba3"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""42cc1b2b-f3bd-4fd5-b416-7c7cd43232a4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""a076f7d1-86d2-45a5-a895-4f5dda8ce056"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -100,6 +164,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         m_TD_BuilderControls = asset.FindActionMap("TD_BuilderControls", throwIfNotFound: true);
         m_TD_BuilderControls_Accept = m_TD_BuilderControls.FindAction("Accept", throwIfNotFound: true);
         m_TD_BuilderControls_Cancel = m_TD_BuilderControls.FindAction("Cancel", throwIfNotFound: true);
+        m_TD_BuilderControls_Move = m_TD_BuilderControls.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,12 +226,14 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
     private ITD_BuilderControlsActions m_TD_BuilderControlsActionsCallbackInterface;
     private readonly InputAction m_TD_BuilderControls_Accept;
     private readonly InputAction m_TD_BuilderControls_Cancel;
+    private readonly InputAction m_TD_BuilderControls_Move;
     public struct TD_BuilderControlsActions
     {
         private @TD_Controls m_Wrapper;
         public TD_BuilderControlsActions(@TD_Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Accept => m_Wrapper.m_TD_BuilderControls_Accept;
         public InputAction @Cancel => m_Wrapper.m_TD_BuilderControls_Cancel;
+        public InputAction @Move => m_Wrapper.m_TD_BuilderControls_Move;
         public InputActionMap Get() { return m_Wrapper.m_TD_BuilderControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -182,6 +249,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Cancel.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnCancel;
                 @Cancel.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnCancel;
                 @Cancel.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnCancel;
+                @Move.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -192,6 +262,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Cancel.started += instance.OnCancel;
                 @Cancel.performed += instance.OnCancel;
                 @Cancel.canceled += instance.OnCancel;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
         }
     }
@@ -200,5 +273,6 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
     {
         void OnAccept(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

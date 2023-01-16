@@ -271,6 +271,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8970719856591048264, guid: 50b8b97f8b8069045bfd66cc27d46f32,
+        type: 3}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 152584, guid: 87ca4f026c30af74fac5870e06ca6b85, type: 3}
     m_RemovedComponents:
     - {fileID: 4418666865375290923, guid: 50b8b97f8b8069045bfd66cc27d46f32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 50b8b97f8b8069045bfd66cc27d46f32, type: 3}

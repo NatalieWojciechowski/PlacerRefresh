@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Utility;
 
 public class TD_Enemy : MonoBehaviour
@@ -25,6 +26,8 @@ public class TD_Enemy : MonoBehaviour
     private float _turnSpeed = 0.5f;
     private float _lastWaypointSwitchTime;
 
+    public GameObject HealthBar;
+
     public Guid EnemyUUID { get; private set; }
 
     private void Awake()
@@ -41,6 +44,8 @@ public class TD_Enemy : MonoBehaviour
         if (_animator == null) _animator = GetComponent<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
 
+        HealthBar.transform.localScale = Vector3.one;
+
         InitEnemy();
     }
 
@@ -55,6 +60,7 @@ public class TD_Enemy : MonoBehaviour
     {
         if (ShouldDie()) Expire();
         if (nextWaypoint) MoveToWaypoint();
+        HealthBar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(-30, -20, 0);
     }
 
     private bool ShouldDie()
@@ -67,6 +73,7 @@ public class TD_Enemy : MonoBehaviour
     {
         // TODO: Play animation?
         Destroy(this.gameObject);
+        Destroy(HealthBar);
     }
 
     public void SetPreviousWaypoint(Transform tLocation)
@@ -78,6 +85,7 @@ public class TD_Enemy : MonoBehaviour
     {
         _currentHealth -= projectileDamage;
         // TODO: Update floating bar?
+        HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
     }
 
     private void MoveToWaypoint()

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class TD_UIManager : MonoBehaviour
 {
+    public static TD_UIManager current;
+
     public GameObject coreStatus;
     public GameObject gameOverStatus;
     public GameObject waveStatus;
@@ -39,7 +41,8 @@ public class TD_UIManager : MonoBehaviour
 
     private void Start()
     {
-        
+        if (current != null) Destroy(this);
+        current = this;
     }
     public void UpdateDisplay()
     {

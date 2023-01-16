@@ -72,6 +72,8 @@ public class TD_Spawner : Spawner
             enemyControl.fullRoute = ForRoute;
             enemyControl.SetPreviousWaypoint(SpawnPosition);
             lastSpawned.transform.SetParent(transform);
+            GameObject _healthBar = lastSpawned.GetComponent<TD_Enemy>().HealthBar = Instantiate(lastSpawned.GetComponent<TD_Enemy>().HealthBar) as GameObject;
+            _healthBar.transform.parent = TD_UIManager.current.transform;
             spawnedEntities.Add(lastSpawned);
             _nextEnemyIndex++;
             lastSpawnTime = 0;

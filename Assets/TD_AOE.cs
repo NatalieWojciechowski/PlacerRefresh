@@ -125,6 +125,7 @@ public class TD_AOE : MonoBehaviour
     private void EndPulse()
     {
         if (!_isPulseActive) return;
+        inRangeEffects?.SetActive(false);
         Debug.Log("End Pulse");
         _isPulseActive = false;
         _lastPulse = Time.time;
