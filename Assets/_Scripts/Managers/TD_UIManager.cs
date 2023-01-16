@@ -12,6 +12,8 @@ public class TD_UIManager : MonoBehaviour
     public GameObject gameOverStatus;
     public GameObject waveStatus;
     public GameObject SpeedControls;
+    public GameObject playerMoney;
+
     //TD_Controls td_controls;
     private void Awake()
     {
@@ -50,8 +52,9 @@ public class TD_UIManager : MonoBehaviour
         if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.current.CoreHealth.ToString();
         if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
         if (waveStatus) waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = TD_GameManager.current.CurrentWave.ToString();
-
+        if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.current.CurrentCurrency.ToString();
         // TODO: Outline the current speed
+        
     }
 
     private void Update()

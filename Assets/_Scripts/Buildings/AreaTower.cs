@@ -29,10 +29,10 @@ public class AreaTower : TD_Building
 
     protected override void ActOnTarget()
     {
-        if (!effectAreaRange || !effectAreaRange.gameObject.activeSelf)
-        {
-            effectAreaRange.gameObject.SetActive(true);
-        }
+        //if (!effectAreaRange || !effectAreaRange.gameObject.activeSelf)
+        //{
+        //    effectAreaRange.gameObject.SetActive(true);
+        //}
         base.ActOnTarget();
     }
 

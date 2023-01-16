@@ -45,7 +45,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.25
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}
@@ -61,12 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8267b7c35fa034982681a9e12f1022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myParent: {fileID: 0}
-  myTarget: {fileID: 0}
-  projectileSpeed: 2
-  projectileDamage: 1
   td_AOEData: {fileID: 11400000, guid: f8bd40b0dee90094f8e9d7e46738065b, type: 2}
   _collider: {fileID: 0}
+  _owningBuilding: {fileID: 0}
 --- !u!23 &530053263726855526
 MeshRenderer:
   m_ObjectHideFlags: 0

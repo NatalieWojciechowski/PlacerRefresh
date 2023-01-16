@@ -18,6 +18,7 @@ public class TD_Enemy : MonoBehaviour
     private float _moveSpeed = 1f;
     private float _currentHealth;
     private float _maxHealth = 1f;
+    private int _deathReward;
     private Rigidbody _rigidbody;
     private Animator _animator;
 
@@ -72,6 +73,7 @@ public class TD_Enemy : MonoBehaviour
     private void Expire()
     {
         // TODO: Play animation?
+        TD_GameManager.current.AddCoins(_deathReward);
         Destroy(this.gameObject);
         Destroy(HealthBar);
     }
@@ -116,6 +118,7 @@ public class TD_Enemy : MonoBehaviour
         _displayName = waveEnemyData.displayName;
         _moveSpeed = waveEnemyData.moveSpeed;
         _maxHealth = waveEnemyData.health;
+        _deathReward = waveEnemyData.reward;
         DmgToCore = waveEnemyData.dmgToCore;
     }
 

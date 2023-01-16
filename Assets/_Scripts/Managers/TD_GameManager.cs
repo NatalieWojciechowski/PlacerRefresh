@@ -12,6 +12,9 @@ public class TD_GameManager : MonoBehaviour
 
     public TD_UIManager uIManager;
 
+    private int startingCurrency = 10;
+    private int currentCurrency = 0;
+    public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWave { get => currentWave; }
     public int CoreHealth { get => coreHealth; }
 
@@ -31,6 +34,7 @@ public class TD_GameManager : MonoBehaviour
     {
         if (current != null) Destroy(this);
         current = this;
+        currentCurrency = startingCurrency;
         if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
     }
 
@@ -90,5 +94,11 @@ public class TD_GameManager : MonoBehaviour
 
             default: break;
         }
+    }
+
+    internal void AddCoins(int deathReward)
+    {
+        currentCurrency += deathReward;
+        // TODO: Check for max? check for quest conditions, etc?
     }
 }

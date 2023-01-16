@@ -91,7 +91,8 @@ public class TD_AOE : MonoBehaviour
     {
         //effectAreaRange.transform.localScale = Vector3.one * _sBuildingData.AttackRange;
         // Roughly inside tangent of range
-        GetComponent<CapsuleCollider>().radius = bDataRange * 0.75f;
+        transform.localScale = new Vector3(bDataRange, bDataRange, bDataRange);
+        //GetComponent<CapsuleCollider>().radius = bDataRange * 0.75f;
     }
 
     #region AOE Region

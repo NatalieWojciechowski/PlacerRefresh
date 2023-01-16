@@ -27,6 +27,9 @@ public class TD_Building : MonoBehaviour
     public bool IsInRange = false;
 
     protected float _lastAction = 0f;
+    private float effectToggleDelay = .25f;
+    private float effectLastToggle = 0;
+
     //private int _currentTier = 1;
     //private int _maxTier = 1;
 
@@ -110,15 +113,15 @@ public class TD_Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool beganWithTarget = (_buildingTarget != null);
+        bool beganWithTarget = (_buildingTarget?.EnemyUUID != null);
         // Validation
         if (IsRunning) CheckTargets();
-
-        if (beganWithTarget && !_buildingTarget) ExitedRange();
-        else if (!beganWithTarget && _buildingTarget != null) EnteredRange();
-
-        // Action
-        if (_buildingTarget) ActOnTarget();
+        if (_buildingTarget)
+        {
+            if (!beganWithTarget) EnteredRange();
+            ActOnTarget();
+        }
+        else if (!_buildingTarget && IsInRange) ExitedRange();
 
         //// Visual
         //if (IsInRange) ToggleEffects(true);
@@ -133,12 +136,16 @@ public class TD_Building : MonoBehaviour
     protected virtual void ExitedRange()
     {
         Debug.Log("JUST went out of range");
+        ToggleEffects(false);
     }
 
     private void ToggleEffects(bool shouldShow)
     {
+        if (Time.time - effectLastToggle < effectToggleDelay) return;
+        Debug.Log("Toggle Effects: " + shouldShow);
         if (bAnimator) bAnimator.SetBool("InRange", shouldShow);
         if (inRangeEffects) inRangeEffects.SetActive(shouldShow);
+        effectLastToggle = Time.time;
     }
 
     protected virtual void CheckTargets()

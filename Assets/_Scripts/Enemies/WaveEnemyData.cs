@@ -8,4 +8,5 @@ public class WaveEnemyData : ScriptableObject
     public float moveSpeed = 1f;
     public GameObject spawnPrefab;
     public int dmgToCore = 1;
+    public int reward = 1;
 }
