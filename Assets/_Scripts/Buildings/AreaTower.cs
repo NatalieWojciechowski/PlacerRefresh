@@ -9,6 +9,8 @@ public class AreaTower : TD_Building
     protected float _aoeStartTime = 0f;
     protected bool _isActiveEffect = false;
 
+    public float TickDamage = 0f;
+
     public AreaTower(TD_BuildingData buildingData) : base(buildingData)
     {
 
@@ -43,11 +45,13 @@ public class AreaTower : TD_Building
 
     protected override void EnteredRange()
     {
+        //TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
         effectAreaRange.gameObject.SetActive(true);
         inRangeEffects?.SetActive(true);
 
         base.EnteredRange();
     }
+
 
     //private void StartAOE()
     //{
@@ -73,6 +77,7 @@ public class AreaTower : TD_Building
     {
         if (effectAreaRange) AdjustRange();
         base.BuildingInit();
+        TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
     }
 
     private void AdjustRange()

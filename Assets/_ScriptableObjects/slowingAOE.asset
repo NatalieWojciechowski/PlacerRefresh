@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
-  m_Name: New TD_AOE Data
+  m_Name: slowingAOE
   m_EditorClassIdentifier: 
   spawnPrefab: {fileID: 1000012901425104, guid: 3f347b8e2c139f343a77e17bbc0e50c3,
     type: 3}

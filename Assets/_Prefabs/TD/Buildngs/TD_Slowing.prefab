@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: _collider
       value: 
       objectReference: {fileID: 1763074029754904437}
+    - target: {fileID: 4684452398154411574, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
+        type: 3}
+      propertyPath: _owningBuilding
+      value: 
+      objectReference: {fileID: 3909326374663763282}
     - target: {fileID: 6075313622514558837, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
         type: 3}
       propertyPath: m_Name
