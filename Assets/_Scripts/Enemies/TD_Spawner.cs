@@ -123,7 +123,7 @@ public class TD_Spawner : Spawner
     {
         // TODO: Add offset
         // TODO: Check that the space is available
-        Debug.Log("Adjusted Spawn Position:" + SpawnPosition.position);
+        //Debug.Log("Adjusted Spawn Position:" + SpawnPosition.position);
         return SpawnPosition.position;
     }
 }

@@ -22,6 +22,9 @@ public class EventManager : MonoBehaviour
     #region UI Events
     public static UnityAction<TD_Building> OnTowerSelect;
     private UnityEvent<TD_Building> towerSelectEvent;
+
+    public static UnityAction OnTowerDeselect;
+    private UnityEvent towerDeselectEvent;
     #endregion
 
 
@@ -35,6 +38,7 @@ public class EventManager : MonoBehaviour
         waveStartEvent = new UnityEvent<int>();
         waveFinishEvent = new UnityEvent<int>();
         towerSelectEvent = new UnityEvent<TD_Building>();
+        towerDeselectEvent = new UnityEvent();
 
         //enemyPassEvent.AddListener((ctx) => OnEnemyPass(ctx));
     }
@@ -83,5 +87,13 @@ public class EventManager : MonoBehaviour
         Debug.Log($"Building Selected: {bSelected}");
         current.towerSelectEvent.Invoke(bSelected);
         OnTowerSelect.Invoke(bSelected);
+    }
+
+    public static void TowerDeselected()
+    {
+        // Enemies finish spawning + died / get to end
+        Debug.Log($"Building Deselected: ");
+        current.towerDeselectEvent.Invoke();
+        OnTowerDeselect.Invoke();
     }
 }

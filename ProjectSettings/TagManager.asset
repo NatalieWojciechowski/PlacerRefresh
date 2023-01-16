@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Shootable
+  - Spawner
+  - Plane
+  - TowerPoint
+  - Dead
   layers:
   - Default
   - TransparentFX
@@ -13,9 +18,9 @@ TagManager:
   - UI
   - Grid
   - PlacementGrid
-  - PostProcessing
-  - Floor
-  - Character
+  - Lighting
+  - Ground
+  - Postprocessing
   - Socket
   - 
   - 
@@ -38,9 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI
-    uniqueID: 2308161595
     locked: 0

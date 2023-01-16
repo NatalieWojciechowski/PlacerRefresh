@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-internal class TD_Projectile : MonoBehaviour
+public class TD_Projectile : MonoBehaviour
 {
     public GameObject myParent;
     public GameObject myTarget;
@@ -10,12 +10,12 @@ internal class TD_Projectile : MonoBehaviour
     private float _spawnTime = 0;
     private float _maxLifetime = 3f;
 
-    private void Start()
+    protected virtual void Start()
     {
 
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_spawnTime == 0) return;
  
@@ -49,7 +49,7 @@ internal class TD_Projectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == myTarget) {
             myTarget.GetComponent<TD_Enemy>().TakeDamage(projectileDamage);
@@ -57,7 +57,7 @@ internal class TD_Projectile : MonoBehaviour
         }
     }
 
-    internal void InitProjectile(TD_Building tD_Building, TD_Enemy buildingTarget)
+    public virtual void InitProjectile(TD_Building tD_Building, TD_Enemy buildingTarget)
     {
         _spawnTime = Time.time;
         myParent = tD_Building.gameObject;

@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TowerTooltip : MonoBehaviour
 {
+    public static TowerTooltip current;
+
     private TD_Building selectedBuilding;
     [SerializeField]
     private GameObject TowerSelectionUI;
@@ -23,14 +27,19 @@ public class TowerTooltip : MonoBehaviour
     [SerializeField]
     private TMP_Text enemiesKilledText;
 
-    private void Awake()
+    private float lastAction = 0f;
+    private float _cooldownPeriod = 1.25f;
+
+    private void OnEnable()
     {
         EventManager.OnTowerSelect += (bSelected) => SelectBuilding(bSelected);
+        EventManager.OnTowerDeselect += () => SelectBuilding(null);
     }
 
     private void OnDisable()
     {
         EventManager.OnTowerSelect -= (bSelected) => SelectBuilding(bSelected);
+        EventManager.OnTowerDeselect -= () => SelectBuilding(null);
         upgradeButton.onClick.RemoveAllListeners();
         sellButton.onClick.RemoveAllListeners();
     }
@@ -39,78 +48,142 @@ public class TowerTooltip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (current != null) Destroy(this);
+        current = this;
+        ResetUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RefreshInfo();
+        // TODO: Update display for enemies killed count, rest can be done post interactions
     }
 
     private void SelectBuilding(TD_Building bSelected)
     {
-        selectedBuilding = bSelected;
-        if (selectedBuilding) TowerSelectionUI.SetActive(true);
-        else TowerSelectionUI?.gameObject.SetActive(false);
+        if (bSelected)
+        {
+            // Avoid setting up listeners if we already have the building selected
+            if (!selectedBuilding || bSelected.BuildingUUID != selectedBuilding.BuildingUUID)
+            {
+                selectedBuilding = bSelected;
+                TowerSelectionUI.SetActive(true);
+
+                BuildingData bStats = selectedBuilding.GetStats();
+                //// Setup Upgrade button
+                //upgradeButton.OnPointerClick(HandleUpgrade());
+                if (bStats.UpgradesTo == null) upgradeButton.onClick.AddListener(() => AttemptUpgrade());
+                else upgradeButton.onClick.RemoveListener(() => AttemptUpgrade());
+
+                // Setup Sell button
+                if (bStats.CanSell) sellButton.onClick.AddListener(() => AttemptSell());
+                else sellButton.onClick.RemoveListener(() => AttemptSell());
+            }
+        }
+        else
+        {
+            selectedBuilding = null;
+            TowerSelectionUI?.gameObject.SetActive(false);
+        }
+        RefreshInfo();
     }
 
     private void RefreshInfo()
     {
-        if (!TowerSelectionUI) return;
         if (!selectedBuilding)
         {
             ResetUI();
             return;
         }
-
-        TD_BuildingData bStats = selectedBuilding.GetStats();
-
-        towerNameText.text = bStats.displayName;
-
-        // Setup Upgrade button
-        if (bStats.upgradesTo == null) SetupButton(upgradeButton, AttemptUpgrade, selectedBuilding);
-        else CleanupButton(upgradeButton, AttemptUpgrade, selectedBuilding);
-
-        // Setup Sell button
-        if (bStats.canSell) SetupButton(sellButton, AttemptSell, selectedBuilding);
-        else CleanupButton(sellButton, AttemptSell, selectedBuilding);
+        //if (!TowerSelectionUI || !towerNameText) return;
+        BuildingData bStats = selectedBuilding.GetStats();
+        towerNameText.text = bStats.DisplayName;
 
         // Update enemies killed info
         // TODO: dunno if I want to keep this
         enemiesKilledText.text = selectedBuilding.EnemyKillCount.ToString();
 
         // update dmg numbers and type
-        dmgAmtText.text = bStats.baseDamage.ToString();
+        dmgAmtText.text = bStats.Damage.ToString();
         dmgTypeText.text = "Normal";
+    }    
+
+    private void HandleUpgrade(PointerEventData pointerEventData)
+    {
+        if (pointerEventData.fullyExited) {
+            Debug.Log(pointerEventData);
+        }
     }
 
-    private void SetupButton(Button tButton, Action<TD_Building> bCallback, TD_Building tD_Building)
+    public void AttemptUpgrade()
     {
-        upgradeButton.interactable = true;
-        tButton.onClick.AddListener(() => bCallback(tD_Building));
+        if (!CooldownMet() || !TowerSelectionUI.activeInHierarchy || !TowerSelectionUI.scene.IsValid()) return;
+        Debug.Log("Try upgrade building", selectedBuilding);
+        SetActionTimeOnSuccess(selectedBuilding.TryUpgrade());
+    }
+    public void AttemptSell()
+    {
+        if (!CooldownMet() || !TowerSelectionUI.activeInHierarchy || !TowerSelectionUI.scene.IsValid()) return;
+        Debug.Log("Try SELL building", selectedBuilding);
+        SetActionTimeOnSuccess(selectedBuilding.TrySell());
     }
 
-    private void CleanupButton(Button tButton, Action<TD_Building> bCallback, TD_Building tD_Building)
+    // TODO: Ideally this should be only one managing the last action time
+    private void SetActionTimeOnSuccess(bool actionResult)
     {
-        upgradeButton.interactable = false;
-        tButton.onClick.RemoveListener(() => bCallback(tD_Building));
+        if (actionResult) lastAction = Time.time;
+        RefreshInfo();
     }
 
-    private void AttemptUpgrade(TD_Building selectedTower)
+    private bool CooldownMet()
     {
-        Debug.Log("Try upgrade building", selectedTower);
-        selectedTower.TrySell();
-    }
-    private void AttemptSell(TD_Building selectedTower)
-    {
-        Debug.Log("Try SELL building", selectedTower);
-        selectedTower.TrySell();
+        bool timeExpired = (Time.time - lastAction > _cooldownPeriod);
+        // Update for other attempts within this
+        lastAction = Time.time;
+        return timeExpired;
     }
 
     private void ResetUI()
     {
         // TODO: make sure that the callbacks are disabled at this point 
-        TowerSelectionUI.gameObject.SetActive(false);
+        upgradeButton.onClick.RemoveAllListeners();
+        sellButton.onClick.RemoveAllListeners();
+        TowerSelectionUI?.gameObject.SetActive(false);
     }
+
+    private void Deselect()
+    {
+        selectedBuilding = null;
+        ResetUI();
+    }
+
+    //public void OnPointerUp(PointerEventData eventData)
+    //{
+    //    if (eventData.selectedObject == upgradeButton && upgradeButton.IsActive())
+    //    {
+    //        AttemptUpgrade();
+    //    } else if (eventData.selectedObject == sellButton && sellButton.IsActive())
+    //    {
+    //        AttemptSell(selectedBuilding);
+    //    }
+    //}
+
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    //((IPointerClickHandler)sellButton).OnPointerClick(eventData);
+    //    //((IPointerClickHandler)upgradeButton).OnPointerClick(eventData);
+    //    //{
+    //    //    AttemptUpgrade(selectedBuilding);
+    //    //} else if (eventData.selectedObject == sellButton && sellButton.IsActive())
+    //    //{
+    //    //    AttemptSell(selectedBuilding);
+    //    //}
+    //    if (eventData.selectedObject == upgradeButton && upgradeButton.IsActive()) { 
+    //        AttemptUpgrade(selectedBuilding);
+    //    }
+    //    else if (eventData.selectedObject == sellButton && sellButton.IsActive())
+    //    {
+    //        AttemptSell(selectedBuilding);
+    //    }
+    //}
 }

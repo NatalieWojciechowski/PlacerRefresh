@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4415392401019420030}
   - component: {fileID: 3152206549098373545}
   - component: {fileID: 3602379146642460443}
-  - component: {fileID: 713904803579630943}
+  - component: {fileID: 8302478617572052954}
   m_Layer: 0
   m_Name: TD_Defense
   m_TagString: Untagged
@@ -120,13 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc059b457664a2c4ab294c8d510b8a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buildingData: {fileID: 0}
+  _baseBuildingData: {fileID: 11400000, guid: 1789019e5eaccb7419bab3cbc2a5afcb, type: 2}
   _buildingTarget: {fileID: 0}
   bAnimator: {fileID: 0}
   inRangeEffects: {fileID: 0}
   IsRunning: 0
   IsInRange: 0
---- !u!65 &713904803579630943
+--- !u!65 &8302478617572052954
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,11 +134,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765544224758337656}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.82322305, y: 0.5596696, z: 0.6961094}
-  m_Center: {x: -0.004984826, y: 0.25756317, z: 0.10194528}
+  m_Size: {x: 1.5, y: 1, z: 1.5}
+  m_Center: {x: 0, y: 0.25756317, z: 0}
 --- !u!1 &2065832158366382706
 GameObject:
   m_ObjectHideFlags: 0

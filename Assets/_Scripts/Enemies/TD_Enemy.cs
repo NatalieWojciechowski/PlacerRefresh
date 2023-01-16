@@ -25,8 +25,11 @@ public class TD_Enemy : MonoBehaviour
     private float _turnSpeed = 0.5f;
     private float _lastWaypointSwitchTime;
 
+    public Guid EnemyUUID { get; private set; }
+
     private void Awake()
     {
+        EnemyUUID = Guid.NewGuid();
     }
 
     // Start is called before the first frame update
@@ -110,11 +113,12 @@ public class TD_Enemy : MonoBehaviour
 
     private bool ReachedPoint()
     {
-        if (Vector3.Distance(transform.position, nextWaypoint.position) < 0.075f)
+        if (Vector3.Distance(transform.position, nextWaypoint.position) < 0.1f)
         {
             // Stop animations? 
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.MovePosition(nextWaypoint.position);
             return true;
         }
         return false;

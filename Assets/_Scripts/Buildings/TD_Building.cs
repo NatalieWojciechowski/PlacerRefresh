@@ -8,11 +8,14 @@ using UnityEngine.Events;
 public class TD_Building : MonoBehaviour
 {
     [SerializeField]
-    protected TD_BuildingData _buildingData;
+    protected TD_BuildingData _baseBuildingData;
 
-    protected float _attackRange = 0.75f;
+    protected BuildingData _sBuildingData;
+
+    //protected float _attackRange = 0.75f;
+    //private float _baseDamage;
     [SerializeField]
-    protected TD_Enemy _buildingTarget;
+    private TD_Enemy _buildingTarget;
 
     protected TargetingType targetingType;
 
@@ -24,8 +27,12 @@ public class TD_Building : MonoBehaviour
     public bool IsInRange = false;
 
     protected float _lastAction = 0f;
+    //private int _currentTier = 1;
+    //private int _maxTier = 1;
 
     public int EnemyKillCount { get; internal set; }
+    public Guid BuildingUUID { get; private set; }
+    public TD_Enemy BuildingTarget { get => _buildingTarget; }
 
     protected enum TargetingType
     {
@@ -43,16 +50,21 @@ public class TD_Building : MonoBehaviour
         IsRunning = true;
     }
 
-    protected virtual void BulidingInit()
+    protected virtual void BuildingInit()
     {
+        // Any adjustments to make with building data now that we have the base? 
 
     }
 
     public void SetStats(TD_BuildingData bData)
     {
         if (!bData) return;
-        _buildingData = bData;
-        _attackRange = _buildingData.attackRange;
+        _baseBuildingData = bData;
+        _sBuildingData = new BuildingData(bData);
+        //_attackRange = _baseBuildingData.attackRange;
+        //_baseDamage = _baseBuildingData.baseDamage;
+        //_currentTier = _baseBuildingData.CurrentTier;
+        //_maxTier = _baseBuildingData.MaxTier;
 
         PieceBehaviour pieceBehaviour = GetComponent<PieceBehaviour>();
         if (pieceBehaviour)
@@ -63,36 +75,34 @@ public class TD_Building : MonoBehaviour
             pieceBehaviour.Category = bData.category;
         }
         // callbacks / Powerup animations/ etc
-        BulidingInit();
+        BuildingInit();
     }
 
-    internal bool TrySell()
-    {
-        // May have conditions like "immovable" or corrupted, etc
-        Destroy(this.gameObject);
-        return true;
-    }
 
-    internal TD_BuildingData GetStats()
+    internal BuildingData GetStats()
     {
-        return this._buildingData;
+        // TODO: Any adjustments like upgrades to make here before returning; 
+        // Copy the stats to new struct? 
+        return this._sBuildingData;
+        //return this._baseBuildingData;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        BuildingUUID = Guid.NewGuid();
         //if (_buildingData == null) _buildingData = GetComponent<TD_BuildingData>();
         if (!bAnimator) bAnimator = GetComponent<Animator>();
-        if (IsRunning == false) SetStats(_buildingData);
+        if (IsRunning == false) SetStats(_baseBuildingData);
         IsRunning = true;
 
-        Debug.Log("Building Data: " + _buildingData);
+        Debug.Log("Building Data: " + _baseBuildingData);
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, _attackRange);
+        Gizmos.DrawWireSphere(transform.position, _sBuildingData.AttackRange);
         if (_buildingTarget) Gizmos.DrawLine(transform.position, _buildingTarget.transform.position);
     }
 #endif
@@ -100,9 +110,29 @@ public class TD_Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool beganWithTarget = (_buildingTarget != null);
+        // Validation
         if (IsRunning) CheckTargets();
+
+        if (beganWithTarget && !_buildingTarget) ExitedRange();
+        else if (!beganWithTarget && _buildingTarget != null) EnteredRange();
+
+        // Action
         if (_buildingTarget) ActOnTarget();
-        if (IsInRange) ToggleEffects(true);
+
+        //// Visual
+        //if (IsInRange) ToggleEffects(true);
+    }
+
+    protected virtual void EnteredRange()
+    {
+        Debug.Log("JUST went INTO range");
+        ToggleEffects(true);
+    }
+
+    protected virtual void ExitedRange()
+    {
+        Debug.Log("JUST went out of range");
     }
 
     private void ToggleEffects(bool shouldShow)
@@ -113,18 +143,37 @@ public class TD_Building : MonoBehaviour
 
     protected virtual void CheckTargets()
     {
+        TD_Enemy startingEnemy = _buildingTarget;
         // TODO: Method to grab all enemies from a manager to iterate over rather than searching
         TD_Enemy plannedEnemy = null;
         TD_Enemy[] enemies = FindObjectsOfType<TD_Enemy>();
         foreach (TD_Enemy enemy in enemies)
         {
             float _distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (_distance < _attackRange) {
+            if (_distance < _sBuildingData.AttackRange) {
                 plannedEnemy = enemy;
                 break;
             }
         }
+        if (!plannedEnemy && !_buildingTarget || plannedEnemy?.EnemyUUID == _buildingTarget?.EnemyUUID) return;
         SetTarget(plannedEnemy);
+    }
+
+    internal bool TryUpgrade()
+    {
+        if (_sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
+        //_currentTier++;
+        _sBuildingData.LevelUp();
+        _sBuildingData.Damage = (float)Math.Round(_sBuildingData.Damage * 1.5f);
+        return true;
+        //return _buildingData.upgradesTo != null;
+    }
+
+    internal bool TrySell()
+    {
+        // May have conditions like "immovable" or corrupted, etc
+        Destroy(this.gameObject, 0.25f);
+        return true;
     }
 
     private void SetTarget(TD_Enemy enemy)
@@ -138,7 +187,7 @@ public class TD_Building : MonoBehaviour
 
     protected virtual void ActOnTarget()
     {
-        if (_buildingData.projectilePrefab && _buildingData.projectileOffset != null)
+        if (_baseBuildingData.projectilePrefab && _baseBuildingData.projectileOffset != null)
         {
             SpawnProjectile();
         }
@@ -146,10 +195,10 @@ public class TD_Building : MonoBehaviour
 
     protected virtual void SpawnProjectile()
     {
-        if (Time.time - _lastAction > _buildingData.projectileDelay)
+        if (Time.time - _lastAction > _baseBuildingData.projectileDelay)
         {
-            GameObject lastProjectile = Instantiate(_buildingData.projectilePrefab, transform);
-            lastProjectile.transform.Translate(_buildingData.projectileOffset);
+            GameObject lastProjectile = Instantiate(_baseBuildingData.projectilePrefab, transform);
+            lastProjectile.transform.Translate(_baseBuildingData.projectileOffset);
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
             transform.LookAt(_buildingTarget.transform.position);
             // TODO: assign owner / target? 

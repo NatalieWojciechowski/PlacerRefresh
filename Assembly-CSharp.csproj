@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2021_3_10;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;COLONY_SIMULATOR;UNITY_POST_PROCESSING_STACK_V2;MAPMAGIC2;MM_NATIVE;CROSS_PLATFORM_INPUT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2021_3_10;UNITY_2021_3;UNITY_2021;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;USE_SEARCH_ENGINE_API;USE_SEARCH_TABLE;USE_SEARCH_MODULE;USE_PROPERTY_DATABASE;USE_SEARCH_EXTENSION_API;SCENE_TEMPLATE_MODULE;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;CROSS_PLATFORM_INPUT;UNITY_POST_PROCESSING_STACK_V2;COLONY_SIMULATOR;MAPMAGIC2;MM_NATIVE;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -77,6 +77,7 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Gatherable.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\TD_AOEData.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\PhysicExtension.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Events\System\DialogueMessage.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SaveQuestData.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Multiple Grids Demo\Scripts\GameManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateRight.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
+    <Compile Include="Assets\Shared\Ramps\Runtime\RampAsset.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\ShopPanel.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Conditions\ExternalCollisionCondition.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\GameUI.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventLine.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\QuestUI.cs" />
+    <Compile Include="Assets\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\Defender.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\JumpAttacker.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\CannonLike.cs" />
@@ -137,6 +140,7 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Add Programatically Demo\Scripts\GridObjectSpawnData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshModifier.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\GameManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonistAttribute.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\TechData.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\ScriptableObjectExtension.cs" />
@@ -151,6 +155,7 @@
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Storage\Data\PieceData.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Addons\AddonTheForestLike.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\SimpleHealth.cs" />
+    <Compile Include="Assets\_Prefabs\TD_Controls.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\AddonInspector.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\InventoryUI.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\UniqueID.cs" />
@@ -158,6 +163,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\EquipAttach.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Generator\GeneratorObject.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_LoadGridObjects.cs" />
+    <Compile Include="Assets\Shared\Scripts\SimpleCharacterMotor.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_MoveGridRight.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\UpgradeInfoPanel.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\ActionButton.cs" />
@@ -187,6 +193,7 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\SavingAndLoading\GridSaveManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\DynamicUI.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\MainMenu.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Character.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Survival Like\Scripts\Demo_DestructionEffect.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Region.cs" />
@@ -198,6 +205,7 @@
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_ProtectCameraFromWallClip.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Projectile.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\NavMeshComponents\Scripts\AddonNavMesh.cs" />
+    <Compile Include="Assets\Shared\Scripts\AdjustTimeScale.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Runtime\Grid Input Actions\MouseInputDefinition.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\HousePanel.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\SavingAndLoading\GridSaveManager.cs" />
@@ -230,6 +238,7 @@
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_OrbitCamera.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_OpenPlacementSettings.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Tools\NavMeshTool.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\Enemy.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Headquarter.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\GameObjectExtension.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Saving and Loading\Button_SaveGridObjects.cs" />
@@ -274,10 +283,13 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_RotateRight.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\IdleButton.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkHarvest.cs" />
+    <Compile Include="Assets\TowerTooltip.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\Rocket.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\Misc\RPTester.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Controls\TheControls.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_BuildingData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Zone.cs" />
+    <Compile Include="Assets\Shared\Scripts\ProximityActivate.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TechSlot.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\ColonistManager.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\PickableController.cs" />
@@ -304,6 +316,7 @@
     <Compile Include="Assets\_Scripts\Waypoints\WaypointManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\ExampleGridObject.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\Surface\SurfaceCollider.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\Tower.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\SimpleExplosive.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Condition\ConditionBehaviour.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\House.cs" />
@@ -313,6 +326,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Inventory.cs" />
     <Compile Include="Assets\Blobcreate\Shared\Code\Character Movement Kit\Input\Move\InputManagerControl.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Helpers\JsonHelper.cs" />
+    <Compile Include="Assets\TD_AOE.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Interactable.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkFactory.cs" />
     <Compile Include="Assets\Fraktalia\VoxelGenerator\Samples\Scripts\SampleGameController.cs" />
@@ -330,6 +344,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Actions\WorkBasic.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\ProjectileLauncher.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Paint Mode Demo\Scripts\DeleteGridObjectManager.cs" />
+    <Compile Include="Assets\PlayerControlsManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\ColonyAttributeUI.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\FX\LightFX.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\QuestManager.cs" />
@@ -385,11 +400,13 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\InfoPanel.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\LevelData.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Scripts\CircularButton.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\UI_Controller.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CharacterPathfind.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Events\System\EventCondition.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Selectable.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Area\AreaBehaviour.cs" />
+    <Compile Include="Assets\TowerDefenceTemplate\Scripts\Bullet.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\TheGame.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CSObject.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
@@ -443,6 +460,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\QuestData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionBasic.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Addons\ExternalAreaOfEffectAddon.cs" />
+    <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_RotateGridRight.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Event\BuildEvent.cs" />
@@ -471,7 +489,6 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\TowerTooltip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -489,10 +506,13 @@
     <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader.shader" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\Tower Defense Kit\License.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\Easy Build System\Features\Scripts\Core\Templates\AddonTemplate.txt" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
     <None Include="Assets\Blobcreate\Projectile Toolkit\Demos\README.txt" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
     <None Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Shaders\UIBlur.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\ColonySimulator\Licence.txt" />
@@ -511,6 +531,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\ColonySimulator\Materials\FX\SpriteZ.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
     <None Include="Assets\ColonySimulator\ReadMe.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Procedural Ring.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
@@ -522,6 +543,7 @@
     <None Include="Assets\ColonySimulator\Materials\FX\Outline.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Easy Build System\Features\Resources\Shaders\EasyBuildSystem_ThroughTransparent.shader" />
+    <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
     <None Include="Assets\MapMagic\Readme.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Distortion.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
@@ -791,11 +813,11 @@
     <Reference Include="Unity.Burst.Cecil.Rocks">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RainbowHierarchy">
       <HintPath>Assets\Plugins\Borodar\RainbowHierarchy\Assemblies\RainbowHierarchy.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -1181,6 +1203,9 @@
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
@@ -1272,6 +1297,10 @@
       <Project>{EC96E761-19A5-B34A-E0CC-B388FB59B0B2}</Project>
       <Name>Internal</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ProGrids.csproj">
+      <Project>{E926BB3D-3D04-BDD5-772C-365D517E51EE}</Project>
+      <Name>Unity.ProGrids</Name>
+    </ProjectReference>
     <ProjectReference Include="CFXRRuntime.csproj">
       <Project>{F2EBE9C3-7C10-6D44-5C6D-E294B9A5DF38}</Project>
       <Name>CFXRRuntime</Name>
@@ -1331,6 +1360,10 @@
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{E781D9AD-94B6-9D7C-7369-9E6AE4AFD091}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProGrids.Editor.csproj">
+      <Project>{5361ED11-508E-E1A8-F87A-96729D32BE4F}</Project>
+      <Name>Unity.ProGrids.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.csproj">
       <Project>{9A386C04-6226-3127-F70D-C8F8B845E4E3}</Project>
