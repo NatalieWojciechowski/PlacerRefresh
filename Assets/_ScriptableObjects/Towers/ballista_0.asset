@@ -13,16 +13,22 @@ MonoBehaviour:
   m_Name: ballista_0
   m_EditorClassIdentifier: 
   displayName: Ballista
-  health: 2
-  attackSpeed: 1
-  attackRange: 3
   spawnPrefab: {fileID: 1765544224758337656, guid: 103e77877237b6240a6623ec29d182fd,
     type: 3}
-  upgradesTo: {fileID: 0}
   icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
   description: A Ballista =]
   category: Turret
+  health: 2
+  attackSpeed: 1
+  attackRange: 3
   projectilePrefab: {fileID: 3796326392509129271, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
     type: 3}
   projectileOffset: {x: 0, y: 3, z: 0.6}
   projectileDelay: 1
+  baseDamage: 1
+  aoeActiveDuration: 0.5
+  CurrentTier: 1
+  MaxTier: 3
+  PurchaseCost: 12
+  upgradesTo: {fileID: 0}
+  canSell: 1

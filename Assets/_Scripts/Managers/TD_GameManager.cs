@@ -12,7 +12,7 @@ public class TD_GameManager : MonoBehaviour
 
     public TD_UIManager uIManager;
 
-    private int startingCurrency = 10;
+    private int startingCurrency = 20;
     private int currentCurrency = 0;
     public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWave { get => currentWave; }
@@ -59,6 +59,13 @@ public class TD_GameManager : MonoBehaviour
         uIManager.UpdateDisplay();
     }
 
+    public bool SpendMoney(int purchaseCost)
+    {
+        if (currentCurrency - purchaseCost < 0) return false;
+        currentCurrency -= purchaseCost;
+        return true;
+    }
+
     private void TookDmg(int coreDmg)
     {
         coreHealth -= coreDmg;
@@ -100,5 +107,10 @@ public class TD_GameManager : MonoBehaviour
     {
         currentCurrency += deathReward;
         // TODO: Check for max? check for quest conditions, etc?
+    }
+
+    internal bool CanAfford(int purchaseCost)
+    {
+        return currentCurrency >= purchaseCost;
     }
 }

@@ -23,6 +23,8 @@ public class TD_BuildingData : ScriptableObject
     public float aoeActiveDuration = 0.5f;
     public int CurrentTier = 1;
     public int MaxTier = 3;
+    // TODO: Upgrade struct w/ costs per level & prefabs, etc.
+    public int PurchaseCost = 12;
     #endregion
 
     #region Interactions
@@ -51,6 +53,7 @@ public struct BuildingData
         AttackSpeed = baseData.attackSpeed;
         UpgradesTo = baseData.upgradesTo;
         CanSell = baseData.canSell;
+        PurchaseCost = baseData.PurchaseCost;
     }
 
     public TD_BuildingData RawBuildingData { get => _BuildingData; }
@@ -62,6 +65,7 @@ public struct BuildingData
     public float Damage { get; set; }
     public bool CanSell { get; set; }
     public TD_BuildingData UpgradesTo { get; set; }
+    public int PurchaseCost { get; }
 
     /// <summary>
     /// Returns the value after max level taken into account

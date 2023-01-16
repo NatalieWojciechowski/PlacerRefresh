@@ -1628,7 +1628,7 @@ RectTransform:
   - {fileID: 1694122020}
   - {fileID: 305369744}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1652,6 +1652,7 @@ MonoBehaviour:
   waveStatus: {fileID: 432035020}
   SpeedControls: {fileID: 1779908787}
   playerMoney: {fileID: 1020870905}
+  pieces_Selection: {fileID: 1906582706}
 --- !u!1 &262337724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2650,7 @@ PrefabInstance:
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
@@ -3864,7 +3865,19 @@ MonoBehaviour:
       m_Calls: []
   OnChangedBuildMode:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 256649463}
+        m_TargetAssemblyTypeName: TD_UIManager, Assembly-CSharp
+        m_MethodName: UpdateDisplay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnChangedSocketState:
     m_PersistentCalls:
       m_Calls: []
@@ -3903,7 +3916,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &448522196
 PrefabInstance:
@@ -5217,7 +5230,7 @@ PrefabInstance:
     - target: {fileID: 8815568712108142909, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8815568712108142909, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
@@ -5515,7 +5528,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &636555463
 MonoBehaviour:
@@ -5544,7 +5557,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIManager: {fileID: 256649463}
-  Currency: 0
 --- !u!114 &636555465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,7 +6017,7 @@ PrefabInstance:
     - target: {fileID: 8815568712108142909, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8815568712108142909, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
@@ -9214,7 +9226,7 @@ PrefabInstance:
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
@@ -9503,7 +9515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &1038674721
 MonoBehaviour:
@@ -11311,7 +11323,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301605364 stripped
 GameObject:
@@ -16036,7 +16048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1796012192
 MonoBehaviour:
@@ -18154,7 +18166,7 @@ PrefabInstance:
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1030082216426359587, guid: 57edd59909f377f49b39581d9edaac50,
         type: 3}
@@ -18998,7 +19010,7 @@ PrefabInstance:
     - target: {fileID: 4057756753718113950, guid: a6070dea2cd260648b52967c9ac20488,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4057756753718113950, guid: a6070dea2cd260648b52967c9ac20488,
         type: 3}

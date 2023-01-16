@@ -53,10 +53,17 @@ public class TD_Building : MonoBehaviour
         IsRunning = true;
     }
 
-    protected virtual void BuildingInit()
+    protected virtual void BuildingInit(TD_BuildingData sourceBuildingData = null)
     {
         // Any adjustments to make with building data now that we have the base? 
-
+        if (!sourceBuildingData || !_baseBuildingData || !TD_GameManager.current) return;
+        SetStats(sourceBuildingData);
+        //if (!TD_GameManager.current.SpendMoney(_baseBuildingData.PurchaseCost)) return;
+        //{
+        //    Debug.Log("CANNOT AFFORD");
+            
+        //    Destroy(this.gameObject, float.Epsilon);
+        //}
     }
 
     public void SetStats(TD_BuildingData bData)
@@ -86,6 +93,7 @@ public class TD_Building : MonoBehaviour
     {
         // TODO: Any adjustments like upgrades to make here before returning; 
         // Copy the stats to new struct? 
+        if (!_sBuildingData.RawBuildingData) BuildingInit(_baseBuildingData);
         return this._sBuildingData;
         //return this._baseBuildingData;
     }

@@ -73,10 +73,10 @@ public class AreaTower : TD_Building
     /// <summary>
     /// Called after SetStats, allowing some post-loading adjustments 
     /// </summary>
-    protected override void BuildingInit()
+    protected override void BuildingInit(TD_BuildingData sourceBuildingData = null)
     {
         if (effectAreaRange) AdjustRange();
-        base.BuildingInit();
+        base.BuildingInit(sourceBuildingData);
         TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
     }
 

@@ -1,4 +1,7 @@
-﻿using TMPro;
+﻿using EasyBuildSystem.Features.Scripts.Core.Base.Builder;
+using EasyBuildSystem.Features.Scripts.Core.Base.Manager;
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -13,6 +16,12 @@ public class TD_UIManager : MonoBehaviour
     public GameObject waveStatus;
     public GameObject SpeedControls;
     public GameObject playerMoney;
+
+    public GameObject pieces_Selection;
+
+    //public Button ButtonTemplate;
+    //public Transform Container;
+
 
     //TD_Controls td_controls;
     private void Awake()
@@ -53,8 +62,18 @@ public class TD_UIManager : MonoBehaviour
         if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
         if (waveStatus) waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = TD_GameManager.current.CurrentWave.ToString();
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.current.CurrentCurrency.ToString();
+
         // TODO: Outline the current speed
+        if (pieces_Selection)
+        {
+            adjustBuildButtons();
+        }
         
+    }
+
+    private void UpdateForPrices()
+    {
+
     }
 
     private void Update()
@@ -83,4 +102,37 @@ public class TD_UIManager : MonoBehaviour
     //    Debug.Log("Sell", FindObjectOfType<TowerTooltip>());
     //}
 
+    private void adjustBuildButtons()
+    {
+        Button[] buildButtons = pieces_Selection.gameObject.GetComponentsInChildren<Button>();
+        if (buildButtons.Length != BuildManager.Instance.Pieces.Count) Debug.Break();
+
+        for (int i = 0; i < BuildManager.Instance.Pieces.Count; i++)
+        {
+            if (BuildManager.Instance.Pieces[i] == null || buildButtons[i] == null) continue;
+
+            Button currentButton = buildButtons[i];
+            TD_Building buildingCtrl;
+            BuildManager.Instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
+            if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
+            {
+                currentButton.enabled = TD_GameManager.current.CanAfford(buildingCtrl.GetStats().RawBuildingData.PurchaseCost);
+            } else {
+                currentButton.enabled = false;
+            }
+
+            //int Index = i;
+            //currentButton.onClick.AddListener(() =>
+            //{
+            //    BuilderBehaviour.Instance.ChangeMode(EasyBuildSystem.Features.Scripts.Core.Base.Builder.Enums.BuildMode.None);
+            //    BuilderBehaviour.Instance.SelectPrefab(BuildManager.Instance.Pieces[Index]);
+            //    BuilderBehaviour.Instance.ChangeMode(EasyBuildSystem.Features.Scripts.Core.Base.Builder.Enums.BuildMode.Placement);
+            //});
+
+            //Button.transform.GetChild(0).GetComponent<Image>().sprite = BuildManager.Instance.Pieces[i].Icon;
+            //Button.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
+
+            //Button.transform.GetChild(1).GetComponent<Text>().text = BuildManager.Instance.Pieces[i].Name;
+        }
+    }
 }
