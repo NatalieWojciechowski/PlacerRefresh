@@ -40,6 +40,7 @@ public class TD_Projectile : MonoBehaviour
     {
         float pathLength = Vector3.Distance(parentPos, targetPos);
         float totalTimeForPath = pathLength / projectileSpeed;
+        // TODO: Consider passing the total length from spawn time for the animator in "TravelTime" param
         float currentTimeOnPath = Time.time - _spawnTime;
         return Vector3.Lerp(parentPos, targetPos, currentTimeOnPath / totalTimeForPath);
     }
@@ -53,6 +54,9 @@ public class TD_Projectile : MonoBehaviour
     {
         if (collision.gameObject == myTarget) {
             myTarget.GetComponent<TD_Enemy>().TakeDamage(projectileDamage);
+            Animator mAnimator;
+            TryGetComponent<Animator>(out mAnimator);
+            if (mAnimator) mAnimator.PlayInFixedTime("Impact");
             ExpireProjectile();
         }
     }

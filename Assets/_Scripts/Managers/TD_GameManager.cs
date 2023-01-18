@@ -22,11 +22,13 @@ public class TD_GameManager : MonoBehaviour
     {
         EventManager.OnEnemyPass += (ctx) => TookDmg(ctx);
         EventManager.OnWaveStart+= (ctx) => WaveStarted(ctx);
+        EventManager.OnMoneySpent += (ctx) => OnPlayerSpend(ctx);
     }
     private void OnDisable()
     {
         EventManager.OnEnemyPass -= (ctx) => TookDmg(ctx);
         EventManager.OnWaveStart -= (ctx) => WaveStarted(ctx);
+        EventManager.OnMoneySpent -= (ctx) => OnPlayerSpend(ctx);
     }
 
     // Start is called before the first frame update
@@ -112,5 +114,11 @@ public class TD_GameManager : MonoBehaviour
     internal bool CanAfford(int purchaseCost)
     {
         return currentCurrency >= purchaseCost;
+    }
+
+    private void OnPlayerSpend(int ctx)
+    {
+        // TODO: do we need to check value here for anything ? popup for not being able to afford n resetting? debts? 
+        SpendMoney(ctx);
     }
 }

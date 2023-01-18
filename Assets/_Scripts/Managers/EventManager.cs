@@ -25,6 +25,9 @@ public class EventManager : MonoBehaviour
 
     public static UnityAction OnTowerDeselect;
     private UnityEvent towerDeselectEvent;
+
+    public static UnityAction<int> OnMoneySpent;
+    private UnityEvent<int> moneySpentEvent;
     #endregion
 
 
@@ -39,6 +42,7 @@ public class EventManager : MonoBehaviour
         waveFinishEvent = new UnityEvent<int>();
         towerSelectEvent = new UnityEvent<TD_Building>();
         towerDeselectEvent = new UnityEvent();
+        moneySpentEvent = new UnityEvent<int>();
 
         //enemyPassEvent.AddListener((ctx) => OnEnemyPass(ctx));
     }
@@ -95,5 +99,13 @@ public class EventManager : MonoBehaviour
         Debug.Log($"Building Deselected: ");
         current.towerDeselectEvent.Invoke();
         OnTowerDeselect.Invoke();
+    }
+
+    public static void MoneySpent(int amountSpent)
+    {
+        // Enemies finish spawning + died / get to end
+        Debug.Log($"Player Used Money: {amountSpent}");
+        current.moneySpentEvent.Invoke(amountSpent);
+        OnMoneySpent.Invoke(amountSpent);
     }
 }

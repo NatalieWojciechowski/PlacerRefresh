@@ -18,6 +18,9 @@ public class TD_Building : MonoBehaviour
     private TD_Enemy _buildingTarget;
 
     protected TargetingType targetingType;
+    [SerializeField]
+    protected BuildingState buildingState;
+    protected BuildingAttackState attackState;
 
     public Animator bAnimator;
     public GameObject inRangeEffects;
@@ -36,6 +39,7 @@ public class TD_Building : MonoBehaviour
     public int EnemyKillCount { get; internal set; }
     public Guid BuildingUUID { get; private set; }
     public TD_Enemy BuildingTarget { get => _buildingTarget; }
+    public Transform ProjectileStart;
 
     protected enum TargetingType
     {
@@ -47,10 +51,30 @@ public class TD_Building : MonoBehaviour
         Weakest,
     }
 
+    protected enum BuildingState
+    {
+        Blueprint,
+        Idle,
+        Attacking,
+        OnCooldown,
+        Reloading,
+        Broken,
+        Upgrading
+    }
+
+    protected enum BuildingAttackState
+    {
+        Attacking,
+        Ready,
+        Reloading,
+        Cooldown
+    }
+
     public TD_Building(TD_BuildingData bData)
     {
         SetStats(bData);
         IsRunning = true;
+        TryBuildingState(BuildingState.Blueprint);
     }
 
     protected virtual void BuildingInit(TD_BuildingData sourceBuildingData = null)
@@ -101,13 +125,18 @@ public class TD_Building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!ProjectileStart) ProjectileStart = this.transform;
         BuildingUUID = Guid.NewGuid();
         //if (_buildingData == null) _buildingData = GetComponent<TD_BuildingData>();
         if (!bAnimator) bAnimator = GetComponent<Animator>();
         if (IsRunning == false) SetStats(_baseBuildingData);
         IsRunning = true;
-
         Debug.Log("Building Data: " + _baseBuildingData);
+    }
+
+    private void OnEnable()
+    {
+        this.buildingState = BuildingState.Idle;
     }
 
 #if UNITY_EDITOR
@@ -151,7 +180,7 @@ public class TD_Building : MonoBehaviour
     {
         if (Time.time - effectLastToggle < effectToggleDelay) return;
         Debug.Log("Toggle Effects: " + shouldShow);
-        if (bAnimator) bAnimator.SetBool("InRange", shouldShow);
+        bAnimator.SetBool("InRange", shouldShow);
         if (inRangeEffects) inRangeEffects.SetActive(shouldShow);
         effectLastToggle = Time.time;
     }
@@ -180,6 +209,7 @@ public class TD_Building : MonoBehaviour
         //_currentTier++;
         _sBuildingData.LevelUp();
         _sBuildingData.Damage = (float)Math.Round(_sBuildingData.Damage * 1.5f);
+        TryBuildingState(BuildingState.Upgrading);
         return true;
         //return _buildingData.upgradesTo != null;
     }
@@ -187,7 +217,11 @@ public class TD_Building : MonoBehaviour
     internal bool TrySell()
     {
         // May have conditions like "immovable" or corrupted, etc
-        Destroy(this.gameObject, 0.25f);
+        if (_sBuildingData.CanSell)
+        {
+            TD_GameManager.current.AddCoins(_sBuildingData.SellValue());
+            Destroy(this.gameObject);
+        }
         return true;
     }
 
@@ -195,36 +229,83 @@ public class TD_Building : MonoBehaviour
     {
         IsInRange = enemy != null;
         // Losing the target
-        if (_buildingTarget && !IsInRange) ToggleEffects(false);
+        if (_buildingTarget && !IsInRange) ExitedRange();
         _buildingTarget = enemy;
         // TODO: any animation / visualization here? 
     }
 
+    /// <summary>
+    /// We keep most of our high level logic for the building while it has a target
+    /// </summary>
     protected virtual void ActOnTarget()
     {
-        if (_baseBuildingData.projectilePrefab && _baseBuildingData.projectileOffset != null)
+        if (IsInRange && ProjectileReady()) attackState = BuildingAttackState.Ready;
+
+        if (_baseBuildingData.projectilePrefab && attackState == BuildingAttackState.Ready)
         {
             SpawnProjectile();
         }
     }
 
+    // TODO: Clearly define the difference between the reloading and cooldown states
+    private bool ProjectileReady()
+    {
+        return (Time.time - _lastAction > _baseBuildingData.projectileDelay);
+    }
+
     protected virtual void SpawnProjectile()
     {
-        if (Time.time - _lastAction > _baseBuildingData.projectileDelay)
+        if (ProjectileReady())
         {
+            TryBuildingState(BuildingState.Attacking);
+            //if (bAnimator) bAnimator.SetBool("IsAttacking", true);
             GameObject lastProjectile = Instantiate(_baseBuildingData.projectilePrefab, transform);
-            lastProjectile.transform.Translate(_baseBuildingData.projectileOffset);
+            lastProjectile.transform.Translate(ProjectileStart.position);
+            //lastProjectile.transform.SetPositionAndRotation(ProjectileStart.position, ProjectileStart.rotation);
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
+
+            // TODO: have only the rotating part move toward enemy
             transform.LookAt(_buildingTarget.transform.position);
             // TODO: assign owner / target? 
             TD_Projectile td_projectile = lastProjectile.GetComponent<TD_Projectile>();
             td_projectile.InitProjectile(this, _buildingTarget);
             _lastAction = Time.time;
+            TryBuildingState(BuildingState.OnCooldown);
         }
     }
 
     private void OnMouseUp()
     {
         EventManager.OnTowerSelect(this);
+    }
+
+    protected virtual void TryBuildingState(BuildingState toState = BuildingState.Idle)
+    {
+        switch (toState) {
+            case BuildingState.Idle:
+            bAnimator.SetBool("InRange", false);
+            bAnimator.SetBool("IsReloading", false);
+            bAnimator.SetBool("IsAttacking", false);
+            break;
+            case BuildingState.Attacking:
+            bAnimator.SetBool("IsAttacking", true);
+            attackState = BuildingAttackState.Attacking;
+            break;
+            case BuildingState.OnCooldown:
+            bAnimator.SetBool("IsReloading", true);
+            attackState = BuildingAttackState.Cooldown;
+            break;
+            case BuildingState.Reloading:
+            bAnimator.SetBool("IsReloading", true);
+            attackState = BuildingAttackState.Reloading;
+            break;
+            default:
+            bAnimator.SetBool("InRange", false);
+            bAnimator.SetBool("IsReloading", false);
+            bAnimator.SetBool("IsAttacking", false);
+            break;
+        };
+        // TODO: any sort of validation here? 
+        buildingState = toState;
     }
 }

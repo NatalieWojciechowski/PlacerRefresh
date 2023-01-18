@@ -17,7 +17,6 @@ public class TD_BuildingData : ScriptableObject
     public float attackSpeed = 1f;
     public float attackRange = 0.5f;
     public GameObject projectilePrefab;
-    public Vector3 projectileOffset;
     public float projectileDelay = 0.5f;
     public float baseDamage = 1f;
     public float aoeActiveDuration = 0.5f;
@@ -75,5 +74,11 @@ public struct BuildingData
         _currentLevel += 1 ;
         if (_currentLevel > MaxLevel) _currentLevel = MaxLevel;
         return _currentLevel;
+    }
+
+    internal int SellValue()
+    {
+        // TODO: any modifiers to sell cost such as any upgrades / tiers?
+        return Mathf.RoundToInt(this.PurchaseCost / 2);
     }
 }

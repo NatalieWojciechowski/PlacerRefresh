@@ -29,15 +29,16 @@ public class TD_UIManager : MonoBehaviour
         //td_controls  = new TD_Controls();
         //td_controls.TD_BuilderControls.SetCallbacks()
         //td_controls.TD_BuilderControls.Accept.performed += (() => EventManager.current.TowerDeselected());
+        EventManager.OnTowerDeselect += () => UpdateDisplay();
         waveStatus.GetComponentInChildren<Button>().onClick.AddListener(() => EventManager.WaveStarted(TD_GameManager.current.CurrentWave));
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         speedButtons[0]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE));
         speedButtons[1]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL));
         speedButtons[2]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.FAST));
         speedButtons[3]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.FASTER));
-
         UpdateDisplay();
     }
+
 
     private void OnDisable()
     {
@@ -68,7 +69,6 @@ public class TD_UIManager : MonoBehaviour
         {
             adjustBuildButtons();
         }
-        
     }
 
     private void UpdateForPrices()
@@ -116,9 +116,14 @@ public class TD_UIManager : MonoBehaviour
             BuildManager.Instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
             if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
             {
-                currentButton.enabled = TD_GameManager.current.CanAfford(buildingCtrl.GetStats().RawBuildingData.PurchaseCost);
+                currentButton.image.color = Color.white;
+                int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
+                currentButton.enabled = TD_GameManager.current.CanAfford(bCost);
+                currentButton.onClick.AddListener(() => OnUserSpend(bCost));
             } else {
                 currentButton.enabled = false;
+                //currentButton.image.color = new Color(1f, 0, 0, 0.25f);
+                currentButton.onClick.RemoveListener(() => OnUserSpend(0));
             }
 
             //int Index = i;
@@ -134,5 +139,14 @@ public class TD_UIManager : MonoBehaviour
 
             //Button.transform.GetChild(1).GetComponent<Text>().text = BuildManager.Instance.Pieces[i].Name;
         }
+    }
+
+    private void OnUserSpend(int bCost)
+    {
+        EventManager.MoneySpent(bCost);
+        // Prevent the user from placing another after only purchasing once
+        // TODO: This doesnt behave as we would expect; still doesnt prevent more building
+        BuildManager.Instance.StopAllCoroutines();
+        UpdateDisplay();
     }
 }

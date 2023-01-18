@@ -175,8 +175,8 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Events\TextEvent.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Devices\InputDevice.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Plugins\DualShock\DualShockSupport.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Utilities\TypeTable.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Controls\Processors\NormalizeVector3Processor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Utilities\TypeTable.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Controls\Processors\ScaleVector2Processor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\Editor\ControlPicker\IInputControlPickerLayout.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.4.4\InputSystem\State\IInputStateCallbackReceiver.cs" />
