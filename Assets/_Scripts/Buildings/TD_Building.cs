@@ -180,7 +180,7 @@ public class TD_Building : MonoBehaviour
     {
         if (Time.time - effectLastToggle < effectToggleDelay) return;
         Debug.Log("Toggle Effects: " + shouldShow);
-        bAnimator.SetBool("InRange", shouldShow);
+        if (bAnimator) bAnimator.SetBool("InRange", shouldShow);
         if (inRangeEffects) inRangeEffects.SetActive(shouldShow);
         effectLastToggle = Time.time;
     }
@@ -239,6 +239,7 @@ public class TD_Building : MonoBehaviour
     /// </summary>
     protected virtual void ActOnTarget()
     {
+        transform.LookAt(_buildingTarget.transform.position);
         if (IsInRange && ProjectileReady()) attackState = BuildingAttackState.Ready;
 
         if (_baseBuildingData.projectilePrefab && attackState == BuildingAttackState.Ready)
@@ -265,7 +266,7 @@ public class TD_Building : MonoBehaviour
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
 
             // TODO: have only the rotating part move toward enemy
-            transform.LookAt(_buildingTarget.transform.position);
+
             // TODO: assign owner / target? 
             TD_Projectile td_projectile = lastProjectile.GetComponent<TD_Projectile>();
             td_projectile.InitProjectile(this, _buildingTarget);

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: wave_0
   m_EditorClassIdentifier: 
   waveContents:
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
-  - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
-  - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
-  - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 985a7f37762908a439e195ccedb18f47, type: 2}
   - {fileID: 11400000, guid: 985a7f37762908a439e195ccedb18f47, type: 2}
   spawnInterval: 2

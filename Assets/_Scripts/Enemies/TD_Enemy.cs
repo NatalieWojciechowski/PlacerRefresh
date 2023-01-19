@@ -40,7 +40,7 @@ public class TD_Enemy : MonoBehaviour
     void Start()
     {
         // TODO: With multi spawners, need find closest
-        if (fullRoute == null) fullRoute = FindObjectOfType<TDEnemyManager>().WaypointRoute;
+        if (fullRoute == null) fullRoute = FindObjectOfType<TD_EnemyManager>().WaypointRoute;
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
         if (_animator == null) _animator = GetComponent<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;

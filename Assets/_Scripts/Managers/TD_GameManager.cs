@@ -16,6 +16,7 @@ public class TD_GameManager : MonoBehaviour
     private int currentCurrency = 0;
     public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWave { get => currentWave; }
+    public int TotalWaves { get => TD_EnemyManager.current.GetTotalWaves(); }
     public int CoreHealth { get => coreHealth; }
 
     private void Awake()

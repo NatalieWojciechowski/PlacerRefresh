@@ -76,11 +76,13 @@
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\Editor\MegaSplatEditor.cs" />
     <Compile Include="Assets\Easy Build System\Integrations\Editor\IntegrationEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\ImportPackage.cs" />
+    <Compile Include="Assets\ProTips\Scripts\Editor\TooltipTriggerEditor.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Editor\QuickStart.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\CreateObjectSettings.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Editor\Menu\MenuItems.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\DeleteSave.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\ClearUIDs.cs" />
+    <Compile Include="Assets\ProTips\Scripts\Editor\QuickSetupMenuItem.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\DuplicateObject.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Editor\GridPlacement\GridHeightPositionerEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\ReplacePrefab.cs" />

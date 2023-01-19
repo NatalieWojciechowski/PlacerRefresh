@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 
-public class TDEnemyManager : MonoBehaviour
+public class TD_EnemyManager : MonoBehaviour
 {
+    public static TD_EnemyManager current;
+
     [SerializeField]
     WaypointRoute _waypointRoute;
     List<TD_Enemy> _enemies;
@@ -16,9 +18,15 @@ public class TDEnemyManager : MonoBehaviour
     private int _requestedWaveIndx;
     private bool _waveActive = false;
 
+
+    public int CurrentWave = 0;
+    private int _totalWaves;
+    public int TotalWaves { get => _totalWaves |= GetTotalWaves(); }
+
+
     public WaypointRoute WaypointRoute { get => _waypointRoute; set => _waypointRoute = value; }
 
-    public TDEnemyManager(WaypointRoute waypointRoute)
+    public TD_EnemyManager(WaypointRoute waypointRoute)
     {
         _waypointRoute = waypointRoute;
     }
@@ -50,9 +58,10 @@ public class TDEnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (current != null) Destroy(this);
+        current = this;
         if (_spawners == null) _spawners = new();
-        if (_enemies == null) _enemies = new();
-
+        //if (_enemies == null) _enemies = new();
     }
 
     // Update is called once per frame
@@ -60,34 +69,30 @@ public class TDEnemyManager : MonoBehaviour
     {
         if (!_waypointRoute) return;
         timeRemaining -= Time.deltaTime;
-        //if (timeRemaining <= 0) CheckStartSpawers();
+        if (timeRemaining <= 0) CheckStartSpawers();
         if (_waveActive)
         {
-            if (_spawners.Count > 0) CheckSpawners();
-            if (_enemies.Count > 0) CheckEnemyState();
+            if (_spawners.Count < 0) return;
+            ToggleSpawners(true);
+            CheckEnemyState();
         }
     }
 
-    //private void CheckStartSpawers()
-    //{
-    //    if _requestedWaveIndx;
-    //    throw new NotImplementedException();
-    //}
+    private void CheckStartSpawers()
+    {
+        if (TD_GameManager.current.CurrentWave < TotalWaves)
+        {
+            EventManager.OnWaveFinish(TD_GameManager.current.CurrentWave);
+        }
+    }
 
-    private void CheckSpawners()
+    private void ToggleSpawners(bool isEnabled)
     {
         foreach (TD_Spawner spawner in _spawners)
         {
-            //Debug.Log(spawner);
-            spawner.SpawnAllowed = true;
-            //if (spawner.Waves.Count > _requestedWaveIndx) spawner.SpawnNextWave();
+            spawner.SpawnAllowed = isEnabled;
         }
     }
-
-    //public static TDEnemyManager FindOrNewForCircuit(WaypointCircuit waypointCircuit)
-    //{
-    //    TDEnemyManager.all
-    //}
 
     private void CheckEnemyState()
     {
@@ -95,9 +100,23 @@ public class TDEnemyManager : MonoBehaviour
 
     }
 
-//    public TD_Enemy SpawnEnemy(Vector3 spawnPosition)
-//    {
-////        _Enemies.Add(Instantiate())
+    /// <summary>
+    /// Will return the max wave count for all Spawners.
+    /// </summary>
+    /// <returns></returns>
+    public int GetTotalWaves()
+    {
+        int largestWaveCount = 0;
+        foreach(TD_Spawner _spawner in _spawners)
+        {
+            if (_spawner.Waves.Count > largestWaveCount) largestWaveCount = _spawner.Waves.Count;
+        }
+        return largestWaveCount;
+    }
 
-//    }
+    public bool CurrentWaveComplete()
+    {
+        // 
+        return false;
+    }
 }

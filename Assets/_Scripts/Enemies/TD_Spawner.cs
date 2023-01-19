@@ -20,7 +20,12 @@ public class TD_Spawner : Spawner
 
     private void Awake()
     {
-        //EventManager.OnWaveStart += (waveIndx) => SpawnNextWave();
+
+    }
+
+    private void OnEnable()
+    {
+        //EventManager.OnWaveStart += (waveIndx) => SpawnNextWave();            
     }
 
     private void OnDisable()

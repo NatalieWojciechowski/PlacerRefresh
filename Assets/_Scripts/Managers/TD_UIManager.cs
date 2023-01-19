@@ -61,10 +61,12 @@ public class TD_UIManager : MonoBehaviour
         if (!TD_GameManager.current) return;
         if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.current.CoreHealth.ToString();
         if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
-        if (waveStatus) waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = TD_GameManager.current.CurrentWave.ToString();
+        if (waveStatus)
+        {
+            waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{TD_GameManager.current.CurrentWave} / {TD_GameManager.current.TotalWaves}";
+        }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.current.CurrentCurrency.ToString();
 
-        // TODO: Outline the current speed
         if (pieces_Selection)
         {
             adjustBuildButtons();

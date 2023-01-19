@@ -20,7 +20,7 @@ public class WaypointManager : MonoBehaviour
     //private WaypointCircuit _waypointCircuit;
     //private WaypointCircuit.WaypointList waypointList;
 
-    TDEnemyManager tDEnemyManager;
+    TD_EnemyManager tDEnemyManager;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class WaypointManager : MonoBehaviour
 
         if (routes == null) routes = new();
         // TODO: There may be more than one of these when we get to more than one route.
-        if (!tDEnemyManager) tDEnemyManager = FindObjectOfType<TDEnemyManager>();
+        if (!tDEnemyManager) tDEnemyManager = FindObjectOfType<TD_EnemyManager>();
     }
 
     internal WaypointRoute GetRoute()

@@ -6,7 +6,6 @@ public class TD_BuildingData : ScriptableObject
 {
     #region Display
     public string displayName = "Turret";
-    public GameObject spawnPrefab;
     public Sprite icon;
     public string description;
     public string category;
