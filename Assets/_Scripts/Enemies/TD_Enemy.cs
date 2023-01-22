@@ -27,6 +27,7 @@ public class TD_Enemy : MonoBehaviour
     private float _turnSpeed = 0.5f;
     private float _lastWaypointSwitchTime;
 
+    public GameObject HealthBarPrefab;
     public GameObject HealthBar;
 
     public Guid EnemyUUID { get; private set; }
@@ -45,6 +46,7 @@ public class TD_Enemy : MonoBehaviour
         if (_animator == null) _animator = GetComponent<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
 
+        if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.current.transform);
         HealthBar.transform.localScale = Vector3.one;
 
         InitEnemy();
@@ -75,6 +77,10 @@ public class TD_Enemy : MonoBehaviour
         // TODO: Play animation?
         TD_GameManager.current.AddCoins(_deathReward);
         Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
         Destroy(HealthBar);
     }
 
@@ -113,8 +119,9 @@ public class TD_Enemy : MonoBehaviour
         return Vector3.Lerp(prevWaypoint.position, nextWaypoint.position, currentTimeOnPath / totalTimeForPath);
     }
 
-    internal void SetStats(WaveEnemyData waveEnemyData)
+    internal void SetStats(TD_EnemyData waveEnemyData, WaypointRoute forRoute)
     {
+        fullRoute = forRoute;
         _displayName = waveEnemyData.displayName;
         _moveSpeed = waveEnemyData.moveSpeed;
         _maxHealth = waveEnemyData.health;

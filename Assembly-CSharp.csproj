@@ -97,7 +97,7 @@
     <Compile Include="Assets\_Scripts\Managers\ExpandedUIManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UIManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemData.cs" />
-    <Compile Include="Assets\TD_WaveManager.cs" />
+    <Compile Include="Assets\TD_Wave.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_Projectile.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_Pieces_Selection.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Billboard.cs" />
@@ -139,6 +139,7 @@
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\JumpAttacker.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\CannonLike.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Scriptables\Blueprint\BlueprintTemplate.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_EnemyData.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\MaterialExtension.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\TowerAttack.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Actions\ActionStore.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\00 Jump\JumpTester.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\SavingAndLoading\GridSaveManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\_Scripts\Utility\ScalingSurfaceCollider.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\DynamicUI.cs" />
     <Compile Include="Assets\TowerDefenceTemplate\Scripts\MainMenu.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Character.cs" />
@@ -334,7 +336,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\GameData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\AttributeData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipBox.cs" />
-    <Compile Include="Assets\_Scripts\Waypoints\WaypointManager.cs" />
+    <Compile Include="Assets\_Scripts\Waypoints\RouteManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\ExampleGridObject.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\Surface\SurfaceCollider.cs" />
     <Compile Include="Assets\TowerDefenceTemplate\Scripts\Tower.cs" />
@@ -407,7 +409,6 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\GridControlManager.cs" />
     <Compile Include="Assets\ProTips\Scripts\ObjectModels\TooltipOverflow.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\BuildInfoPanel.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\WaveEnemyData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\Vector3Data.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\DestroyPanel.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Manager\BuildManager.cs" />
@@ -447,7 +448,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\TheGame.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\CSObject.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
-    <Compile Include="Assets\_Scripts\Waypoints\SpawnWave.cs" />
+    <Compile Include="Assets\_Scripts\Waypoints\WaveDetails.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\ConditionInspector.cs" />
     <Compile Include="Assets\_Scripts\Managers\PlacerGridManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />

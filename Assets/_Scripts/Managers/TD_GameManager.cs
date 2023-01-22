@@ -8,27 +8,32 @@ public class TD_GameManager : MonoBehaviour
     public static TD_GameManager current;
 
     private int coreHealth = 5;
-    private int currentWave = 0;
+    private int currentWaveIndex = -1;
+
+    private bool spawningEnabled = false;
+    public bool HasStarted { get => (this.spawningEnabled && currentWaveIndex >= 0); }
 
     public TD_UIManager uIManager;
 
     private int startingCurrency = 20;
     private int currentCurrency = 0;
     public int CurrentCurrency { get => currentCurrency; }
-    public int CurrentWave { get => currentWave; }
+    public int CurrentWaveIndex { get => currentWaveIndex; }
     public int TotalWaves { get => TD_EnemyManager.current.GetTotalWaves(); }
     public int CoreHealth { get => coreHealth; }
 
     private void Awake()
     {
+        // TODO: This seems to be calling the methods while registering
         EventManager.OnEnemyPass += (ctx) => TookDmg(ctx);
-        EventManager.OnWaveStart+= (ctx) => WaveStarted(ctx);
+        EventManager.OnWaveFinish += WaveFinished;
         EventManager.OnMoneySpent += (ctx) => OnPlayerSpend(ctx);
+        currentWaveIndex = 0;
     }
     private void OnDisable()
     {
         EventManager.OnEnemyPass -= (ctx) => TookDmg(ctx);
-        EventManager.OnWaveStart -= (ctx) => WaveStarted(ctx);
+        EventManager.OnWaveFinish -= WaveFinished;
         EventManager.OnMoneySpent -= (ctx) => OnPlayerSpend(ctx);
     }
 
@@ -39,12 +44,18 @@ public class TD_GameManager : MonoBehaviour
         current = this;
         currentCurrency = startingCurrency;
         if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
+        currentWaveIndex = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (coreHealth <= 0) GameOver();
+    }
+
+    public void PlayerStart()
+    {
+        spawningEnabled = true;
     }
 
     private void GameOver()
@@ -54,9 +65,13 @@ public class TD_GameManager : MonoBehaviour
         //UpdateDisplay();
         ////gameOverDisplay.SetActive(true);
     }
-    private void WaveStarted(int ctx)
+
+    private void WaveFinished(int ctx)
     {
-        currentWave = ctx;
+        if (!spawningEnabled) return;
+        if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
+        if (ctx == currentWaveIndex)
+            currentWaveIndex++;
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
         uIManager.UpdateDisplay();

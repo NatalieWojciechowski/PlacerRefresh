@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "MooStudios/WaveEnemyData")]
-public class WaveEnemyData : ScriptableObject
+public class TD_EnemyData : ScriptableObject
 {
     public string displayName = "Enemy";
     public float health = 2f;

@@ -33,6 +33,7 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void Awake()
     {
+        timeRemaining = WaveIntervalDelay;
         EventManager.OnWaveFinish += (waveIndx) => StartWaveInterval(waveIndx);
         EventManager.OnWaveStart += (waveIndx) => enableWave();
     }
@@ -67,7 +68,7 @@ public class TD_EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_waypointRoute) return;
+        if (!_waypointRoute || !TD_GameManager.current.HasStarted) return;
         timeRemaining -= Time.deltaTime;
         if (timeRemaining <= 0) CheckStartSpawers();
         if (_waveActive)
@@ -80,9 +81,9 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void CheckStartSpawers()
     {
-        if (TD_GameManager.current.CurrentWave < TotalWaves)
+        if (TD_GameManager.current.CurrentWaveIndex < TotalWaves)
         {
-            EventManager.OnWaveFinish(TD_GameManager.current.CurrentWave);
+            EventManager.OnWaveFinish(TD_GameManager.current.CurrentWaveIndex);
         }
     }
 

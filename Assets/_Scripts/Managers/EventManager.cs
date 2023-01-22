@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,23 @@ public class EventManager : MonoBehaviour
 
     #region Wave Events
     public static UnityAction<int> OnEnemyPass;
-    private UnityEvent<int> enemyPassEvent;
+    private CustomIntEvent enemyPassEvent;
 
     public static UnityAction<int> OnWaveStart;
-    private UnityEvent<int> waveStartEvent;
+    private CustomIntEvent waveStartEvent;
 
     public static UnityAction<int> OnWaveFinish;
-    private UnityEvent<int> waveFinishEvent;
+    private CustomIntEvent waveFinishEvent;
+
+    //public static Action<int> WaveFinishedAction = (ctx) => { OnWaveFinish(ctx); };
+    //private Event waveFinishEvent;
+
+    [System.Serializable]
+    public class CustomIntEvent : UnityEvent<int>
+    {
+
+    }
+
     #endregion
 
 
@@ -37,9 +48,9 @@ public class EventManager : MonoBehaviour
         if (current != null) Destroy(this);
         current = this;
 
-        enemyPassEvent = new UnityEvent<int>();
-        waveStartEvent = new UnityEvent<int>();
-        waveFinishEvent = new UnityEvent<int>();
+        enemyPassEvent = new CustomIntEvent();
+        waveStartEvent = new CustomIntEvent();
+        //WaveFinished = new Event<int>();
         towerSelectEvent = new UnityEvent<TD_Building>();
         towerDeselectEvent = new UnityEvent();
         moneySpentEvent = new UnityEvent<int>();
@@ -66,6 +77,7 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public static void WaveStarted(int waveIndex)
     {
+        if (!TD_GameManager.current.HasStarted) TD_GameManager.current.PlayerStart();
         // Wave finish + timer OR button push for start next
         // TODO: Maybe checkpoints included for user prompt before start? 
         Debug.Log($"Enemy Wave Started: {waveIndex}");
@@ -79,6 +91,7 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public static void WaveFinished(int waveIndex)
     {
+        if (!TD_GameManager.current.HasStarted) return;
         // Enemies finish spawning + died / get to end
         Debug.Log($"Enemy Wave Finished: {waveIndex}");
         current.waveFinishEvent.Invoke(waveIndex);

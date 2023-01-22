@@ -9,6 +9,11 @@ public class TD_Building : MonoBehaviour
 {
     [SerializeField]
     protected TD_BuildingData _baseBuildingData;
+    // TODO:
+    /*
+     * What if the buidings had entities to keep fed/ resourced instead of the money for the towers.
+     * - upkeep for them like little residents and tower strength based off their population
+     */
 
     protected BuildingData _sBuildingData;
 

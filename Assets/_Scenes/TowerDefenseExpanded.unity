@@ -5756,7 +5756,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 636344941}
-  - component: {fileID: 636344942}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -5780,23 +5779,6 @@ Transform:
   m_Father: {fileID: 636555461}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &636344942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 636344940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2737e6f248c714b8d8032cb8a3bfa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  routes:
-  - {fileID: 583141938}
-  spawners:
-  - {fileID: 0}
-  eManagers: []
 --- !u!1 &636555459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5846,8 +5828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b3495ad9ef80e4fb9f5cf6064ea725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  routes:
-  - {fileID: 583141938}
+  route: {fileID: 583141938}
 --- !u!114 &636555464
 MonoBehaviour:
   m_ObjectHideFlags: 0

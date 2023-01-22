@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a663aeedf67159140b4602062c4daa91, type: 3}
+  m_Script: {fileID: 11500000, guid: b5e352802a1ccd34da994d68e41cb013, type: 3}
   m_Name: enemy_heavy
   m_EditorClassIdentifier: 
-  displayName: Baddie
-  health: 20
-  moveSpeed: 0.01
-  spawnPrefab: {fileID: 6691635458304656441, guid: 2de3a3cf87dc17043a45e2f0e978cd5f,
+  displayName: Fluffy
+  health: 100
+  moveSpeed: 0.75
+  spawnPrefab: {fileID: 6691635458304656441, guid: a1b596f55564c4e4aa475c264df415ab,
     type: 3}
   dmgToCore: 20
+  reward: 200

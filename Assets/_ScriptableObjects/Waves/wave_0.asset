@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveContents:
   - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
-  - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
   - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
+  - {fileID: 11400000, guid: afb36c2a3b9e8c54186af4f0b56366ae, type: 2}
+  - {fileID: 11400000, guid: b7095b3e8721a7d45be39b3fdb45c34d, type: 2}
   - {fileID: 11400000, guid: 84f985c6a6e19684d898e736ec3d1a25, type: 2}
-  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 985a7f37762908a439e195ccedb18f47, type: 2}
-  - {fileID: 11400000, guid: 985a7f37762908a439e195ccedb18f47, type: 2}
+  - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   spawnInterval: 2

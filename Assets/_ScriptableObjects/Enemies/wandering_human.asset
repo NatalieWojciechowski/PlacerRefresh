@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a663aeedf67159140b4602062c4daa91, type: 3}
-  m_Name: enemy_basic
+  m_Script: {fileID: 11500000, guid: b5e352802a1ccd34da994d68e41cb013, type: 3}
+  m_Name: wandering_human
   m_EditorClassIdentifier: 
-  displayName: Basic Enemy
+  displayName: WanderingHuman
   health: 2
-  moveSpeed: 0.5
+  moveSpeed: 1.25
   spawnPrefab: {fileID: 4016149876344755919, guid: a6070dea2cd260648b52967c9ac20488,
     type: 3}
   dmgToCore: 1
+  reward: 1
