@@ -25,16 +25,16 @@ public class TD_GameManager : MonoBehaviour
     private void Awake()
     {
         // TODO: This seems to be calling the methods while registering
-        EventManager.OnEnemyPass += (ctx) => TookDmg(ctx);
+        EventManager.OnEnemyPass += TookDmg;
         EventManager.OnWaveFinish += WaveFinished;
-        EventManager.OnMoneySpent += (ctx) => OnPlayerSpend(ctx);
+        EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
     }
     private void OnDisable()
     {
-        EventManager.OnEnemyPass -= (ctx) => TookDmg(ctx);
+        EventManager.OnEnemyPass -= TookDmg;
         EventManager.OnWaveFinish -= WaveFinished;
-        EventManager.OnMoneySpent -= (ctx) => OnPlayerSpend(ctx);
+        EventManager.OnMoneySpent -= OnPlayerSpend;
     }
 
     // Start is called before the first frame update
@@ -43,6 +43,9 @@ public class TD_GameManager : MonoBehaviour
         if (current != null) Destroy(this);
         current = this;
         currentCurrency = startingCurrency;
+#if DEBUG
+        currentCurrency = 1000;
+#endif
         if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
         currentWaveIndex = 0;
     }

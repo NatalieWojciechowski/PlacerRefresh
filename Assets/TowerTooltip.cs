@@ -32,14 +32,19 @@ public class TowerTooltip : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnTowerSelect += (bSelected) => SelectBuilding(bSelected);
-        EventManager.OnTowerDeselect += () => SelectBuilding(null);
+        EventManager.OnTowerSelect += SelectBuilding;
+        EventManager.OnTowerDeselect += DeselectBuilding;
+    }
+
+    private void DeselectBuilding()
+    {
+        SelectBuilding(null);
     }
 
     private void OnDisable()
     {
-        EventManager.OnTowerSelect -= (bSelected) => SelectBuilding(bSelected);
-        EventManager.OnTowerDeselect -= () => SelectBuilding(null);
+        EventManager.OnTowerSelect -= SelectBuilding;
+        EventManager.OnTowerDeselect -= DeselectBuilding;
         upgradeButton.onClick.RemoveAllListeners();
         sellButton.onClick.RemoveAllListeners();
     }

@@ -166,14 +166,25 @@ PrefabInstance:
         type: 3}
       propertyPath: Icon
       value: 
-      objectReference: {fileID: 21300000, guid: 3a39875f15770c54190205dc1ddc651b,
+      objectReference: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42,
         type: 3}
     - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: Name
       value: Blaster
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: Description
+      value: Blaster Gun
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
 --- !u!4 &1124072314188810180 stripped
 Transform:

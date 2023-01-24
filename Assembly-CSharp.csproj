@@ -139,6 +139,7 @@
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\JumpAttacker.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\CannonLike.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Scriptables\Blueprint\BlueprintTemplate.cs" />
+    <Compile Include="Assets\TD_BuildManager.cs" />
     <Compile Include="Assets\_Scripts\Enemies\TD_EnemyData.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Extensions\MaterialExtension.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\TowerAttack.cs" />
@@ -284,6 +285,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\InventoryData.cs" />
     <Compile Include="Assets\_Scripts\Waypoints\WaypointRoute.cs" />
     <Compile Include="Assets\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\WeaponPack.cs" />
+    <Compile Include="Assets\TD_BuildToolbar.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\FactoryPanel.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshSurface.cs" />

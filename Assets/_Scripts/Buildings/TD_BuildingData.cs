@@ -15,6 +15,7 @@ public class TD_BuildingData : ScriptableObject
     public float health = 2f;
     public float attackSpeed = 1f;
     public float attackRange = 0.5f;
+    public GameObject buildingPrefab;
     public GameObject projectilePrefab;
     public float projectileDelay = 0.5f;
     public float baseDamage = 1f;

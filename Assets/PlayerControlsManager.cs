@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderContr
     // It encapsulates the data from the .inputactions asset we created
     // and automatically looks up all the maps and actions for us.
     TD_Controls controls;
+
+    public static event EventHandler PlayerCancel;
+    public static event EventHandler PlayerAccept;
 
     public void OnEnable()
     {
@@ -39,6 +43,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderContr
         // 'Move' code here.
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +59,14 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderContr
     public void OnAccept(InputAction.CallbackContext context)
     {
         Debug.Log("Accept!" + context);
+        EventManager.current.GenericAccept();
+        PlayerAccept(this, EventArgs.Empty);
     }
 
     public void OnCancel(InputAction.CallbackContext context)
     {
         Debug.Log("Cancel!" + context);
-        EventManager.TowerDeselected();
+        EventManager.current.GenericCancel();
+        PlayerCancel(this, EventArgs.Empty);
     }
 }

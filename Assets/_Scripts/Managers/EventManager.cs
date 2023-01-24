@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class EventManager : MonoBehaviour
 {
@@ -17,28 +18,71 @@ public class EventManager : MonoBehaviour
 
     public static UnityAction<int> OnWaveFinish;
     private CustomIntEvent waveFinishEvent;
-
+    #endregion
     //public static Action<int> WaveFinishedAction = (ctx) => { OnWaveFinish(ctx); };
     //private Event waveFinishEvent;
 
+    #region CustomEvents
     [System.Serializable]
     public class CustomIntEvent : UnityEvent<int>
     {
 
     }
 
-    #endregion
+    [System.Serializable]
+    public class CustomBuildingEvent : UnityEvent<TD_Building>
+    {
 
+    }
+
+    [System.Serializable]
+    public class CustomArgsEvent : UnityEvent<CustomEventArgs>
+    {
+
+    }
+
+    [System.Serializable]
+    public class CustomEventArgs : EventArgs
+    {
+        public TD_Events tdEvents { get; set; }
+    }
+
+    #endregion
 
     #region UI Events
     public static UnityAction<TD_Building> OnTowerSelect;
-    private UnityEvent<TD_Building> towerSelectEvent;
+    private CustomBuildingEvent towerSelectEvent;
 
     public static UnityAction OnTowerDeselect;
-    private UnityEvent towerDeselectEvent;
+    private Event towerDeselectEvent;
 
     public static UnityAction<int> OnMoneySpent;
-    private UnityEvent<int> moneySpentEvent;
+    private CustomIntEvent moneySpentEvent;
+
+    public enum TD_Events
+    {
+        GenericCancel,
+        GenericAccept,
+    }
+
+    public static Action<CustomEventArgs> A_GenericCancel;
+    public static Action<CustomEventArgs> A_GenericAccept;
+    public static event EventHandler<CustomEventArgs> CancelTriggered;
+    public static CustomArgsEvent OnCancel;
+    public static CustomArgsEvent OnAccept;
+
+    public delegate void TD_EventHandler(object source, EventArgs args);
+    public event TD_EventHandler EventTriggered;
+    public static event Action<TD_Events> tdEventTriggered;
+
+
+    public static UnityAction<TD_Building> OnTowerBlueprint;
+    public static UnityAction<TD_Building> OnTowerPlace;
+
+
+
+
+    //private CustomBuildingEvent towerSelectEvent;
     #endregion
 
 
@@ -48,14 +92,12 @@ public class EventManager : MonoBehaviour
         if (current != null) Destroy(this);
         current = this;
 
-        enemyPassEvent = new CustomIntEvent();
-        waveStartEvent = new CustomIntEvent();
-        //WaveFinished = new Event<int>();
-        towerSelectEvent = new UnityEvent<TD_Building>();
-        towerDeselectEvent = new UnityEvent();
-        moneySpentEvent = new UnityEvent<int>();
-
-        //enemyPassEvent.AddListener((ctx) => OnEnemyPass(ctx));
+        //enemyPassEvent = new();
+        //waveStartEvent = new();
+        //waveFinishEvent = new();
+        //towerSelectEvent = new();
+        //towerDeselectEvent = new();
+        //moneySpentEvent = new();
     }
 
     // Update is called once per frame
@@ -67,58 +109,92 @@ public class EventManager : MonoBehaviour
     public static void EnemyPassedCore(int coreDmg)
     {
         Debug.Log($"Enemy Passed Core: {coreDmg}");
-        current.enemyPassEvent.Invoke(coreDmg);
-        OnEnemyPass.Invoke(coreDmg);
+        //current.enemyPassEvent.Invoke(coreDmg);
+        OnEnemyPass?.Invoke(coreDmg);
     }
 
     /// <summary>
     /// AS / AFTER the wave starts
     /// </summary>
     /// <param name="waveIndex"></param>
-    public static void WaveStarted(int waveIndex)
+    public void WaveStarted(int waveIndex)
     {
         if (!TD_GameManager.current.HasStarted) TD_GameManager.current.PlayerStart();
         // Wave finish + timer OR button push for start next
         // TODO: Maybe checkpoints included for user prompt before start? 
         Debug.Log($"Enemy Wave Started: {waveIndex}");
-        current.waveStartEvent.Invoke(waveIndex);
-        OnWaveStart.Invoke(waveIndex); 
+        //current.waveStartEvent.Invoke(waveIndex);
+        OnWaveStart?.Invoke(waveIndex); 
     }
 
     /// <summary>
     /// After the wave has had all enemies die or complete track
     /// </summary>
     /// <param name="waveIndex"></param>
-    public static void WaveFinished(int waveIndex)
+    public void WaveFinished(int waveIndex)
     {
         if (!TD_GameManager.current.HasStarted) return;
         // Enemies finish spawning + died / get to end
         Debug.Log($"Enemy Wave Finished: {waveIndex}");
-        current.waveFinishEvent.Invoke(waveIndex);
-        OnWaveFinish.Invoke(waveIndex);
+        //current.waveFinishEvent.Invoke(waveIndex);
+        OnWaveFinish?.Invoke(waveIndex);
     }
 
-    public static void TowerSelected(TD_Building bSelected)
+    public void TowerSelected(TD_Building bSelected)
     {
         // Enemies finish spawning + died / get to end
         Debug.Log($"Building Selected: {bSelected}");
-        current.towerSelectEvent.Invoke(bSelected);
-        OnTowerSelect.Invoke(bSelected);
+        //current.towerSelectEvent.Invoke(bSelected);
+        OnTowerSelect?.Invoke(bSelected);
     }
 
-    public static void TowerDeselected()
+    public void TowerDeselected()
     {
         // Enemies finish spawning + died / get to end
         Debug.Log($"Building Deselected: ");
-        current.towerDeselectEvent.Invoke();
-        OnTowerDeselect.Invoke();
+        //current.towerDeselectEvent.Invoke();
+        OnTowerDeselect?.Invoke();
     }
 
-    public static void MoneySpent(int amountSpent)
+    public void MoneySpent(int amountSpent)
     {
         // Enemies finish spawning + died / get to end
         Debug.Log($"Player Used Money: {amountSpent}");
-        current.moneySpentEvent.Invoke(amountSpent);
-        OnMoneySpent.Invoke(amountSpent);
+        //current.moneySpentEvent.Invoke(amountSpent);
+        OnMoneySpent?.Invoke(amountSpent);
+    }
+    public void TowerBlueprint(TD_Building tD_Building)
+    {
+        // Enemies finish spawning + died / get to end
+        Debug.Log($"Building Blueprinting: " + tD_Building.name);
+        //current.towerDeselectEvent.Invoke();
+        OnTowerBlueprint?.Invoke(tD_Building);
+    }
+
+    public void TowerPlaced(TD_Building tD_Building)
+    {
+        // Enemies finish spawning + died / get to end
+        Debug.Log($"Building Purchase: ");
+        //current.towerDeselectEvent.Invoke();
+        OnTowerPlace?.Invoke(tD_Building);
+    }
+
+    public void GenericCancel()
+    {
+        CustomEventArgs args = new CustomEventArgs();
+        Debug.Log($"Cancel: ");
+        OnCancel?.Invoke(args);
+    }
+
+    public void GenericAccept()
+    {
+        CustomEventArgs args = new CustomEventArgs();
+        Debug.Log($"Accept: ");
+        OnAccept?.Invoke(args);
+    }
+
+    protected virtual void OnEventHandled()
+    {
+        
     }
 }

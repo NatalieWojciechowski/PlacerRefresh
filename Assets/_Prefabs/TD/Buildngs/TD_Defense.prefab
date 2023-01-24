@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2714301675376827051}
-  - component: {fileID: 4415392401019420030}
-  - component: {fileID: 3152206549098373545}
   - component: {fileID: 3602379146642460443}
   - component: {fileID: 8302478617572052954}
   - component: {fileID: 4696282288295445922}
+  - component: {fileID: 5084519734559579844}
+  - component: {fileID: -6699984890123392804}
   m_Layer: 0
   m_Name: TD_Defense
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765544224758337656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 800.9708, y: 92.621346, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -38,77 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4415392401019420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765544224758337656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6576b638fdd0e546ac6c176d649d3f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: 1
-  Icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
-  Name: Turret Ballista
-  Description: 
-  Category: Turret
-  IgnoreSocket: 0
-  IgnoreGrid: 0
-  UseGroundUpper: 1
-  GroundUpperHeight: 0
-  KeepLastRotation: 0
-  RotateOnSockets: 1
-  RotateAccodingSurface: 0
-  RotateAccordingSlope: 0
-  RotateAccordingSlopeAngleLimition: 0
-  RotationAxis: {x: 0, y: 90, z: 0}
-  PreviewClampPosition: 1
-  PreviewClampMinPosition: {x: -100, y: 0, z: -100}
-  PreviewClampMaxPosition: {x: 100, y: 0, z: 100}
-  PreviewOffset: {x: 0, y: 0, z: 0}
-  PreviewDisableObjects: []
-  PreviewDisableBehaviours: []
-  PreviewDisableColliders: []
-  PreviewColorLerpTime: 15
-  CustomPreviewMaterial: {fileID: 0}
-  PreviewAllowedColor: {r: 0, g: 1, b: 1, a: 1}
-  PreviewDeniedColor: {r: 1, g: 0, b: 0, a: 1}
-  Conditions: []
-  Skins: []
-  SkinIndex: 0
-  MeshBounds:
-    m_Center: {x: 0, y: 0.264625, z: 0.114999995}
-    m_Extent: {x: 0.38621867, y: 0.264625, z: 0.345}
-  CurrentState: 4
-  LastState: 0
-  Sockets: []
-  Colliders: []
-  Renderers: []
-  ExtraProperties: []
---- !u!114 &3152206549098373545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765544224758337656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d21efe2c28e8754cabe8a64ef5578ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  CollisionClippingToleranceWithBuildSurface: 1
-  CollisionClippingTolerance: 0.9
-  CollisionClippingSnappingTolerance: 0.99
-  CollisionIgnoreCategory: []
-  RequireBuildableSurface: 1
-  CollisionIgnoreWhenSnap: 0
 --- !u!114 &3602379146642460443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +91,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5084519734559579844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765544224758337656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6576b638fdd0e546ac6c176d649d3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: Foo
+  Icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
+  Name: New Piece
+  Description: 
+  Category: Default
+  IgnoreSocket: 0
+  IgnoreGrid: 0
+  UseGroundUpper: 0
+  GroundUpperHeight: 1
+  KeepLastRotation: 0
+  RotateOnSockets: 1
+  RotateAccodingSurface: 0
+  RotateAccordingSlope: 0
+  RotateAccordingSlopeAngleLimition: 0
+  RotationAxis: {x: 0, y: 90, z: 0}
+  PreviewClampPosition: 0
+  PreviewClampMinPosition: {x: 0, y: 0, z: 0}
+  PreviewClampMaxPosition: {x: 0, y: 0, z: 0}
+  PreviewOffset: {x: 0, y: 0, z: 0}
+  PreviewDisableObjects: []
+  PreviewDisableBehaviours: []
+  PreviewDisableColliders: []
+  PreviewColorLerpTime: 0
+  CustomPreviewMaterial: {fileID: 0}
+  PreviewAllowedColor: {r: 0, g: 1, b: 0, a: 0.5}
+  PreviewDeniedColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Conditions: []
+  Skins: []
+  SkinIndex: 0
+  MeshBounds:
+    m_Center: {x: 0, y: 0.16461945, z: 0.114999995}
+    m_Extent: {x: 0.38623047, y: 0.16462326, z: 0.345}
+  CurrentState: 0
+  LastState: 0
+  Sockets: []
+  Colliders: []
+  Renderers: []
+  ExtraProperties: []
+--- !u!114 &-6699984890123392804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765544224758337656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0f07f8f4eeed74a80c484b5d8cc2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlaceable: 1
+  IsEditable: 1
+  IsDestructible: 1
+  RequireAreaForPlacement: 0
+  RequireAreaForDestruction: 0
+  RequireAreaForEdit: 0
+  RequireSocket: 0
 --- !u!1 &2065832158366382706
 GameObject:
   m_ObjectHideFlags: 0

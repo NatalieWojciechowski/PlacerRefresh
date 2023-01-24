@@ -9,6 +9,7 @@ TagManager:
   - Plane
   - TowerPoint
   - Dead
+  - BuildableSurface
   layers:
   - Default
   - TransparentFX

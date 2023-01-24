@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: cannon
   m_EditorClassIdentifier: 
   displayName: Cannon
-  icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
+  icon: {fileID: 21300000, guid: cc37eadfa3b3dff4bb440571f9f4843e, type: 3}
   description: A Simple Cannon
   category: Turret
   health: 2
   attackSpeed: 1
-  attackRange: 3
+  attackRange: 2
+  buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 4361473125110667087, guid: ca8896857c22b264eaca6381a3acd6fb,
     type: 3}
   projectileDelay: 1
-  baseDamage: 1
+  baseDamage: 4
   aoeActiveDuration: 0.5
   CurrentTier: 1
   MaxTier: 3
-  PurchaseCost: 12
+  PurchaseCost: 20
   upgradesTo: {fileID: 0}
   canSell: 1

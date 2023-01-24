@@ -39,7 +39,7 @@ public class TD_Wave
         finished = true;
         completeTime = Time.time;
         // TODO: Invoke event?
-        EventManager.WaveFinished(waveIndex);
+        EventManager.current.WaveFinished(waveIndex);
     }
 
     public TD_EnemyData GetEnemy(int enemyIndex)

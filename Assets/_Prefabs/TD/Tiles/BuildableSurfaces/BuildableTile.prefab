@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1367448610903728945}
   - component: {fileID: 4221082274754786002}
-  - component: {fileID: 1544908640859649303}
   m_Layer: 0
   m_Name: BuildableTile
   m_TagString: Untagged
@@ -48,18 +47,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4855243574250553854, guid: ff483b99074ab0442a49ef08f8d591ad, type: 3}
---- !u!114 &1544908640859649303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851533500435724683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61da55ed1067a2c48be68aa84f885827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3176182595675782273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,6 +116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4755125321900414, guid: ad9d3c1bf87264ed8a89c188f2c1018c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64311536984538812, guid: ad9d3c1bf87264ed8a89c188f2c1018c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

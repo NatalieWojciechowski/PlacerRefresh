@@ -13,20 +13,19 @@ MonoBehaviour:
   m_Name: slowing_tower
   m_EditorClassIdentifier: 
   displayName: TundraTower
-  spawnPrefab: {fileID: 130804, guid: 743c686d173865a48885cd49ab94cfd7, type: 3}
   icon: {fileID: 21300000, guid: 3b049ed87233722479a2de591c7895a3, type: 3}
   description: Cold AOE
   category: Area
   health: 2
   attackSpeed: 4
   attackRange: 3
+  buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  projectileOffset: {x: 0, y: 0, z: 0}
   projectileDelay: 0.5
   baseDamage: 1
   aoeActiveDuration: 0.5
   CurrentTier: 1
   MaxTier: 3
-  PurchaseCost: 20
+  PurchaseCost: 30
   upgradesTo: {fileID: 0}
   canSell: 1

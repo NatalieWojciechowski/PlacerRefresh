@@ -158,7 +158,7 @@ PrefabInstance:
     - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
@@ -174,7 +174,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Conditions.Array.data[0]
       value: 
-      objectReference: {fileID: 26554891857309729}
+      objectReference: {fileID: 0}
     - target: {fileID: 4415392401019420030, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: Conditions.Array.data[1]
@@ -183,18 +183,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
---- !u!114 &26554891857309729 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3152206549098373545, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
-    type: 3}
-  m_PrefabInstance: {fileID: 3161725603495743880}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3702185055643861488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d21efe2c28e8754cabe8a64ef5578ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1030082216426359587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2714301675376827051, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
@@ -255,25 +243,6 @@ MonoBehaviour:
   ProjectileStart: {fileID: 0}
   effectAreaRange: {fileID: 8674139541548015554}
   TickDamage: 0
---- !u!114 &4815204348852933173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3702185055643861488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0f07f8f4eeed74a80c484b5d8cc2a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlaceable: 1
-  IsEditable: 1
-  IsDestructible: 1
-  RequireAreaForPlacement: 0
-  RequireAreaForDestruction: 0
-  RequireAreaForEdit: 0
-  RequireSocket: 0
 --- !u!1001 &3981617977418454149
 PrefabInstance:
   m_ObjectHideFlags: 0

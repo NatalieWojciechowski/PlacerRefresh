@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: blaster
   m_EditorClassIdentifier: 
   displayName: Blaster
-  icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
+  icon: {fileID: 21300000, guid: 3a39875f15770c54190205dc1ddc651b, type: 3}
   description: Blaster Gun
   category: Turret
   health: 2
-  attackSpeed: 1
-  attackRange: 3
+  attackSpeed: 2
+  attackRange: 2
+  buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 7868345671137580175, guid: 3bac0910a63771e45ad40f6a00fd7a40,
     type: 3}
-  projectileDelay: 1
+  projectileDelay: 0.25
   baseDamage: 1
   aoeActiveDuration: 0.5
   CurrentTier: 1
   MaxTier: 3
-  PurchaseCost: 12
+  PurchaseCost: 8
   upgradesTo: {fileID: 0}
   canSell: 1

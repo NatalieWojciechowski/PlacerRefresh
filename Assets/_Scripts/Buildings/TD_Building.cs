@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class TD_Building : MonoBehaviour
 {
@@ -87,12 +88,6 @@ public class TD_Building : MonoBehaviour
         // Any adjustments to make with building data now that we have the base? 
         if (!sourceBuildingData || !_baseBuildingData || !TD_GameManager.current) return;
         SetStats(sourceBuildingData);
-        //if (!TD_GameManager.current.SpendMoney(_baseBuildingData.PurchaseCost)) return;
-        //{
-        //    Debug.Log("CANNOT AFFORD");
-            
-        //    Destroy(this.gameObject, float.Epsilon);
-        //}
     }
 
     public void SetStats(TD_BuildingData bData)
@@ -100,6 +95,7 @@ public class TD_Building : MonoBehaviour
         if (!bData) return;
         _baseBuildingData = bData;
         _sBuildingData = new BuildingData(bData);
+
         //_attackRange = _baseBuildingData.attackRange;
         //_baseDamage = _baseBuildingData.baseDamage;
         //_currentTier = _baseBuildingData.CurrentTier;
@@ -141,7 +137,7 @@ public class TD_Building : MonoBehaviour
 
     private void OnEnable()
     {
-        this.buildingState = BuildingState.Idle;
+        this.buildingState = BuildingState.Blueprint;
     }
 
 #if UNITY_EDITOR
@@ -155,6 +151,7 @@ public class TD_Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (buildingState == BuildingState.Blueprint) return;
         bool beganWithTarget = (_buildingTarget?.EnemyUUID != null);
         // Validation
         if (IsRunning) CheckTargets();
@@ -282,7 +279,8 @@ public class TD_Building : MonoBehaviour
 
     private void OnMouseUp()
     {
-        EventManager.OnTowerSelect(this);
+        if (buildingState != BuildingState.Blueprint)
+            EventManager.current.TowerSelected(this);
     }
 
     protected virtual void TryBuildingState(BuildingState toState = BuildingState.Idle)
@@ -313,5 +311,33 @@ public class TD_Building : MonoBehaviour
         };
         // TODO: any sort of validation here? 
         buildingState = toState;
+    }
+
+    public void OnPlacementConfirm(Transform tPlacement)
+    {
+        transform.SetPositionAndRotation(tPlacement.position, tPlacement.rotation);
+        TryBuildingState(BuildingState.Idle);
+        EventManager.current.TowerPlaced(this);
+    }
+
+    public Button ConfigureButton(ref Button buttonObj)
+    {
+        buttonObj.transform.GetChild(0).GetComponent<Image>().sprite = _baseBuildingData.icon;
+        buttonObj.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
+
+        buttonObj.transform.GetChild(1).GetComponent<Text>().text = _baseBuildingData.displayName;
+        buttonObj.onClick.AddListener(delegate { TryPurchase(_baseBuildingData.PurchaseCost); });
+        
+        buttonObj.gameObject.SetActive(true);
+        return buttonObj;
+    }
+
+    private bool TryPurchase(int spend)
+    {
+        //int spend = _baseBuildingData.PurchaseCost;
+        bool _canAfford = TD_GameManager.current.CanAfford(spend);
+        if (_canAfford)
+            TD_BuildManager.StartPlacement(gameObject);
+        return _canAfford;
     }
 }

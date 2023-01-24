@@ -34,17 +34,17 @@ public class TD_EnemyManager : MonoBehaviour
     private void Awake()
     {
         timeRemaining = WaveIntervalDelay;
-        EventManager.OnWaveFinish += (waveIndx) => StartWaveInterval(waveIndx);
-        EventManager.OnWaveStart += (waveIndx) => enableWave();
+        EventManager.OnWaveFinish += StartWaveInterval;
+        EventManager.OnWaveStart += enableWave;
     }
 
     private void OnDisable()
     {
-        EventManager.OnWaveFinish -= (waveIndx) => StartWaveInterval(waveIndx);
-        EventManager.OnWaveStart -= (waveIndx) => enableWave();
+        EventManager.OnWaveFinish -= StartWaveInterval;
+        EventManager.OnWaveStart -= enableWave;
     }
 
-    private void enableWave()
+    private void enableWave(int waveIndex)
     {
         _waveActive = true;
     }
@@ -83,7 +83,8 @@ public class TD_EnemyManager : MonoBehaviour
     {
         if (TD_GameManager.current.CurrentWaveIndex < TotalWaves)
         {
-            EventManager.OnWaveFinish(TD_GameManager.current.CurrentWaveIndex);
+            Debug.Log("This may have been start spawn initially");
+            //EventManager.current.WaveFinished(TD_GameManager.current.CurrentWaveIndex);
         }
     }
 
