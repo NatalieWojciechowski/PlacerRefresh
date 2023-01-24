@@ -170,9 +170,18 @@ public class TD_BuildManager : MonoBehaviour
     private void UpdatePreviewObjPos(RaycastHit _hit)
     {
         //if (CenterSnap)
-        Vector3 _offsetHitPoint = _hit.collider.gameObject.transform.position + buildOffset;
-        previewObj.transform.SetPositionAndRotation(_offsetHitPoint, Quaternion.identity);
-        lastHitPos = _offsetHitPoint;
+        Vector3 _offsetHitPoint = _hit.point + buildOffset;
+
+
+        // Get contact point with collider => _hit
+        Vector3 _placeUpward = Vector3.Cross(_offsetHitPoint, _hit.collider.gameObject.transform.position);
+        Debug.DrawLine(_placeUpward, _placeUpward * 1f);
+
+        Vector3 _topCenterHit = _hit.collider.ClosestPoint(_offsetHitPoint);
+        //Debug.Log(_hit.collider.transform.forward);
+        Debug.Log(_topCenterHit);
+        previewObj.transform.SetPositionAndRotation(_topCenterHit, Quaternion.identity);
+        lastHitPos = _topCenterHit;
     }
 
     public static GameObject StartPlacement(GameObject buildPrefab)
