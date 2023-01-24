@@ -86,7 +86,7 @@ public class TD_BuildManager : MonoBehaviour
         {
             validPlacement = true;
             lastHitPos = hit.point;
-            Debug.Log("New Point: " + hit.point.ToString());
+            //Debug.Log("New Point: " + hit.point.ToString());
         }
         return validPlacement;
     }
@@ -112,8 +112,8 @@ public class TD_BuildManager : MonoBehaviour
     {
         Vector3 builderMouseToScreenPos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 0f) + RaycastOffsetPosition;
         //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(builderMouseToScreenPos);
-        Debug.Log(builderMouseToScreenPos + Input.mousePosition);
-        Ray mouseWorldPosition = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Debug.Log(builderMouseToScreenPos + Input.mousePosition);
+        Ray mouseWorldPosition = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         //Debug.Log(mouseWorldPosition.ToString());
         return mouseWorldPosition;
         //Ray testRay = new(Camera.main.gameObject.transform.position, mouseWorldPosition.origin);
@@ -162,8 +162,8 @@ public class TD_BuildManager : MonoBehaviour
         //{
         //    if (_target.collider?.gameObject.CompareTag("Tower") 
         //}
-        Debug.Log($"There are {possibleTargets.Length} possible targets ahead");
-        Debug.Log($"You hit {_hit.transform.name}");
+        //Debug.Log($"There are {possibleTargets.Length} possible targets ahead");
+        //Debug.Log($"You hit {_hit.transform.name}");
         //Set destination, and set to move
     }
 
@@ -179,9 +179,11 @@ public class TD_BuildManager : MonoBehaviour
 
         Vector3 _topCenterHit = _hit.collider.ClosestPoint(_offsetHitPoint);
         //Debug.Log(_hit.collider.transform.forward);
-        Debug.Log(_topCenterHit);
+        //Debug.Log(_topCenterHit);
         previewObj.transform.SetPositionAndRotation(_topCenterHit, Quaternion.identity);
         lastHitPos = _topCenterHit;
+
+        // TODO: Sockets
     }
 
     public static GameObject StartPlacement(GameObject buildPrefab)

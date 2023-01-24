@@ -18,34 +18,53 @@ public class OrthographicZoom : MonoBehaviour
     InputAction moveAction;
 
     public float movementSpeed = 25;
+    private bool shouldMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        moveVector = Vector2.zero;
+        //playerInput = GetComponent<PlayerInput>();
+        //moveVector = Vector2.zero;
 
-        moveAction = playerInput.actions["Move"];
-        //tdControls.TD_BuilderControls.Move.performed += ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        moveAction.started += ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        moveAction.canceled += ctx => moveVector = Vector2.zero;
+        //moveAction = playerInput.actions["Move"];
+        ////tdControls.TD_BuilderControls.Move.performed += ctx => MoveCamera(ctx.ReadValue<Vector2>());
+        //moveAction.started += ctx => MoveCamera(ctx.ReadValue<Vector2>());
+        //moveAction.canceled += ctx => moveVector = Vector2.zero;
 
 
         //MoveCamera(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         targetZoom = cam.orthographicSize;
+        moveVector = Vector2.zero;
+    }
+
+    private void OnEnable()
+    {
+        PlayerControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
+    }
+
+    /// <summary>
+    /// Will receieve same event for start/stop of movement. Will pass different values in the movement field for start/stop
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="pInputArgs"></param>
+    private void PlayerControlsManager_PlayerMove(object sender, PlayerInputEventArgs pInputArgs)
+    {
+        Debug.Log("PlayerMove" + pInputArgs.movement);
+        OnMove(pInputArgs.movement);
     }
 
     private void OnDisable()
     {
         //tdControls.TD_BuilderControls.Move.performed -= ctx => MoveCamera(ctx.ReadValue<Vector2>());
         //moveAction.canceled += ctx => moveVector = Vector2.zero;
-        moveAction.started -= ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        moveAction.canceled -= ctx => moveVector = Vector2.zero;
+        //moveAction.started -= ctx => MoveCamera(ctx.ReadValue<Vector2>());
+        //moveAction.canceled -= ctx => moveVector = Vector2.zero;
+        PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
     }
 
-    void OnMove(InputValue value)
+    void OnMove(Vector2 movement)
     {
-        MoveCamera(value.Get<Vector2>());
+        MoveCamera(movement);
     }
 
     private void MoveCamera(Vector2 moveValue)
@@ -55,18 +74,20 @@ public class OrthographicZoom : MonoBehaviour
         //Debug.Log("MoveCamera" + moveValue + tdControls.TD_BuilderControls.Move.phase);
         Vector3 movementAmount = new Vector3(moveValue.x, moveValue.y, 0) * movementSpeed * Time.deltaTime;
         cam.transform.Translate(movementAmount);
+        // This gets updated AFTER movement, so we dont update next frame.
+        shouldMove = (moveValue.magnitude != 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (moveAction.phase != InputActionPhase.Waiting)
+        if (shouldMove)
         {
             MoveCamera(moveVector);
         }
-        //else moveVector = Vector2.zero;
 
-        targetZoom -= Input.mouseScrollDelta.y * sensitivity;
+
+        targetZoom -= Mouse.current.scroll.y.ReadValue() * sensitivity;
         targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
         float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
         cam.orthographicSize = newSize;

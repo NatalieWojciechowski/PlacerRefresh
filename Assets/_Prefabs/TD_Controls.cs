@@ -53,27 +53,43 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""26502d6a-e13c-4753-8895-d80a04df0903"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MiddleClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""94033277-ba47-4116-8d34-43134d9d73c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""dbdec5b2-71a0-4d1c-a949-dd784408f332"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""304c3b5c-983b-4b50-b4e4-7a326b36c4f0"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Accept"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""5761c544-6e39-483a-9e1b-eba5faf90c18"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Accept"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -84,7 +100,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -95,7 +111,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -117,7 +133,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -128,7 +144,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -139,7 +155,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -150,21 +166,74 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""PC"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""818bafef-95de-474d-b36e-e2b4ff141548"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4388a435-bb02-4d27-ae15-7edd2a305460"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""MiddleClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24010439-51e8-4192-a7ef-261f352fd945"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""PC"",
+            ""bindingGroup"": ""PC"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // TD_BuilderControls
         m_TD_BuilderControls = asset.FindActionMap("TD_BuilderControls", throwIfNotFound: true);
         m_TD_BuilderControls_Accept = m_TD_BuilderControls.FindAction("Accept", throwIfNotFound: true);
         m_TD_BuilderControls_Cancel = m_TD_BuilderControls.FindAction("Cancel", throwIfNotFound: true);
         m_TD_BuilderControls_Move = m_TD_BuilderControls.FindAction("Move", throwIfNotFound: true);
+        m_TD_BuilderControls_LeftClick = m_TD_BuilderControls.FindAction("LeftClick", throwIfNotFound: true);
+        m_TD_BuilderControls_MiddleClick = m_TD_BuilderControls.FindAction("MiddleClick", throwIfNotFound: true);
+        m_TD_BuilderControls_RightClick = m_TD_BuilderControls.FindAction("RightClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +296,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_TD_BuilderControls_Accept;
     private readonly InputAction m_TD_BuilderControls_Cancel;
     private readonly InputAction m_TD_BuilderControls_Move;
+    private readonly InputAction m_TD_BuilderControls_LeftClick;
+    private readonly InputAction m_TD_BuilderControls_MiddleClick;
+    private readonly InputAction m_TD_BuilderControls_RightClick;
     public struct TD_BuilderControlsActions
     {
         private @TD_Controls m_Wrapper;
@@ -234,6 +306,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         public InputAction @Accept => m_Wrapper.m_TD_BuilderControls_Accept;
         public InputAction @Cancel => m_Wrapper.m_TD_BuilderControls_Cancel;
         public InputAction @Move => m_Wrapper.m_TD_BuilderControls_Move;
+        public InputAction @LeftClick => m_Wrapper.m_TD_BuilderControls_LeftClick;
+        public InputAction @MiddleClick => m_Wrapper.m_TD_BuilderControls_MiddleClick;
+        public InputAction @RightClick => m_Wrapper.m_TD_BuilderControls_RightClick;
         public InputActionMap Get() { return m_Wrapper.m_TD_BuilderControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -252,6 +327,15 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMove;
+                @LeftClick.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnLeftClick;
+                @MiddleClick.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMiddleClick;
+                @MiddleClick.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMiddleClick;
+                @MiddleClick.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnMiddleClick;
+                @RightClick.started -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface.OnRightClick;
             }
             m_Wrapper.m_TD_BuilderControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -265,14 +349,35 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @MiddleClick.started += instance.OnMiddleClick;
+                @MiddleClick.performed += instance.OnMiddleClick;
+                @MiddleClick.canceled += instance.OnMiddleClick;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
             }
         }
     }
     public TD_BuilderControlsActions @TD_BuilderControls => new TD_BuilderControlsActions(this);
+    private int m_PCSchemeIndex = -1;
+    public InputControlScheme PCScheme
+    {
+        get
+        {
+            if (m_PCSchemeIndex == -1) m_PCSchemeIndex = asset.FindControlSchemeIndex("PC");
+            return asset.controlSchemes[m_PCSchemeIndex];
+        }
+    }
     public interface ITD_BuilderControlsActions
     {
         void OnAccept(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnMiddleClick(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
     }
 }
