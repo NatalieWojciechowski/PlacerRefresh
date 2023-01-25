@@ -61,7 +61,6 @@ public class TD_BuildManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Debug.Log("PIECES: " + pieces.ToString());
 
         //isValidBuildingPlacement();
@@ -110,10 +109,11 @@ public class TD_BuildManager : MonoBehaviour
 
     private Ray builderRay()
     {
-        Vector3 builderMouseToScreenPos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 0f) + RaycastOffsetPosition;
+        Vector3 builderMouseToScreenPos = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, Camera.main.nearClipPlane) + RaycastOffsetPosition;
         //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(builderMouseToScreenPos);
         //Debug.Log(builderMouseToScreenPos + Input.mousePosition);
-        Ray mouseWorldPosition = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray mouseWorldPosition = Camera.main.ScreenPointToRay(builderMouseToScreenPos);
+        Debug.Log(builderMouseToScreenPos.ToString());
         //Debug.Log(mouseWorldPosition.ToString());
         return mouseWorldPosition;
         //Ray testRay = new(Camera.main.gameObject.transform.position, mouseWorldPosition.origin);

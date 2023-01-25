@@ -96,6 +96,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\CraftGroupData.cs" />
     <Compile Include="Assets\_Scripts\Managers\ExpandedUIManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UIManager.cs" />
+    <Compile Include="Assets\BuilderControlsManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\ItemData.cs" />
     <Compile Include="Assets\TD_Wave.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_Projectile.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\BonusAura.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Piece\Enums\SurfaceType.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Scriptables\Collection\PieceCollection.cs" />
+    <Compile Include="Assets\UIControlsManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\BagPanel2.cs" />
     <Compile Include="Assets\ProTips\Scripts\Behaviors\TooltipStyle.cs" />
     <Compile Include="Assets\ProTips\Demos (safe to delete)\Scripts\TooltipLocalization.cs" />
@@ -455,6 +457,7 @@
     <Compile Include="Assets\_Scripts\Managers\PlacerGridManager.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\StoragePanel.cs" />
+    <Compile Include="Assets\TD_Camera.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Generator\GeneratorTool.cs" />
     <Compile Include="Assets\_Scripts\Managers\TD_GameManager.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\AssetData.cs" />
@@ -536,7 +539,6 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\TD_Camera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

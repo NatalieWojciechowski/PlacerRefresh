@@ -13,13 +13,21 @@ public class PlayerInputEventArgs : EventArgs
     }
 }
 
-
-public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderControlsActions
+public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
 {
     // MyPlayerControls is the C# class that Unity generated.
     // It encapsulates the data from the .inputactions asset we created
     // and automatically looks up all the maps and actions for us.
-    TD_Controls controls;
+    [SerializeField]
+    public static TD_Controls controls;
+
+    PlayerInput playerInput;
+
+    public static TD_Controls currentMap;
+    
+    private TD_Controls.PlayerActions playerMap;
+    private TD_Controls.TD_BuilderControlsActions builderMap;
+    private TD_Controls.UIActions uiMap;
 
     public static event EventHandler PlayerCancel;
     public static event EventHandler PlayerAccept;
@@ -27,29 +35,35 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderContr
 
     public void OnEnable()
     {
-        if (controls == null)
-        {
-            controls = new TD_Controls();
-            // Tell the "gameplay" action map that we want to get told about
-            // when actions get triggered.
-            controls.TD_BuilderControls.SetCallbacks(this);
-        }
+        if (controls == null) controls = new();
+        controls.Enable();
+        controls.Player.Enable();
         controls.TD_BuilderControls.Enable();
+        controls.UI.Enable();
+
+        //playerMap = controls.Player;
+        //builderMap = controls.TD_BuilderControls;
+        //uiMap = controls.UI;
+        //UIMode();
+        //controls.TD_BuilderControls.Enable();
+        //controls.Player.Enable();
     }
 
     public void OnDisable()
     {
-        controls.TD_BuilderControls.Disable();
+        //controls.TD_BuilderControls.Disable();    
+        playerInput.enabled = false;
     }
 
-    public void OnUse(InputAction.CallbackContext context)
-    {
-        // 'Use' code here.
-    }
+    //public void OnUse(InputAction.CallbackContext context)
+    //{
+    //    // 'Use' code here.
+    //}
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMoveAlt(InputAction.CallbackContext context)
     {
-        Debug.Log("PCM => OnMove" + context.ToString());
+        //Debug.Log("PCM => OnMove" + context.ToString());
+        Debug.Log("context.action.ReadValue<Vector2>()" + context.action.ReadValue<Vector2>().ToString());
         if (context.action.triggered && context.action.ReadValue<Vector2>().magnitude != 0 && context.action.phase == InputActionPhase.Performed)
         {
             //Perform Trigger Pressed Actions
@@ -83,43 +97,82 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.ITD_BuilderContr
     // Start is called before the first frame update
     void Start()
     {
-       
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.enabled = true;
+        if (controls == null) controls = new TD_Controls();
+        UIMode();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        currentMap = controls;
     }
 
-    public void OnAccept(InputAction.CallbackContext context)
+    private void BuilderMode()
     {
-        Debug.Log("Accept!" + context);
-        EventManager.current.GenericAccept();
-        PlayerAccept(this, EventArgs.Empty);
+        //builderMap.Enable();
+        //playerMap.Disable();
+        //uiMap.Disable();
     }
 
-    public void OnCancel(InputAction.CallbackContext context)
+    private void PlayerMode()
     {
-        Debug.Log("Cancel!" + context);
-        EventManager.current.GenericCancel();
-        PlayerCancel(this, EventArgs.Empty);
+        //builderMap.Disable();
+        //playerMap.Enable();
+        //uiMap.Disable();
     }
 
-    public void OnLeftClick(InputAction.CallbackContext context)
+    private void UIMode()
     {
-        // TODO: Mode check?
-        OnAccept(context);
+        //playerInput.SwitchCurrentControlScheme("");
+        //builderMap.Disable();
+        //playerMap.Disable();
+        //uiMap.Enable();
+    }
+    //public void OnAccept(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("Accept!" + context);
+    //    EventManager.current.GenericAccept();
+    //    PlayerAccept(this, EventArgs.Empty);
+    //}
+
+    //public void OnCancel(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("Cancel!" + context);
+    //    EventManager.current.GenericCancel();
+    //    PlayerCancel(this, EventArgs.Empty);
+    //}
+
+    //public void OnLeftClick(InputAction.CallbackContext context)
+    //{
+
+    //    Debug.Log("OnLeftClick" + context);
+    //    // TODO: Mode check?
+    //    OnAccept(context);
+    //}
+
+    //public void OnMiddleClick(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("OnMiddleClick" + context);
+    //    Debug.Log("Middle Click");
+    //}
+
+    //public void OnRightClick(InputAction.CallbackContext context)
+    //{
+
+    //    Debug.Log("OnRightClick" + context);
+    //    // TODO: Mode check?
+    //    OnCancel(context);
+    //}
+
+    public void OnFire(InputAction.CallbackContext context)
+    {
+        Debug.Log("OnFire" + context);
     }
 
-    public void OnMiddleClick(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context)
     {
-        Debug.Log("Middle Click");
-    }
-
-    public void OnRightClick(InputAction.CallbackContext context)
-    {
-        // TODO: Mode check?
-        OnCancel(context);
+        Debug.Log("OnLook" + context);
     }
 }

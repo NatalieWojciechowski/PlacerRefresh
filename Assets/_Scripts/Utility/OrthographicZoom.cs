@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class OrthographicZoom : MonoBehaviour
 {
+    private Vector3 homePosition;
     TD_Controls tdControls;
     PlayerInput playerInput;
     public Camera cam;
@@ -23,16 +24,7 @@ public class OrthographicZoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //playerInput = GetComponent<PlayerInput>();
-        //moveVector = Vector2.zero;
-
-        //moveAction = playerInput.actions["Move"];
-        ////tdControls.TD_BuilderControls.Move.performed += ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        //moveAction.started += ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        //moveAction.canceled += ctx => moveVector = Vector2.zero;
-
-
-        //MoveCamera(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        homePosition = transform.position;
         targetZoom = cam.orthographicSize;
         moveVector = Vector2.zero;
     }
@@ -50,32 +42,22 @@ public class OrthographicZoom : MonoBehaviour
     private void PlayerControlsManager_PlayerMove(object sender, PlayerInputEventArgs pInputArgs)
     {
         Debug.Log("PlayerMove" + pInputArgs.movement);
-        OnMove(pInputArgs.movement);
+        MoveCamera(pInputArgs.movement);
     }
 
     private void OnDisable()
     {
-        //tdControls.TD_BuilderControls.Move.performed -= ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        //moveAction.canceled += ctx => moveVector = Vector2.zero;
-        //moveAction.started -= ctx => MoveCamera(ctx.ReadValue<Vector2>());
-        //moveAction.canceled -= ctx => moveVector = Vector2.zero;
         PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
-    }
-
-    void OnMove(Vector2 movement)
-    {
-        MoveCamera(movement);
     }
 
     private void MoveCamera(Vector2 moveValue)
     {
+        shouldMove = (moveValue.magnitude != 0);
         if (moveValue == Vector2.zero && moveVector == Vector2.zero) return;
         moveVector = moveValue;
-        //Debug.Log("MoveCamera" + moveValue + tdControls.TD_BuilderControls.Move.phase);
         Vector3 movementAmount = new Vector3(moveValue.x, moveValue.y, 0) * movementSpeed * Time.deltaTime;
         cam.transform.Translate(movementAmount);
         // This gets updated AFTER movement, so we dont update next frame.
-        shouldMove = (moveValue.magnitude != 0);
     }
 
     // Update is called once per frame
@@ -85,11 +67,15 @@ public class OrthographicZoom : MonoBehaviour
         {
             MoveCamera(moveVector);
         }
-
-
         targetZoom -= Mouse.current.scroll.y.ReadValue() * sensitivity;
         targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
         float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
         cam.orthographicSize = newSize;
+    }
+
+    private void LateUpdate()
+    {
+        //Debug.Log("MOUSE ENABLED?" + UnityEngine.InputSystem.Mouse.current.enabled);
+
     }
 }
