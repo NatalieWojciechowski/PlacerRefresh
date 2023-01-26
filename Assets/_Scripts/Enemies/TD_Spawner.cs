@@ -10,10 +10,12 @@ public class TD_Spawner : MonoBehaviour
     public bool SpawnAllowed = false;
     //private int currentWaveIndex = 0;
     private List<TD_EnemyData> _enemiesToSpawn;
+    private List<TD_Enemy> _enemiesAlive;
     private int currentEnemyIndex = 0;
     //private List<TD_Wave> _waves;
     private List<GameObject> spawnedEntities;
     private List<TD_Wave> waveHelpers;
+    public bool CurrentWaveComplete = false;
 
     [SerializeField]
     private Transform SpawnPosition;
@@ -53,6 +55,7 @@ public class TD_Spawner : MonoBehaviour
         //if (_waves == null) _waves = new();
         if (spawnedEntities == null) spawnedEntities = new();
         if (_enemiesToSpawn == null) _enemiesToSpawn = new();
+        if (_enemiesAlive == null) _enemiesAlive = new();
         if (!SpawnPosition) SpawnPosition = transform;
     }
 
@@ -65,13 +68,22 @@ public class TD_Spawner : MonoBehaviour
 
 
         TD_Wave currentWave = waveHelpers[TD_GameManager.current.CurrentWaveIndex];
-        if (currentWave == null) return;
+        if (currentWave == null || !SpawnAllowed) return;
+        CurrentWaveComplete = currentWave.Defeated;
         //Debug.Log(currentWave);
         //Debug.Log(IsDelayTimerMet());
         // If still have initialized with enemies & we havent spawned them all
         if (currentWave.AllSpawned)
         {
-            currentWave.EndWave();
+            currentWave.WaveSpawningComplete();
+            //Debug.Log(_enemiesAlive.Count);
+            _enemiesAlive.RemoveAll((enemy) => enemy == null);
+            //Debug.Log(_enemiesAlive.Count);
+            if (_enemiesAlive.Count <= 0)
+            {
+                CurrentWaveComplete = true;
+                currentWave.EndWave();
+            }
         }
         else if (IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
         //else if (spawnedEntities.Count >= _enemiesToSpawn.Count && SpawnAllowed) AddWave(GetWaveEnemies(_nextWaveIndex), true);
@@ -138,6 +150,7 @@ public class TD_Spawner : MonoBehaviour
             enemyControl.SetPreviousWaypoint(SpawnPosition);
 
             spawnedEntities.Add(lastSpawned);
+            _enemiesAlive.Add(enemyControl);
             currentEnemyIndex++;
             lastSpawnTime = 0;
         }

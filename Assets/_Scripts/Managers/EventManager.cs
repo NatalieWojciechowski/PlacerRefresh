@@ -59,6 +59,9 @@ public class EventManager : MonoBehaviour
     public static UnityAction<int> OnMoneySpent;
     private CustomIntEvent moneySpentEvent;
 
+    public static event EventHandler GameOver;
+    public static event EventHandler GameWon;
+
     public enum TD_Events
     {
         GenericCancel,
@@ -191,6 +194,16 @@ public class EventManager : MonoBehaviour
         CustomEventArgs args = new CustomEventArgs();
         Debug.Log($"Accept: ");
         OnAccept?.Invoke(args);
+    }
+
+    public void Lose()
+    {
+        GameOver?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Win()
+    {
+        GameWon?.Invoke(this, EventArgs.Empty);
     }
 
     protected virtual void OnEventHandled()

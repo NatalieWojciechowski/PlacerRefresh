@@ -33,6 +33,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     public static event EventHandler PlayerCancel;
     public static event EventHandler PlayerAccept;
     public static event EventHandler<PlayerInputEventArgs> PlayerMove;
+    public static event EventHandler<PlayerInputEventArgs> GoHome;
 
     public void OnEnable()
     {
@@ -176,5 +177,11 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     public void OnLook(InputAction.CallbackContext context)
     {
         Debug.Log("OnLook" + context);
+    }
+
+    public void OnHome(InputAction.CallbackContext context)
+    {
+        Debug.Log("SEND CAMERA HOME");
+        GoHome(this, new PlayerInputEventArgs(Vector2.zero));
     }
 }

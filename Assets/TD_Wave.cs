@@ -11,10 +11,22 @@ public class TD_Wave
     private TD_Spawner spawner;
     private WaveDetails waveDetails;
     private List<TD_EnemyData> enemiesToSpawn;
+    private List<string> enemiesAlive;
     private int enemiesSpawnedCount = 0;
 
-    public bool AllSpawned { get => finished || checkAllSpawned(); }
+    public bool AllSpawned { get => allSpawned || checkAllSpawned(); }
     private bool finished = false;
+    private bool allSpawned = false;
+
+    private bool defeated = false;
+    public bool Defeated { get => defeated; }
+
+    private bool checkAllDefeated()
+    {
+        //TD_EnemyData enemiesRemaining = enemiesToSpawn.Find((enemy) => { return enemy != null; });
+        return allSpawned; // && enemiesRemaining;
+    }
+
     //public float waveCompletedDuration;
 
     public WaveDetails WaveDetails;
@@ -34,9 +46,19 @@ public class TD_Wave
         // TODO: Invoke Event?
     }
 
+    public void WaveSpawningComplete()
+    {
+        //Debug.Log("WAVE SPAWNING COMPLETE");
+        allSpawned = true;
+        //completeTime = Time.time;
+    }
+
     public void EndWave()
     {
+        if (finished == true) return;
+        Debug.Log("END WAVE");
         finished = true;
+        defeated = true;
         completeTime = Time.time;
         // TODO: Invoke event?
         EventManager.current.WaveFinished(waveIndex);

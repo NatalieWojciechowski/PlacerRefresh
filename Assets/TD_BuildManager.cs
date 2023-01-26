@@ -33,6 +33,7 @@ public class TD_BuildManager : MonoBehaviour
     private BuildState buildState;
     [SerializeField] private Vector3 RaycastOffsetPosition;
     [SerializeField] private Vector3 buildOffset;
+    private bool nearbyTower;
 
     // Start is called before the first frame update
     void Start()
@@ -83,7 +84,7 @@ public class TD_BuildManager : MonoBehaviour
         RaycastHit hit = builderRaycastTarget();
         if (hit.point != null && hit.collider && hit.collider.CompareTag("BuildableSurface"))
         {
-            validPlacement = true;
+            validPlacement = !HasObstruction(hit);
             lastHitPos = hit.point;
             //Debug.Log("New Point: " + hit.point.ToString());
         }
@@ -146,22 +147,29 @@ public class TD_BuildManager : MonoBehaviour
         // See if we already have another piece here? 
         Vector3 direction = (_hit.point - Camera.main.transform.position).normalized;
         Debug.DrawRay(_hit.point, -direction, Color.yellow);
-        AllTargetsOnRay(_hit);
+        //AllTargetsOnRay(_hit);
  
         // TODO: validate distance from last point, remove once out of range
         UpdatePreviewObjPos(_hit);
     }
 
-    private void AllTargetsOnRay(RaycastHit _hit)
+    /// <summary>
+    ///  Currently only checks for nearby towers; but we may wish to check for other items here.
+    /// </summary>
+    /// <param name="_hit"></param>
+    /// <returns></returns>
+    private bool HasObstruction(RaycastHit _hit)
     {
+        bool hasNearbyTower = false;
         Vector3 direction = (_hit.point - Camera.main.transform.position).normalized;
-        RaycastHit secondHit = new();
         //Grab objects in direction of clicked object (including the one clicked)
         RaycastHit[] possibleTargets = Physics.RaycastAll(Camera.main.transform.position, direction, 400f);
-        //foreach (RaycastHit _target in possibleTargets)
-        //{
-        //    if (_target.collider?.gameObject.CompareTag("Tower") 
-        //}
+        foreach (RaycastHit _target in possibleTargets)
+        {
+            TD_Building hitBuilding = _target.collider.gameObject.GetComponent<TD_Building>();
+            if (hitBuilding && hitBuilding.IsRunning) hasNearbyTower = true;
+        }
+        return hasNearbyTower;
         //Debug.Log($"There are {possibleTargets.Length} possible targets ahead");
         //Debug.Log($"You hit {_hit.transform.name}");
         //Set destination, and set to move

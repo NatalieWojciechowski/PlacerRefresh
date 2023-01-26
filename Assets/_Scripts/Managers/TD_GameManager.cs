@@ -19,7 +19,8 @@ public class TD_GameManager : MonoBehaviour
     private int currentCurrency = 0;
     public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWaveIndex { get => currentWaveIndex; }
-    public int TotalWaves { get => TD_EnemyManager.current.GetTotalWaves(); }
+    private int totalWaves = 0;
+    public int TotalWaves { get => totalWaves; }
     public int CoreHealth { get => coreHealth; }
 
     private void Awake()
@@ -29,6 +30,7 @@ public class TD_GameManager : MonoBehaviour
         EventManager.OnWaveFinish += WaveFinished;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
+        if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
     }
     private void OnDisable()
     {
@@ -53,7 +55,13 @@ public class TD_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (totalWaves == 0) GetTotalWaves();
         if (coreHealth <= 0) GameOver();
+    }
+
+    private void GetTotalWaves()
+    {
+        if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
     }
 
     public void PlayerStart()
@@ -63,10 +71,7 @@ public class TD_GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        // TODO: Change this to an event
-        uIManager.UpdateDisplay();
-        //UpdateDisplay();
-        ////gameOverDisplay.SetActive(true);
+        EventManager.current.Lose();
     }
 
     private void WaveFinished(int ctx)
@@ -75,6 +80,11 @@ public class TD_GameManager : MonoBehaviour
         if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
         if (ctx == currentWaveIndex)
             currentWaveIndex++;
+        if (currentWaveIndex > totalWaves)
+        {
+            currentWaveIndex = totalWaves;
+            EventManager.current.Win();
+        }
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
         uIManager.UpdateDisplay();

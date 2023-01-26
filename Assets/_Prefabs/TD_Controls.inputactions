@@ -154,6 +154,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Home",
+                    "type": "Button",
+                    "id": "07c4a0f3-8eb7-4889-8930-168c77e3f1c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -374,6 +383,17 @@
                     "processors": "",
                     "groups": "DesktopDefault",
                     "action": "MoveAlt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e9a0ef9-298f-453a-8fc9-5fb2968b3205",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "DesktopDefault",
+                    "action": "Home",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

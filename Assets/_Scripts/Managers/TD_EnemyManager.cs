@@ -31,16 +31,14 @@ public class TD_EnemyManager : MonoBehaviour
         _waypointRoute = waypointRoute;
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         timeRemaining = WaveIntervalDelay;
-        EventManager.OnWaveFinish += StartWaveInterval;
         EventManager.OnWaveStart += enableWave;
     }
 
     private void OnDisable()
     {
-        EventManager.OnWaveFinish -= StartWaveInterval;
         EventManager.OnWaveStart -= enableWave;
     }
 
@@ -68,22 +66,35 @@ public class TD_EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_waypointRoute || !TD_GameManager.current.HasStarted) return;
-        timeRemaining -= Time.deltaTime;
-        if (timeRemaining <= 0) CheckStartSpawers();
+        if (!_waypointRoute || _spawners.Count < 0 || !TD_GameManager.current) return;
+        //!TD_GameManager.current.HasStarted) return;
+        if (TD_GameManager.current.HasStarted)
+        {
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0) TryStartSpawers();
+        }
         if (_waveActive)
         {
-            if (_spawners.Count < 0) return;
-            ToggleSpawners(true);
             CheckEnemyState();
+            if (IsCurrentWaveComplete()) OnCurrentWaveComplete();
         }
     }
 
-    private void CheckStartSpawers()
+    private void OnCurrentWaveComplete()
+    {
+        Debug.Log("Wave Complete for all Spawners");
+        _waveActive = false;
+        StartWaveInterval(TD_GameManager.current.CurrentWaveIndex);
+        EventManager.OnWaveFinish(TD_GameManager.current.CurrentWaveIndex);
+    }
+
+    private void TryStartSpawers()
     {
         if (TD_GameManager.current.CurrentWaveIndex < TotalWaves)
         {
-            Debug.Log("This may have been start spawn initially");
+            ToggleSpawners(true);
+            _waveActive = true;
+            //Debug.Log("This may have been start spawn initially");
             //EventManager.current.WaveFinished(TD_GameManager.current.CurrentWaveIndex);
         }
     }
@@ -98,7 +109,6 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void CheckEnemyState()
     {
-        // Enable/ start animations / give buffs
 
     }
 
@@ -116,9 +126,13 @@ public class TD_EnemyManager : MonoBehaviour
         return largestWaveCount;
     }
 
-    public bool CurrentWaveComplete()
+    public bool IsCurrentWaveComplete()
     {
-        // 
-        return false;
+        bool anyInProgress = false;
+        foreach (TD_Spawner spawner in _spawners)
+        {
+            if (!spawner.CurrentWaveComplete) anyInProgress = true;
+        }
+        return !anyInProgress;
     }
 }

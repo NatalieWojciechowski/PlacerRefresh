@@ -176,6 +176,15 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Home"",
+                    ""type"": ""Button"",
+                    ""id"": ""07c4a0f3-8eb7-4889-8930-168c77e3f1c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -396,6 +405,17 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""DesktopDefault"",
                     ""action"": ""MoveAlt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e9a0ef9-298f-453a-8fc9-5fb2968b3205"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""DesktopDefault"",
+                    ""action"": ""Home"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -952,6 +972,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         m_Player_MoveAlt = m_Player.FindAction("MoveAlt", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_Home = m_Player.FindAction("Home", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1075,6 +1096,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveAlt;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_Home;
     public struct PlayerActions
     {
         private @TD_Controls m_Wrapper;
@@ -1082,6 +1104,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         public InputAction @MoveAlt => m_Wrapper.m_Player_MoveAlt;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @Home => m_Wrapper.m_Player_Home;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1100,6 +1123,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @Home.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
+                @Home.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
+                @Home.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1113,6 +1139,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @Home.started += instance.OnHome;
+                @Home.performed += instance.OnHome;
+                @Home.canceled += instance.OnHome;
             }
         }
     }
@@ -1242,6 +1271,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         void OnMoveAlt(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnHome(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

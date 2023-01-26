@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class OrthographicZoom : MonoBehaviour
 {
     private Vector3 homePosition;
+    private Vector3 moveTarget;
     TD_Controls tdControls;
     PlayerInput playerInput;
     public Camera cam;
@@ -24,20 +25,24 @@ public class OrthographicZoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        homePosition = transform.position;
+        homePosition = cam.transform.position;
         targetZoom = cam.orthographicSize;
         moveVector = Vector2.zero;
+        moveTarget = Vector3.zero;
     }
 
     private void OnEnable()
     {
         UIControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
         PlayerControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
+        PlayerControlsManager.GoHome += ReturnHome;
     }
 
     private void OnDisable()
     {
+        UIControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
         PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
+        PlayerControlsManager.GoHome -= ReturnHome;
     }
 
     /// <summary>
@@ -51,23 +56,44 @@ public class OrthographicZoom : MonoBehaviour
         MoveCamera(pInputArgs.movement);
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        AutoMove();
+        AdjustZoom();
+    }
+
     private void MoveCamera(Vector2 moveValue)
     {
         shouldMove = (moveValue.magnitude != 0);
         if (moveValue == Vector2.zero && moveVector == Vector2.zero) return;
         moveVector = moveValue;
-        Vector3 movementAmount = new Vector3(moveValue.x, moveValue.y, 0) * movementSpeed * Time.deltaTime;
-        cam.transform.Translate(movementAmount);
+        ThrottledMove(new Vector3(moveValue.x, moveValue.y, 0));
+        //Vector3 movementAmount = new Vector3(moveValue.x, moveValue.y, 0) * movementSpeed * Time.deltaTime;
+        //cam.transform.Translate(movementAmount);
         // This gets updated AFTER movement, so we dont update next frame.
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AutoMove()
     {
-        if (shouldMove)
-        {
-            MoveCamera(moveVector);
-        }
+        // TODO: Fix the return home functionality;
+        //if (moveTarget != Vector3.zero)
+        //{
+        //    if (Vector3.Distance(cam.transform.position, moveTarget) > 2f)
+        //    {
+        //        ThrottledMove(Vector3.MoveTowards(moveTarget, cam.transform.position, 1f * Time.deltaTime).normalized);
+        //    }
+        //    else moveTarget = Vector3.zero;
+        //}
+        //else if (shouldMove)
+        //{
+        //    MoveCamera(moveVector);
+        //}
+        MoveCamera(moveVector);
+    }
+
+    private void AdjustZoom()
+    {
         targetZoom -= Mouse.current.scroll.y.ReadValue() * sensitivity;
         targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
         float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
@@ -78,5 +104,18 @@ public class OrthographicZoom : MonoBehaviour
     {
         //Debug.Log("MOUSE ENABLED?" + UnityEngine.InputSystem.Mouse.current.enabled);
 
+    }
+
+    protected void ReturnHome(object sender, PlayerInputEventArgs pInputArgs)
+    {
+        moveTarget = homePosition;
+        //moveVector = cam.transform.position - homePosition;
+        //moveVector.Normalize();
+    }
+
+    private void ThrottledMove(Vector3 toMove)
+    {
+        Vector3 movementAmount = toMove * movementSpeed * Time.deltaTime;
+        cam.transform.Translate(movementAmount);
     }
 }

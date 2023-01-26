@@ -79,7 +79,7 @@ public class TD_Building : MonoBehaviour
     public TD_Building(TD_BuildingData bData)
     {
         SetStats(bData);
-        IsRunning = true;
+        IsRunning = false;
         TryBuildingState(BuildingState.Blueprint);
     }
 
@@ -131,7 +131,7 @@ public class TD_Building : MonoBehaviour
         //if (_buildingData == null) _buildingData = GetComponent<TD_BuildingData>();
         if (!bAnimator) bAnimator = GetComponent<Animator>();
         if (IsRunning == false) SetStats(_baseBuildingData);
-        IsRunning = true;
+        //IsRunning = true;
         Debug.Log("Building Data: " + _baseBuildingData);
     }
 
@@ -317,6 +317,7 @@ public class TD_Building : MonoBehaviour
     {
         transform.SetPositionAndRotation(tPlacement.position, tPlacement.rotation);
         TryBuildingState(BuildingState.Idle);
+        IsRunning = true;
         EventManager.current.TowerPlaced(this);
     }
 
