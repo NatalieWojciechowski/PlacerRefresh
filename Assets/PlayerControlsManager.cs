@@ -21,7 +21,8 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     [SerializeField]
     public static TD_Controls controls;
 
-    PlayerInput playerInput;
+    [SerializeField]
+    private PlayerInput playerInput;
 
     public static TD_Controls currentMap;
     
@@ -35,12 +36,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
 
     public void OnEnable()
     {
-        if (controls == null) controls = new();
-        controls.Enable();
-        controls.Player.Enable();
-        controls.TD_BuilderControls.Enable();
-        controls.UI.Enable();
-
+        EnableAllControls();
         //playerMap = controls.Player;
         //builderMap = controls.TD_BuilderControls;
         //uiMap = controls.UI;
@@ -49,16 +45,22 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
         //controls.Player.Enable();
     }
 
+    private void EnableAllControls()
+    {
+        if (!playerInput) playerInput = FindObjectOfType<PlayerInput>();
+        if (controls == null) controls = new();
+        controls.Enable();
+        controls.Player.Enable();
+        controls.TD_BuilderControls.Enable();
+        controls.UI.Enable();
+        playerInput.enabled = true;
+    }
+
     public void OnDisable()
     {
         //controls.TD_BuilderControls.Disable();    
-        playerInput.enabled = false;
+        if (playerInput) playerInput.enabled = false;
     }
-
-    //public void OnUse(InputAction.CallbackContext context)
-    //{
-    //    // 'Use' code here.
-    //}
 
     public void OnMoveAlt(InputAction.CallbackContext context)
     {
@@ -97,10 +99,9 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerInput.enabled = true;
-        if (controls == null) controls = new TD_Controls();
-        UIMode();
+        EnableAllControls();
+        //if (controls == null) controls = new TD_Controls();
+        //UIMode();
     }
 
     // Update is called once per frame
@@ -130,12 +131,13 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
         //playerMap.Disable();
         //uiMap.Enable();
     }
-    //public void OnAccept(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log("Accept!" + context);
-    //    EventManager.current.GenericAccept();
-    //    PlayerAccept(this, EventArgs.Empty);
-    //}
+
+    public void OnAccept(InputAction.CallbackContext context)
+    {
+        Debug.Log("Accept!" + context);
+        EventManager.current.GenericAccept();
+        PlayerAccept(this, EventArgs.Empty);
+    }
 
     //public void OnCancel(InputAction.CallbackContext context)
     //{

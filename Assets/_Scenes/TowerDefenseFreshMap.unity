@@ -2244,6 +2244,12 @@ GameObject:
   - component: {fileID: 256649460}
   - component: {fileID: 256649459}
   - component: {fileID: 256649463}
+  - component: {fileID: 256649464}
+  - component: {fileID: 256649466}
+  - component: {fileID: 256649465}
+  - component: {fileID: 256649469}
+  - component: {fileID: 256649468}
+  - component: {fileID: 256649467}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2360,6 +2366,118 @@ MonoBehaviour:
   SpeedControls: {fileID: 1779908787}
   playerMoney: {fileID: 1020870905}
   pieces_Selection: {fileID: 1552933970}
+--- !u!114 &256649464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe3cda3e244f60419474164d6ba3b0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_MaxDistance: 1000
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &256649465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_PointAction: {fileID: -7286267356000645118, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_MoveAction: {fileID: -5478904225858761758, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_SubmitAction: {fileID: -505680991042773684, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_LeftClickAction: {fileID: 5327540633535241910, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_MiddleClickAction: {fileID: -704279337283227090, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_RightClickAction: {fileID: -4594899808683413929, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 7443002905278998207, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 5967733505527311913, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -1612276580732007213, guid: ed02df8a3596e37429d6697d5d93582b,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 2
+  m_CursorLockBehavior: 0
+--- !u!114 &256649466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &256649467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4458684f7b5a48b4a97c8dba9bb1b530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+--- !u!114 &256649468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8c8fbe0669e9c44b73dfc8fe193fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &256649469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256649458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938b07e888fc49040936985e0de978cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &270666218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4318,7 +4436,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433623876}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -18928,9 +19046,6 @@ GameObject:
   - component: {fileID: 1796012191}
   - component: {fileID: 1796012192}
   - component: {fileID: 1796012193}
-  - component: {fileID: 1796012194}
-  - component: {fileID: 1796012195}
-  - component: {fileID: 1796012196}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -18968,7 +19083,7 @@ MonoBehaviour:
   m_Actions: {fileID: -944628639613478452, guid: ed02df8a3596e37429d6697d5d93582b,
     type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 256649465}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -18989,9 +19104,9 @@ MonoBehaviour:
     m_ActionName: TD_BuilderControls/Cancel[/Keyboard/escape,/Keyboard/c]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1796012195}
-        m_TargetAssemblyTypeName: BuilderControlsManager, Assembly-CSharp
-        m_MethodName: OnMove
+      - m_Target: {fileID: 256649467}
+        m_TargetAssemblyTypeName: PlayerControlsManager, Assembly-CSharp
+        m_MethodName: OnMoveAlt
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19005,7 +19120,7 @@ MonoBehaviour:
     m_ActionName: TD_BuilderControls/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1796012194}
+      - m_Target: {fileID: 256649467}
         m_TargetAssemblyTypeName: PlayerControlsManager, Assembly-CSharp
         m_MethodName: OnMoveAlt
         m_Mode: 0
@@ -19031,9 +19146,9 @@ MonoBehaviour:
     m_ActionName: Player/Look[/Mouse/delta,/Simulated Touchscreen/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1796012195}
-        m_TargetAssemblyTypeName: BuilderControlsManager, Assembly-CSharp
-        m_MethodName: OnMove
+      - m_Target: {fileID: 256649469}
+        m_TargetAssemblyTypeName: UIControlsManager, Assembly-CSharp
+        m_MethodName: OnNavigate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19056,7 +19171,19 @@ MonoBehaviour:
     m_ActionId: acdf543c-bbd4-4ad6-bbcf-d1f7d294ecc2
     m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 256649469}
+        m_TargetAssemblyTypeName: UIControlsManager, Assembly-CSharp
+        m_MethodName: OnPoint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 125ff8ca-dede-4fc7-b31a-049b095420a3
     m_ActionName: UI/Point[/Mouse/position,/Simulated Touchscreen/touch0/position,/Simulated
       Touchscreen/touch1/position,/Simulated Touchscreen/touch2/position,/Simulated
@@ -19065,7 +19192,19 @@ MonoBehaviour:
       Touchscreen/touch7/position,/Simulated Touchscreen/touch8/position,/Simulated
       Touchscreen/touch9/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 256649467}
+        m_TargetAssemblyTypeName: PlayerControlsManager, Assembly-CSharp
+        m_MethodName: OnAccept
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e9e2d459-08a6-4d47-ab97-8ff40a27e46f
     m_ActionName: UI/Click[/Mouse/leftButton,/Simulated Touchscreen/touch0/press,/Simulated
       Touchscreen/touch1/press,/Simulated Touchscreen/touch2/press,/Simulated Touchscreen/touch3/press,/Simulated
@@ -19092,10 +19231,10 @@ MonoBehaviour:
     m_ActionId: a6622216-084d-43c6-a875-8e681e73294d
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: PC
+  m_DefaultControlScheme: DesktopDefault
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1038674719}
 --- !u!114 &1796012193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19114,42 +19253,6 @@ MonoBehaviour:
   sensitivity: 0.5
   speed: 30
   movementSpeed: 25
---- !u!114 &1796012194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796012189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4458684f7b5a48b4a97c8dba9bb1b530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1796012195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796012189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d8c8fbe0669e9c44b73dfc8fe193fb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1796012196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796012189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938b07e888fc49040936985e0de978cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1799577504
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
 {
     [SerializeField]
     public static TD_Controls controls;
+
+    public static event EventHandler<PlayerInputEventArgs> PlayerMove;
 
     public void OnEnable()
     {
@@ -44,6 +47,17 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        Debug.Log("context.action.ReadValue<Vector2>()" + context.action.ReadValue<Vector2>().ToString());
+        if (context.action.triggered && context.action.ReadValue<Vector2>().magnitude != 0 && context.action.phase == InputActionPhase.Performed)
+        {
+            //Perform Trigger Pressed Actions
+            PlayerMove(this, new PlayerInputEventArgs(context.ReadValue<Vector2>().normalized));
+        }
+        else if (context.action.triggered && context.action.ReadValue<Vector2>().magnitude == 0 && context.action.phase == InputActionPhase.Performed)
+        {
+            //Perform Trigger Release Actions
+            PlayerMove(this, new PlayerInputEventArgs(Vector2.zero));
+        }
 
 
         Debug.Log("UI Onmove" + context);
@@ -56,7 +70,7 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
 
     public void OnPoint(InputAction.CallbackContext context)
     {
-        Debug.Log("UI OnPoint" + context);
+        //Debug.Log("UI OnPoint" + context);
     }
 
     public void OnRightClick(InputAction.CallbackContext context)

@@ -113,7 +113,7 @@ public class TD_BuildManager : MonoBehaviour
         //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(builderMouseToScreenPos);
         //Debug.Log(builderMouseToScreenPos + Input.mousePosition);
         Ray mouseWorldPosition = Camera.main.ScreenPointToRay(builderMouseToScreenPos);
-        Debug.Log(builderMouseToScreenPos.ToString());
+        //Debug.Log(builderMouseToScreenPos.ToString());
         //Debug.Log(mouseWorldPosition.ToString());
         return mouseWorldPosition;
         //Ray testRay = new(Camera.main.gameObject.transform.position, mouseWorldPosition.origin);

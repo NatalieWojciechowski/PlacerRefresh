@@ -31,7 +31,13 @@ public class OrthographicZoom : MonoBehaviour
 
     private void OnEnable()
     {
+        UIControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
         PlayerControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
+    }
+
+    private void OnDisable()
+    {
+        PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
     }
 
     /// <summary>
@@ -43,11 +49,6 @@ public class OrthographicZoom : MonoBehaviour
     {
         Debug.Log("PlayerMove" + pInputArgs.movement);
         MoveCamera(pInputArgs.movement);
-    }
-
-    private void OnDisable()
-    {
-        PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
     }
 
     private void MoveCamera(Vector2 moveValue)
