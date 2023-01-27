@@ -7157,7 +7157,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -5.24e-43, y: 1.7e-44, z: 1.5e-44, w: 9.1e-44}
+  m_BoundingSphereOverride: {x: 8.24e-43, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -12056,7 +12056,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 10062896, z: 4.5904e-41, w: 9.403955e-38}
+  m_BoundingSphereOverride: {x: 8.24e-43, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -18409,6 +18409,8 @@ MonoBehaviour:
   ForRoute: {fileID: 1563312063}
   Waves:
   - {fileID: 11400000, guid: ee045ca6091df644f9f6b9903797f567, type: 2}
+  - {fileID: 11400000, guid: 17721e8d898f6ca4f8e6c5d3bf8f3d6c, type: 2}
+  - {fileID: 11400000, guid: 48f8bc5b32c4d2540a52b6ffadefebb0, type: 2}
   SpawnAllowed: 0
   CurrentWaveComplete: 0
   SpawnPosition: {fileID: 2048818240}

@@ -63,7 +63,7 @@ public class TD_Spawner : MonoBehaviour
     protected void Update()
     {
         if (!TD_GameManager.current) return;
-        if (waveHelpers.Count == 0 && !SetupHelpers()) return;
+        if (waveHelpers.Count == 0 && !SetupWaveHelpers()) return;
         if (TD_GameManager.current.CurrentWaveIndex >= waveHelpers.Count) return;
 
 
@@ -81,8 +81,10 @@ public class TD_Spawner : MonoBehaviour
             //Debug.Log(_enemiesAlive.Count);
             if (_enemiesAlive.Count <= 0)
             {
-                CurrentWaveComplete = true;
                 currentWave.EndWave();
+                // Reset this for the next iteration in case we are at the end 
+                CurrentWaveComplete = true;
+                currentEnemyIndex = 0;
             }
         }
         else if (IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
@@ -90,7 +92,7 @@ public class TD_Spawner : MonoBehaviour
         //else Debug.DebugBreak();
     }
 
-    private bool SetupHelpers()
+    private bool SetupWaveHelpers()
     {
         int _waveIndex = 0;
         foreach (WaveDetails waveDetail in Waves)

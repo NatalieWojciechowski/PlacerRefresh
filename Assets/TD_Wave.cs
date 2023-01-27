@@ -66,9 +66,13 @@ public class TD_Wave
 
     public TD_EnemyData GetEnemy(int enemyIndex)
     {
-        enemiesSpawnedCount++;
         // TODO: better handling around out of range exception here 
-        return enemiesToSpawn[enemyIndex];
+        if (enemyIndex < enemiesToSpawn.Count)
+        {
+            enemiesSpawnedCount++;
+            return enemiesToSpawn[enemyIndex];
+        }
+        return null;
     }
 
     private void InitWave(List<TD_EnemyData> enemies)

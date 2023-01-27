@@ -94,7 +94,7 @@ public class OrthographicZoom : MonoBehaviour
 
     private void AdjustZoom()
     {
-        targetZoom -= Mouse.current.scroll.y.ReadValue() * sensitivity;
+        targetZoom -= Mouse.current.scroll.ReadValue().normalized.y * sensitivity;
         targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
         float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
         cam.orthographicSize = newSize;

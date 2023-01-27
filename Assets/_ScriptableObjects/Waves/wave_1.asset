@@ -16,4 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
   - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
-  spawnInterval: 2
+  - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
+  - {fileID: 11400000, guid: 966a116ef378eea4c81112a31dce87ae, type: 2}
+  spawnInterval: 4
