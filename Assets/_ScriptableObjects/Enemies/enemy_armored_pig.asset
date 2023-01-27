@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5e352802a1ccd34da994d68e41cb013, type: 3}
-  m_Name: enemy_basic_pig
+  m_Name: enemy_armored_pig
   m_EditorClassIdentifier: 
   displayName: Basic Enemy
-  health: 2
-  moveSpeed: 1.25
-  spawnPrefab: {fileID: 5042135239528872435, guid: 751e34cad23c05b48822742440ae9f88,
+  health: 10
+  moveSpeed: 0.75
+  spawnPrefab: {fileID: 7641034024079173038, guid: 35f46f2cdfe55ce4b90cf4245ed674cf,
     type: 3}
   dmgToCore: 1
-  reward: 1
+  reward: 3

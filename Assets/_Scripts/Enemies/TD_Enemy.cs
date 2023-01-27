@@ -20,6 +20,7 @@ public class TD_Enemy : MonoBehaviour
     private float _maxHealth = 1f;
     private int _deathReward;
     private Rigidbody _rigidbody;
+    [SerializeField]
     private Animator _animator;
 
     public int currentWaypointIndx = -1;
@@ -30,7 +31,20 @@ public class TD_Enemy : MonoBehaviour
     public GameObject HealthBarPrefab;
     public GameObject HealthBar;
 
+    public GameObject DeathEffects;
+
     public Guid EnemyUUID { get; private set; }
+
+    enum EnemyState
+    {
+        Spawn,
+        Idle,
+        Move,
+        Attack,
+        Damage,
+        Die
+    }
+    EnemyState enemyState;
 
     private void Awake()
     {
@@ -40,10 +54,11 @@ public class TD_Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyState = EnemyState.Spawn;
         // TODO: With multi spawners, need find closest
         if (fullRoute == null) fullRoute = FindObjectOfType<TD_EnemyManager>().WaypointRoute;
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
-        if (_animator == null) _animator = GetComponent<Animator>();
+        if (_animator == null) _animator = GetComponentInChildren<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
 
         if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.current.transform);
@@ -75,7 +90,9 @@ public class TD_Enemy : MonoBehaviour
     private void Expire()
     {
         // TODO: Play animation?
+        DeathEffects?.SetActive(true);
         TD_GameManager.current.AddCoins(_deathReward);
+
         Destroy(this.gameObject);
     }
 
@@ -91,9 +108,17 @@ public class TD_Enemy : MonoBehaviour
 
     internal void TakeDamage(float projectileDamage)
     {
+        TryChangeState(EnemyState.Damage);
+        _animator.SetInteger("animation", (int)enemyState);
         _currentHealth -= projectileDamage;
         // TODO: Update floating bar?
         HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
+    }
+
+    private void AllowStateTime(EnemyState nextState)
+    {
+        //float clipLength = _animator.GetCurrentAnimatorClipInfo(0)[(int)nextState].clip.length;
+        //Invoke(, clipLength);
     }
 
     private void MoveToWaypoint()
@@ -105,10 +130,7 @@ public class TD_Enemy : MonoBehaviour
         }
         if (!nextWaypoint) return;
         transform.position = GetLerpPosition();
-        //transform.position = lerpPosition();
-        //Vector3 nextLookPosition = Vector3.Lerp(transform.position, nextWaypoint.position, 0.15f);
         transform.LookAt(nextWaypoint.position);
-        //_rigidbody?.AddRelativeForce(Vector3.forward * _moveSpeed, ForceMode.Force);
     }
 
     private Vector3 GetLerpPosition()
@@ -127,6 +149,7 @@ public class TD_Enemy : MonoBehaviour
         _maxHealth = waveEnemyData.health;
         _deathReward = waveEnemyData.reward;
         DmgToCore = waveEnemyData.dmgToCore;
+        TryChangeState(EnemyState.Idle);
     }
 
     private bool ReachedPoint()
@@ -170,4 +193,39 @@ public class TD_Enemy : MonoBehaviour
         
         // This will get handled by the endpoint 
     }
+
+    private void TryChangeState(EnemyState toState = EnemyState.Idle)
+    {
+        //switch (toState)
+        //{
+        //    case EnemyState.Idle:
+
+        //    break;
+        //    case EnemyState.Move:
+        //    bAnimator.SetBool("IsAttacking", true);
+        //    attackState = BuildingAttackState.Attacking;
+        //    break;
+        //    case EnemyState.Attack:
+        //    bAnimator.SetBool("IsReloading", true);
+        //    attackState = BuildingAttackState.Reloading;
+        //    break;
+        //    case EnemyState.Damage:
+        //    bAnimator.SetBool("IsReloading", true);
+        //    attackState = BuildingAttackState.Cooldown;
+        //    break;
+        //    case EnemyState.Die:
+        //    bAnimator.SetBool("IsReloading", true);
+        //    attackState = BuildingAttackState.Reloading;
+        //    break;
+        //    default:
+        //    bAnimator.SetBool("InRange", false);
+        //    bAnimator.SetBool("IsReloading", false);
+        //    bAnimator.SetBool("IsAttacking", false);
+        //    break;
+        //};
+        _animator.SetInteger("animation", (int)toState);
+        // TODO: any sort of validation here? 
+        enemyState = toState;
+    }
+
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5e352802a1ccd34da994d68e41cb013, type: 3}
-  m_Name: enemy_basic_pig
+  m_Name: enemy_golem_fast
   m_EditorClassIdentifier: 
-  displayName: Basic Enemy
-  health: 2
-  moveSpeed: 1.25
-  spawnPrefab: {fileID: 5042135239528872435, guid: 751e34cad23c05b48822742440ae9f88,
+  displayName: Fast Golem
+  health: 5
+  moveSpeed: 2
+  spawnPrefab: {fileID: 2598590579000728593, guid: 3a832ec3d836b364ab05421d4e25457a,
     type: 3}
-  dmgToCore: 1
-  reward: 1
+  dmgToCore: 2
+  reward: 2

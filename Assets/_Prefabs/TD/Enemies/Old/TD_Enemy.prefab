@@ -510,17 +510,17 @@ PrefabInstance:
     - target: {fileID: 1954406165797041841, guid: 88a775150ba8a3b4eb015ae1cf519d66,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1954406165797041841, guid: 88a775150ba8a3b4eb015ae1cf519d66,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1954406165797041841, guid: 88a775150ba8a3b4eb015ae1cf519d66,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1954406165797041841, guid: 88a775150ba8a3b4eb015ae1cf519d66,
         type: 3}
@@ -616,6 +616,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire_Pig_B2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954406165797268113, guid: 88a775150ba8a3b4eb015ae1cf519d66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a775150ba8a3b4eb015ae1cf519d66, type: 3}

@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2316409251675377875, guid: a6070dea2cd260648b52967c9ac20488,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 72265004380b1494cb8d56eb66112961, type: 3}
+    - target: {fileID: 2316409251675377875, guid: a6070dea2cd260648b52967c9ac20488,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b2d362e203ed50e45a981cd547f97ca4, type: 2}
     - target: {fileID: 3465058492507033985, guid: a6070dea2cd260648b52967c9ac20488,
         type: 3}
       propertyPath: m_StaticEditorFlags

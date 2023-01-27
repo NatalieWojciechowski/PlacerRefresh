@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Blaster Gun
   category: Turret
   health: 2
-  attackSpeed: 2
+  attackSpeed: 1.5
   attackRange: 5
   buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 7868345671137580175, guid: 3bac0910a63771e45ad40f6a00fd7a40,
