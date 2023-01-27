@@ -81,4 +81,10 @@ public struct BuildingData
         // TODO: any modifiers to sell cost such as any upgrades / tiers?
         return Mathf.RoundToInt(this.PurchaseCost / 2);
     }
+
+    public float AdjustedAttackDelay()
+    {
+        // Ex: 0.25 / 1 => .5
+        return _BuildingData.projectileDelay / AttackSpeed;
+    }
 }

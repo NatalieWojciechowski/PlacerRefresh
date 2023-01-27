@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: catapault
   m_EditorClassIdentifier: 
   displayName: Catapault
-  spawnPrefab: {fileID: 0}
   icon: {fileID: 21300000, guid: 2e475c5428ba33b4cb57b455249ea66e, type: 3}
   description: A Catapult =]
   category: Turret
   health: 2
   attackSpeed: 1
-  attackRange: 6
+  attackRange: 15
+  buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 7708929701459535268, guid: ebedbfd277cbdcc49a93b2104bae4a86,
     type: 3}
-  projectileDelay: 2
+  projectileDelay: 1
   baseDamage: 2
   aoeActiveDuration: 0.5
   CurrentTier: 1

@@ -39,6 +39,8 @@ public class TD_Building : MonoBehaviour
     private float effectToggleDelay = .25f;
     private float effectLastToggle = 0;
 
+    protected float myAttackDelay = 1f;
+
     //private int _currentTier = 1;
     //private int _maxTier = 1;
 
@@ -46,6 +48,7 @@ public class TD_Building : MonoBehaviour
     public Guid BuildingUUID { get; private set; }
     public TD_Enemy BuildingTarget { get => _buildingTarget; }
     public Transform ProjectileStart;
+    public GameObject RangeIndicator;
 
     protected enum TargetingType
     {
@@ -88,6 +91,7 @@ public class TD_Building : MonoBehaviour
         // Any adjustments to make with building data now that we have the base? 
         if (!sourceBuildingData || !_baseBuildingData || !TD_GameManager.current) return;
         SetStats(sourceBuildingData);
+        SetupHelpers();
     }
 
     public void SetStats(TD_BuildingData bData)
@@ -95,22 +99,11 @@ public class TD_Building : MonoBehaviour
         if (!bData) return;
         _baseBuildingData = bData;
         _sBuildingData = new BuildingData(bData);
+        myAttackDelay = _sBuildingData.AdjustedAttackDelay();
 
-        //_attackRange = _baseBuildingData.attackRange;
-        //_baseDamage = _baseBuildingData.baseDamage;
-        //_currentTier = _baseBuildingData.CurrentTier;
-        //_maxTier = _baseBuildingData.MaxTier;
-
-        PieceBehaviour pieceBehaviour = GetComponent<PieceBehaviour>();
-        if (pieceBehaviour)
-        {
-            pieceBehaviour.Name = bData.displayName;
-            pieceBehaviour.Icon = bData.icon;
-            pieceBehaviour.Description = bData.description;
-            pieceBehaviour.Category = bData.category;
-        }
         // callbacks / Powerup animations/ etc
-        BuildingInit();
+        // TODO: fix this weirdness between here and building init
+        BuildingInit(null);
     }
 
 
@@ -162,7 +155,7 @@ public class TD_Building : MonoBehaviour
         }
         else if (!_buildingTarget && IsInRange) ExitedRange();
 
-        //// Visual
+        //// Visual like tracking or "warm up" animation
         //if (IsInRange) ToggleEffects(true);
     }
 
@@ -253,7 +246,7 @@ public class TD_Building : MonoBehaviour
     // TODO: Clearly define the difference between the reloading and cooldown states
     private bool ProjectileReady()
     {
-        return (Time.time - _lastAction > _baseBuildingData.projectileDelay);
+        return (Time.time - _lastAction > myAttackDelay);
     }
 
     protected virtual void SpawnProjectile()
@@ -318,7 +311,22 @@ public class TD_Building : MonoBehaviour
         transform.SetPositionAndRotation(tPlacement.position, tPlacement.rotation);
         TryBuildingState(BuildingState.Idle);
         IsRunning = true;
+        RangeIndicator?.SetActive(false);
         EventManager.current.TowerPlaced(this);
+    }
+
+    private void SetupHelpers()
+    {
+        if (RangeIndicator)
+        {
+            float attackRange = _sBuildingData.AttackRange;
+            RangeIndicator.GetComponentInChildren<SpriteRenderer>().size = new Vector2(attackRange, attackRange);
+            RangeIndicator?.SetActive(true);
+        }
+        if (inRangeEffects)
+        {
+            // TODO: ?
+        }
     }
 
     public Button ConfigureButton(ref Button buttonObj)

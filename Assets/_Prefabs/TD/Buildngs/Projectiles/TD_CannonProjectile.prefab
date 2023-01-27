@@ -101,6 +101,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7423385120151583293, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
         type: 3}
       propertyPath: m_RootOrder
