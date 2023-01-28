@@ -32,6 +32,7 @@ public class TD_Enemy : MonoBehaviour
     public GameObject HealthBar;
 
     public GameObject DeathEffects;
+    private GameObject CorpseSpawnPrefab;
 
     public Guid EnemyUUID { get; private set; }
 
@@ -97,6 +98,12 @@ public class TD_Enemy : MonoBehaviour
     {
         // TODO: Play animation?
         TryChangeState(EnemyState.Die);
+        // TODO: Probability/ flag on drops?;
+        if (CorpseSpawnPrefab)
+        {
+            GameObject drop = Instantiate(CorpseSpawnPrefab, TD_GameManager.current.EffectsBin?.transform);
+            drop.transform.position = transform.position;
+        }
         DeathEffects?.SetActive(true);
         TD_GameManager.current.AddCoins(_deathReward);
 
@@ -156,6 +163,7 @@ public class TD_Enemy : MonoBehaviour
         _maxHealth = waveEnemyData.health;
         _deathReward = waveEnemyData.reward;
         DmgToCore = waveEnemyData.dmgToCore;
+        CorpseSpawnPrefab = waveEnemyData.corpseSpawnPrefab;
         TryChangeState(EnemyState.Idle);
     }
 

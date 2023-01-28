@@ -13,9 +13,11 @@ public class TD_AOEData : ScriptableObject
 
     #region Behavior
     public float pulseDelay;
+    public float aoeRange;
     #endregion
 
     #region Interactions
     public bool RemoveOnContact = false;
+    public float maxLifetime;
     #endregion
 }

@@ -9,4 +9,5 @@ public class TD_EnemyData : ScriptableObject
     public GameObject spawnPrefab;
     public int dmgToCore = 1;
     public int reward = 1;
+    public GameObject corpseSpawnPrefab;
 }

@@ -75,17 +75,16 @@ public class AreaTower : TD_Building
     /// </summary>
     protected override void BuildingInit(TD_BuildingData sourceBuildingData = null)
     {
-        if (effectAreaRange) AdjustRange();
         base.BuildingInit(sourceBuildingData);
         TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
     }
 
-    private void AdjustRange()
-    {
-        //effectAreaRange.transform.localScale = Vector3.one * _sBuildingData.AttackRange;
-        // Roughly inside tangent of range
-        effectAreaRange.GetComponent<TD_AOE>().AdjustRange(_sBuildingData.AttackRange);
-    }
+    //private void AdjustRange()
+    //{
+    //    //effectAreaRange.transform.localScale = Vector3.one * _sBuildingData.AttackRange;
+    //    // Roughly inside tangent of range
+    //    //effectAreaRange.GetComponent<TD_AOE>().AdjustRange(_sBuildingData.AttackRange);
+    //}
 
     // TODO: create an AOE equivalent of the projectile; this wont trigger naturally atm
     //private void OnCollisionEnter(Collision collision)

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
-  m_Name: slowingAOE
+  m_Name: RangeEffect
   m_EditorClassIdentifier: 
-  spawnPrefab: {fileID: 1000012901425104, guid: 3f347b8e2c139f343a77e17bbc0e50c3,
+  spawnPrefab: {fileID: 6075313622514558837, guid: 1c72cd7b5c6b2ac41b371100f7af2e71,
     type: 3}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
-  category: Damage
+  category: Buff
   pulseDelay: 0.25
-  aoeRange: 3
+  aoeRange: 1
   RemoveOnContact: 0
   maxLifetime: 0

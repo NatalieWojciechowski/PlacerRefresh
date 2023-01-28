@@ -23,6 +23,10 @@ public class TD_GameManager : MonoBehaviour
     public int TotalWaves { get => totalWaves; }
     public int CoreHealth { get => coreHealth; }
 
+    [SerializeField]
+    private GameObject effectsBin;
+    public GameObject EffectsBin { get => effectsBin; }
+
     private void Awake()
     {
         // TODO: This seems to be calling the methods while registering

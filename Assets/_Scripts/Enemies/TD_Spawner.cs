@@ -23,7 +23,7 @@ public class TD_Spawner : MonoBehaviour
     ///  How far apart the entities should be before spawning next
     /// </summary>
     private float spawnDensity = 0.5f;
-    private int lastSpawnTime;
+    private float lastSpawnTime;
 
     private void Awake()
     {
@@ -160,7 +160,7 @@ public class TD_Spawner : MonoBehaviour
             spawnedEntities.Add(lastSpawned);
             _enemiesAlive.Add(enemyControl);
             currentEnemyIndex++;
-            lastSpawnTime = 0;
+            lastSpawnTime = Time.time;
         }
     }
 

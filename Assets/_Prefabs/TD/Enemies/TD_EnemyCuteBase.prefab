@@ -118,6 +118,7 @@ MonoBehaviour:
   HealthBarPrefab: {fileID: 152584, guid: 87ca4f026c30af74fac5870e06ca6b85, type: 3}
   HealthBar: {fileID: 0}
   DeathEffects: {fileID: 1371391707102754992}
+  enemyState: 0
 --- !u!54 &1859681545445134727
 Rigidbody:
   m_ObjectHideFlags: 0
