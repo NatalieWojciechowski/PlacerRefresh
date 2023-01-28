@@ -117,7 +117,8 @@ public class TD_GameManager : MonoBehaviour
         PAUSE,
         NORMAL,
         FAST,
-        FASTER
+        FASTER,
+        FASTEST
     }
 
     public static void SetGameSpeed(GameSpeedOptions gameSpeedRequest)
@@ -138,6 +139,10 @@ public class TD_GameManager : MonoBehaviour
 
             case GameSpeedOptions.FASTER:
             Time.timeScale = 4;
+            break;
+
+            case GameSpeedOptions.FASTEST:
+            Time.timeScale = 8;
             break;
 
             default: break;

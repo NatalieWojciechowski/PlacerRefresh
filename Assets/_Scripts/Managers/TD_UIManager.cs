@@ -16,6 +16,7 @@ public class TD_UIManager : MonoBehaviour
     public GameObject gameWinStatus;
     public GameObject waveStatus;
     public GameObject SpeedControls;
+    public GameObject WaveStart;
     public GameObject playerMoney;
 
     public GameObject pieces_Selection;
@@ -39,14 +40,17 @@ public class TD_UIManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnTowerDeselect += UpdateDisplay;
+        EventManager.OnWaveStart += OnWaveStart;
         EventManager.GameOver += OnGameLose;
         EventManager.GameWon += OnGameWin;
-        waveStatus.GetComponentInChildren<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
+        WaveStart.GetComponent<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
+        //waveStatus.GetComponentInChildren<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         speedButtons[0]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE));
         speedButtons[1]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL));
         speedButtons[2]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.FAST));
         speedButtons[3]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.FASTER));
+        speedButtons[4]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.FASTEST));
     }
 
     private void OnDisable()
@@ -54,7 +58,9 @@ public class TD_UIManager : MonoBehaviour
         EventManager.OnTowerDeselect -= UpdateDisplay;
         EventManager.GameOver -= OnGameLose;
         EventManager.GameWon -= OnGameWin;
-        waveStatus.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+        EventManager.OnWaveStart -= OnWaveStart;
+        //waveStatus.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+        WaveStart.GetComponent<Button>().onClick.RemoveAllListeners();
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         foreach (Button button in speedButtons)
         {
@@ -74,9 +80,12 @@ public class TD_UIManager : MonoBehaviour
         //if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
         if (waveStatus)
         {
-            waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{TD_GameManager.current.CurrentWaveIndex} / {TD_GameManager.current.TotalWaves}";
+            int currentWave = TD_GameManager.current.CurrentWaveIndex + 1;
+            if (!TD_EnemyManager.current.WaveActive) currentWave--;
+            waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.current.TotalWaves}";
         }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.current.CurrentCurrency.ToString();
+        if (WaveStart) WaveStart.SetActive(TD_GameManager.current.CoreHealth > 0 && !TD_EnemyManager.current.WaveActive || TD_EnemyManager.current.IsCurrentWaveComplete());
 
         if (pieces_Selection && TD_BuildManager.current)
         {
@@ -97,6 +106,11 @@ public class TD_UIManager : MonoBehaviour
     private void OnGameWin(object sender, EventArgs e)
     {
         gameWinStatus.SetActive(true);
+    }
+
+    private void OnWaveStart(int waveId)
+    {
+        UpdateDisplay();
     }
 
     private void Update()

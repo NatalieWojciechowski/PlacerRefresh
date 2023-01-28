@@ -19,6 +19,7 @@ public class TD_EnemyManager : MonoBehaviour
     public float WaveIntervalDelay = 2f;
     private int _requestedWaveIndx;
     private bool _waveActive = false;
+    public bool WaveActive { get => _waveActive; }
 
 
     public int CurrentWave = 0;
