@@ -1,4 +1,5 @@
 using EasyBuildSystem.Features.Scripts.Core.Base.Piece;
+using ModelShark;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -312,6 +313,7 @@ public class TD_Building : MonoBehaviour
         TryBuildingState(BuildingState.Idle);
         IsRunning = true;
         RangeIndicator?.SetActive(false);
+        EventManager.current.MoneySpent(_sBuildingData.PurchaseCost);
         EventManager.current.TowerPlaced(this);
     }
 
@@ -334,9 +336,17 @@ public class TD_Building : MonoBehaviour
         buttonObj.transform.GetChild(0).GetComponent<Image>().sprite = _baseBuildingData.icon;
         buttonObj.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
 
-        buttonObj.transform.GetChild(1).GetComponent<Text>().text = _baseBuildingData.displayName;
+        //buttonObj.transform.GetChild(1).GetComponent<TMPro.TMP_Text>().text = _baseBuildingData.displayName;
         buttonObj.onClick.AddListener(delegate { TryPurchase(_baseBuildingData.PurchaseCost); });
-        
+
+        GameObject tooltip = buttonObj.GetComponentInChildren<TooltipTrigger>()?.gameObject;
+        if (tooltip)
+        {
+            TooltipTrigger tooltipTrigger = tooltip.GetComponent<TooltipTrigger>();
+            tooltipTrigger.SetText("DisplayName", _sBuildingData.DisplayName);
+            tooltipTrigger.SetText("PurchaseCost", _sBuildingData.PurchaseCost.ToString());
+        }
+
         buttonObj.gameObject.SetActive(true);
         return buttonObj;
     }

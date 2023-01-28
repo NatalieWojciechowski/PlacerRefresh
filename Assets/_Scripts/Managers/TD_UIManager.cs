@@ -20,6 +20,8 @@ public class TD_UIManager : MonoBehaviour
 
     public GameObject pieces_Selection;
 
+    public ModelShark.TooltipStyle tooltipStyle;
+
     //public Button ButtonTemplate;
     //public Transform Container;
 
@@ -140,35 +142,20 @@ public class TD_UIManager : MonoBehaviour
                 currentButton.image.color = Color.white;
                 int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
                 currentButton.enabled = TD_GameManager.current.CanAfford(bCost);
-                currentButton.onClick.AddListener(delegate { OnUserSpend(bCost); });
             } else {
                 currentButton.enabled = false;
-                //currentButton.image.color = new Color(1f, 0, 0, 0.25f);
-                currentButton.onClick.RemoveAllListeners();
+                currentButton.image.color = Color.red;
             }
-
-            //int Index = i;
-            //currentButton.onClick.AddListener(() =>
-            //{
-            //    BuilderBehaviour.Instance.ChangeMode(EasyBuildSystem.Features.Scripts.Core.Base.Builder.Enums.BuildMode.None);
-            //    BuilderBehaviour.Instance.SelectPrefab(BuildManager.Instance.Pieces[Index]);
-            //    BuilderBehaviour.Instance.ChangeMode(EasyBuildSystem.Features.Scripts.Core.Base.Builder.Enums.BuildMode.Placement);
-            //});
-
-            //Button.transform.GetChild(0).GetComponent<Image>().sprite = BuildManager.Instance.Pieces[i].Icon;
-            //Button.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
-
-            //Button.transform.GetChild(1).GetComponent<Text>().text = BuildManager.Instance.Pieces[i].Name;
         }
     }
 
-    private void OnUserSpend(int bCost)
-    {
-        if (!gameObject.activeSelf) return;
-        EventManager.current.MoneySpent(bCost);
-        // Prevent the user from placing another after only purchasing once
-        // TODO: This doesnt behave as we would expect; still doesnt prevent more building
-        //BuildManager.Instance.StopAllCoroutines();
-        UpdateDisplay();
-    }
+    //private void OnUserSpend(int bCost)
+    //{
+    //    if (!gameObject.activeSelf) return;
+    //    EventManager.current.MoneySpent(bCost);
+    //    // Prevent the user from placing another after only purchasing once
+    //    // TODO: This doesnt behave as we would expect; still doesnt prevent more building
+    //    //BuildManager.Instance.StopAllCoroutines();
+    //    UpdateDisplay();
+    //}
 }

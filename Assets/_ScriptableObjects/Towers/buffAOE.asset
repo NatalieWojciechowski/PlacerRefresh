@@ -20,4 +20,4 @@ MonoBehaviour:
   pulseDelay: 0.25
   aoeRange: 1
   RemoveOnContact: 0
-  maxLifetime: 0
+  maxLifetime: 2
