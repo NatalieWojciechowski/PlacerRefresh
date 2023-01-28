@@ -208,6 +208,56 @@ PrefabInstance:
       propertyPath: projectileDamage
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[0].value
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[1].value
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051212390378637833, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
+        type: 3}
+      propertyPath: projectileArc.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 7423385120151583293, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
         type: 3}
       propertyPath: m_RootOrder

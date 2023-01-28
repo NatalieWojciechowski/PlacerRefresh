@@ -190,7 +190,7 @@ public class TD_Building : MonoBehaviour
         foreach (TD_Enemy enemy in enemies)
         {
             float _distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (_distance < _sBuildingData.AttackRange) {
+            if (_distance < _sBuildingData.AttackRange && enemy.Health > 0) {
                 plannedEnemy = enemy;
                 break;
             }

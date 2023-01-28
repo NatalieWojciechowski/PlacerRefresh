@@ -34,21 +34,24 @@ public class TD_Enemy : MonoBehaviour
     public GameObject DeathEffects;
     private GameObject CorpseSpawnPrefab;
 
+    private Coroutine stateTransition;
+
     public Guid EnemyUUID { get; private set; }
+    public float Health { get => _currentHealth; }
 
     protected enum EnemyState
     {
         Spawn,
         Idle,
         Move,
-        Attack,
-        Damage,
+        SelfDestructing,
+        Damaged,
         Die
     }
     [SerializeField]
     private EnemyState enemyState;
 
-    private void Awake()
+    protected virtual private void Awake()
     {
         EnemyUUID = Guid.NewGuid();
     }
@@ -59,7 +62,7 @@ public class TD_Enemy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         enemyState = EnemyState.Spawn;
         // TODO: With multi spawners, need find closest
@@ -81,9 +84,10 @@ public class TD_Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        if (ShouldDie()) Expire();
+        if (enemyState == EnemyState.SelfDestructing || enemyState == EnemyState.Die) return;
+        if (ShouldDie()) TryChangeState(EnemyState.SelfDestructing);
         if (nextWaypoint) MoveToWaypoint();
         HealthBar.transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(-30, -20, 0);
     }
@@ -96,8 +100,7 @@ public class TD_Enemy : MonoBehaviour
 
     private void Expire()
     {
-        // TODO: Play animation?
-        TryChangeState(EnemyState.Die);
+
         // TODO: Probability/ flag on drops?;
         if (CorpseSpawnPrefab)
         {
@@ -110,7 +113,7 @@ public class TD_Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         Destroy(HealthBar);
     }
@@ -122,18 +125,30 @@ public class TD_Enemy : MonoBehaviour
 
     internal void TakeDamage(float projectileDamage)
     {
-        TryChangeState(EnemyState.Damage);
-        _animator.SetInteger("animation", (int)enemyState);
+        if (_currentHealth <= 0) return; // Dont interrupt our die sequence
+        TryChangeState(EnemyState.Damaged);
         _currentHealth -= projectileDamage;
-        // TODO: Update floating bar?
         HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
+
+        // Setup transition back to moving
+        SafeTransition(EnemyState.Move, 0.5f);
+    }
+     
+    private void SafeTransition(EnemyState nextState, float delay)
+    {
+        // Setup transition back to moving
+        if (stateTransition != null) { StopCoroutine(stateTransition); stateTransition = null; }
+        stateTransition = StartCoroutine(AllowStateTime(nextState, delay));
     }
 
-    private void AllowStateTime(EnemyState nextState)
+    private IEnumerator AllowStateTime(EnemyState nextState, float delay)
     {
-        //float clipLength = _animator.GetCurrentAnimatorClipInfo(0)[(int)nextState].clip.length;
-        //Invoke(, clipLength);
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Now allow state change");
+        TryChangeState(nextState);
     }
+
+
 
     private void MoveToWaypoint()
     {
@@ -197,16 +212,28 @@ public class TD_Enemy : MonoBehaviour
         else OnReachEnd();
     }
 
-    private void OnReachEnd()
+    public void OnReachEnd()
     {
-        TryChangeState(EnemyState.Attack);
         // Play animation? 
+        EventManager.EnemyPassedCore(DmgToCore);
+        TryChangeState(EnemyState.SelfDestructing);
     }
 
     private void TryChangeState(EnemyState toState = EnemyState.Idle)
     {
         _animator.SetInteger("animation", (int)toState);
         enemyState = toState;
-    }
 
+        switch(toState)
+        {
+            case EnemyState.Die:
+            Expire();
+            break;
+            case EnemyState.SelfDestructing:
+            this.GetComponent<Collider>().enabled = false;
+            DeathEffects?.SetActive(true);
+            SafeTransition(EnemyState.Die, 0.5f);
+            break;
+        }
+    }
 }

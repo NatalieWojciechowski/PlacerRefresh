@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4212694524400293280}
   m_Layer: 0
   m_Name: TD_AreaEffect
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,15 @@ MonoBehaviour:
   myTarget: {fileID: 0}
   projectileSpeed: 1
   projectileDamage: 1
+  projectileArc:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveStartScale: 1
+  curveFinalScale: 0
+  impactEffects: {fileID: 0}
 --- !u!65 &4212694524400293280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -311,6 +320,15 @@ MonoBehaviour:
   myTarget: {fileID: 0}
   projectileSpeed: 2
   projectileDamage: 1
+  projectileArc:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveStartScale: 1
+  curveFinalScale: 0
+  impactEffects: {fileID: 0}
 --- !u!1001 &4731973614419811916
 PrefabInstance:
   m_ObjectHideFlags: 0

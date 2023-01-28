@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4212694524400293280}
   m_Layer: 0
   m_Name: TD_Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,33 @@ MonoBehaviour:
   myTarget: {fileID: 0}
   projectileSpeed: 1
   projectileDamage: 1
+  projectileArc:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.28248596
+      inSlope: 0.16724701
+      outSlope: 0.16724701
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.44039014
+    - serializedVersion: 3
+      time: 1
+      value: 0.000015258789
+      inSlope: -0.79689807
+      outSlope: -0.79689807
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.061854064
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curveStartScale: 1
+  curveFinalScale: 0
+  impactEffects: {fileID: 0}
 --- !u!65 &4212694524400293280
 BoxCollider:
   m_ObjectHideFlags: 0

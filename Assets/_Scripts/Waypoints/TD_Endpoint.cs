@@ -27,8 +27,7 @@ public class TD_Endpoint : MonoBehaviour
         TD_Enemy enemy = collision.gameObject.GetComponent<TD_Enemy>();
         if (enemy)
         {
-            EventManager.EnemyPassedCore(enemy.DmgToCore);
-            Destroy(collision.gameObject);
+            enemy.OnReachEnd();
         }
     }
     // In case they dont destroy? 
@@ -38,8 +37,7 @@ public class TD_Endpoint : MonoBehaviour
         TD_Enemy enemy = collision.gameObject.GetComponent<TD_Enemy>();
         if (enemy)
         {
-            EventManager.EnemyPassedCore(enemy.DmgToCore);
-            Destroy(collision.gameObject);
+            enemy.OnReachEnd();
         }
     }
 }

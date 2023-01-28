@@ -6638,6 +6638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ForRoute: {fileID: 15885968}
   Waves:
+  - {fileID: 11400000, guid: 5bc14e23e4405a14298daaea3ad9d4f7, type: 2}
   - {fileID: 11400000, guid: 96bd432cc107c6f41b8926ea563adf51, type: 2}
   - {fileID: 11400000, guid: 9cc256e81f774e049803db2097963093, type: 2}
   - {fileID: 11400000, guid: 7a7dca42ab59500418be681c40a3685f, type: 2}

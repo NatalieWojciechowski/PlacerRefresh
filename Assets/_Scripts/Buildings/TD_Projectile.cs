@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class TD_Projectile : MonoBehaviour
@@ -11,9 +12,23 @@ public class TD_Projectile : MonoBehaviour
     private float _maxLifetime = 10f;
     private Animator mAnimator;
     private float totalTravelNeeded;
-    public AnimationCurve curve;
+    public AnimationCurve projectileArc;
     public float curveStartScale = 1f;
     public float curveFinalScale;
+
+    enum ProjectileState
+    {
+        Loaded,
+        Fire,
+        Moving,
+        Impact,
+        Expire
+    }
+    private ProjectileState projectileState;
+
+    private Coroutine stateTransition;
+    [SerializeField]
+    private GameObject impactEffects;
 
     protected virtual void Start()
     {
@@ -22,20 +37,20 @@ public class TD_Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_spawnTime == 0) return;
+        if (_spawnTime == 0 || projectileState == ProjectileState.Expire) return;
  
         //// Currently this should happen once the enemy dies
         //if (myTarget == null)
         //    Debug.LogError("NO target");
        
-        if (Time.time - _spawnTime > _maxLifetime || !myTarget || transform.position.y < 0f) ExpireProjectile();
+        if (Time.time - _spawnTime > _maxLifetime || !myTarget || transform.position.y < 0f) TryChangeState(ProjectileState.Expire);
         // Target may be destroyed
         if (myTarget) { 
             AdjustProjectileOnPath();
             if (mAnimator)
             {
 
-                float graphValue = curve.Evaluate((Time.time - _spawnTime) / (Mathf.Sqrt(Vector3.Distance(myParent.transform.position, myTarget.transform.position))));
+                float graphValue = projectileArc.Evaluate((Time.time - _spawnTime) / (Mathf.Sqrt(Vector3.Distance(myParent.transform.position, myTarget.transform.position))));
                 //Debug.Log(aniYPos);
                 //Vector3 aniPos = transform.position + new Vector3(0, aniYPos, 0);
                 transform.Translate(new Vector3(0, graphValue, 0));
@@ -70,17 +85,52 @@ public class TD_Projectile : MonoBehaviour
         return pathLength / projectileSpeed;
     }
 
-    private void ExpireProjectile()
+    private void Expire()
     {
         Destroy(this.gameObject);
+    }
+    private void SafeTransition(ProjectileState nextState, float delay)
+    {
+        // Setup transition back to moving
+        if (stateTransition != null) { StopCoroutine(stateTransition); stateTransition = null; }
+        stateTransition = StartCoroutine(AllowStateTime(nextState, delay));
+    }
+    private IEnumerator AllowStateTime(ProjectileState nextState, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Now allow state change");
+        TryChangeState(nextState);
+    }
+
+    private void TryChangeState(ProjectileState toState = ProjectileState.Loaded)
+    {
+        if (mAnimator) mAnimator.SetInteger("animation", (int)toState);
+        projectileState = toState;
+
+        switch (toState)
+        {
+            case ProjectileState.Expire:
+            this.GetComponent<Collider>().enabled = false;
+            Expire();
+            break;
+            
+            case ProjectileState.Impact:
+            this.GetComponent<Collider>().enabled = false;
+            if (mAnimator) mAnimator.PlayInFixedTime("Impact");
+            if (impactEffects) impactEffects.SetActive(true);
+            SafeTransition(ProjectileState.Expire, 0.125f);
+            break;
+        }
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject == myTarget) {
             myTarget.GetComponent<TD_Enemy>().TakeDamage(projectileDamage);
-            if (mAnimator) mAnimator.PlayInFixedTime("Impact");
-            ExpireProjectile();
+            TryChangeState(ProjectileState.Impact);
+        } else if (!collision.gameObject.CompareTag("Projectile"))
+        {
+            TryChangeState(ProjectileState.Impact);
         }
     }
 
@@ -123,5 +173,7 @@ public class TD_Projectile : MonoBehaviour
             //    clip.
             //}
         }
+        TryChangeState(ProjectileState.Fire);
+        SafeTransition(ProjectileState.Moving, 0.125f);
     }
 }

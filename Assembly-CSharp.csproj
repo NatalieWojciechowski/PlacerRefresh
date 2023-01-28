@@ -542,6 +542,7 @@
     <Compile Include="Assets\_Scripts\Enemies\TD_Enemy_State.cs" />
     <Compile Include="Assets\_Scripts\Enemies\TD_EnemyBuff.cs" />
     <Compile Include="Assets\AreaEffect.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_Boss.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
