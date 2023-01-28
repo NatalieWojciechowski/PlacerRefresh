@@ -44,6 +44,7 @@ public class TD_Wave
     {
         startTime = Time.time;
         // TODO: Invoke Event?
+        EventManager.current.WaveStarted(waveIndex);
     }
 
     public void WaveSpawningComplete()

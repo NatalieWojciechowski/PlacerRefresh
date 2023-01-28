@@ -35,7 +35,7 @@ public class TD_Enemy : MonoBehaviour
 
     public Guid EnemyUUID { get; private set; }
 
-    enum EnemyState
+    protected enum EnemyState
     {
         Spawn,
         Idle,
@@ -44,11 +44,17 @@ public class TD_Enemy : MonoBehaviour
         Damage,
         Die
     }
-    EnemyState enemyState;
+    [SerializeField]
+    private EnemyState enemyState;
 
     private void Awake()
     {
         EnemyUUID = Guid.NewGuid();
+    }
+
+    public void AnimateState()
+    {
+        TryChangeState(enemyState);
     }
 
     // Start is called before the first frame update
@@ -90,6 +96,7 @@ public class TD_Enemy : MonoBehaviour
     private void Expire()
     {
         // TODO: Play animation?
+        TryChangeState(EnemyState.Die);
         DeathEffects?.SetActive(true);
         TD_GameManager.current.AddCoins(_deathReward);
 
@@ -125,7 +132,7 @@ public class TD_Enemy : MonoBehaviour
     {
         if (ReachedPoint())
         {
-            _animator.SetBool("IsMoving", false);
+            //_animator.SetBool("IsMoving", false);
             UpdateNextWaypoint();
         }
         if (!nextWaypoint) return;
@@ -172,59 +179,25 @@ public class TD_Enemy : MonoBehaviour
         // If not at the end
         if (nextLocation != null)
         {
+            TryChangeState(EnemyState.Move);
             if (setPrevious) prevWaypoint = nextWaypoint;
             nextWaypoint = nextLocation;
             currentWaypointIndx++;
             _lastWaypointSwitchTime = Time.time;
-            _animator.SetBool("IsMoving", true);
+            //_animator.SetBool("IsMoving", true);
         }
         else OnReachEnd();
-
-        //nextWaypoint = WaypointManager.NextWaypoint(fullRoute, currentWaypointIndx);
-        //if (nextWaypoint != null) currentWaypointIndx++;
-        //nextWaypoint = WaypointManager.NextWaypoint(fullRoute, transform);
     }
 
     private void OnReachEnd()
     {
-        // Damage Total health
-        // Destroy self 
-        //Destroy(this.gameObject);
-        
-        // This will get handled by the endpoint 
+        TryChangeState(EnemyState.Attack);
+        // Play animation? 
     }
 
     private void TryChangeState(EnemyState toState = EnemyState.Idle)
     {
-        //switch (toState)
-        //{
-        //    case EnemyState.Idle:
-
-        //    break;
-        //    case EnemyState.Move:
-        //    bAnimator.SetBool("IsAttacking", true);
-        //    attackState = BuildingAttackState.Attacking;
-        //    break;
-        //    case EnemyState.Attack:
-        //    bAnimator.SetBool("IsReloading", true);
-        //    attackState = BuildingAttackState.Reloading;
-        //    break;
-        //    case EnemyState.Damage:
-        //    bAnimator.SetBool("IsReloading", true);
-        //    attackState = BuildingAttackState.Cooldown;
-        //    break;
-        //    case EnemyState.Die:
-        //    bAnimator.SetBool("IsReloading", true);
-        //    attackState = BuildingAttackState.Reloading;
-        //    break;
-        //    default:
-        //    bAnimator.SetBool("InRange", false);
-        //    bAnimator.SetBool("IsReloading", false);
-        //    bAnimator.SetBool("IsAttacking", false);
-        //    break;
-        //};
         _animator.SetInteger("animation", (int)toState);
-        // TODO: any sort of validation here? 
         enemyState = toState;
     }
 

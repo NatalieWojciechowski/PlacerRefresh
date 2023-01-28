@@ -539,6 +539,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_Enemy_State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

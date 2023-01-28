@@ -59,6 +59,11 @@ public class TD_GameManager : MonoBehaviour
         if (coreHealth <= 0) GameOver();
     }
 
+    public void RestartWaves()
+    {
+        currentWaveIndex = 0;
+    }
+
     private void GetTotalWaves()
     {
         if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
@@ -78,7 +83,8 @@ public class TD_GameManager : MonoBehaviour
     {
         if (!spawningEnabled) return;
         if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
-        if (ctx == currentWaveIndex)
+        // We may have more than one spawner contributing to the wave, make sure all are done first
+        if (ctx == currentWaveIndex && TD_EnemyManager.current.IsCurrentWaveComplete())
             currentWaveIndex++;
         if (currentWaveIndex > totalWaves)
         {

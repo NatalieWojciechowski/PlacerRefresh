@@ -90,6 +90,8 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\CreateObject.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\Editor\CTSEditor.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Editor\GridPlacement\CreateGridLayersMenu.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_EnemyEditor.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_EnemyManagerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

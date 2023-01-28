@@ -30,6 +30,11 @@ public class TD_Spawner : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        if (ForRoute) ForRoute.TdSpawner = this;
+    }
+
     //private void OnEnable()
     //{
     //    //int _waveIndex = 0;
@@ -56,6 +61,7 @@ public class TD_Spawner : MonoBehaviour
         if (spawnedEntities == null) spawnedEntities = new();
         if (_enemiesToSpawn == null) _enemiesToSpawn = new();
         if (_enemiesAlive == null) _enemiesAlive = new();
+        if (Waves == null) Waves = new();
         if (!SpawnPosition) SpawnPosition = transform;
     }
 
@@ -83,8 +89,8 @@ public class TD_Spawner : MonoBehaviour
             {
                 currentWave.EndWave();
                 // Reset this for the next iteration in case we are at the end 
-                CurrentWaveComplete = true;
                 currentEnemyIndex = 0;
+                CurrentWaveComplete = true;
             }
         }
         else if (IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));

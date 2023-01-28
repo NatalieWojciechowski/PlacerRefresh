@@ -10,6 +10,8 @@ public class TD_EnemyManager : MonoBehaviour
 
     [SerializeField]
     WaypointRoute _waypointRoute;
+    [SerializeField]
+    List<WaypointRoute> Routes;
     List<TD_Enemy> _enemies;
     [SerializeField]
     List<TD_Spawner> _spawners;
@@ -21,7 +23,7 @@ public class TD_EnemyManager : MonoBehaviour
 
     public int CurrentWave = 0;
     private int _totalWaves;
-    public int TotalWaves { get => _totalWaves |= GetTotalWaves(); }
+    public int TotalWaves { get => GetTotalWaves(); }
 
 
     public WaypointRoute WaypointRoute { get => _waypointRoute; set => _waypointRoute = value; }
@@ -34,6 +36,8 @@ public class TD_EnemyManager : MonoBehaviour
     private void OnEnable()
     {
         timeRemaining = WaveIntervalDelay;
+        RefreshSpawners();
+            //else _spawners.Clear();
         EventManager.OnWaveStart += enableWave;
     }
 
@@ -66,7 +70,8 @@ public class TD_EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_waypointRoute || _spawners.Count < 0 || !TD_GameManager.current) return;
+        if (Routes == null || Routes.Count < 1 || !TD_GameManager.current) return;
+        if (_spawners.Count < 1) RefreshSpawners();
         //!TD_GameManager.current.HasStarted) return;
         if (TD_GameManager.current.HasStarted)
         {
@@ -90,12 +95,23 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void TryStartSpawers()
     {
+        RefreshSpawners();
         if (TD_GameManager.current.CurrentWaveIndex < TotalWaves)
         {
             ToggleSpawners(true);
             _waveActive = true;
             //Debug.Log("This may have been start spawn initially");
             //EventManager.current.WaveFinished(TD_GameManager.current.CurrentWaveIndex);
+        }
+    }
+
+    private void RefreshSpawners()
+    {
+        if (_spawners == null) _spawners = new();
+        else _spawners.Clear();
+        foreach (WaypointRoute route in Routes)
+        {
+            if (route.TdSpawner != null) _spawners.Add(route.TdSpawner);
         }
     }
 
