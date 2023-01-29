@@ -181,6 +181,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1049408504298024467, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
+    - target: {fileID: 8810932503824512621, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8972958767987380514, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
 --- !u!4 &1030082216426359587 stripped
@@ -241,6 +251,7 @@ MonoBehaviour:
   IsRunning: 0
   IsInRange: 0
   ProjectileStart: {fileID: 0}
+  RangeIndicator: {fileID: 0}
   effectAreaRange: {fileID: 8674139541548015554}
   TickDamage: 0
 --- !u!1001 &3981617977418454149

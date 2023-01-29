@@ -3235,7 +3235,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -9.137613e-29}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 1.02e-43, w: -1.0388466e-27}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -3751,7 +3751,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.24e-43, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5801,7 +5801,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.98e-43, y: 0, z: 0, w: -0.000024318797}
+  m_BoundingSphereOverride: {x: 9.1835e-41, y: 5.1134013e-37, z: 2.892818e-39, w: -0.000029670759}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -6208,19 +6208,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolbarCtrl: {fileID: 1552933976}
+  builderRaycaster: {fileID: 1038674725}
   pieces:
   - {fileID: 546669087867309034, guid: f5889999acd721e4294848f6a573ad5e, type: 3}
+  - {fileID: 7926945883062772877, guid: 592cb6f501535e14f80a2f2bb21190b1, type: 3}
   - {fileID: 7432458902547865836, guid: 8eacc92dcae41d744981439f6cd5bc8a, type: 3}
   - {fileID: 2162988829660461613, guid: f4341f7c999015e47ae571646f136ceb, type: 3}
-  - {fileID: 3602379146642460443, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
-  - {fileID: 7926945883062772877, guid: 592cb6f501535e14f80a2f2bb21190b1, type: 3}
-  builderRaycaster: {fileID: 1038674725}
+  - {fileID: 1882095695515164307, guid: 57edd59909f377f49b39581d9edaac50, type: 3}
   RaycastLayer:
     serializedVersion: 2
     m_Bits: 512
-  TowersParent: {fileID: 548280902}
+  SnapBuild: 1
   RaycastOffsetPosition: {x: 0, y: 0, z: 1}
-  buildOffset: {x: 0, y: 0.5, z: 0}
+  buildOffset: {x: 0, y: 0, z: 0}
+  TowersParent: {fileID: 548280902}
 --- !u!1 &1211783657
 GameObject:
   m_ObjectHideFlags: 0
@@ -10766,7 +10767,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-526316
+  m_Name: pb_Mesh-904396
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

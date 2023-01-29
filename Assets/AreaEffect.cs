@@ -24,6 +24,8 @@ public class AreaEffect : MonoBehaviour
     protected float _pulseStartTime = 0f;
     protected float _pulseActiveDuration = 0f;
     private GameObject inRangeEffects;
+    [SerializeField]
+    private GameObject buffEffectPreafb;
     #endregion
 
 
@@ -123,9 +125,30 @@ public class AreaEffect : MonoBehaviour
     }
 
 
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        TD_Enemy hit = other.gameObject.GetComponent<TD_Enemy>();
+        if (hit)
+        {
+            hit.GiveShield(buffEffectPreafb);
+        }
+        else if (other.gameObject.CompareTag("Building"))
+        {
+            // perhaps debuff towers? or buff? 
+        }
+    }
+
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        
+        TD_Enemy hit = collision.gameObject.GetComponent<TD_Enemy>();
+        if (hit)
+        {
+            hit.GiveShield(buffEffectPreafb);
+        }
+        else if (collision.gameObject.CompareTag("Building"))
+        {
+            // perhaps debuff towers? or buff? 
+        }
     }
 
     protected virtual void OnCollisionStay(Collision collision)

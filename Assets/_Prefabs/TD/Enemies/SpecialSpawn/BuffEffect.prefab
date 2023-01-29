@@ -43,9 +43,8 @@ GameObject:
   - component: {fileID: 2383966792333270657}
   - component: {fileID: 530053263726855526}
   - component: {fileID: 9138386183964431687}
-  - component: {fileID: 1069908270750789694}
   m_Layer: 0
-  m_Name: RangedEffect
+  m_Name: BuffEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +60,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1799588481665000542}
   m_Father: {fileID: 0}
@@ -88,7 +87,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6075313622514558837}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -101,7 +100,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3ec03940d8819c47ae8616963afd1d0, type: 2}
+  - {fileID: 2100000, guid: 68acf51481ad4e64f9bd2246c6a7a0b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,18 +130,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6075313622514558837}
   m_Mesh: {fileID: 4300002, guid: 103612e5e1ff43a4e896c567a2cb3ae1, type: 3}
---- !u!114 &1069908270750789694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6075313622514558837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91cafbb5d185f64189b0d80c9626d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  td_AOEData: {fileID: 11400000, guid: 7f9cde895a9750f488279e8a9f0f0b77, type: 2}
-  _collider: {fileID: 2383966792333270657}
-  buffEffectPreafb: {fileID: 0}

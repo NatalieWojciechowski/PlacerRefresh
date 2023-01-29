@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 3602379146642460443}
   - component: {fileID: 8302478617572052954}
   - component: {fileID: 4696282288295445922}
-  - component: {fileID: 5084519734559579844}
   - component: {fileID: -6699984890123392804}
   m_Layer: 0
   m_Name: TD_Defense
@@ -60,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765544224758337656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 800.9708, y: 92.621346, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -103,8 +102,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1, z: 1.5}
-  m_Center: {x: 0, y: 0.25756317, z: 0}
+  m_Size: {x: 1, y: 0.8947295, z: 1}
+  m_Center: {x: 0, y: 0.45263523, z: 0}
 --- !u!95 &4696282288295445922
 Animator:
   serializedVersion: 4
@@ -125,56 +124,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5084519734559579844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765544224758337656}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6576b638fdd0e546ac6c176d649d3f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Id: Foo
-  Icon: {fileID: 21300000, guid: 7c16eee74fe7d3841bf4be8a0215fd42, type: 3}
-  Name: New Piece
-  Description: 
-  Category: Default
-  IgnoreSocket: 0
-  IgnoreGrid: 0
-  UseGroundUpper: 0
-  GroundUpperHeight: 1
-  KeepLastRotation: 0
-  RotateOnSockets: 1
-  RotateAccodingSurface: 0
-  RotateAccordingSlope: 0
-  RotateAccordingSlopeAngleLimition: 0
-  RotationAxis: {x: 0, y: 90, z: 0}
-  PreviewClampPosition: 0
-  PreviewClampMinPosition: {x: 0, y: 0, z: 0}
-  PreviewClampMaxPosition: {x: 0, y: 0, z: 0}
-  PreviewOffset: {x: 0, y: 0, z: 0}
-  PreviewDisableObjects: []
-  PreviewDisableBehaviours: []
-  PreviewDisableColliders: []
-  PreviewColorLerpTime: 0
-  CustomPreviewMaterial: {fileID: 0}
-  PreviewAllowedColor: {r: 0, g: 1, b: 0, a: 0.5}
-  PreviewDeniedColor: {r: 1, g: 0, b: 0, a: 0.5}
-  Conditions: []
-  Skins: []
-  SkinIndex: 0
-  MeshBounds:
-    m_Center: {x: 0, y: 0.16461945, z: 0.114999995}
-    m_Extent: {x: 0.38623047, y: 0.16462326, z: 0.345}
-  CurrentState: 0
-  LastState: 0
-  Sockets: []
-  Colliders: []
-  Renderers: []
-  ExtraProperties: []
 --- !u!114 &-6699984890123392804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: weapon_ballista
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bfb1d9c4a158a0b45849bb7c53e88189,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220739090611007639, guid: bfb1d9c4a158a0b45849bb7c53e88189,
         type: 3}

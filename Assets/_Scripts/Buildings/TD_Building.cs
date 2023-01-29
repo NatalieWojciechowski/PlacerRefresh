@@ -187,12 +187,14 @@ public class TD_Building : MonoBehaviour
         // TODO: Method to grab all enemies from a manager to iterate over rather than searching
         TD_Enemy plannedEnemy = null;
         TD_Enemy[] enemies = FindObjectsOfType<TD_Enemy>();
+        float closestDistance = _sBuildingData.AttackRange;
+        // Will Get the closest of enemies; break in if block if want ANY enemy 
         foreach (TD_Enemy enemy in enemies)
         {
             float _distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (_distance < _sBuildingData.AttackRange && enemy.Health > 0) {
+            if (_distance < closestDistance && enemy.Health > 0) {
+                closestDistance = _distance;
                 plannedEnemy = enemy;
-                break;
             }
         }
         if (!plannedEnemy && !_buildingTarget || plannedEnemy?.EnemyUUID == _buildingTarget?.EnemyUUID) return;

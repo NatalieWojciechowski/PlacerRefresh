@@ -12,6 +12,7 @@ TagManager:
   - BuildableSurface
   - FxTemporaire
   - Projectile
+  - Building
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class TD_Enemy : MonoBehaviour
     public GameObject DeathEffects;
     private GameObject CorpseSpawnPrefab;
 
-    private Coroutine stateTransition;
+    protected Coroutine stateTransition;
 
     public Guid EnemyUUID { get; private set; }
     public float Health { get => _currentHealth; }
@@ -49,7 +49,9 @@ public class TD_Enemy : MonoBehaviour
         Die
     }
     [SerializeField]
-    private EnemyState enemyState;
+    protected EnemyState enemyState;
+    private bool shielded;
+    private GameObject shieldObj;
 
     protected virtual private void Awake()
     {
@@ -110,6 +112,7 @@ public class TD_Enemy : MonoBehaviour
         DeathEffects?.SetActive(true);
         TD_GameManager.current.AddCoins(_deathReward);
 
+        if (shieldObj) Destroy(shieldObj);
         Destroy(this.gameObject);
     }
 
@@ -126,22 +129,34 @@ public class TD_Enemy : MonoBehaviour
     internal void TakeDamage(float projectileDamage)
     {
         if (_currentHealth <= 0) return; // Dont interrupt our die sequence
-        TryChangeState(EnemyState.Damaged);
-        _currentHealth -= projectileDamage;
-        HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
+        if (shielded) RemoveShield();
+        else
+        {
+            TryChangeState(EnemyState.Damaged);
+            _currentHealth -= projectileDamage;
+            HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
 
-        // Setup transition back to moving
-        SafeTransition(EnemyState.Move, 0.5f);
+            // Setup transition back to moving
+            SafeTransition(EnemyState.Move, 0.5f);
+        }
     }
-     
-    private void SafeTransition(EnemyState nextState, float delay)
+
+    private void RemoveShield()
+    {
+        if (!shielded || !shieldObj) return;
+        shielded = false;
+        shieldObj.SetActive(false);
+        // TODO: Animation?
+    }
+
+    protected void SafeTransition(EnemyState nextState, float delay)
     {
         // Setup transition back to moving
         if (stateTransition != null) { StopCoroutine(stateTransition); stateTransition = null; }
-        stateTransition = StartCoroutine(AllowStateTime(nextState, delay));
+        stateTransition = StartCoroutine(StateTransition(nextState, delay));
     }
 
-    private IEnumerator AllowStateTime(EnemyState nextState, float delay)
+    protected IEnumerator StateTransition(EnemyState nextState, float delay)
     {
         yield return new WaitForSeconds(delay);
         Debug.Log("Now allow state change");
@@ -180,6 +195,21 @@ public class TD_Enemy : MonoBehaviour
         DmgToCore = waveEnemyData.dmgToCore;
         CorpseSpawnPrefab = waveEnemyData.corpseSpawnPrefab;
         TryChangeState(EnemyState.Idle);
+    }
+
+    public void GiveShield(GameObject shieldPrefab) 
+    {
+        if (shielded) return;
+        // TOODO: replace with shield or prevent?
+        // we may wish to shield with different effects 
+        if (shieldObj != null && shieldObj?.name != shieldPrefab.name) Destroy(shieldObj);
+        shieldObj = Instantiate<GameObject>(shieldPrefab, transform);
+        if (shieldObj)
+        {
+            //shieldObj.transform.localScale = shieldObj.transform.localScale * transform.localScale.magnitude;
+            shielded = true;
+            shieldObj?.SetActive(true);
+        }
     }
 
     private bool ReachedPoint()

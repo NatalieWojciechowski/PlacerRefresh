@@ -114,6 +114,7 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   DeathEffects: {fileID: 7395089212233144538}
   enemyState: 0
+  dialogueBubble: {fileID: 0}
 --- !u!4 &6808159528812768232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5494443720453908583, guid: 2bbb046b5c4691f4bb8ef70cc7373569,
