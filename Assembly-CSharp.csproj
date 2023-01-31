@@ -61,6 +61,7 @@
     <Compile Include="Assets\Blobcreate\Shared\Code\Character Movement Kit\Input\View\TopDownView.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\WorkLine.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Inspectors\InspectorStyles.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_EnemyBuff.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Tools\WebGLTool.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\ExampleGridObject.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\FX\AnimFX.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Data\NPCData.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
     <Compile Include="Assets\Easy Build System\Features\Scripts\Core\Base\Builder\Enums\RaycastType.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_Boss.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Paint Mode Demo\Scripts\GameManager.cs" />
     <Compile Include="Assets\ProTips\Demos (safe to delete)\Scripts\DebugDrawBoundingBox.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Upgradable_Interaction.cs" />
@@ -333,6 +335,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Colonist.cs" />
     <Compile Include="Assets\Blobcreate\Shared\Code\Health\HealthPack.cs" />
     <Compile Include="Assets\_Scripts\Managers\TD_EnemyManager.cs" />
+    <Compile Include="Assets\AreaEffect.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\TheData.cs" />
     <Compile Include="Assets\ProTips\Scripts\Behaviors\TooltipTrigger.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
@@ -388,6 +391,7 @@
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_Delete.cs" />
     <Compile Include="Assets\ProTips\Demos (safe to delete)\Scripts\EnableMouse.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\VR Models\Oculus Hands\Demo_XRHand.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_Enemy_State.cs" />
     <Compile Include="Assets\ProTips\Demos (safe to delete)\Scripts\ButtonEventsForDemo.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_GridObjectSelectionOption.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UIManager.cs" />
@@ -539,10 +543,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\TD_Enemy_State.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\TD_EnemyBuff.cs" />
-    <Compile Include="Assets\AreaEffect.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\TD_Boss.cs" />
+    <Compile Include="Assets\_Scripts\Utility\SceneLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

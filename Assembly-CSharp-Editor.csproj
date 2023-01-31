@@ -70,9 +70,11 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\AlignObjects.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\UniqueIDEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\GenerateUIDs.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_EnemyManagerEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Events\Editor\EventConditionEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\BiomeGeneratorEditor.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Editor\GridPlacement\GridSettingsEditor.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_EnemyEditor.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\Editor\MegaSplatEditor.cs" />
     <Compile Include="Assets\Easy Build System\Integrations\Editor\IntegrationEditor.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\ImportPackage.cs" />
@@ -90,8 +92,6 @@
     <Compile Include="Assets\ColonySimulator\Scripts\Editor\CreateObject.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\Editor\CTSEditor.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Editor\GridPlacement\CreateGridLayersMenu.cs" />
-    <Compile Include="Assets\_Scripts\Editor\TD_EnemyEditor.cs" />
-    <Compile Include="Assets\_Scripts\Editor\TD_EnemyManagerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
