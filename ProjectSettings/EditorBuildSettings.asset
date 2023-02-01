@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/MainIsoTower/StartMenu.unity
+    guid: 6166d0f282d53f64bb271859b3754986
+  - enabled: 1
+    path: Assets/_Scenes/MainIsoTower/TowerDefenseFreshMap.unity
+    guid: ae257d1da945f984694c22c7eb53d039
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d872b0a29ec486b43a3e11d20a561908,
       type: 2}

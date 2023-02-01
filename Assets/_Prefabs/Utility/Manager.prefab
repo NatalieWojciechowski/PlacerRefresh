@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8170463112796182928}
   - component: {fileID: 8170463112796182930}
   - component: {fileID: 8170463112796182941}
+  - component: {fileID: 374612242618927910}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -63,6 +64,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIManager: {fileID: 0}
   effectsBin: {fileID: 0}
+--- !u!114 &374612242618927910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170463112796182934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec7d5983a40d064e8ca6f4a5fbffa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8170463113326191189
 GameObject:
   m_ObjectHideFlags: 0

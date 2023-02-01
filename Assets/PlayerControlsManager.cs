@@ -101,6 +101,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     void Start()
     {
         EnableAllControls();
+        DontDestroyOnLoad(transform.gameObject);
         //if (controls == null) controls = new TD_Controls();
         //UIMode();
     }

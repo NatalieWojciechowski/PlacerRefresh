@@ -29,10 +29,16 @@ public class TD_Projectile : MonoBehaviour
     private Coroutine stateTransition;
     [SerializeField]
     private GameObject impactEffects;
+   
+    [SerializeField] private AudioClip hitClip;
 
     protected virtual void Start()
     {
         mAnimator = GetComponent<Animator>();
+    }
+    private void OnEnable()
+    {
+
     }
 
     protected virtual void Update()
@@ -118,6 +124,7 @@ public class TD_Projectile : MonoBehaviour
             this.GetComponent<Collider>().enabled = false;
             if (mAnimator) mAnimator.PlayInFixedTime("Impact");
             if (impactEffects) impactEffects.SetActive(true);
+            PlayImpactSound();
             SafeTransition(ProjectileState.Expire, 0.125f);
             break;
         }
@@ -125,13 +132,13 @@ public class TD_Projectile : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Projectile"))
+            return;
+
         if (collision.gameObject == myTarget) {
             myTarget.GetComponent<TD_Enemy>().TakeDamage(projectileDamage);
-            TryChangeState(ProjectileState.Impact);
-        } else if (!collision.gameObject.CompareTag("Projectile"))
-        {
-            TryChangeState(ProjectileState.Impact);
         }
+        TryChangeState(ProjectileState.Impact);
     }
 
     public virtual void InitProjectile(TD_Building tD_Building, TD_Enemy buildingTarget)
@@ -175,5 +182,10 @@ public class TD_Projectile : MonoBehaviour
         }
         TryChangeState(ProjectileState.Fire);
         SafeTransition(ProjectileState.Moving, 0.125f);
+    }
+    
+    public void PlayImpactSound()
+    {
+        if (hitClip) TD_AudioManager.instance.PlayClip(hitClip, transform.position);
     }
 }

@@ -254,6 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseBuildingData: {fileID: 11400000, guid: 2c84be4f5eb99c84286205e31dcf21f0, type: 2}
+  fireSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  hitSound: {fileID: 0}
   _buildingTarget: {fileID: 0}
   buildingState: 0
   bAnimator: {fileID: 0}

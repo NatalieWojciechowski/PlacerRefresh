@@ -19,6 +19,11 @@ public class TD_Building : MonoBehaviour
 
     protected BuildingData _sBuildingData;
 
+    [SerializeField]
+    public AudioClip fireSound;
+    public AudioClip reloadSound;
+    public AudioClip hitSound;
+
     //protected float _attackRange = 0.75f;
     //private float _baseDamage;
     [SerializeField]
@@ -107,7 +112,6 @@ public class TD_Building : MonoBehaviour
         BuildingInit(null);
     }
 
-
     internal BuildingData GetStats()
     {
         // TODO: Any adjustments like upgrades to make here before returning; 
@@ -127,6 +131,7 @@ public class TD_Building : MonoBehaviour
         if (IsRunning == false) SetStats(_baseBuildingData);
         //IsRunning = true;
         Debug.Log("Building Data: " + _baseBuildingData);
+
     }
 
     private void OnEnable()
@@ -288,10 +293,12 @@ public class TD_Building : MonoBehaviour
             bAnimator.SetBool("IsAttacking", false);
             break;
             case BuildingState.Attacking:
+            if (fireSound) TD_AudioManager.instance.PlayClip(fireSound, transform.position);
             bAnimator.SetBool("IsAttacking", true);
             attackState = BuildingAttackState.Attacking;
             break;
             case BuildingState.OnCooldown:
+            if (reloadSound) TD_AudioManager.instance.PlayClip(reloadSound, transform.position);
             bAnimator.SetBool("IsReloading", true);
             attackState = BuildingAttackState.Cooldown;
             break;

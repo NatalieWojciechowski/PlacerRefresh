@@ -18,6 +18,7 @@ public class TD_UIManager : MonoBehaviour
     public GameObject SpeedControls;
     public GameObject WaveStart;
     public GameObject playerMoney;
+    public GameObject mainMenuPanel;
 
     public GameObject pieces_Selection;
 
@@ -172,4 +173,12 @@ public class TD_UIManager : MonoBehaviour
     //    //BuildManager.Instance.StopAllCoroutines();
     //    UpdateDisplay();
     //}
+    public void ToggleMenu()
+    {
+        bool menuOpen = mainMenuPanel.activeSelf;
+        if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
+        else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
+
+        mainMenuPanel.SetActive(!menuOpen);
+    }
 }

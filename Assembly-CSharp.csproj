@@ -91,6 +91,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\FX\ButtonAudio.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Generator\BiomeData.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_CurrentMode.cs" />
+    <Compile Include="Assets\_Scripts\Utility\SceneLoader.cs" />
     <Compile Include="Assets\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Input Definitions\RightClickMouseInput.cs" />
     <Compile Include="Assets\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_UI_Tooltip.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Gameplay\Spawnable.cs" />
@@ -543,7 +544,7 @@
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\_Scripts\Utility\SceneLoader.cs" />
+    <Compile Include="Assets\TD_AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
@@ -611,6 +612,7 @@
     <None Include="Assets\ColonySimulator\Materials\FX\SpriteZ.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
+    <None Include="Assets\_Prefabs\TestUIDocument.uxml" />
     <None Include="Assets\ColonySimulator\ReadMe.txt" />
     <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Procedural Ring.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
