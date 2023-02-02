@@ -40,7 +40,7 @@ public class TD_BuildManager : MonoBehaviour
     public Transform TowersParent;
     private Coroutine buildCooldownRoutine;
     private Coroutine stateTransition;
-    private AudioClip buildClip;
+    public AudioClip buildClip;
     #endregion
 
     #region Lifecycle
@@ -263,12 +263,12 @@ public class TD_BuildManager : MonoBehaviour
 
         switch (toState)
         {
-            case BuildState.Placing:
-            PlayBuildSound();
-            SafeTransition(BuildState.Cooldown, 0.125f);
-            break;
+            //case BuildState.Placing:
+            //SafeTransition(BuildState.Cooldown, 0.125f);
+            //break;
 
             case BuildState.Cooldown:
+            PlayBuildSound();
             previewObj = null;
             lastHitPos = Vector3.zero;
             SafeTransition(BuildState.Idle, 0.125f);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TD_AudioManager : MonoBehaviour
 {
-    AudioSource AudioSource;
+    public AudioSource AudioSource;
 
     public static TD_AudioManager instance;
 

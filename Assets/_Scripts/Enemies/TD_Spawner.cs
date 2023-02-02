@@ -17,6 +17,8 @@ public class TD_Spawner : MonoBehaviour
     private List<TD_Wave> waveHelpers;
     public bool CurrentWaveComplete = false;
 
+    public GameObject ActiveSpawnerEffects;
+
     [SerializeField]
     private Transform SpawnPosition;
     /// <summary>
@@ -33,6 +35,25 @@ public class TD_Spawner : MonoBehaviour
     private void OnEnable()
     {
         if (ForRoute) ForRoute.TdSpawner = this;
+        EventManager.OnWaveStart += ToggleSpawnerEffects;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnWaveStart -= ToggleSpawnerEffects;
+    }
+
+    private void ToggleSpawnerEffects(int waveIndx)
+    {
+        Debug.Log("ToggleSpawnerEffects"+ waveIndx.ToString());
+        if (!ActiveSpawnerEffects) return;
+        if (waveHelpers.Count > waveIndx)
+        {
+            bool currentlyActive = ActiveSpawnerEffects.activeSelf;
+            if (waveHelpers[waveIndx]?.WaveDetails?.waveContents?.Count < 0) ActiveSpawnerEffects.SetActive(false);
+            else if (!CurrentWaveComplete) ActiveSpawnerEffects.SetActive(true);
+        }
+        else ActiveSpawnerEffects.SetActive(false);
     }
 
     //private void OnEnable()
@@ -81,6 +102,7 @@ public class TD_Spawner : MonoBehaviour
         // If still have initialized with enemies & we havent spawned them all
         if (currentWave.AllSpawned)
         {
+            ActiveSpawnerEffects?.SetActive(false);
             currentWave.WaveSpawningComplete();
             //Debug.Log(_enemiesAlive.Count);
             _enemiesAlive.RemoveAll((enemy) => enemy == null);
