@@ -40,6 +40,7 @@ public class TD_UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        EventManager.OnTowerSelect += OnTowerSelect;
         EventManager.OnTowerDeselect += UpdateDisplay;
         EventManager.OnWaveStart += OnWaveStart;
         EventManager.GameOver += OnGameLose;
@@ -56,6 +57,7 @@ public class TD_UIManager : MonoBehaviour
 
     private void OnDisable()
     {
+        EventManager.OnTowerSelect -= OnTowerSelect;
         EventManager.OnTowerDeselect -= UpdateDisplay;
         EventManager.GameOver -= OnGameLose;
         EventManager.GameWon -= OnGameWin;
@@ -74,6 +76,12 @@ public class TD_UIManager : MonoBehaviour
         if (current != null) Destroy(this);
         current = this;
     }
+
+    private void OnTowerSelect(TD_Building selectedBuilding)
+    {
+        UpdateDisplay();
+    }
+
     public void UpdateDisplay()
     {
         if (!TD_GameManager.current) return;

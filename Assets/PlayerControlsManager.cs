@@ -136,7 +136,15 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
 
     public void OnAccept(InputAction.CallbackContext context)
     {
-        Debug.Log("Accept!" + context);
+        //Debug.Log("Accept!" + context);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        if (hit)
+        {
+            // Call methods here
+            Debug.Log("Raycast Hit -> " + hit.transform.name);
+        }
+
         EventManager.current.GenericAccept();
         PlayerAccept(this, EventArgs.Empty);
     }

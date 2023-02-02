@@ -7,11 +7,12 @@ using UnityEngine.InputSystem;
 
 public class TD_BuildManager : MonoBehaviour
 {
-    enum BuildState
+    public enum BuildState
     {
         Idle,
         Blueprint,
         Placing,
+        Cooldown,
         Bulldozing,
     }
 
@@ -37,6 +38,9 @@ public class TD_BuildManager : MonoBehaviour
     private List<GameObject> BuiltBuildings;
     private GameObject previewObj;
     public Transform TowersParent;
+    private Coroutine buildCooldownRoutine;
+    private Coroutine stateTransition;
+    private AudioClip buildClip;
     #endregion
 
     #region Lifecycle
@@ -48,7 +52,7 @@ public class TD_BuildManager : MonoBehaviour
         current = this;
         if (BuiltBuildings == null) BuiltBuildings = new();
         if (!builderRaycaster) Camera.main.GetComponent<Physics2DRaycaster>();
-        buildState = BuildState.Idle;
+        SafeTransition(BuildState.Idle, 0.01255f);
         if (!TowersParent) TowersParent = transform;
     }
 
@@ -75,7 +79,7 @@ public class TD_BuildManager : MonoBehaviour
 
         if (buildState == BuildState.Blueprint)
         {
-            if (!UpdateLastHitIfValid()) {
+            if (!UpdateLastHitIfValid() && previewObj) {
                 // force it to the last valid position
                 previewObj.transform.position = lastHitPos;
             }
@@ -101,23 +105,7 @@ public class TD_BuildManager : MonoBehaviour
         RaycastHit hit = builderRawRaycast();
 
         if (!hit.collider || !hit.collider.CompareTag("BuildableSurface") || HasObstruction(hit)) return false;
-
         validPlacement = CheckBuildPosition(hit);
-        //if (hit.collider != null)
-        //{
-        //    //Hit something, print the tag of the object
-        //    //Debug.Log("Hitting: " + hit.collider.tag);
-        //    // TODO: Update preview rotation  
-        //    //if (previewObj) previewObj.transform.SetPositionAndRotation(hit.point, Quaternion.identity);
-        //}
-
-        ///
-
-        //if (hit.point != null)
-        //{
-        //    validPlacement = !HasObstruction(hit);
-        //    if (validPlacement) lastHitPos = hit.point;
-        //}
         if (validPlacement) SetToHitOrCenter(hit);
         return validPlacement;
     }
@@ -151,11 +139,6 @@ public class TD_BuildManager : MonoBehaviour
             lastHitPos = _hit.point + buildOffset;
         }
         previewObj.transform.SetPositionAndRotation(lastHitPos, Quaternion.identity);
-        ////Vector3 _topCenterHit = _hit.collider.ClosestPoint(_offsetHitPoint);
-        //Vector3 _topCenterHit = _hit.collider.bounds.center + new Vector3(0, _hit.collider.bounds.extents.y, 0) + buildOffset;
-
-        //previewObj.transform.SetPositionAndRotation(_topCenterHit, Quaternion.identity);
-        //lastHitPos = _topCenterHit;
 
         // TODO: Sockets
 
@@ -207,7 +190,7 @@ public class TD_BuildManager : MonoBehaviour
     {
         if (current.previewObj != null) Destroy(current.previewObj);
         current.previewObj = Instantiate(buildPrefab, current.transform);
-        current.buildState = BuildState.Blueprint;
+        current.SafeTransition(BuildState.Blueprint);
         current.previewObj.transform.position = current.lastHitPos;
         EventManager.current.TowerBlueprint(current.previewObj.GetComponent<TD_Building>());
         return current.previewObj;
@@ -215,19 +198,20 @@ public class TD_BuildManager : MonoBehaviour
 
     private void FinishPlacement()
     {
-        buildState = BuildState.Placing;
+        current.SafeTransition(BuildState.Placing);
         previewObj.transform.SetParent(TowersParent);
         previewObj.transform.SetPositionAndRotation(lastHitPos, Quaternion.identity);
         previewObj.GetComponent<TD_Building>()?.OnPlacementConfirm(previewObj.transform);
         EventManager.current.TowerPlaced(previewObj.GetComponent<TD_Building>());
         BuiltBuildings.Add(previewObj);
         previewObj = null;
+        current.SafeTransition(BuildState.Cooldown);
     }
 
     protected void OnPlayerCancel(object source, EventArgs eventArgs)
     {
         Debug.Log("OnPlayerCancel" + source);
-        buildState = BuildState.Idle;
+        current.SafeTransition(BuildState.Idle);
         Destroy(previewObj);
     }
 
@@ -259,4 +243,48 @@ public class TD_BuildManager : MonoBehaviour
     }
     #endregion
 
+    private void SafeTransition(BuildState nextState, float delay = 0.0125f)
+    {
+        // Setup transition back to moving
+        if (stateTransition != null) { StopCoroutine(stateTransition); stateTransition = null; }
+        stateTransition = StartCoroutine(AllowStateTime(nextState, delay));
+    }
+    private IEnumerator AllowStateTime(BuildState nextState, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Now allow state change");
+        TryChangeState(nextState);
+    }
+
+    private void TryChangeState(BuildState toState = BuildState.Blueprint)
+    {
+        buildState = toState;
+        Debug.Log("BuildManagerState: " + buildState);
+
+        switch (toState)
+        {
+            case BuildState.Placing:
+            PlayBuildSound();
+            SafeTransition(BuildState.Cooldown, 0.125f);
+            break;
+
+            case BuildState.Cooldown:
+            previewObj = null;
+            lastHitPos = Vector3.zero;
+            SafeTransition(BuildState.Idle, 0.125f);
+            break;
+        }
+    }
+
+    public BuildState GetBuildState()
+    {
+        return buildState;
+    }
+
+
+    private void PlayBuildSound()
+    {
+        if (buildClip && previewObj)
+            TD_AudioManager.instance.PlayClip(buildClip, previewObj.transform.position);
+    }
 }

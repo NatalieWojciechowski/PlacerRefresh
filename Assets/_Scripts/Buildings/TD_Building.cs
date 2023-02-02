@@ -204,6 +204,8 @@ public class TD_Building : MonoBehaviour
         }
         if (!plannedEnemy && !_buildingTarget || plannedEnemy?.EnemyUUID == _buildingTarget?.EnemyUUID) return;
         SetTarget(plannedEnemy);
+
+        Physics.queriesHitTriggers = true;
     }
 
     internal bool TryUpgrade()
@@ -368,4 +370,6 @@ public class TD_Building : MonoBehaviour
             TD_BuildManager.StartPlacement(gameObject);
         return _canAfford;
     }
+
+   
 }

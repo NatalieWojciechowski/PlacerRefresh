@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 8302478617572052954}
   - component: {fileID: 4696282288295445922}
   - component: {fileID: -6699984890123392804}
+  - component: {fileID: 3059969048073724147}
   m_Layer: 0
   m_Name: TD_Defense
   m_TagString: Untagged
@@ -180,7 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseBuildingData: {fileID: 11400000, guid: 1789019e5eaccb7419bab3cbc2a5afcb, type: 2}
-  S_AudioSource: {fileID: 3300147802558402439}
   fireSound: {fileID: 8300000, guid: f19abfdc2efe1dc4ea7f2824b367c1ce, type: 3}
   reloadSound: {fileID: 0}
   hitSound: {fileID: 0}
@@ -244,6 +244,18 @@ MonoBehaviour:
   RequireAreaForDestruction: 0
   RequireAreaForEdit: 0
   RequireSocket: 0
+--- !u!114 &3059969048073724147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765544224758337656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45f60d64a3c941408b081dbdb244d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2065832158366382706
 GameObject:
   m_ObjectHideFlags: 0
