@@ -54,105 +54,106 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\NativeUtility.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstExecutionEnvironment.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Math\MathUtilities.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_Decay.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_Gradient.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Spherical.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\PLACEHOLDER_BURST.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\MeshPieceDestructible.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\CustomerSupport\FraktaliaExperimentalInformation.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\EnumButtons.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Displace.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\SerializableHashSet.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_PerlinNoise_Sphere.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Math\DataApplyModes.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_PerlinNoise.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\SerializableDictionary.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\Structs\Vertex.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\Motion\RotatingObject.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\MeshPieceDecay.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\ShaderProperties.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\Editor\LargeMeshCombinerEditor.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Editor\PipeExtruder_NativeEditor.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\PlacementManifest.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Editor\PipeExtruderEditor.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_Oscillation.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Jobs\PipeExtruder_NativeJob.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeBarycentricCalculator.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\CopyRestriction.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeNoise\PermutationTable_Native.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUVModifier.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstCompiler.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\FraktaliaList.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Multiply.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeNoise\PerlinNoise_Native.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\PipeExtruder_Native.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\MeshPieceAttachment.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\SpiralPattern.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\ContainerStaticLibrary.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Math\MeshUtilities.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_DisableRenderer.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshPiece.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\TitleText.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_TEMPLATE.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\FunctionPointer.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\MassMaterialAssigner.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstRuntime.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\SceneMovement\NoClipMouseLook.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshCombiner.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\InfoPanel.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\TutorialWindow\TutorialWindow.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\PatternGenerator.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\Editor\TextureArrayTemplate.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\CustomerSupport\FraktaliaContactInformation.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshSelector.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\InfoText.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\LabelTextRange.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\ScriptsToAttach\DestroyOnCollision.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\Editor\NativeMeshCombinerEditor.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureArrayCreator.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\CirclePattern.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\Editor\SerializableDictionaryPropertyDrawer.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Box.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\BlitableNativeArray.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\BoxPattern.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\LabelText.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Samples\Scripts\SceneMovement\NoClipFirstPersonController.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshCombiner.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\Editor\TextureArray_StandardGUI.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshPiece.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\ScriptsToAttach\Decay.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUVGenerator.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeTangentsCalculator.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\ReadonlyText.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_Particle.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshBuffer.cs" />
-    <Compile Include="Assets\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\PipeExtruder.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\NativeUtility.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstExecutionEnvironment.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Math\MathUtilities.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_Decay.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_Gradient.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Spherical.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\PLACEHOLDER_BURST.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\MeshPieceDestructible.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\CustomerSupport\FraktaliaExperimentalInformation.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\EnumButtons.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Displace.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\SerializableHashSet.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_PerlinNoise_Sphere.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Math\DataApplyModes.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_PerlinNoise.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\SerializableDictionary.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\Structs\Vertex.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\Motion\RotatingObject.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\MeshPieceDecay.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\ShaderProperties.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\Editor\LargeMeshCombinerEditor.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Editor\PipeExtruder_NativeEditor.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\PlacementManifest.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Editor\PipeExtruderEditor.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUV_Oscillation.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\Jobs\PipeExtruder_NativeJob.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeBarycentricCalculator.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\CopyRestriction.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeNoise\PermutationTable_Native.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUVModifier.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstCompiler.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\FraktaliaList.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Multiply.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeNoise\PerlinNoise_Native.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\PipeExtruder_Native.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\MeshPieceAttachment.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\SpiralPattern.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\ContainerStaticLibrary.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Math\MeshUtilities.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_DisableRenderer.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshPiece.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\TitleText.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_TEMPLATE.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\FunctionPointer.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\MassMaterialAssigner.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\BurstRuntime.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\SceneMovement\NoClipMouseLook.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshCombiner.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\InfoPanel.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\TutorialWindow\TutorialWindow.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\PatternGenerator.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\Editor\TextureArrayTemplate.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\CustomerSupport\FraktaliaContactInformation.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\LargeMeshSelector.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\InfoText.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\LabelTextRange.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\ScriptsToAttach\DestroyOnCollision.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\Editor\NativeMeshCombinerEditor.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureArrayCreator.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\CirclePattern.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\SerializableDictionary\Editor\SerializableDictionaryPropertyDrawer.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeUVModifier\NativeUV_Box.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\NativeUtility\BlitableNativeArray.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\ObjectAlignment\BoxPattern.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\LabelText.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Samples\Scripts\SceneMovement\NoClipFirstPersonController.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshCombiner.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\Editor\TextureArray_StandardGUI.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshPiece.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\Attachments\ScriptsToAttach\Decay.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\ProceduralUVModifier\ProceduralUVGenerator.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeTangentsCalculator.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Editor\FraktaliaAttributes\ReadonlyText.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\MeshPieceAttachment\SampleAttachment\MeshPieceAttachment_Particle.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\LargeMeshCombiner\NativeCombiner\NativeMeshBuffer.cs" />
+    <Compile Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\SubSystems\PipeExtruder\PipeExtruder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardUVColors_Opaque.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\Foliage\Textures\selfmadefoliage.txt" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureAtlas_UVBlend_Tesselation_Triplanar.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Fade.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Opaque.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureAtlas_UVBlend_Triplanar.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Tesselation_Triplanar.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Fraktalia_Core.asmdef" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Pulse.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\Foliage\StandardVertexColors_Foliage.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\SkyBox\Shader\BurningSky.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Transparent.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Tesselation.shader" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UVBlend_Triplanar.shader" />
-    <None Include="Assets\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\README.txt" />
-    <None Include="Assets\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UVBlend_Tesselation_Triplanar.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardUVColors_Opaque.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\Foliage\Textures\selfmadefoliage.txt" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureAtlas_UVBlend_Tesselation_Triplanar.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Fade.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Opaque.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\TextureAtlas_UVBlend_Triplanar.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Tesselation_Triplanar.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Fraktalia_Core.asmdef" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Pulse.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\Foliage\StandardVertexColors_Foliage.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\SkyBox\Shader\BurningSky.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiColor\Shader\StandardVertexColors_Transparent.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UV3_Tesselation.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UVBlend_Triplanar.shader" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\CoreScripts\Utility\COLLECTIONS_PLACEHOLDER\README.txt" />
+    <None Include="Assets\3rdParty\Fraktalia\0_Core\Rendering\MultiMaterial\Shader\MultiTextureArray_UVBlend_Tesselation_Triplanar.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -407,9 +408,6 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -451,6 +449,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

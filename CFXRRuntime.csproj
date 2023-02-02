@@ -54,16 +54,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleText.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_EmissionBySurface.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleTextFontAsset.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_Effect.cs" />
-    <Compile Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_Effect.CameraShake.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleText.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_EmissionBySurface.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_ParticleTextFontAsset.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_Effect.cs" />
+    <Compile Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR_Effect.CameraShake.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR Runtime.asmdef" />
+    <None Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Scripts\CFXR Runtime.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -318,9 +319,6 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -362,6 +360,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

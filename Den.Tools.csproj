@@ -54,70 +54,71 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixWorld.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Edges.cs" />
-    <Compile Include="Assets\MapMagic\Tools\TileManager.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Serializer\Deserialize.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Matrix2D.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixOps.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Serializer\Serialize.cs" />
-    <Compile Include="Assets\MapMagic\Tools\TwoWayDict.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Matrix.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Pathfinding.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Timer.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\StackMatrix.cs" />
-    <Compile Include="Assets\MapMagic\Tools\GUI\SpecialEditor.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Structs.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Log\Log.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Outdated\MatrixLine.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\SplineSys.cs" />
-    <Compile Include="Assets\MapMagic\Tools\DebugGizmos.cs" />
-    <Compile Include="Assets\MapMagic\Tools\PosTab.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\PositionMatrix.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\Reflection.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixGizmo.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\Line.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\TextureArrayExtensions.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\Coordinates.cs" />
-    <Compile Include="Assets\MapMagic\Tools\GUI\Attributes.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Erosion.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Curve.cs" />
-    <Compile Include="Assets\MapMagic\Tools\ThreadManager\CoroutineManagerObject.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Id.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\SplineObject.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Matrix3D.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Noise.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\SplineMatrixOps.cs" />
-    <Compile Include="Assets\MapMagic\Tools\TypeDict.cs" />
-    <Compile Include="Assets\MapMagic\Tools\AutoSubscribe.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixSetPrototype.cs" />
-    <Compile Include="Assets\MapMagic\Tools\ObjectsPool.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Outdated\MatrixNative.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixAsset.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\Node.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Serializer.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixSet.cs" />
-    <Compile Include="Assets\MapMagic\Tools\ThreadManager\ThreadManager.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\ScriptableAssetsExtensions.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Serializer\SerailizationTools.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\Texture2DExtensions.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\Outdated\FloatMatrix.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\Extensions.cs" />
-    <Compile Include="Assets\MapMagic\Tools\ThreadManager\CoroutineManager.cs" />
-    <Compile Include="Assets\MapMagic\Tools\ArrayTools.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Spline\Segment.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Matrix\MatrixObject.cs" />
-    <Compile Include="Assets\MapMagic\Tools\OrderedDict.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Transition.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\TerrainExtensions.cs" />
-    <Compile Include="Assets\MapMagic\Tools\Extensions\Assets.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixWorld.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Edges.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\TileManager.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Serializer\Deserialize.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Matrix2D.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixOps.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Serializer\Serialize.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\TwoWayDict.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Matrix.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Pathfinding.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Timer.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\StackMatrix.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\GUI\SpecialEditor.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Structs.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Log\Log.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Outdated\MatrixLine.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\SplineSys.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\DebugGizmos.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\PosTab.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\PositionMatrix.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\Reflection.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixGizmo.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\Line.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\TextureArrayExtensions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\Coordinates.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\GUI\Attributes.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Erosion.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Curve.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\ThreadManager\CoroutineManagerObject.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Id.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\SplineObject.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Matrix3D.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Noise.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\SplineMatrixOps.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\TypeDict.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\AutoSubscribe.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixSetPrototype.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\ObjectsPool.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Outdated\MatrixNative.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixAsset.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\Node.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Serializer.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixSet.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\ThreadManager\ThreadManager.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\ScriptableAssetsExtensions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Serializer\SerailizationTools.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\Texture2DExtensions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\Outdated\FloatMatrix.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\Extensions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\ThreadManager\CoroutineManager.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\ArrayTools.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Spline\Segment.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Matrix\MatrixObject.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\OrderedDict.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Transition.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\TerrainExtensions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Tools\Extensions\Assets.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\MapMagic\Tools\Plugins\x86\NativePlugins.dll" />
-    <None Include="Assets\MapMagic\Tools\Tools.asmdef" />
-    <None Include="Assets\MapMagic\Tools\Plugins\NativePlugins.dll" />
+    <None Include="Assets\3rdParty\MapMagic\Tools\Plugins\x86\NativePlugins.dll" />
+    <None Include="Assets\3rdParty\MapMagic\Tools\Tools.asmdef" />
+    <None Include="Assets\3rdParty\MapMagic\Tools\Plugins\NativePlugins.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -372,9 +373,6 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -416,6 +414,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

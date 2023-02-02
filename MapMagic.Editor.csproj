@@ -54,64 +54,65 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MapMagic\Nodes\Editor\CurveDraw.cs" />
-    <Compile Include="Assets\MapMagic\Preview\Editor\ObjectsPreview.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\GraphRightClick.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GraphWindow.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\PortalSelector.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GraphInspector.cs" />
-    <Compile Include="Assets\MapMagic\Core\Editor\DocScreensWindow.cs" />
-    <Compile Include="Assets\MapMagic\Core\Editor\MapMagicInspector.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\ObjectsEditorHelpers.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\DirectMatricesHolderInspector.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\FrameDraw.cs" />
-    <Compile Include="Assets\MapMagic\Preview\Editor\Preview.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GraphTemplates.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GeneratorDraw.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Editor\MatrixEditors.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\GeneratorRightClick.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\TerrainTileInspector.cs" />
-    <Compile Include="Assets\MapMagic\Locks\Editor\LockDraw.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Editor\OverrideInspector.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\RightClick.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Editor\CellExpose.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\GroupRightClick.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\DirectTexturesHolderInspector.cs" />
-    <Compile Include="Assets\MapMagic\Core\Editor\AboutWindow.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Editor\ExposeFieldWindow.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\ValueRightClick.cs" />
-    <Compile Include="Assets\MapMagic\Preview\Editor\MatrixPreview.cs" />
-    <Compile Include="Assets\MapMagic\Preview\Editor\SplinePreview.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\PinDraw.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GraphEditorActions.cs" />
-    <Compile Include="Assets\MapMagic\Preview\Editor\DrawPreview.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\GroupDraw.cs" />
-    <Compile Include="Assets\MapMagic\Compatibility\MicroSplat\Placeholders\Editor\MicroSplatEditorPlaceholder.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\GraphTree.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Editor\LevelsDraw.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Editor\TerrainAiming.cs" />
-    <Compile Include="Assets\MapMagic\Popup\Editor\CreateRightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\CurveDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Preview\Editor\ObjectsPreview.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\GraphRightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GraphWindow.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\PortalSelector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GraphInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Core\Editor\DocScreensWindow.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Core\Editor\MapMagicInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\ObjectsEditorHelpers.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\DirectMatricesHolderInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\FrameDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Preview\Editor\Preview.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GraphTemplates.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GeneratorDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Editor\MatrixEditors.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\GeneratorRightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\TerrainTileInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\Editor\LockDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Editor\OverrideInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\RightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Editor\CellExpose.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\GroupRightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\DirectTexturesHolderInspector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Core\Editor\AboutWindow.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Editor\ExposeFieldWindow.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\ValueRightClick.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Preview\Editor\MatrixPreview.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Preview\Editor\SplinePreview.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\PinDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GraphEditorActions.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Preview\Editor\DrawPreview.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\GroupDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Compatibility\MicroSplat\Placeholders\Editor\MicroSplatEditorPlaceholder.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\GraphTree.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Editor\LevelsDraw.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Editor\TerrainAiming.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Popup\Editor\CreateRightClick.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\MapMagic\Locks\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Popup\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Terrains\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Compatibility\MicroSplat\Placeholders\Editor\MapMagicEditor.asmref" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\ObjectGLPreview.shader" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\Preview.cginc" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\TerrainPreviewEmpty.shader" />
-    <None Include="Assets\MapMagic\Core\Editor\MapMagic.Editor.asmdef" />
-    <None Include="Assets\MapMagic\Expose\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\TerrainPreview.shader" />
-    <None Include="Assets\MapMagic\Generators\Matrix\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\TexturePreview.shader" />
-    <None Include="Assets\MapMagic\Nodes\Editor\MapMagic.Editor.asmref" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\ObjectPreview.shader" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\TerrainPreviewURP.shader" />
-    <None Include="Assets\MapMagic\Preview\Editor\Shaders\TerrainPreviewHDRP.shader" />
-    <None Include="Assets\MapMagic\Preview\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Locks\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Popup\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Terrains\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Compatibility\MicroSplat\Placeholders\Editor\MapMagicEditor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\ObjectGLPreview.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\Preview.cginc" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\TerrainPreviewEmpty.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Core\Editor\MapMagic.Editor.asmdef" />
+    <None Include="Assets\3rdParty\MapMagic\Expose\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\TerrainPreview.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Generators\Matrix\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\TexturePreview.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Nodes\Editor\MapMagic.Editor.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\ObjectPreview.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\TerrainPreviewURP.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\Shaders\TerrainPreviewHDRP.shader" />
+    <None Include="Assets\3rdParty\MapMagic\Preview\Editor\MapMagic.Editor.asmref" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -369,9 +370,6 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -413,6 +411,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

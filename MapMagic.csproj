@@ -54,60 +54,61 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\MatrixModifiers.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\GrassOut.cs" />
-    <Compile Include="Assets\MapMagic\Compatibility\VegetationStudio\Placeholders\VSProMapsPlaceholder.cs" />
-    <Compile Include="Assets\MapMagic\Locks\Lock.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\LayersGenerators.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\GraphSerializer.cs" />
-    <Compile Include="Assets\MapMagic\Locks\LockDatas\TexturesData.cs" />
-    <Compile Include="Assets\MapMagic\Products\TileData.cs" />
-    <Compile Include="Assets\MapMagic\Locks\LockDatas\GrassData.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Calculator.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Vector.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\TerrainTile.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Apply.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Exposed.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Placeholders.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\TexturesOut.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Loader.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Weld.cs" />
-    <Compile Include="Assets\MapMagic\Expose\Override.cs" />
-    <Compile Include="Assets\MapMagic\Locks\LockDatas\HeightData.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\HeightIn.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Portals.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\SharedValue.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\GraphUpdater.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\HeightOut.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\DirectTexturesHolder.cs" />
-    <Compile Include="Assets\MapMagic\Locks\LockData.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\MatrixInitial.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Graph.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\TerrainSettings.cs" />
-    <Compile Include="Assets\MapMagic\Core\MapMagicObject.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Group.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\PositioningSettings.cs" />
-    <Compile Include="Assets\MapMagic\Compatibility\MicroSplat\Placeholders\MicroSplatOutputPlaceholder.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\DirectMatricesHolder.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\Area.cs" />
-    <Compile Include="Assets\MapMagic\Nodes\Generator.cs" />
-    <Compile Include="Assets\MapMagic\Generators\Matrix\Runtime\TexturesIn.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\MaterialPropertySerializer.cs" />
-    <Compile Include="Assets\MapMagic\Core\SettingsAsset.cs" />
-    <Compile Include="Assets\MapMagic\Terrains\TerrainTileManager.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\MatrixModifiers.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\GrassOut.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Compatibility\VegetationStudio\Placeholders\VSProMapsPlaceholder.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\Lock.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\LayersGenerators.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\GraphSerializer.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\LockDatas\TexturesData.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Products\TileData.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\LockDatas\GrassData.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Calculator.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Vector.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\TerrainTile.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Apply.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Exposed.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Placeholders.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\TexturesOut.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Loader.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Weld.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Expose\Override.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\LockDatas\HeightData.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\HeightIn.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Portals.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\SharedValue.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\GraphUpdater.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\HeightOut.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\DirectTexturesHolder.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Locks\LockData.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\MatrixInitial.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Graph.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\TerrainSettings.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Core\MapMagicObject.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Group.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\PositioningSettings.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Compatibility\MicroSplat\Placeholders\MicroSplatOutputPlaceholder.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\DirectMatricesHolder.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\Area.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Nodes\Generator.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\TexturesIn.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\MaterialPropertySerializer.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Core\SettingsAsset.cs" />
+    <Compile Include="Assets\3rdParty\MapMagic\Terrains\TerrainTileManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\MapMagic\Core\MapMagic.asmdef" />
-    <None Include="Assets\MapMagic\Compatibility\VegetationStudio\Placeholders\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Compatibility\MicroSplat\Placeholders\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Generators\Matrix\Runtime\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Locks\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Expose\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Products\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Nodes\MapMagic.asmref" />
-    <None Include="Assets\MapMagic\Terrains\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Core\MapMagic.asmdef" />
+    <None Include="Assets\3rdParty\MapMagic\Compatibility\VegetationStudio\Placeholders\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Compatibility\MicroSplat\Placeholders\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Generators\Matrix\Runtime\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Locks\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Expose\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Products\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Nodes\MapMagic.asmref" />
+    <None Include="Assets\3rdParty\MapMagic\Terrains\MapMagic.asmref" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -362,9 +363,6 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -406,6 +404,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
