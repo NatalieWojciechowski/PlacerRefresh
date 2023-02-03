@@ -10,6 +10,8 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public static TD_Controls controls;
 
     public static event EventHandler<PlayerInputEventArgs> PlayerMove;
+    public static event EventHandler UICancel;
+    public static event EventHandler UIAccept;
 
     public void OnEnable()
     {
@@ -28,6 +30,20 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public void OnAccept(InputAction.CallbackContext context)
     {
         Debug.Log("UI OnAccept" + context);
+        EventManager.current.GenericAccept();
+        //PlayerAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue(), 0);
+        RaycastHit2D ray2D = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(mousePos));
+
+        if (ray2D)
+        {
+            GameObject foundObject = ray2D.collider.gameObject;
+            Debug.Log("HIT OBJECT: " + foundObject);
+            // Do something else
+
+        }
+        UIAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 
     public void OnCancel(InputAction.CallbackContext context)

@@ -13,7 +13,15 @@ public class AreaTower : TD_Building
 
     public AreaTower(TD_BuildingData buildingData) : base(buildingData)
     {
+        SetStats(buildingData);
+        IsRunning = false;
+        TryBuildingState(BuildingState.Blueprint);
+    }
 
+    protected override void Start()
+    {
+        base.Start();
+        SetStats(_baseBuildingData);
     }
 
     protected override void SpawnProjectile()
@@ -77,6 +85,16 @@ public class AreaTower : TD_Building
     {
         base.BuildingInit(sourceBuildingData);
         TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
     }
 
     //private void AdjustRange()

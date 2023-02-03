@@ -44,6 +44,7 @@ public class TD_Building : MonoBehaviour
     protected float _lastAction = 0f;
     private float effectToggleDelay = .25f;
     private float effectLastToggle = 0;
+    private bool isSelected = false;
 
     protected float myAttackDelay = 1f;
 
@@ -51,10 +52,12 @@ public class TD_Building : MonoBehaviour
     //private int _maxTier = 1;
 
     public int EnemyKillCount { get; internal set; }
-    public Guid BuildingUUID { get; private set; }
+    public Guid BuildingUUID { get; protected set; }
     public TD_Enemy BuildingTarget { get => _buildingTarget; }
     public Transform ProjectileStart;
     public GameObject RangeIndicator;
+
+    public GameObject LevelUI;
 
     protected enum TargetingType
     {
@@ -122,7 +125,7 @@ public class TD_Building : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         if (!ProjectileStart) ProjectileStart = this.transform;
         BuildingUUID = Guid.NewGuid();
@@ -134,9 +137,46 @@ public class TD_Building : MonoBehaviour
 
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         this.buildingState = BuildingState.Blueprint;
+        EventManager.OnTowerSelect += OnTowerSelection;
+        EventManager.OnTowerDeselect += OnTowerDeselection;
+    }
+
+    protected virtual void OnDisable()
+    {
+        EventManager.OnTowerSelect -= OnTowerSelection;
+        EventManager.OnTowerDeselect -= OnTowerDeselection;
+    }
+
+
+    protected void OnTowerSelection(TD_Building selectedTower)
+    {
+        if (selectedTower.BuildingUUID == BuildingUUID) Select();
+        else if (isSelected) Deselect();
+    }
+
+    protected void Select()
+    {
+        ToggleSelection(true);
+    }
+
+    protected void OnTowerDeselection()
+    {
+        if (isSelected) Deselect();
+    }
+
+    protected void Deselect()
+    {
+        ToggleSelection(false);
+    }
+
+    private void ToggleSelection(bool toState)
+    {
+        isSelected = toState;
+        if (LevelUI) LevelUI.SetActive(toState);
+        if (RangeIndicator) RangeIndicator.SetActive(toState);
     }
 
 #if UNITY_EDITOR
@@ -213,7 +253,7 @@ public class TD_Building : MonoBehaviour
         if (_sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
         //_currentTier++;
         _sBuildingData.LevelUp();
-        _sBuildingData.Damage = (float)Math.Round(_sBuildingData.Damage * 1.5f);
+        //_sBuildingData.Damage = (float)Math.Round(_sBuildingData.Damage * 1.5f);
         TryBuildingState(BuildingState.Upgrading);
         return true;
         //return _buildingData.upgradesTo != null;
@@ -280,12 +320,6 @@ public class TD_Building : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
-    {
-        if (buildingState != BuildingState.Blueprint)
-            EventManager.current.TowerSelected(this);
-    }
-
     protected virtual void TryBuildingState(BuildingState toState = BuildingState.Idle)
     {
         switch (toState) {
@@ -294,20 +328,28 @@ public class TD_Building : MonoBehaviour
             bAnimator.SetBool("IsReloading", false);
             bAnimator.SetBool("IsAttacking", false);
             break;
+
             case BuildingState.Attacking:
             if (fireSound) TD_AudioManager.instance.PlayClip(fireSound, transform.position);
             bAnimator.SetBool("IsAttacking", true);
             attackState = BuildingAttackState.Attacking;
             break;
+
             case BuildingState.OnCooldown:
             if (reloadSound) TD_AudioManager.instance.PlayClip(reloadSound, transform.position);
             bAnimator.SetBool("IsReloading", true);
             attackState = BuildingAttackState.Cooldown;
             break;
+
             case BuildingState.Reloading:
             bAnimator.SetBool("IsReloading", true);
             attackState = BuildingAttackState.Reloading;
             break;
+
+            case BuildingState.Upgrading:
+            UpdateHelpers();
+            break;
+
             default:
             bAnimator.SetBool("InRange", false);
             bAnimator.SetBool("IsReloading", false);
@@ -324,22 +366,44 @@ public class TD_Building : MonoBehaviour
         TryBuildingState(BuildingState.Idle);
         IsRunning = true;
         RangeIndicator?.SetActive(false);
+        SetupLevelIndicators();
         EventManager.current.MoneySpent(_sBuildingData.PurchaseCost);
         EventManager.current.TowerPlaced(this);
+    }
+
+    private void SetupLevelIndicators()
+    {
+        if (!LevelUI) return;
+        LevelUI.GetComponent<LevelIndicator>()?.InitIndicator(this);
+        // Not activating here because we havent selected yet
     }
 
     private void SetupHelpers()
     {
         if (RangeIndicator)
         {
-            float attackRange = _sBuildingData.AttackRange;
-            RangeIndicator.GetComponentInChildren<SpriteRenderer>().size = new Vector2(attackRange, attackRange);
             RangeIndicator?.SetActive(true);
+        }
+        if (LevelUI)
+        {
+            //SpriteRenderer[] levelPips = LevelIndicator.GetComponentsInChildren<SpriteRenderer>();
+            //LevelUI.GetComponent<LevelIndicator>()?.InitIndicator(this);
         }
         if (inRangeEffects)
         {
             // TODO: ?
         }
+        UpdateHelpers();
+    }
+
+    private void UpdateHelpers()
+    {
+        if (RangeIndicator)
+        {
+            float attackRange = _sBuildingData.AttackRange;
+            RangeIndicator.GetComponentInChildren<SpriteRenderer>().size = new Vector2(attackRange, attackRange);
+        }
+        if (LevelUI) LevelUI.GetComponent<LevelIndicator>().RefreshLevels();
     }
 
     public Button ConfigureButton(ref Button buttonObj)

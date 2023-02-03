@@ -137,16 +137,37 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     public void OnAccept(InputAction.CallbackContext context)
     {
         //Debug.Log("Accept!" + context);
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-        if (hit)
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue(), 0);
+        //RaycastHit2D ray2D = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(mousePos));
+
+        //if (ray2D)
+        //{
+        //    GameObject foundObject = ray2D.collider.gameObject;
+        //    Debug.Log("HIT OBJECT: " + foundObject);
+        //    // Do something else
+
+        //}
+
+        //RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit[] inWay = Physics.RaycastAll(ray, 20f);
+        if (inWay.Length > 0)
         {
-            // Call methods here
-            Debug.Log("Raycast Hit -> " + hit.transform.name);
+
+            foreach (RaycastHit hitTarget in inWay)
+            {
+                print(hitTarget.collider.name);
+            }
         }
+        //RaycastHit hit = Physics.Raycast(mousePos, Vector3.zero);
+        //if (hit)
+        //{
+        //    // Call methods here
+        //    Debug.Log("Raycast Hit -> " + hit.transform.name);
+        //}
 
         EventManager.current.GenericAccept();
-        PlayerAccept(this, EventArgs.Empty);
+        PlayerAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 
     //public void OnCancel(InputAction.CallbackContext context)

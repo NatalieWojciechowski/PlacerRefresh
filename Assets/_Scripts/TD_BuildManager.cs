@@ -21,7 +21,7 @@ public class TD_BuildManager : MonoBehaviour
     public TD_BuildToolbar toolbarCtrl;
     public Physics2DRaycaster builderRaycaster;
 
-    [SerializeField] private List<TD_Building> pieces;
+    [SerializeReference] [SerializeField] private List<TD_Building> pieces;
     public List<TD_Building> Pieces { get => pieces; }
     #endregion
 
@@ -60,6 +60,8 @@ public class TD_BuildManager : MonoBehaviour
     {
         PlayerControlsManager.PlayerCancel += OnPlayerCancel;
         PlayerControlsManager.PlayerAccept += OnPlayerAccept;
+        UIControlsManager.UICancel += OnPlayerCancel;
+        UIControlsManager.UIAccept += OnPlayerAccept;
         //EventManager.OnTowerPlace += onBuildingPlaceAccept;
     }
     private void OnDisable()
@@ -67,6 +69,8 @@ public class TD_BuildManager : MonoBehaviour
         PlayerControlsManager.PlayerCancel -= OnPlayerCancel;
         // TODO: Consider making an event from the build manager for the player controls to trigger the accept / cancel from there & broadcast
         PlayerControlsManager.PlayerAccept -= OnPlayerAccept;
+        UIControlsManager.UICancel -= OnPlayerCancel;
+        UIControlsManager.UIAccept -= OnPlayerAccept;
         EventManager.OnTowerPlace -= onBuildingPlaceAccept;
     }
 
@@ -219,6 +223,7 @@ public class TD_BuildManager : MonoBehaviour
     {
         if (previewObj)
             onBuildingPlaceAccept(previewObj?.GetComponent<TD_Building>());
+            // TODO: check for any conditions here besides that we're not in build?
     }
 
     private void onBuildingPlaceAccept(TD_Building tD_Building)

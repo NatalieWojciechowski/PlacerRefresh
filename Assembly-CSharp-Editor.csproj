@@ -54,7 +54,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\Natalie\Documents\Unity Projects\PlacerRefresh\Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\3rdParty\Shared\Ramps\Editor\RampAssetEditor.cs" />
@@ -62,6 +61,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Editor\MoveObjects.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Editor\Inspector\ReadMe\ReadMe.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Editor\GridPlacement\GridLayersManager.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_BuildManagerEditor.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Editor\ImporterEditor.cs" />
     <Compile Include="Assets\3rdParty\MapMagic\Compatibility\RTP\Editor\RTPEditor.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Editor\GridPlacement\CustomBoundsControllerEditor.cs" />
@@ -356,6 +356,9 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="GridPlacementSystem">
+      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -397,9 +400,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="GridPlacementSystem">
-      <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -843,6 +843,10 @@
       <Project>{5CE6EF90-AC3F-29E8-0B89-5716C1E688EC}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
+      <Project>{C3A3AA7B-5F27-6986-3BAF-0ADDC688F1B2}</Project>
+      <Name>ToonyColorsPro.Demo.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
       <Project>{9565632E-677F-60EF-3B26-A1202C88BDE5}</Project>
       <Name>Unity.VisualScripting.State.Editor</Name>
@@ -854,6 +858,10 @@
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
       <Project>{C6BA3353-CC19-A990-1F95-918341530580}</Project>
       <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXREditor.csproj">
+      <Project>{47B8C971-9ACD-A275-D3A5-59A3C859B07E}</Project>
+      <Name>CFXREditor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ProBuilder.csproj">
       <Project>{70DFE753-E856-E672-C21C-4F5338296A46}</Project>
@@ -867,21 +875,53 @@
       <Project>{F5C191C0-CB47-9683-ABAA-7A0093CF9C80}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Core.csproj">
+      <Project>{B3FBC1B1-9019-DA5F-C750-AD6627D4E33E}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
       <Project>{8F7850C4-B0B0-0DF5-9BE0-DD520CB5E835}</Project>
       <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
+    </ProjectReference>
+    <ProjectReference Include="Den.Tools.Editor.csproj">
+      <Project>{E964B701-676C-BA96-4E4A-AB7F3DFBCFDA}</Project>
+      <Name>Den.Tools.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{B4E55753-31C6-7E64-24FB-C30C91845565}</Project>
+      <Name>NavMeshComponents</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{E5C96C4D-2F32-B719-333A-554B450C76A9}</Project>
       <Name>Unity.Mathematics.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor2.csproj">
+      <Project>{9DEDD412-E86B-9C85-41B6-34B9F8F2D3EC}</Project>
+      <Name>NavMeshComponentsEditor2</Name>
+    </ProjectReference>
+    <ProjectReference Include="Internal.csproj">
+      <Project>{EC96E761-19A5-B34A-E0CC-B388FB59B0B2}</Project>
+      <Name>Internal</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.ProGrids.csproj">
       <Project>{E926BB3D-3D04-BDD5-772C-365D517E51EE}</Project>
       <Name>Unity.ProGrids</Name>
     </ProjectReference>
+    <ProjectReference Include="CFXRRuntime.csproj">
+      <Project>{F2EBE9C3-7C10-6D44-5C6D-E294B9A5DF38}</Project>
+      <Name>CFXRRuntime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{C7BE9522-431A-2DAE-5013-E6F7B0948EB1}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{42B3234E-8728-F1DA-C81D-FFC909E67147}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MapMagic.csproj">
+      <Project>{34E96515-2052-CD9B-AE8E-1D363E41D406}</Project>
+      <Name>MapMagic</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
       <Project>{446BABC8-8410-FF6F-1238-E3FA030224DE}</Project>
@@ -911,9 +951,17 @@
       <Project>{F594376A-0A84-A733-9749-39F889B3A9AD}</Project>
       <Name>Unity.ProBuilder.AddOns.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="KinoBloom.Runtime.csproj">
+      <Project>{6AF41DC0-D626-9F39-1DA4-F81B8BD8C5CA}</Project>
+      <Name>KinoBloom.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Postprocessing.Editor.csproj">
       <Project>{6D49A5E9-D602-D31E-4DAC-72B8DF2A97D9}</Project>
       <Name>Unity.Postprocessing.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="CFXRDemo.csproj">
+      <Project>{7C586032-61BD-5125-9A1F-2F6BF4336ED7}</Project>
+      <Name>CFXRDemo</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{B6F350BB-1C3C-E750-4276-E5E519CFE7FB}</Project>
@@ -943,6 +991,10 @@
       <Project>{97F815B3-4FD0-328A-2618-37EB3B269996}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
+    <ProjectReference Include="Den.Tools.csproj">
+      <Project>{68B83133-9A49-B219-C026-4A29DD640E34}</Project>
+      <Name>Den.Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{D0999E0D-4FD2-C6B3-02A7-F99F86BC8882}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
@@ -971,6 +1023,10 @@
       <Project>{DAD5D8B3-7DA2-65C9-C644-81A04758FBBB}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="MapMagic.Editor.csproj">
+      <Project>{629B7B74-CE96-F9ED-2705-A6547281D142}</Project>
+      <Name>MapMagic.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{3C274A9F-1522-3AD2-B972-58D3E4997B4E}</Project>
       <Name>Unity.VisualScripting.State</Name>
@@ -978,62 +1034,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{81D675CD-33E7-D08E-12E2-CFD7BFEE95A5}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRRuntime.csproj">
-      <Project>{F2EBE9C3-7C10-6D44-5C6D-E294B9A5DF38}</Project>
-      <Name>CFXRRuntime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Den.Tools.Editor.csproj">
-      <Project>{E964B701-676C-BA96-4E4A-AB7F3DFBCFDA}</Project>
-      <Name>Den.Tools.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXREditor.csproj">
-      <Project>{47B8C971-9ACD-A275-D3A5-59A3C859B07E}</Project>
-      <Name>CFXREditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="ToonyColorsPro.Demo.Editor.csproj">
-      <Project>{C3A3AA7B-5F27-6986-3BAF-0ADDC688F1B2}</Project>
-      <Name>ToonyColorsPro.Demo.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="MapMagic.Editor.csproj">
-      <Project>{629B7B74-CE96-F9ED-2705-A6547281D142}</Project>
-      <Name>MapMagic.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsEditor2.csproj">
-      <Project>{9DEDD412-E86B-9C85-41B6-34B9F8F2D3EC}</Project>
-      <Name>NavMeshComponentsEditor2</Name>
-    </ProjectReference>
-    <ProjectReference Include="CFXRDemo.csproj">
-      <Project>{7C586032-61BD-5125-9A1F-2F6BF4336ED7}</Project>
-      <Name>CFXRDemo</Name>
-    </ProjectReference>
-    <ProjectReference Include="KinoBloom.Runtime.csproj">
-      <Project>{6AF41DC0-D626-9F39-1DA4-F81B8BD8C5CA}</Project>
-      <Name>KinoBloom.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Internal.csproj">
-      <Project>{EC96E761-19A5-B34A-E0CC-B388FB59B0B2}</Project>
-      <Name>Internal</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{B4E55753-31C6-7E64-24FB-C30C91845565}</Project>
-      <Name>NavMeshComponents</Name>
-    </ProjectReference>
-    <ProjectReference Include="MapMagic.csproj">
-      <Project>{34E96515-2052-CD9B-AE8E-1D363E41D406}</Project>
-      <Name>MapMagic</Name>
-    </ProjectReference>
-    <ProjectReference Include="Core.csproj">
-      <Project>{B3FBC1B1-9019-DA5F-C750-AD6627D4E33E}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{42B3234E-8728-F1DA-C81D-FFC909E67147}</Project>
-      <Name>NavMeshComponentsEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Den.Tools.csproj">
-      <Project>{68B83133-9A49-B219-C026-4A29DD640E34}</Project>
-      <Name>Den.Tools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 73963227521383981, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 713904803579630943, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_Size.x
@@ -181,15 +186,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1049408504298024467, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
+    - target: {fileID: 7191880665751993329, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7769438875640954067, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_Size.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7769438875640954067, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_Size.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8810932503824512621, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
@@ -201,11 +211,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3602379146642460443, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33a29b2d8a850b549886c3cea6cb0ffb, type: 3}
 --- !u!4 &1030082216426359587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2714301675376827051, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3161725603495743880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1273573232261266858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4200750918683061282, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
     type: 3}
   m_PrefabInstance: {fileID: 3161725603495743880}
   m_PrefabAsset: {fileID: 0}
@@ -254,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseBuildingData: {fileID: 11400000, guid: 2c84be4f5eb99c84286205e31dcf21f0, type: 2}
-  fireSound: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: 38d4d0ff7855e984285fbf430385b2aa, type: 3}
   reloadSound: {fileID: 0}
   hitSound: {fileID: 0}
   _buildingTarget: {fileID: 0}
@@ -263,10 +280,11 @@ MonoBehaviour:
   inRangeEffects: {fileID: 6267699697160470043}
   IsRunning: 0
   IsInRange: 0
-  ProjectileStart: {fileID: 0}
-  RangeIndicator: {fileID: 0}
+  ProjectileStart: {fileID: 1301862877664039613}
+  RangeIndicator: {fileID: 1273573232261266858}
+  LevelUI: {fileID: 8072290016412368710, guid: 2c7dc2b6989ea5944896ed1bf505b970, type: 3}
   effectAreaRange: {fileID: 8674139541548015554}
-  TickDamage: 0
+  TickDamage: 0.25
 --- !u!1001 &3981617977418454149
 PrefabInstance:
   m_ObjectHideFlags: 0

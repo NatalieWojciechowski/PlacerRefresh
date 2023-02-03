@@ -43,7 +43,7 @@ public struct BuildingData
     private int _currentLevel;
     public BuildingData(TD_BuildingData baseData)
     {
-        _BuildingData = baseData;
+        _BuildingData = ScriptableObject.Instantiate(baseData);
         _currentLevel = baseData.CurrentTier;
         DisplayName = baseData.displayName;
         MaxLevel = baseData.MaxTier;
@@ -59,7 +59,7 @@ public struct BuildingData
     public string DisplayName { get; }
     public int Level { get => _currentLevel; }
     public int MaxLevel { get; }
-    public float AttackRange { get; }
+    public float AttackRange { get; private set; }
     public float AttackSpeed { get; }
     public float Damage { get; set; }
     public bool CanSell { get; set; }
@@ -73,6 +73,13 @@ public struct BuildingData
     {
         _currentLevel += 1 ;
         if (_currentLevel > MaxLevel) _currentLevel = MaxLevel;
+        else
+        {
+            //// Adjust Stats
+            float lvlScale = _currentLevel * 0.125f;
+            AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale));
+            Damage += (float)Math.Round(_BuildingData.baseDamage * (lvlScale));
+        }
         return _currentLevel;
     }
 

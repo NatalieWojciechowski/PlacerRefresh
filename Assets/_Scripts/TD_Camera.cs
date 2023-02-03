@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TD_Camera : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class TD_Camera : MonoBehaviour
             animator.SetFloat("Vertical", animationVector.y);
             animator.SetFloat("Horizontal", animationVector.x);
         }
+
     }
 
     private void FixedUpdate()

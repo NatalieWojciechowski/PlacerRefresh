@@ -28,7 +28,7 @@ public class TowerTooltip : MonoBehaviour
     private TMP_Text enemiesKilledText;
 
     private float lastAction = 0f;
-    private float _cooldownPeriod = 1.25f;
+    private float _cooldownPeriod = 0.5f;
 
     private void OnEnable()
     {
@@ -102,7 +102,7 @@ public class TowerTooltip : MonoBehaviour
         }
         //if (!TowerSelectionUI || !towerNameText) return;
         BuildingData bStats = selectedBuilding.GetStats();
-        towerNameText.text = bStats.DisplayName;
+        towerNameText.text = $"{bStats.DisplayName} (LV: {bStats.Level})";
 
         // Update enemies killed info
         // TODO: dunno if I want to keep this
