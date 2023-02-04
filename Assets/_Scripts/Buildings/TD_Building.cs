@@ -307,7 +307,7 @@ public class TD_Building : MonoBehaviour
         {
             TryBuildingState(BuildingState.Attacking);
             GameObject lastProjectile = Instantiate(_baseBuildingData.projectilePrefab, transform);
-            lastProjectile.transform.Translate(ProjectileStart.position);
+            lastProjectile.transform.position = ProjectileStart.position;
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
 
             // TODO: have only the rotating part of building move toward enemy
@@ -402,13 +402,13 @@ public class TD_Building : MonoBehaviour
         {
             float attackRange = _sBuildingData.AttackRange;
             RangeIndicator.GetComponentInChildren<SpriteRenderer>().size = new Vector2(attackRange, attackRange);
+            RangeIndicator.SetActive(isSelected);
         }
         if (LevelUI)
         {
             LevelUI.GetComponent<LevelIndicator>().RefreshLevels();
             LevelUI.SetActive(isSelected);
         }
-        ToggleRangeEffects(isSelected);
     }
 
     public Button ConfigureButton(ref Button buttonObj)

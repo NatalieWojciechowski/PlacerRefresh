@@ -27,6 +27,12 @@ public class TD_GameManager : MonoBehaviour
     private GameObject effectsBin;
     public GameObject EffectsBin { get => effectsBin; }
 
+    public void InitFromData(SaveData saveData)
+    {
+        currentCurrency = saveData.playerMoney;
+        currentWaveIndex = saveData.currentWaveIndex;
+    }
+
     private void Awake()
     {
         // TODO: This seems to be calling the methods while registering

@@ -17,7 +17,7 @@ MonoBehaviour:
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
   category: Damage
-  pulseDelay: 0.25
+  pulseDelay: 0.5
   aoeRange: 3
   RemoveOnContact: 0
   maxLifetime: 0

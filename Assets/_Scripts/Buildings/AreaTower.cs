@@ -26,21 +26,12 @@ public class AreaTower : TD_Building
 
     protected override void SpawnProjectile()
     {
-        //// If we have activated AOE, check if we should turn it off, then reset timers for it OR skip rest
-        //if (_isActiveEffect) {
-        //    if (Time.time - _aoeStartTime < _sBuildingData.RawBuildingData.aoeActiveDuration) return;
-        //    EndAOE();
-        //} else if (!_isActiveEffect && Time.time - _lastAction > _sBuildingData.RawBuildingData.projectileDelay) {
-        //    StartAOE();
-        //}
+
     }
 
     protected override void ActOnTarget()
     {
-        //if (!effectAreaRange || !effectAreaRange.gameObject.activeSelf)
-        //{
-        //    effectAreaRange.gameObject.SetActive(true);
-        //}
+
         base.ActOnTarget();
     }
 
@@ -53,10 +44,9 @@ public class AreaTower : TD_Building
 
     protected override void EnteredRange()
     {
-        //TickDamage = _sBuildingData.Damage / _sBuildingData.AttackSpeed;
+        effectAreaRange.AdjustInRangeVisualSize();
         effectAreaRange.gameObject.SetActive(true);
         inRangeEffects?.SetActive(true);
-
         base.EnteredRange();
     }
 

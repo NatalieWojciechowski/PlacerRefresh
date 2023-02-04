@@ -11,6 +11,9 @@ public class TD_Projectile : MonoBehaviour
     private float _spawnTime = 0;
     private float _maxLifetime = 10f;
     private Animator mAnimator;
+
+    public Vector3 StartPosition { get; private set; }
+
     private float totalTravelNeeded;
     public AnimationCurve projectileArc;
     public float curveStartScale = 1f;
@@ -35,6 +38,7 @@ public class TD_Projectile : MonoBehaviour
     protected virtual void Start()
     {
         mAnimator = GetComponent<Animator>();
+        StartPosition = transform.position;
     }
     private void OnEnable()
     {
@@ -56,7 +60,7 @@ public class TD_Projectile : MonoBehaviour
             if (mAnimator)
             {
 
-                float graphValue = projectileArc.Evaluate((Time.time - _spawnTime) / (Mathf.Sqrt(Vector3.Distance(myParent.transform.position, myTarget.transform.position))));
+                float graphValue = projectileArc.Evaluate((Time.time - _spawnTime) / (Mathf.Sqrt(Vector3.Distance(StartPosition, myTarget.transform.position))));
                 //Debug.Log(aniYPos);
                 //Vector3 aniPos = transform.position + new Vector3(0, aniYPos, 0);
                 transform.Translate(new Vector3(0, graphValue, 0));
@@ -71,18 +75,18 @@ public class TD_Projectile : MonoBehaviour
 
     private void AdjustProjectileOnPath()
     {
-        Vector3 lerpPos = GetLerpPosition(myParent.transform.position, myTarget.transform.position);
+        Vector3 lerpPos = GetLerpPosition(StartPosition, myTarget.transform.position);
         transform.position = lerpPos;
         float angleDiff = Vector3.Dot(transform.forward, myTarget.transform.forward);
         if (Math.Abs(angleDiff) > 0.15f) transform.LookAt(myTarget.transform.position);
     }
 
-    private Vector3 GetLerpPosition(Vector3 parentPos, Vector3 targetPos)
+    private Vector3 GetLerpPosition(Vector3 fromPos, Vector3 targetPos)
     {
         // TODO: Consider passing the total length from spawn time for the animator in "TravelTime" param
         float currentTimeOnPath = Time.time - _spawnTime;
         ////float aniYPos = curve. keys.GetValue( // .Evaluate(Time.time);
-        return Vector3.Lerp(parentPos, targetPos, currentTimeOnPath / TotalTimeForPath(parentPos, targetPos));
+        return Vector3.Lerp(fromPos, targetPos, currentTimeOnPath / TotalTimeForPath(fromPos, targetPos));
     }
 
     private float TotalTimeForPath(Vector3 sPosition, Vector3 ePosition)

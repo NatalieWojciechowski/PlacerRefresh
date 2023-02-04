@@ -1680,6 +1680,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSelected: {fileID: 0}
   Selectables: []
+--- !u!114 &636555469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636555459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5630c46778c19504f9cbae12c92d8dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &638167688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1929,7 +1941,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 7.2e-43, z: 0, w: 6e-44}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2801,7 +2813,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.822969e-10, z: 6.08e-43, w: 1.899e-42}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5869,9 +5881,20 @@ PrefabInstance:
       objectReference: {fileID: 1038674725}
     - target: {fileID: 8170463114620383730, guid: 2b8bc2db07f04c2488b61b642eb6241b,
         type: 3}
+      propertyPath: pieces.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170463114620383730, guid: 2b8bc2db07f04c2488b61b642eb6241b,
+        type: 3}
       propertyPath: pieces.Array.data[4]
       value: 
       objectReference: {fileID: 3909326374663763282, guid: 57edd59909f377f49b39581d9edaac50,
+        type: 3}
+    - target: {fileID: 8170463114620383730, guid: 2b8bc2db07f04c2488b61b642eb6241b,
+        type: 3}
+      propertyPath: pieces.Array.data[5]
+      value: 
+      objectReference: {fileID: 1340276701811755694, guid: 32337dee36db001499473907e796ef24,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8bc2db07f04c2488b61b642eb6241b, type: 3}

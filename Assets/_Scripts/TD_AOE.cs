@@ -9,6 +9,7 @@ public class TD_AOE : AreaEffect
     [SerializeField]
     private AreaTower _owningBuilding;
     private TD_Enemy _parentTarget;
+    private CapsuleCollider _capsuleCollider;
 
     /// <summary>
     /// Represents the region that remains active while enemies are in range. 
@@ -22,13 +23,23 @@ public class TD_AOE : AreaEffect
     protected override void Start()
     {
         _owningBuilding = GetComponentInParent<AreaTower>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
         //AdjustRange(_owningBuilding.GetStats().AttackRange);
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         if(!_owningBuilding) _owningBuilding = GetComponentInParent<AreaTower>();
+        if(_capsuleCollider) AdjustInRangeVisualSize();
         //AdjustRange(_owningBuilding.GetStats().AttackRange);
+    }
+
+    public void AdjustInRangeVisualSize()
+    {
+        if (!_owningBuilding) return;
+        transform.localScale = Vector3.one;
+        _capsuleCollider.radius = _owningBuilding.GetStats().AttackRange /2f;
     }
 
 #if UNITY_EDITOR
