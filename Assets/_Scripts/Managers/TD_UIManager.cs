@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class TD_UIManager : MonoBehaviour
 {
     public static TD_UIManager current;
+    [SerializeField] TD_GameSerializer GameSerializer;
 
     public GameObject coreStatus;
     public GameObject gameOverStatus;
@@ -188,5 +189,11 @@ public class TD_UIManager : MonoBehaviour
         else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
 
         mainMenuPanel.SetActive(!menuOpen);
+    }
+
+    public void SaveAndExit()
+    {
+        TD_GameSerializer.SaveGame();
+        FindObjectOfType<SceneLoader>().SetNextScene(SceneLoader.GameScene.MainMenu);
     }
 }

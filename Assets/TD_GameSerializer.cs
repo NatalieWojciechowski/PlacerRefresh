@@ -24,14 +24,16 @@ public class SaveData
 
 }
 
-public class GameSerializer : MonoBehaviour
+public class TD_GameSerializer : MonoBehaviour
 {
+    public static TD_GameSerializer instance;
     string saveFileName = "td_game_save.dat";
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (instance != null) Destroy(this);
+        instance = this;
     }
 
     // Update is called once per frame
@@ -40,11 +42,16 @@ public class GameSerializer : MonoBehaviour
         
     }
 
-    void SaveGame()
+    public bool SaveDataExists()
+    {
+        return File.Exists(Application.persistentDataPath + $"/{saveFileName}");
+    }
+
+    public static void SaveGame()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath
-                     + $"/{saveFileName}");
+                     + $"/{instance.saveFileName}");
         SaveData data = new SaveData();
         data.playerMoney = TD_GameManager.current.CurrentCurrency;
         data.currentWaveIndex = TD_GameManager.current.CurrentWaveIndex;
@@ -53,10 +60,10 @@ public class GameSerializer : MonoBehaviour
         Debug.Log("Game data saved!");
     }
 
-    void LoadGame()
+    public static void LoadGame()
     {
         if (File.Exists(Application.persistentDataPath
-                       + $"/{saveFileName}"))
+                       + $"/{instance.saveFileName}"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file =

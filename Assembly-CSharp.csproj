@@ -643,7 +643,8 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\GameSerializer.cs" />
+    <Compile Include="Assets\TD_GameSerializer.cs" />
+    <Compile Include="Assets\TD_MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

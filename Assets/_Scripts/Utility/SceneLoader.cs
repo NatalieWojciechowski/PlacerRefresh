@@ -9,6 +9,32 @@ public class SceneLoader : MonoBehaviour
     bool shouldTransition = false;
     Coroutine corLoad;
 
+    public enum GameScene
+    {
+        MainMenu,
+        Level1
+    }
+
+    private string SceneToName(GameScene gameScene)
+    {
+        string sceneName = "";
+        switch (gameScene) {
+            case GameScene.MainMenu:
+            sceneName = "StartMenu";
+            break;
+
+            case GameScene.Level1:
+            sceneName = "TowerDefenseFreshMap";
+            break;
+
+            default:
+            sceneName = "StartMenu";
+            break;
+        }
+
+        return sceneName;
+    }
+
     private void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -56,6 +82,12 @@ public class SceneLoader : MonoBehaviour
         //        SceneManager.LoadScene("scene1");
         //    }
         //}
+    }
+
+    public void SetNextScene(GameScene gameScene)
+    {
+        nextSceneName = SceneToName(gameScene);
+        LoadNextScene();
     }
 
     public void SetNextScene(string sceneName) 
