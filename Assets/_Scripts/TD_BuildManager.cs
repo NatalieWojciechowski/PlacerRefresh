@@ -192,6 +192,7 @@ public class TD_BuildManager : MonoBehaviour
     #region Player Actions
     public static GameObject StartPlacement(GameObject buildPrefab)
     {
+        EventManager.current.TowerDeselected();
         if (current.previewObj != null) Destroy(current.previewObj);
         current.previewObj = Instantiate(buildPrefab, current.transform);
         current.SafeTransition(BuildState.Blueprint);

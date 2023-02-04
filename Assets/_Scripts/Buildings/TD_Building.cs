@@ -174,9 +174,11 @@ public class TD_Building : MonoBehaviour
 
     private void ToggleSelection(bool toState)
     {
+        //TD_SelectionManager.instance.DeselectCurrent();
         isSelected = toState;
-        if (LevelUI) LevelUI.SetActive(toState);
-        if (RangeIndicator) RangeIndicator.SetActive(toState);
+        //if (LevelUI) LevelUI.SetActive(toState);
+        //if (RangeIndicator) RangeIndicator.SetActive(toState);
+        UpdateHelpers();
     }
 
 #if UNITY_EDITOR
@@ -193,9 +195,10 @@ public class TD_Building : MonoBehaviour
         if (buildingState == BuildingState.Blueprint) return;
         bool beganWithTarget = (_buildingTarget?.EnemyUUID != null);
         // Validation
-        if (IsRunning) CheckTargets();
+        if (IsRunning) FindPlannedTarget();
         if (_buildingTarget)
         {
+            // Dont restart effets
             if (!beganWithTarget) EnteredRange();
             ActOnTarget();
         }
@@ -207,26 +210,26 @@ public class TD_Building : MonoBehaviour
 
     protected virtual void EnteredRange()
     {
-        Debug.Log("JUST went INTO range");
-        ToggleEffects(true);
+        //Debug.Log("JUST went INTO range");
+        ToggleRangeEffects(true);
     }
 
     protected virtual void ExitedRange()
     {
-        Debug.Log("JUST went out of range");
-        ToggleEffects(false);
+        //Debug.Log("JUST went out of range");
+        ToggleRangeEffects(false);
     }
 
-    private void ToggleEffects(bool shouldShow)
+    private void ToggleRangeEffects(bool shouldShow)
     {
         if (Time.time - effectLastToggle < effectToggleDelay) return;
-        Debug.Log("Toggle Effects: " + shouldShow);
+        //Debug.Log("Toggle Effects: " + shouldShow);
         if (bAnimator) bAnimator.SetBool("InRange", shouldShow);
         if (inRangeEffects) inRangeEffects.SetActive(shouldShow);
         effectLastToggle = Time.time;
     }
 
-    protected virtual void CheckTargets()
+    protected virtual void FindPlannedTarget()
     {
         TD_Enemy startingEnemy = _buildingTarget;
         // TODO: Method to grab all enemies from a manager to iterate over rather than searching
@@ -251,12 +254,10 @@ public class TD_Building : MonoBehaviour
     internal bool TryUpgrade()
     {
         if (_sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
-        //_currentTier++;
         _sBuildingData.LevelUp();
-        //_sBuildingData.Damage = (float)Math.Round(_sBuildingData.Damage * 1.5f);
         TryBuildingState(BuildingState.Upgrading);
+        // TODO: handle case of building ugprade to another?
         return true;
-        //return _buildingData.upgradesTo != null;
     }
 
     internal bool TrySell()
@@ -265,6 +266,7 @@ public class TD_Building : MonoBehaviour
         if (_sBuildingData.CanSell)
         {
             TD_GameManager.current.AddCoins(_sBuildingData.SellValue());
+            // TODO: remove from BuildManager
             Destroy(this.gameObject);
         }
         return true;
@@ -304,13 +306,11 @@ public class TD_Building : MonoBehaviour
         if (ProjectileReady())
         {
             TryBuildingState(BuildingState.Attacking);
-            //if (bAnimator) bAnimator.SetBool("IsAttacking", true);
             GameObject lastProjectile = Instantiate(_baseBuildingData.projectilePrefab, transform);
             lastProjectile.transform.Translate(ProjectileStart.position);
-            //lastProjectile.transform.SetPositionAndRotation(ProjectileStart.position, ProjectileStart.rotation);
             lastProjectile.transform.LookAt(_buildingTarget.transform.position);
 
-            // TODO: have only the rotating part move toward enemy
+            // TODO: have only the rotating part of building move toward enemy
 
             // TODO: assign owner / target? 
             TD_Projectile td_projectile = lastProjectile.GetComponent<TD_Projectile>();
@@ -403,7 +403,12 @@ public class TD_Building : MonoBehaviour
             float attackRange = _sBuildingData.AttackRange;
             RangeIndicator.GetComponentInChildren<SpriteRenderer>().size = new Vector2(attackRange, attackRange);
         }
-        if (LevelUI) LevelUI.GetComponent<LevelIndicator>().RefreshLevels();
+        if (LevelUI)
+        {
+            LevelUI.GetComponent<LevelIndicator>().RefreshLevels();
+            LevelUI.SetActive(isSelected);
+        }
+        ToggleRangeEffects(isSelected);
     }
 
     public Button ConfigureButton(ref Button buttonObj)

@@ -562,6 +562,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\FX\PauseAnim.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\BuildPanel.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Addons\ExternalRemoveGrassAddon.cs" />
+    <Compile Include="Assets\TD_SelectionManager.cs" />
     <Compile Include="Assets\_Scripts\Buildings\AreaTower.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\EquipItem.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_ConfirmPlacement.cs" />

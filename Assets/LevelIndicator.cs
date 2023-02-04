@@ -37,6 +37,7 @@ public class LevelIndicator : MonoBehaviour
     private void AssignChildTiers()
     {
         int childCount = tierContainer.childCount;
+        if (indicatorTiers == null) indicatorTiers = new();
         indicatorTiers.Clear();
         for (int i = 0; i < childCount; i++)
         {
@@ -56,29 +57,29 @@ public class LevelIndicator : MonoBehaviour
         parentbuilding = tD_Building;
         if (!parentbuilding) return;
         AssignChildTiers();
-        UpdateMax(parentbuilding.GetStats().MaxLevel);
+        //UpdateMax(parentbuilding.GetStats().MaxLevel);
         //PopulateIndicators();
-        UpdateCurrent(parentbuilding.GetStats().Level);
+        //UpdateCurrent(parentbuilding.GetStats().Level);
     }
 
-    private void PopulateIndicators()
-    {
-        //int tierIndex = 0;
-        //indicatorTiers.RemoveAll( (tier) => { return tier == null; } );
-        //int needAddCount = maxLevel - indicatorTiers.Count;
-        //for (int i = 0; i < needAddCount; i++)
-        //{
-        //    AddIndicator();
-        //}
+    //private void PopulateIndicators()
+    //{
+    //    //int tierIndex = 0;
+    //    //indicatorTiers.RemoveAll( (tier) => { return tier == null; } );
+    //    //int needAddCount = maxLevel - indicatorTiers.Count;
+    //    //for (int i = 0; i < needAddCount; i++)
+    //    //{
+    //    //    AddIndicator();
+    //    //}
 
-        //foreach (GameObject tier in indicatorTiers)
-        //{
-        //    if (tier == null) indicatorTiers.add = AddIndicator();
-        //    tierIndex++;
-        //}
-    }
+    //    //foreach (GameObject tier in indicatorTiers)
+    //    //{
+    //    //    if (tier == null) indicatorTiers.add = AddIndicator();
+    //    //    tierIndex++;
+    //    //}
+    //}
 
-    private void UpdateMax(int _maxLevel)
+    private void UpdateShownMax(int _maxLevel)
     {
         //if (maxLevel == _maxLevel) return;
         maxLevel = _maxLevel;
@@ -133,7 +134,7 @@ public class LevelIndicator : MonoBehaviour
         if (parentbuilding == null) return;
         if (indicatorTiers == null || indicatorTiers[0] == null) InitIndicator(parentbuilding);
         BuildingData parentData = parentbuilding.GetStats();
-        if (maxLevel != parentData.MaxLevel) UpdateMax(parentData.MaxLevel);
+        if (maxLevel != parentData.MaxLevel) UpdateShownMax(parentData.MaxLevel);
         if (currentLevel != parentData.Level) UpdateCurrent(parentData.Level);
         //transform.position = Camera.main.WorldToScreenPoint(transform.position) + new Vector3(-30, -20, 0);
     }
