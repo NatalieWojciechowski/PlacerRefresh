@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Utility;
 
-public class TD_Enemy : MonoBehaviour
+public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
 {
     [SerializeField]
     public WaypointRoute fullRoute;
@@ -110,7 +110,8 @@ public class TD_Enemy : MonoBehaviour
             drop.transform.position = transform.position;
         }
         DeathEffects?.SetActive(true);
-        TD_GameManager.current.AddCoins(_deathReward);
+        // In case enemy got to end vs being destroyed
+        if (_currentHealth <= 0) TD_GameManager.current.AddCoins(_deathReward);
 
         if (shieldObj) Destroy(shieldObj);
         Destroy(this.gameObject);
@@ -265,5 +266,22 @@ public class TD_Enemy : MonoBehaviour
             SafeTransition(EnemyState.Die, 0.5f);
             break;
         }
+    }
+
+    public void InitFromData(SaveData.EnemySaveData enemySaveData)
+    {
+        EnemyUUID = enemySaveData.Guid;
+        nextWaypoint = enemySaveData.NextWaypoint;
+        transform.SetPositionAndRotation(enemySaveData.Transform.position, enemySaveData.Transform.rotation);
+    }
+
+    public void AddToSaveData(ref SaveData saveData)
+    {
+        SaveData.EnemySaveData EnemySaveData = new SaveData.EnemySaveData();
+        EnemySaveData.Guid = EnemyUUID;
+        EnemySaveData.Health = _currentHealth;
+        EnemySaveData.Transform = transform;
+        EnemySaveData.NextWaypoint = nextWaypoint;
+        saveData.currentEnemies.Add(EnemySaveData);
     }
 }

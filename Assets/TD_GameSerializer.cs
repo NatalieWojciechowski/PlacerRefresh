@@ -10,7 +10,10 @@ public class SaveData
 {
     [Serializable] public struct EnemySaveData
     {
-
+        public Guid Guid;
+        public float Health;
+        public Transform Transform;
+        public Transform NextWaypoint;
     }
 
     [Serializable] public struct TowerSaveData

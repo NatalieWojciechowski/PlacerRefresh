@@ -9,3 +9,9 @@ public interface I_TDBulidingSaveCoordinator
     public abstract void InitFromData(SaveData.TowerSaveData towerSaveData);
     public abstract void AddToSaveData(ref SaveData saveData);
 }
+
+public interface I_TDEnemySaveCoordinator
+{
+    public abstract void InitFromData(SaveData.EnemySaveData enemySaveData);
+    public abstract void AddToSaveData(ref SaveData saveData);
+}

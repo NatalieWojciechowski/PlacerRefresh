@@ -20,6 +20,7 @@ public class TD_UIManager : MonoBehaviour
     public GameObject WaveStart;
     public GameObject playerMoney;
     public GameObject mainMenuPanel;
+    public GameObject SaveAndExitButton;
 
     public GameObject pieces_Selection;
 
@@ -189,8 +190,8 @@ public class TD_UIManager : MonoBehaviour
         bool menuOpen = mainMenuPanel.activeSelf;
         if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
         else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
-
         mainMenuPanel.SetActive(!menuOpen);
+        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.current.HasStarted || TD_EnemyManager.current.IsCurrentWaveComplete();
     }
 
     public void SaveAndExit()

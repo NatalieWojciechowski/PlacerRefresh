@@ -121,6 +121,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\UIPanel.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\00 Jump\ClickToJump.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Scripts\CarAIControl.cs" />
+    <Compile Include="Assets\_Scripts\TD_EnemyManagerEditor.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Movement\Button_MoveGridLeft.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Extensions\ListExtension.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\ZonePanel.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\SavingAndLoading\GridSaveManager.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
+    <Compile Include="Assets\_Scripts\TD_EnemyEditor.cs" />
     <Compile Include="Assets\_Scripts\Utility\ScalingSurfaceCollider.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\DynamicUI.cs" />
     <Compile Include="Assets\3rdParty\TowerDefenceTemplate\Scripts\MainMenu.cs" />
@@ -337,6 +339,7 @@
     <Compile Include="Assets\3rdParty\ProTips\Scripts\Behaviors\TooltipStyle.cs" />
     <Compile Include="Assets\3rdParty\ProTips\Demos (safe to delete)\Scripts\TooltipLocalization.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\TheAudio.cs" />
+    <Compile Include="Assets\_Scripts\TD_BuildManagerEditor.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\InventoryData.cs" />
     <Compile Include="Assets\_Scripts\Waypoints\WaypointRoute.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\WeaponPack.cs" />
@@ -646,9 +649,6 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\_Scripts\TD_BuildManagerEditor.cs" />
-    <Compile Include="Assets\_Scripts\TD_EnemyManagerEditor.cs" />
-    <Compile Include="Assets\_Scripts\TD_EnemyEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

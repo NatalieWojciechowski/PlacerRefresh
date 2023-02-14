@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\3rdParty\Shared\Ramps\Editor\RampAssetEditor.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Editor\RandomizeObjects.cs" />
+    <Compile Include="Assets\_Scripts\Editor\TD_GameSerializerEditor.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Editor\MoveObjects.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Editor\Inspector\ReadMe\ReadMe.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Editor\GridPlacement\GridLayersManager.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\Water\Water4\WaterEditorUtility.cs" />
     <Compile Include="Assets\3rdParty\MapMagic\Compatibility\CTS\Editor\CTSEditor.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Editor\GridPlacement\CreateGridLayersMenu.cs" />
-    <Compile Include="Assets\_Scripts\Editor\TD_GameSerializerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

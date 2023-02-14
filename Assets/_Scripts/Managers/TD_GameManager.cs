@@ -10,8 +10,11 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     private int coreHealth = 5;
     private int currentWaveIndex = -1;
 
-    private bool spawningEnabled = false;
-    public bool HasStarted { get => (this.spawningEnabled && currentWaveIndex >= 0); }
+    /// <summary>
+    /// Whether or not the Wave is ready to go; will shift to true when user toggles wave to start
+    /// </summary>
+    private bool playerReady = false;
+    public bool HasStarted { get => (this.playerReady && currentWaveIndex >= 0); }
 
     public TD_UIManager uIManager;
 
@@ -73,7 +76,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 
     public void PlayerStart()
     {
-        spawningEnabled = true;
+        playerReady = true;
     }
 
     private void GameOver()
@@ -83,19 +86,26 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 
     private void WaveFinished(int ctx)
     {
-        if (!spawningEnabled) return;
+        if (!playerReady) return;
         if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
         // We may have more than one spawner contributing to the wave, make sure all are done first
-        if (ctx == currentWaveIndex && TD_EnemyManager.current.IsCurrentWaveComplete())
-            currentWaveIndex++;
-        if (currentWaveIndex > totalWaves)
-        {
-            currentWaveIndex = totalWaves;
-            EventManager.current.Win();
-        }
+        if (ctx == currentWaveIndex && TD_EnemyManager.current.IsCurrentWaveComplete()
+            && playerReady)
+            NextWave();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
         uIManager.UpdateDisplay();
+    }
+
+    private void NextWave()
+    {
+        playerReady = false;
+        currentWaveIndex++;
+        if (currentWaveIndex > TD_EnemyManager.current.TotalWaves)
+        {
+            currentWaveIndex = TD_EnemyManager.current.TotalWaves;
+            EventManager.current.Win();
+        }
     }
 
     public bool SpendMoney(int purchaseCost)
