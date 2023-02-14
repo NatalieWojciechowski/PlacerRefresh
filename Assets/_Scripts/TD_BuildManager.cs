@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class TD_BuildManager : MonoBehaviour
+public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
 {
     public enum BuildState
     {
@@ -15,6 +15,7 @@ public class TD_BuildManager : MonoBehaviour
         Cooldown,
         Bulldozing,
     }
+
 
     #region Connections
     public static TD_BuildManager current;
@@ -35,12 +36,12 @@ public class TD_BuildManager : MonoBehaviour
     #region Member
     private BuildState buildState;
     private Vector3 lastHitPos;
-    private List<GameObject> BuiltBuildings;
+    [SerializeReference] private List<GameObject> BuiltBuildings;
     private GameObject previewObj;
     public Transform TowersParent;
     private Coroutine buildCooldownRoutine;
     private Coroutine stateTransition;
-    public AudioClip buildClip;
+    [SerializeReference] public AudioClip buildClip;
     #endregion
 
     #region Lifecycle
@@ -48,22 +49,25 @@ public class TD_BuildManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
         if (BuiltBuildings == null) BuiltBuildings = new();
         if (!builderRaycaster) Camera.main.GetComponent<Physics2DRaycaster>();
         SafeTransition(BuildState.Idle, 0.01255f);
         if (!TowersParent) TowersParent = transform;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
     {
+        if (current != null) Destroy(this);
+        current = this;
+
         PlayerControlsManager.PlayerCancel += OnPlayerCancel;
         PlayerControlsManager.PlayerAccept += OnPlayerAccept;
         UIControlsManager.UICancel += OnPlayerCancel;
         UIControlsManager.UIAccept += OnPlayerAccept;
         //EventManager.OnTowerPlace += onBuildingPlaceAccept;
     }
+
     private void OnDisable()
     {
         PlayerControlsManager.PlayerCancel -= OnPlayerCancel;
@@ -292,5 +296,27 @@ public class TD_BuildManager : MonoBehaviour
     {
         if (buildClip && previewObj)
             TD_AudioManager.instance.PlayClip(buildClip, previewObj.transform.position);
+    }
+
+    public void InitFromData(SaveData saveData)
+    {
+        foreach (SaveData.TowerSaveData tData in saveData.constructedBuildings)
+        {
+            GameObject constructingTower = Instantiate(tData.TD_BuildingData.buildingPrefab);
+            TD_Building buildingController = constructingTower.GetComponent<TD_Building>();
+            constructingTower.transform.SetPositionAndRotation(tData.Transform.position, tData.Transform.rotation);
+            buildingController.SetStats(tData.TD_BuildingData);
+            buildingController.InitFromData(tData);
+        }
+    }
+
+    public void AddToSaveData(ref SaveData saveData)
+    {
+        TD_Building toAdd;
+        foreach (GameObject building in BuiltBuildings)
+        {
+            if (building.TryGetComponent<TD_Building>(out toAdd))
+                toAdd.AddToSaveData(ref saveData);
+        }
     }
 }

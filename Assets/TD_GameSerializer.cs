@@ -8,32 +8,58 @@ using System;
 [Serializable]
 public class SaveData
 {
+    [Serializable] public struct EnemySaveData
+    {
+
+    }
+
+    [Serializable] public struct TowerSaveData
+    {
+        public Guid Guid;
+        public TD_BuildingData TD_BuildingData;
+        public Transform Transform;
+    }
+
     // Game State
     public int currentWaveIndex;
     public int playerMoney;
+    public List<EnemySaveData> currentEnemies;
 
     // Core State 
     public int coreHealth;
 
     // Tower State
-
+    public List<TowerSaveData> constructedBuildings;
 
     public int savedInt;
     public float savedFloat;
     public bool savedBool;
 
+    public SaveData()
+    {
+        currentEnemies = new();
+        constructedBuildings = new();
+        //constructedBuildings = new();
+    }
 }
 
 public class TD_GameSerializer : MonoBehaviour
 {
-    public static TD_GameSerializer instance;
-    string saveFileName = "td_game_save.dat";
+    public static TD_GameSerializer instance { get; private set; }
+    static string saveFileName = "td_game_save.dat";
+    private string _fullSavePath;
+
+    private void OnEnable()
+    {
+        if (instance != null) Destroy(this);
+        instance = this;
+        _fullSavePath = $"{Application.persistentDataPath}/{saveFileName}";
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (instance != null) Destroy(this);
-        instance = this;
+
     }
 
     // Update is called once per frame
@@ -42,47 +68,48 @@ public class TD_GameSerializer : MonoBehaviour
         
     }
 
-    public bool SaveDataExists()
+    public static bool SaveDataExists()
     {
+        Debug.Log(Application.persistentDataPath + $"/{saveFileName}");
         return File.Exists(Application.persistentDataPath + $"/{saveFileName}");
     }
 
     public static void SaveGame()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath
-                     + $"/{instance.saveFileName}");
-        SaveData data = new SaveData();
-        data.playerMoney = TD_GameManager.current.CurrentCurrency;
-        data.currentWaveIndex = TD_GameManager.current.CurrentWaveIndex;
-        bf.Serialize(file, data);
-        file.Close();
+        using (var file = File.Open($"{Application.persistentDataPath}/{saveFileName}", FileMode.OpenOrCreate))
+        {
+            //bf.Serialize(filePin, data);
+            //FileStream file = File.Create(Application.persistentDataPath
+            //             + $"/{instance.saveFileName}");
+            SaveData data = new SaveData();
+            TD_GameManager.current.AddToSaveData(ref data);
+            bf.Serialize(file, data);
+        }
         Debug.Log("Game data saved!");
     }
 
-    public static void LoadGame()
+    public static bool LoadGame()
     {
         if (File.Exists(Application.persistentDataPath
-                       + $"/{instance.saveFileName}"))
+                       + $"/{saveFileName}"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file =
-                       File.Open(Application.persistentDataPath
-                       + "/td_game_save.dat", FileMode.Open);
-            SaveData data = (SaveData)bf.Deserialize(file);
-
-            TD_GameManager.current.InitFromData(data);
-
-            file.Close();
-            data.playerMoney = TD_GameManager.current.CurrentCurrency;
-            data.currentWaveIndex = TD_GameManager.current.CurrentWaveIndex;
-            Debug.Log("Game data loaded!");
+            using (var file = File.Open($"{Application.persistentDataPath}/{saveFileName}", FileMode.OpenOrCreate))
+            {
+                SaveData data = (SaveData)bf.Deserialize(file);
+                TD_GameManager.current.InitFromData(data);
+                TD_BuildManager.current.InitFromData(data);
+                Debug.Log("Game data loaded!");
+                return true;
+            }
         }
         else
             Debug.LogError("There is no save data!");
+        return false;
     }
 
-    void ResetData()
+    public static void ResetData()
     {
         if (File.Exists(Application.persistentDataPath
                       + $"/{saveFileName}"))

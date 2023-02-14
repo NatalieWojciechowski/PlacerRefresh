@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TD_GameManager : MonoBehaviour
+public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 {
     public static TD_GameManager current;
 
@@ -27,12 +27,6 @@ public class TD_GameManager : MonoBehaviour
     private GameObject effectsBin;
     public GameObject EffectsBin { get => effectsBin; }
 
-    public void InitFromData(SaveData saveData)
-    {
-        currentCurrency = saveData.playerMoney;
-        currentWaveIndex = saveData.currentWaveIndex;
-    }
-
     private void Awake()
     {
         // TODO: This seems to be calling the methods while registering
@@ -42,6 +36,7 @@ public class TD_GameManager : MonoBehaviour
         currentWaveIndex = 0;
         if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
     }
+
     private void OnDisable()
     {
         EventManager.OnEnemyPass -= TookDmg;
@@ -55,9 +50,6 @@ public class TD_GameManager : MonoBehaviour
         if (current != null) Destroy(this);
         current = this;
         currentCurrency = startingCurrency;
-#if DEBUG
-        currentCurrency = 1000;
-#endif
         if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
         currentWaveIndex = 0;
     }
@@ -171,4 +163,19 @@ public class TD_GameManager : MonoBehaviour
         // TODO: do we need to check value here for anything ? popup for not being able to afford n resetting? debts? 
         SpendMoney(ctx);
     }
+
+
+    #region Interface
+    public void InitFromData(SaveData saveData)
+    {
+        currentCurrency = saveData.playerMoney;
+        currentWaveIndex = saveData.currentWaveIndex;
+    }
+
+    public void AddToSaveData(ref SaveData saveData)
+    {
+        saveData.playerMoney = CurrentCurrency;
+        saveData.currentWaveIndex = CurrentWaveIndex;
+    }
+    #endregion
 }

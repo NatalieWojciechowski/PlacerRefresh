@@ -5,19 +5,28 @@ using UnityEngine.UI;
 
 public class TD_MainMenu : MonoBehaviour
 {
-    [SerializeField] GameObject Continue;
+    [SerializeField] GameObject ContinueButton;
+    [SerializeField] SceneLoader SceneLoader;
+
     bool HasSaveData;
 
     // Start is called before the first frame update
     void Start()
     {
-        HasSaveData = TD_GameSerializer.instance.SaveDataExists();
-        Continue.GetComponent<Button>().interactable = HasSaveData;
+        UpdateContinueState();
     }
 
     private void OnEnable()
     {
+        UpdateContinueState();
+    }
 
+    private void UpdateContinueState()
+    {
+        HasSaveData = TD_GameSerializer.SaveDataExists();
+        ContinueButton.GetComponent<Button>().interactable = HasSaveData;
+        // Clear DataButton
+        ContinueButton.GetComponentInChildren<Button>().gameObject.SetActive(HasSaveData);
     }
 
     // Update is called once per frame
@@ -26,4 +35,16 @@ public class TD_MainMenu : MonoBehaviour
         
     }
 
+    public void LoadAndContinue()
+    {
+        if (!HasSaveData) return;
+        if (TD_GameSerializer.LoadGame())
+            SceneLoader?.SetNextScene(SceneLoader.GameScene.Level1);
+    }
+
+    public void ClearSaveData()
+    {
+        if (!HasSaveData) return;
+        TD_GameSerializer.ResetData();
+    }
 }

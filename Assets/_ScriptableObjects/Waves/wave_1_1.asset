@@ -15,12 +15,17 @@ MonoBehaviour:
   waveContents:
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   spawnInterval: 2

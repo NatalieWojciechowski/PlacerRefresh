@@ -19,8 +19,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f16dac957e0a0954fa726085598be20e, type: 2}
   - {fileID: 11400000, guid: 4109fa15e4b693e429dbd03332f0d641, type: 2}
   - {fileID: 11400000, guid: f16dac957e0a0954fa726085598be20e, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 4109fa15e4b693e429dbd03332f0d641, type: 2}
   - {fileID: 11400000, guid: f16dac957e0a0954fa726085598be20e, type: 2}
+  - {fileID: 11400000, guid: e20cda6fb89f8d645a022e2d108c0d3c, type: 2}
   - {fileID: 11400000, guid: 4109fa15e4b693e429dbd03332f0d641, type: 2}
   - {fileID: 11400000, guid: f16dac957e0a0954fa726085598be20e, type: 2}
+  - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
+  - {fileID: 11400000, guid: 6c2247c80b8314c40a6170eb4015b5ac, type: 2}
   spawnInterval: 3

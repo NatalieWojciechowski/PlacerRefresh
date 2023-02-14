@@ -41,6 +41,9 @@ public class TD_UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (current != null) Destroy(gameObject);
+        current = this;
+
         EventManager.OnTowerSelect += OnTowerSelect;
         EventManager.OnTowerDeselect += UpdateDisplay;
         EventManager.OnWaveStart += OnWaveStart;
@@ -74,8 +77,7 @@ public class TD_UIManager : MonoBehaviour
 
     private void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnTowerSelect(TD_Building selectedBuilding)
@@ -85,7 +87,7 @@ public class TD_UIManager : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        if (!TD_GameManager.current) return;
+        if (!TD_GameManager.current || !TD_EnemyManager.current) return;
         if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.current.CoreHealth.ToString();
         //if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
         if (waveStatus)
@@ -110,12 +112,12 @@ public class TD_UIManager : MonoBehaviour
 
     private void OnGameLose(object sender, EventArgs e)
     {
-        gameOverStatus.SetActive(true);
+        gameOverStatus?.SetActive(true);
     }
 
     private void OnGameWin(object sender, EventArgs e)
     {
-        gameWinStatus.SetActive(true);
+        gameWinStatus?.SetActive(true);
     }
 
     private void OnWaveStart(int waveId)

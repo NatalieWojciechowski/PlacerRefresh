@@ -23,7 +23,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3796326392509129271, guid: 2a81f1b4e325772438e8d8fbcc40b3b8,
     type: 3}
   projectileDelay: 1
-  baseDamage: 1
+  baseDamage: 2
   aoeActiveDuration: 0.5
   CurrentTier: 1
   MaxTier: 3

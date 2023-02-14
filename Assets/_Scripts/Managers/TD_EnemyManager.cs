@@ -6,7 +6,7 @@ using UnityStandardAssets.Utility;
 
 public class TD_EnemyManager : MonoBehaviour
 {
-    public static TD_EnemyManager current;
+    public static TD_EnemyManager current { get; private set; }
 
     [SerializeField]
     WaypointRoute _waypointRoute;
@@ -29,13 +29,12 @@ public class TD_EnemyManager : MonoBehaviour
 
     public WaypointRoute WaypointRoute { get => _waypointRoute; set => _waypointRoute = value; }
 
-    public TD_EnemyManager(WaypointRoute waypointRoute)
-    {
-        _waypointRoute = waypointRoute;
-    }
-
     private void OnEnable()
     {
+        if (current != null) Destroy(this);
+        current = this;
+        if (_spawners == null) _spawners = new();
+
         timeRemaining = WaveIntervalDelay;
         RefreshSpawners();
             //else _spawners.Clear();
@@ -62,9 +61,7 @@ public class TD_EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
-        if (_spawners == null) _spawners = new();
+        DontDestroyOnLoad(gameObject);
         //if (_enemies == null) _enemies = new();
     }
 

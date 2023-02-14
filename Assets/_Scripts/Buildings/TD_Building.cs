@@ -7,17 +7,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class TD_Building : MonoBehaviour
+[Serializable]
+public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
 {
-    [SerializeField]
-    protected TD_BuildingData _baseBuildingData;
+    [SerializeField] protected TD_BuildingData _baseBuildingData;
     // TODO:
     /*
      * What if the buidings had entities to keep fed/ resourced instead of the money for the towers.
      * - upkeep for them like little residents and tower strength based off their population
      */
 
-    protected BuildingData _sBuildingData;
+    [SerializeField] protected BuildingData _sBuildingData;
 
     [SerializeField]
     public AudioClip fireSound;
@@ -26,18 +26,15 @@ public class TD_Building : MonoBehaviour
 
     //protected float _attackRange = 0.75f;
     //private float _baseDamage;
-    [SerializeField]
     private TD_Enemy _buildingTarget;
 
-    protected TargetingType targetingType;
-    [SerializeField]
+    [SerializeField] protected TargetingType targetingType;
     protected BuildingState buildingState;
     protected BuildingAttackState attackState;
 
     public Animator bAnimator;
     public GameObject inRangeEffects;
 
-    // TODO: Change this back
     public bool IsRunning = true;
     public bool IsInRange = false;
 
@@ -45,14 +42,10 @@ public class TD_Building : MonoBehaviour
     private float effectToggleDelay = .25f;
     private float effectLastToggle = 0;
     private bool isSelected = false;
-
     protected float myAttackDelay = 1f;
 
-    //private int _currentTier = 1;
-    //private int _maxTier = 1;
-
     public int EnemyKillCount { get; internal set; }
-    public Guid BuildingUUID { get; protected set; }
+    [SerializeField] public Guid BuildingUUID { get; protected set; }
     public TD_Enemy BuildingTarget { get => _buildingTarget; }
     public Transform ProjectileStart;
     public GameObject RangeIndicator;
@@ -253,8 +246,10 @@ public class TD_Building : MonoBehaviour
 
     internal bool TryUpgrade()
     {
-        if (_sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
+        if (!TD_GameManager.current.CanAfford(_sBuildingData.PurchaseCost/2) ||
+            _sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
         _sBuildingData.LevelUp();
+        TD_GameManager.current.SpendMoney(_sBuildingData.UpgradeCost);
         TryBuildingState(BuildingState.Upgrading);
         // TODO: handle case of building ugprade to another?
         return true;
@@ -266,6 +261,7 @@ public class TD_Building : MonoBehaviour
         if (_sBuildingData.CanSell)
         {
             TD_GameManager.current.AddCoins(_sBuildingData.SellValue());
+            EventManager.current.TowerDeselected();
             // TODO: remove from BuildManager
             Destroy(this.gameObject);
         }
@@ -440,5 +436,20 @@ public class TD_Building : MonoBehaviour
         return _canAfford;
     }
 
-   
+    public void InitFromData(SaveData.TowerSaveData saveData)
+    {
+        BuildingUUID = saveData.Guid;
+        _baseBuildingData = saveData.TD_BuildingData;
+        transform.SetPositionAndRotation(saveData.Transform.position, saveData.Transform.rotation);
+    }
+
+    public void AddToSaveData(ref SaveData saveData)
+    {
+        SaveData.TowerSaveData TowerSaveData = new SaveData.TowerSaveData();
+        TowerSaveData.Guid = BuildingUUID;
+        TowerSaveData.TD_BuildingData = _baseBuildingData;
+        TowerSaveData.Transform = transform;
+        saveData.constructedBuildings.Add(TowerSaveData);
+        Debug.Log("AddToSaveData", this);
+    }
 }

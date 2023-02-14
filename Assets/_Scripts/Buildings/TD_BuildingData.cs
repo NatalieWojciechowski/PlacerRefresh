@@ -53,6 +53,8 @@ public struct BuildingData
         UpgradesTo = baseData.upgradesTo;
         CanSell = baseData.canSell;
         PurchaseCost = baseData.PurchaseCost;
+        UpgradeCost = baseData.PurchaseCost / 2;
+        if (baseData.upgradesTo) UpgradeCost = baseData.upgradesTo.PurchaseCost;
     }
 
     public TD_BuildingData RawBuildingData { get => _BuildingData; }
@@ -65,6 +67,7 @@ public struct BuildingData
     public bool CanSell { get; set; }
     public TD_BuildingData UpgradesTo { get; set; }
     public int PurchaseCost { get; }
+    public int UpgradeCost { get; }
 
     /// <summary>
     /// Returns the value after max level taken into account
@@ -76,8 +79,8 @@ public struct BuildingData
         else
         {
             //// Adjust Stats
-            float lvlScale = _currentLevel * 0.125f;
-            AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale));
+            float lvlScale =  _currentLevel * 0.25f;
+            AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale/5));
             Damage += (float)Math.Round(_BuildingData.baseDamage * (lvlScale));
         }
         return _currentLevel;

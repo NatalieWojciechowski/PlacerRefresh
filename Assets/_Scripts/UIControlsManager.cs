@@ -49,6 +49,8 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public void OnCancel(InputAction.CallbackContext context)
     {
         Debug.Log("UI OnCancel!" + context);
+        EventManager.current.GenericCancel();
+        UICancel(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 
     public void OnClick(InputAction.CallbackContext context)

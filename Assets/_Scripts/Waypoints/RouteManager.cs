@@ -12,12 +12,10 @@ public class RouteManager : MonoBehaviour
     [SerializeField]
     private WaypointRoute route;
 
-    TD_EnemyManager tDEnemyManager;
-
     // Start is called before the first frame update
     void Start()
     {
-        if (!tDEnemyManager) tDEnemyManager = FindObjectOfType<TD_EnemyManager>();
+
     }
 
     // Update is called once per frame

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8129084571622898366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8129084571622898365}
+  - component: {fileID: 8129084571622898364}
+  m_Layer: 0
+  m_Name: BulidingManager
+  m_TagString: BuildableSurface
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8129084571622898365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129084571622898366}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8129084571622898364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129084571622898366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b39066bb8f9294ab5d340492de5095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolbarCtrl: {fileID: 0}
+  builderRaycaster: {fileID: 0}
+  pieces:
+  - {fileID: 546669087867309034, guid: f5889999acd721e4294848f6a573ad5e, type: 3}
+  - {fileID: 7926945883062772877, guid: 592cb6f501535e14f80a2f2bb21190b1, type: 3}
+  - {fileID: 7432458902547865836, guid: 8eacc92dcae41d744981439f6cd5bc8a, type: 3}
+  - {fileID: 2162988829660461613, guid: f4341f7c999015e47ae571646f136ceb, type: 3}
+  - {fileID: 3909326374663763282, guid: 57edd59909f377f49b39581d9edaac50, type: 3}
+  - {fileID: 1340276701811755694, guid: 32337dee36db001499473907e796ef24, type: 3}
+  RaycastLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  SnapBuild: 1
+  RaycastOffsetPosition: {x: 0, y: 0, z: 1}
+  buildOffset: {x: 0, y: 0, z: 0}
+  BuiltBuildings: []
+  TowersParent: {fileID: 0}
+  buildClip: {fileID: 8300000, guid: 9dc750595ba1c9f40a56855b46944b70, type: 3}

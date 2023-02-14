@@ -26,6 +26,7 @@ public class TD_SelectionManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnTowerDeselect += DeselectAll;
+        //EventManager.OnCancel += DeselectAll;
     }
 
     private void OnDisable()

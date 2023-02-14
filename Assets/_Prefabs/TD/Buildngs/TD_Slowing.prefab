@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 239200958055767500, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 713904803579630943, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_Size.x
@@ -321,6 +326,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1049408504298024467, guid: 592cb6f501535e14f80a2f2bb21190b1,
         type: 3}
+    - target: {fileID: 6754310493727406405, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754310493727406405, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754310493727406405, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754310493727406405, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7191880665751993329, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_RootOrder
@@ -341,10 +366,50 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8558542309698083274, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558542309698083274, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558542309698083274, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558542309698083274, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 8810932503824512621, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899002556829030544, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899002556829030544, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899002556829030544, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899002556829030544, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 8972958767987380514, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
         type: 3}
@@ -369,6 +434,12 @@ GameObject:
 --- !u!4 &1301862877664039613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4175278637340279605, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3161725603495743880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2932235532346313796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 239200958055767500, guid: 33a29b2d8a850b549886c3cea6cb0ffb,
     type: 3}
   m_PrefabInstance: {fileID: 3161725603495743880}
   m_PrefabAsset: {fileID: 0}
@@ -414,15 +485,14 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 38d4d0ff7855e984285fbf430385b2aa, type: 3}
   reloadSound: {fileID: 0}
   hitSound: {fileID: 0}
-  _buildingTarget: {fileID: 0}
-  buildingState: 0
+  targetingType: 0
   bAnimator: {fileID: 0}
   inRangeEffects: {fileID: 5114195930682545287}
   IsRunning: 0
   IsInRange: 0
   ProjectileStart: {fileID: 1301862877664039613}
   RangeIndicator: {fileID: 1273573232261266858}
-  LevelUI: {fileID: 8072290016412368710, guid: 2c7dc2b6989ea5944896ed1bf505b970, type: 3}
+  LevelUI: {fileID: 2932235532346313796}
   effectAreaRange: {fileID: 8674139541548015554}
   TickDamage: 0.25
 --- !u!4 &5883403987884451813 stripped

@@ -531,6 +531,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Selectable.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Area\AreaBehaviour.cs" />
     <Compile Include="Assets\3rdParty\TowerDefenceTemplate\Scripts\Bullet.cs" />
+    <Compile Include="Assets\TD_GameSerializer.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\TheGame.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\CSObject.cs" />
@@ -594,6 +595,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Actions\ActionFactory.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Addon\AddonAttribute.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\ItemUseData.cs" />
+    <Compile Include="Assets\_Scripts\Managers\I_TDSaveCoordinator.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Actions\ActionSleep.cs" />
     <Compile Include="Assets\3rdParty\ProTips\Scripts\Enums\TipPosition.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Item.cs" />
@@ -638,13 +640,15 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\ItemEquipData.cs" />
     <Compile Include="Assets\_Scripts\Utility\MovementZoom.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Generator\BiomeSpawnData.cs" />
+    <Compile Include="Assets\TD_MainMenu.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\FX\SpawnFX.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\TD_GameSerializer.cs" />
-    <Compile Include="Assets\TD_MainMenu.cs" />
+    <Compile Include="Assets\_Scripts\TD_BuildManagerEditor.cs" />
+    <Compile Include="Assets\_Scripts\TD_EnemyManagerEditor.cs" />
+    <Compile Include="Assets\_Scripts\TD_EnemyEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
