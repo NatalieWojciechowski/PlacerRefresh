@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myParent: {fileID: 0}
   myTarget: {fileID: 0}
-  projectileSpeed: 1
+  projectileSpeed: 4
   projectileDamage: 1
   projectileArc:
     serializedVersion: 2

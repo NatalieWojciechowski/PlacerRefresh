@@ -81,7 +81,7 @@ public struct BuildingData
             //// Adjust Stats
             float lvlScale =  _currentLevel * 0.25f;
             AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale/5));
-            Damage += (float)Math.Round(_BuildingData.baseDamage * (lvlScale));
+            Damage += (float)Math.Min(Math.Round(_BuildingData.baseDamage * (lvlScale)), 1);
         }
         return _currentLevel;
     }

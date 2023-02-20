@@ -15,6 +15,8 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     /// </summary>
     private bool playerReady = false;
     public bool HasStarted { get => (this.playerReady && currentWaveIndex >= 0); }
+    private bool waitingForStart = true;
+    public bool IsWaitingForStart { get => TD_EnemyManager.current.IsCurrentWaveComplete(); }
 
     public TD_UIManager uIManager;
 
@@ -26,9 +28,21 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     public int TotalWaves { get => totalWaves; }
     public int CoreHealth { get => coreHealth; }
 
-    [SerializeField]
-    private GameObject effectsBin;
+    [SerializeField] private GameObject effectsBin;
+
     public GameObject EffectsBin { get => effectsBin; }
+
+    GameState gameState;
+    protected enum GameState
+    {
+        MainMenu,
+        Loading,
+        SceneInit,
+        WaveActive,
+        Hold,
+        Win,
+        Lose
+    }
 
     private void Awake()
     {
@@ -52,6 +66,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     {
         if (current != null) Destroy(this);
         current = this;
+        gameState = GameState.MainMenu;
         currentCurrency = startingCurrency;
         if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
         currentWaveIndex = 0;
@@ -90,7 +105,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
         if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
         // We may have more than one spawner contributing to the wave, make sure all are done first
         if (ctx == currentWaveIndex && TD_EnemyManager.current.IsCurrentWaveComplete()
-            && playerReady)
+            && playerReady)            
             NextWave();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?

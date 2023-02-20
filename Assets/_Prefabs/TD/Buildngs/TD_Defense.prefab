@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9dc750595ba1c9f40a56855b46944b70, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.53
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -185,8 +185,7 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: f19abfdc2efe1dc4ea7f2824b367c1ce, type: 3}
   reloadSound: {fileID: 0}
   hitSound: {fileID: 0}
-  _buildingTarget: {fileID: 0}
-  buildingState: 0
+  targetingType: 0
   bAnimator: {fileID: 4696282288295445922}
   inRangeEffects: {fileID: 0}
   IsRunning: 0

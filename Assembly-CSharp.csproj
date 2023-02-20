@@ -161,6 +161,7 @@
     <Compile Include="Assets\3rdParty\ProTips\Demos (safe to delete)\Scripts\PopupTooltipRemotely.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\02 Battle Pro Max\JumpAttacker.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\AutoMoveAndRotate.cs" />
+    <Compile Include="Assets\3rdParty\Tessera\Sample\Translator.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\CannonLike.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Scriptables\Blueprint\BlueprintTemplate.cs" />
     <Compile Include="Assets\_Scripts\TD_BuildManager.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Assets\_Scripts\Utility\ScalingSurfaceCollider.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\03 Cannon-Like Weapons\DynamicUI.cs" />
     <Compile Include="Assets\3rdParty\TowerDefenceTemplate\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\3rdParty\Tessera\Sample\SlidingGenerator.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Character.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Survival Like\Scripts\Demo_DestructionEffect.cs" />
@@ -461,6 +463,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\QuestManager.cs" />
     <Compile Include="Assets\3rdParty\ProTips\Scripts\Extensions\TooltipExtensions.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UIManager.cs" />
+    <Compile Include="Assets\3rdParty\Tessera\Sample\GenerateOnStart.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Add-Ons\Circular Menu\Scripts\CircularMenu.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Controller\Demo_TopDown_Player.cs" />
     <Compile Include="Assets\3rdParty\Fraktalia\VoxelGenerator\Samples\Scripts\MouseToVoxel.cs" />
@@ -656,6 +659,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\3rdParty\ProTips\Tooltip Prefabs\Fonts\Jura\OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\3rdParty\Tessera\Sample\GrassPaths\Models\CREDITS.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR Particle Glow.shader" />
@@ -669,8 +673,10 @@
     <None Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Models\House Furnitures Kit\License.txt" />
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\CharaOutline.cginc" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\3rdParty\Tessera\Runtime\DeBroglie.dll" />
     <None Include="Assets\3rdParty\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat_Base.shader" />
     <None Include="Assets\3rdParty\ProTips\Tooltip Prefabs\Fonts\Aclonica\License for Aclonica Font.txt" />
+    <None Include="Assets\3rdParty\Tessera\Sample\Dungeon\NOTE.txt" />
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
     <None Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Templates\ConditionTemplate.txt" />
     <None Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
@@ -689,6 +695,7 @@
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
+    <None Include="Assets\3rdParty\Tessera\Sample\GrassPaths\NOTE.txt" />
     <None Include="Assets\3rdParty\Mech_Constructor_Turrets\Readme.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\AircraftGuidelines.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Cameras\CameraGuidelines.txt" />
@@ -723,6 +730,7 @@
     <None Include="Assets\3rdParty\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\CharaMain.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\3rdParty\Tessera\Sample\Platformer\NOTE.txt" />
     <None Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Prefabs\Texts\_Make your own text effect.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
@@ -737,6 +745,7 @@
     <None Include="Assets\3rdParty\ColonySimulator\Materials\FX\SpriteZ.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\3rdParty\Tessera\Sample\Dungeon\Models\CREDITS.txt" />
     <None Include="Assets\3rdParty\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\3rdParty\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
@@ -751,9 +760,11 @@
     <None Include="Assets\3rdParty\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader2.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\3rdParty\JMO Assets\Cartoon FX Remaster\CFXR Assets\Shaders\CFXR_URP.cginc" />
+    <None Include="Assets\3rdParty\Tessera\Runtime\Tessera.dll" />
     <None Include="Assets\3rdParty\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\3rdParty\ColonySimulator\Materials\FX\Outline.shader" />
+    <None Include="Assets\3rdParty\Tessera\Sample\Platformer\CREDITS.txt" />
     <None Include="Assets\3rdParty\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
@@ -1014,6 +1025,9 @@
     <Reference Include="GridPlacementSystem">
       <HintPath>Assets\3rdParty\HypertonicGames\GridPlacement\Runtime\Scripts\Plugins\GridPlacementSystem.dll</HintPath>
     </Reference>
+    <Reference Include="DeBroglie">
+      <HintPath>Assets\3rdParty\Tessera\Runtime\DeBroglie.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
@@ -1037,6 +1051,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Tessera">
+      <HintPath>Assets\3rdParty\Tessera\Runtime\Tessera.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\Program Files\Unity\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
