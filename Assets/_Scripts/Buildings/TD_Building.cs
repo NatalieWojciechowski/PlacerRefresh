@@ -246,7 +246,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
 
     internal bool TryUpgrade()
     {
-        if (!TD_GameManager.current.CanAfford(_sBuildingData.PurchaseCost/2) ||
+        if (!TD_GameManager.current.CanAfford(_sBuildingData.UpgradeCost) ||
             _sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
         _sBuildingData.LevelUp();
         TD_GameManager.current.SpendMoney(_sBuildingData.UpgradeCost);

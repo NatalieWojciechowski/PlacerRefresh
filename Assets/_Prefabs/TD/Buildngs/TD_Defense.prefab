@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8810932503824512621}
+  - component: {fileID: 6775677340606100829}
   - component: {fileID: 3300147802558402439}
   m_Layer: 0
   m_Name: Effects
@@ -17,7 +17,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8810932503824512621
+--- !u!4 &6775677340606100829
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +163,7 @@ Transform:
   m_Children:
   - {fileID: 2620421495671602778}
   - {fileID: 4175278637340279605}
-  - {fileID: 8810932503824512621}
+  - {fileID: 6775677340606100829}
   - {fileID: 8972958767987380514}
   - {fileID: 7660322338566693897}
   m_Father: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8972958767987380514
 Transform:
   m_ObjectHideFlags: 0

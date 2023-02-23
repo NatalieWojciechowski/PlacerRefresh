@@ -144,6 +144,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6075313622514558837, guid: b667d5287636eb64f9da6cf256d7896c,
         type: 3}
+    - target: {fileID: 1069908270750789694, guid: 1c72cd7b5c6b2ac41b371100f7af2e71,
+        type: 3}
+      propertyPath: buffEffectPrefab
+      value: 
+      objectReference: {fileID: 6075313622514558837, guid: b667d5287636eb64f9da6cf256d7896c,
+        type: 3}
     - target: {fileID: 2383966792333270657, guid: 1c72cd7b5c6b2ac41b371100f7af2e71,
         type: 3}
       propertyPath: m_Enabled

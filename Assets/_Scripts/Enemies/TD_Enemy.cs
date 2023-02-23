@@ -73,7 +73,7 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         if (_animator == null) _animator = GetComponentInChildren<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
 
-        if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.current.transform);
+        if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.current.HealthBarContainer.transform);
         HealthBar.transform.localScale = Vector3.one;
 
         InitEnemy();

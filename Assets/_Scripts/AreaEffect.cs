@@ -25,7 +25,7 @@ public class AreaEffect : MonoBehaviour
     protected float _pulseActiveDuration = 0f;
     private GameObject inRangeEffects;
     [SerializeField]
-    private GameObject buffEffectPreafb;
+    private GameObject buffEffectPrefab;
     #endregion
 
 
@@ -128,9 +128,9 @@ public class AreaEffect : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         TD_Enemy hit = other.gameObject.GetComponent<TD_Enemy>();
-        if (hit)
+        if (hit && buffEffectPrefab)
         {
-            hit.GiveShield(buffEffectPreafb);
+            hit.GiveShield(buffEffectPrefab);
         }
         else if (other.gameObject.CompareTag("Building"))
         {
@@ -141,9 +141,11 @@ public class AreaEffect : MonoBehaviour
     protected virtual void OnCollisionEnter(Collision collision)
     {
         TD_Enemy hit = collision.gameObject.GetComponent<TD_Enemy>();
-        if (hit)
+        if (hit && td_AOEData.category == "Damage")
         {
-            hit.GiveShield(buffEffectPreafb);
+            // TODO: have AOE dmg here instead of via projectile?
+            // TODO: perhaps instead of doing pulse, etc -- we spawn the effect here
+            // so projectile cleanup does not wipe this out 
         }
         else if (collision.gameObject.CompareTag("Building"))
         {

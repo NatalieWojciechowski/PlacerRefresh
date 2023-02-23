@@ -20,7 +20,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 
     public TD_UIManager uIManager;
 
-    private int startingCurrency = 20;
+    [SerializeField] private int startingCurrency = 20;
     private int currentCurrency = 0;
     public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWaveIndex { get => currentWaveIndex; }

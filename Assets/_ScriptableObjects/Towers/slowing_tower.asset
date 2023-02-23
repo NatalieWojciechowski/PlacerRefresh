@@ -18,14 +18,14 @@ MonoBehaviour:
   category: Area
   health: 2
   attackSpeed: 4
-  attackRange: 10
+  attackRange: 5
   buildingPrefab: {fileID: 0}
   projectilePrefab: {fileID: 0}
   projectileDelay: 0.5
   baseDamage: 1
   aoeActiveDuration: 0.5
   CurrentTier: 1
-  MaxTier: 3
+  MaxTier: 2
   PurchaseCost: 30
   upgradesTo: {fileID: 0}
   canSell: 1

@@ -1111,7 +1111,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1354
+  m_Name: pb_Mesh-1370
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5429,6 +5429,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6841192095850602050, guid: c1dc07857b5220e488e7c9bae380f9fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841192096540938152, guid: c1dc07857b5220e488e7c9bae380f9fc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5869,6 +5874,11 @@ PrefabInstance:
       propertyPath: effectsBin
       value: 
       objectReference: {fileID: 1356604866}
+    - target: {fileID: 8170463112796182941, guid: 2b8bc2db07f04c2488b61b642eb6241b,
+        type: 3}
+      propertyPath: startingCurrency
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8170463113326191191, guid: 2b8bc2db07f04c2488b61b642eb6241b,
         type: 3}
       propertyPath: GuiCanvas

@@ -23,6 +23,7 @@ public class TD_UIManager : MonoBehaviour
     public GameObject SaveAndExitButton;
 
     public GameObject pieces_Selection;
+    public GameObject HealthBarContainer;
 
     public ModelShark.TooltipStyle tooltipStyle;
 

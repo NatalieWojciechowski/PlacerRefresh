@@ -19,6 +19,10 @@ public class TowerTooltip : MonoBehaviour
     [SerializeField]
     private Button sellButton;
     [SerializeField]
+    private TMP_Text upgradeCostText;
+    [SerializeField]
+    private TMP_Text sellCostText;
+    [SerializeField]
     private TMP_Text towerNameText;
     [SerializeField]
     private TMP_Text dmgAmtText;
@@ -75,14 +79,35 @@ public class TowerTooltip : MonoBehaviour
                 TowerSelectionUI.SetActive(true);
 
                 BuildingData bStats = selectedBuilding.GetStats();
+
                 //// Setup Upgrade button
                 //upgradeButton.OnPointerClick(HandleUpgrade());
-                if (bStats.UpgradesTo == null) upgradeButton.onClick.AddListener(() => AttemptUpgrade());
-                else upgradeButton.onClick.RemoveListener(() => AttemptUpgrade());
+                if (bStats.Level < bStats.MaxLevel)
+                {
+                    upgradeButton.onClick.AddListener(AttemptUpgrade);
+                    upgradeButton.interactable = true;
+                    upgradeCostText.text = bStats.UpgradeCost.ToString();
+                } else
+                {
+                    upgradeButton.onClick.RemoveListener(AttemptUpgrade);
+                    upgradeButton.interactable = false;
+                    upgradeCostText.text = "N/A";
+                }
+
 
                 // Setup Sell button
-                if (bStats.CanSell) sellButton.onClick.AddListener(() => AttemptSell());
-                else sellButton.onClick.RemoveListener(() => AttemptSell());
+                if (bStats.CanSell)
+                {
+                    sellButton.onClick.AddListener(AttemptSell);
+                    sellButton.interactable = true;
+                    sellCostText.text = bStats.SellValue().ToString();
+                }
+                else
+                {
+                    sellButton.onClick.RemoveListener(AttemptSell);
+                    sellButton.interactable = false;
+                    sellCostText.text = "N/A";
+                }
             }
         }
         else

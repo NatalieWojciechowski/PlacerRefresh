@@ -54,7 +54,7 @@ public struct BuildingData
         CanSell = baseData.canSell;
         PurchaseCost = baseData.PurchaseCost;
         UpgradeCost = baseData.PurchaseCost / 2;
-        if (baseData.upgradesTo) UpgradeCost = baseData.upgradesTo.PurchaseCost;
+        if (baseData.upgradesTo) UpgradeCost = baseData.upgradesTo.PurchaseCost - this.PurchaseCost;
     }
 
     public TD_BuildingData RawBuildingData { get => _BuildingData; }

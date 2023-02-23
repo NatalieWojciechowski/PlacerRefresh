@@ -26,7 +26,7 @@ MonoBehaviour:
   baseDamage: 2
   aoeActiveDuration: 0.5
   CurrentTier: 1
-  MaxTier: 5
+  MaxTier: 4
   PurchaseCost: 15
   upgradesTo: {fileID: 0}
   canSell: 1
