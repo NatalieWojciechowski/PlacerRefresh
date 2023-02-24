@@ -50,7 +50,7 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
     void Start()
     {
         if (BuiltBuildings == null) BuiltBuildings = new();
-        if (!builderRaycaster) Camera.main.GetComponent<Physics2DRaycaster>();
+        if (!builderRaycaster) builderRaycaster = Camera.main.GetComponent<Physics2DRaycaster>();
         SafeTransition(BuildState.Idle, 0.01255f);
         if (!TowersParent) TowersParent = transform;
         DontDestroyOnLoad(gameObject);
@@ -300,6 +300,7 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
 
     public void InitFromData(SaveData saveData)
     {
+        if (this.BuiltBuildings == null) this.BuiltBuildings = new();
         foreach (SaveData.TowerSaveData tData in saveData.constructedBuildings)
         {
             GameObject constructingTower = Instantiate(tData.TD_BuildingData.buildingPrefab);

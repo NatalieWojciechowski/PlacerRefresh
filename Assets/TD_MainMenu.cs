@@ -46,5 +46,6 @@ public class TD_MainMenu : MonoBehaviour
     {
         if (!HasSaveData) return;
         TD_GameSerializer.ResetData();
+        UpdateContinueState();
     }
 }

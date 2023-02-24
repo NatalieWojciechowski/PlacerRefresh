@@ -19,3 +19,5 @@ MonoBehaviour:
     type: 3}
   dmgToCore: 1
   reward: 3
+  corpseSpawnPrefab: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
+    type: 3}
