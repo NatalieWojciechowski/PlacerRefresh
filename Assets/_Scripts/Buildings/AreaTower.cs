@@ -4,7 +4,7 @@ using UnityEngine;
 public class AreaTower : TD_Building
 {
     [SerializeField]
-    TD_AOE effectAreaRange;
+    TowerDamageAOE effectAreaRange;
 
     protected float _aoeStartTime = 0f;
     protected bool _isActiveEffect = false;

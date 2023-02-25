@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Comment CommentText="">
+    <Position X="9.25" Y="5.75" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="TD_Building">
+    <Position X="14" Y="3.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TD_Building.TargetingType">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Scripts\Buildings\TD_Building.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="TD_Building.BuildingState">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Scripts\Buildings\TD_Building.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="TD_Building.BuildingAttackState">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Scripts\Buildings\TD_Building.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAwUBAGQjKEAJgIBBASAwAJCCAMQQQEIAYBlcAABHg4=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TD_Building.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TD_BuildingData">
+    <Position X="19.25" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAABAAAAAEJABBAAAAAgAAAAAAAQBoAAQAAhk=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TD_BuildingData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TD_AOEData">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQQAAAAAAIAABAAAAAAAAAACAAAAAAAYAAAAgAA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TD_AOEData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RangedTower">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\RangedTower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AreaTower">
+    <Position X="11.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgkQAAACKAAAAAAAAAAAAAACAAAAAAIAAAgAAAACAQ=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\AreaTower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AreaEffect">
+    <Position X="6" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUQsAAQgBCACBAABCAAAAAAAAAAAAAIIQQACAAEICAA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\AreaEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TD_Projectile">
+    <Position X="0.5" Y="10.25" Width="4.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="TD_Projectile.ProjectileState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Scripts\Buildings\TD_Projectile.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AASCAAACECMAARgAMAAQIQABhAAAABQYBACAAQEACCA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TD_Projectile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TowerDamageAOE">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQEAAQAACAAAgAAAAAAAAAAABAAAEAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TowerDamageAOE.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="BuildingData">
+    <Position X="19.25" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BCAAEACAAAAAAAAAAAABAAARAAAAAAIJBAAAAAgBIEA=</HashCode>
+      <FileName>Assets\_Scripts\Buildings\TD_BuildingData.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="I_TDBulidingSaveCoordinator">
+    <Position X="11.75" Y="1.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\_Scripts\Managers\I_TDSaveCoordinator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

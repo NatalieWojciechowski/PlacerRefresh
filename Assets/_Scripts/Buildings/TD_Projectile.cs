@@ -65,7 +65,7 @@ public class TD_Projectile : MonoBehaviour
                 //Vector3 aniPos = transform.position + new Vector3(0, aniYPos, 0);
                 transform.Translate(new Vector3(0, graphValue, 0));
             }
-            }
+        }
     }
 
     protected virtual void LateUpdate()

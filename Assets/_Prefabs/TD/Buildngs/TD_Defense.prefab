@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 3602379146642460443}
   - component: {fileID: 8302478617572052954}
   - component: {fileID: 4696282288295445922}
-  - component: {fileID: -6699984890123392804}
   - component: {fileID: 3059969048073724147}
   m_Layer: 0
   m_Name: TD_Defense
@@ -226,25 +225,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-6699984890123392804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765544224758337656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0f07f8f4eeed74a80c484b5d8cc2a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlaceable: 1
-  IsEditable: 1
-  IsDestructible: 1
-  RequireAreaForPlacement: 0
-  RequireAreaForDestruction: 0
-  RequireAreaForEdit: 0
-  RequireSocket: 0
 --- !u!114 &3059969048073724147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765544224758337656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45f60d64a3c941408b081dbdb244d9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a77826a94177624c919ef081bf0f4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2065832158366382706

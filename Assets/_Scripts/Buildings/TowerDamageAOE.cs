@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TD_AOE : AreaEffect
+public class TowerDamageAOE : AreaEffect
 {
-
-    [SerializeField]
-    private AreaTower _owningBuilding;
+    //private AreaTower _owningBuilding;
     private TD_Enemy _parentTarget;
     private CapsuleCollider _capsuleCollider;
 
@@ -22,7 +20,7 @@ public class TD_AOE : AreaEffect
 
     protected override void Start()
     {
-        _owningBuilding = GetComponentInParent<AreaTower>();
+        //_owningBuilding = GetComponentInParent<AreaTower>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
         //AdjustRange(_owningBuilding.GetStats().AttackRange);
     }
@@ -30,32 +28,32 @@ public class TD_AOE : AreaEffect
     protected override void OnEnable()
     {
         base.OnEnable();
-        if(!_owningBuilding) _owningBuilding = GetComponentInParent<AreaTower>();
+        //if(!_owningBuilding) _owningBuilding = GetComponentInParent<AreaTower>();
         if(_capsuleCollider) AdjustInRangeVisualSize();
         //AdjustRange(_owningBuilding.GetStats().AttackRange);
     }
 
     public void AdjustInRangeVisualSize()
     {
-        if (!_owningBuilding) return;
+        //if (!_owningBuilding) return;
         transform.localScale = Vector3.one;
-        _capsuleCollider.radius = _owningBuilding.GetStats().AttackRange /2f;
+        _capsuleCollider.radius = td_AOEData.aoeRange;
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         //if (_owningBuilding.BuildingTarget && _isPulseActive) Gizmos.DrawWireSphere(transform.position, _collider.bounds.max.magnitude);
-        if (_owningBuilding.BuildingTarget && _isPulseActive) Gizmos.DrawLine(transform.position, _owningBuilding.BuildingTarget.transform.position);
+        if (_isPulseActive) Gizmos.DrawLine(transform.position, transform.position+Vector3.one*td_AOEData.aoeRange);
     }
 #endif
 
     protected override void Update()
     {
-        if (!_owningBuilding) return;
+        ////if (!_owningBuilding) return;
 
-        if (_isAOEActive && !_owningBuilding.BuildingTarget) { EndAOE(); return; }
-        else if (!_isAOEActive && _owningBuilding.BuildingTarget) StartAOE();
+        //if (_isAOEActive) { EndAOE(); return; }
+        //else if (!_isAOEActive) StartAOE();
        
         base.Update();
     }
@@ -68,7 +66,7 @@ public class TD_AOE : AreaEffect
         TD_Enemy cEnemy;
         if (collision.gameObject.TryGetComponent<TD_Enemy>(out cEnemy))
         {
-            cEnemy.TakeDamage(_owningBuilding.TickDamage);
+            cEnemy.TakeDamage(td_AOEData.pulseEffectAmount);
         }
         Debug.Log("Collision enter dmg");
         //if (!PulseStillGoing()) EndPulse();
@@ -82,7 +80,7 @@ public class TD_AOE : AreaEffect
         TD_Enemy cEnemy;
         if (collision.gameObject.TryGetComponent<TD_Enemy>(out cEnemy))
         {
-            cEnemy.TakeDamage(_owningBuilding.TickDamage);
+            cEnemy.TakeDamage(td_AOEData.pulseEffectAmount);
         }
         Debug.Log("Collision stay dmg");
         //if (!PulseStillGoing()) EndPulse();

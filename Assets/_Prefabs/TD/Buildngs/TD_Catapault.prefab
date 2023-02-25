@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 743481654592401309}
     m_Modifications:
+    - target: {fileID: 192365751680561427, guid: ebedbfd277cbdcc49a93b2104bae4a86,
+        type: 3}
+      propertyPath: cameraShake.useMainCamera
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4130352171651202478, guid: ebedbfd277cbdcc49a93b2104bae4a86,
         type: 3}
       propertyPath: m_RootOrder
@@ -60,6 +65,16 @@ PrefabInstance:
     - target: {fileID: 4130352171651202478, guid: ebedbfd277cbdcc49a93b2104bae4a86,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295075215293920237, guid: ebedbfd277cbdcc49a93b2104bae4a86,
+        type: 3}
+      propertyPath: cameraShake.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295075215293920237, guid: ebedbfd277cbdcc49a93b2104bae4a86,
+        type: 3}
+      propertyPath: cameraShake.useMainCamera
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7708929701459535268, guid: ebedbfd277cbdcc49a93b2104bae4a86,

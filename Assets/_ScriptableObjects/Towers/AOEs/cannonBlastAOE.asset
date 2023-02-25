@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
   m_Name: cannonBlastAOE
   m_EditorClassIdentifier: 
-  spawnPrefab: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
+  aoePrefab: {fileID: 6755539130889936525, guid: 962cf5b3bc9604544a37f5407f0f43b8,
+    type: 3}
+  effectPrefab: {fileID: 5494416846350615118, guid: fae5d46de309c6c43bbc7dbb33f950b0,
     type: 3}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
   category: Damage
-  pulseDelay: 0.25
+  pulseDelay: 0.45
+  pulseEffectAmount: 0.25
   aoeRange: 1
-  RemoveOnContact: 0
+  RemoveOnContact: 1
   maxLifetime: 0.5

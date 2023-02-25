@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
-  m_Name: slowingAOE
+  m_Name: catapaultImpactAOE
   m_EditorClassIdentifier: 
-  spawnPrefab: {fileID: 1000012901425104, guid: 3f347b8e2c139f343a77e17bbc0e50c3,
+  aoePrefab: {fileID: 3746481732000360172, guid: 8fb144ff8a8ba674aa0bc0f75971e2e7,
+    type: 3}
+  effectPrefab: {fileID: 7018801893801924348, guid: d47e58dfbc53f284ab52656078691e1a,
     type: 3}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
   category: Damage
-  pulseDelay: 0.5
-  aoeRange: 3
-  RemoveOnContact: 0
-  maxLifetime: 0
+  pulseDelay: 0.45
+  pulseEffectAmount: 0.25
+  aoeRange: 0.5
+  RemoveOnContact: 1
+  maxLifetime: 0.5

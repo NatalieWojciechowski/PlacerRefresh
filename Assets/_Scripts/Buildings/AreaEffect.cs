@@ -11,6 +11,12 @@ public class AreaEffect : MonoBehaviour
 
     private float maxTime;
 
+    //protected delegate void OnAreaTrigger(Collider hit);
+    //protected OnAreaTrigger onAreaTrigger;
+
+    //protected delegate void OnAreaCollide(Collision hit);
+    //protected OnAreaCollide onAreaCollide;
+
     #region AOE Region Activity
     protected bool _isAOEActive = false;
     protected float _aoeStartTime = 0f;
@@ -18,14 +24,14 @@ public class AreaEffect : MonoBehaviour
     #endregion
 
     #region Pulse
+    protected bool _hasHit = false;
     protected float _lastPulse;
     protected float _pulseDelay;
     protected bool _isPulseActive = false;
     protected float _pulseStartTime = 0f;
     protected float _pulseActiveDuration = 0f;
     private GameObject inRangeEffects;
-    [SerializeField]
-    private GameObject buffEffectPrefab;
+    private List <TD_Enemy> _interactList;
     #endregion
 
 
@@ -48,6 +54,7 @@ public class AreaEffect : MonoBehaviour
 
     private void InitAOE()
     {
+        _interactList = new();
         _aoeStartTime = Time.time;
         _collider = GetComponent<Collider>();
         _pulseDelay = td_AOEData.pulseDelay;
@@ -70,6 +77,11 @@ public class AreaEffect : MonoBehaviour
         if (maxTime > 0 && Time.time - _aoeStartTime > maxTime) Destroy(this.gameObject, 0.15f);
     }
 
+    private void LateUpdate()
+    {
+        if (_hasHit && this.td_AOEData.RemoveOnContact) Destroy(this.gameObject);
+    }
+
     protected void AdjustRange(float _range)
     {
         transform.localScale = new Vector3(_range, _range, _range);
@@ -79,6 +91,7 @@ public class AreaEffect : MonoBehaviour
     protected void StartAOE()
     {
         Debug.Log("Start AOE");
+        _interactList.Clear();
         _isAOEActive = true;
         _aoeStartTime = Time.time;
     }
@@ -99,6 +112,7 @@ public class AreaEffect : MonoBehaviour
     {
         if (_isPulseActive) return;
         Debug.Log("Pulse");
+        _interactList.Clear();
         _isPulseActive = true;
         _collider.enabled = true;
         _pulseStartTime = Time.time;
@@ -128,9 +142,15 @@ public class AreaEffect : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         TD_Enemy hit = other.gameObject.GetComponent<TD_Enemy>();
-        if (hit && buffEffectPrefab)
+        if (hit && td_AOEData.effectPrefab)
         {
-            hit.GiveShield(buffEffectPrefab);
+            // Wait til next pulse to interact but not disable pu;se
+            if (!_interactList.Contains(hit))
+            {
+                hit.GiveShield(td_AOEData);
+                _interactList.Add(hit);
+                //onAreaTrigger(other);
+            }
         }
         else if (other.gameObject.CompareTag("Building"))
         {
@@ -143,9 +163,17 @@ public class AreaEffect : MonoBehaviour
         TD_Enemy hit = collision.gameObject.GetComponent<TD_Enemy>();
         if (hit && td_AOEData.category == "Damage")
         {
+            _hasHit = true;
             // TODO: have AOE dmg here instead of via projectile?
             // TODO: perhaps instead of doing pulse, etc -- we spawn the effect here
             // so projectile cleanup does not wipe this out 
+
+            if (!_interactList.Contains(hit))
+            {
+                hit.TakeDamage(td_AOEData.pulseEffectAmount);
+                _interactList.Add(hit);
+                //onAreaTrigger(other);
+            }
         }
         else if (collision.gameObject.CompareTag("Building"))
         {

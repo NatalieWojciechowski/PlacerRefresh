@@ -5767,7 +5767,7 @@ MonoBehaviour:
   ProjectileStart: {fileID: 1301862877664039613}
   RangeIndicator: {fileID: 1273573232261266858}
   LevelUI: {fileID: 2932235532346313796}
-  effectAreaRange: {fileID: 8674139541548015554}
+  effectAreaRange: {fileID: 0}
   TickDamage: 0.25
 --- !u!4 &8496249652409165013 stripped
 Transform:
@@ -5908,6 +5908,12 @@ PrefabInstance:
       objectReference: {fileID: 1763074029754904437}
     - target: {fileID: 4684452398154411574, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
         type: 3}
+      propertyPath: td_AOEData
+      value: 
+      objectReference: {fileID: 11400000, guid: f8bd40b0dee90094f8e9d7e46738065b,
+        type: 2}
+    - target: {fileID: 4684452398154411574, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
+        type: 3}
       propertyPath: _owningBuilding
       value: 
       objectReference: {fileID: 3909326374663763282}
@@ -6004,18 +6010,6 @@ CapsuleCollider:
     type: 3}
   m_PrefabInstance: {fileID: 4134937053410095604}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8674139541548015554 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4684452398154411574, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
-    type: 3}
-  m_PrefabInstance: {fileID: 4134937053410095604}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c8267b7c35fa034982681a9e12f1022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7751230294032341572
 PrefabInstance:
   m_ObjectHideFlags: 0

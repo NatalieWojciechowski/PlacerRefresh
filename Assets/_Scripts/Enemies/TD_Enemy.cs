@@ -198,9 +198,10 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         TryChangeState(EnemyState.Idle);
     }
 
-    public void GiveShield(GameObject shieldPrefab) 
+    public void GiveShield(TD_AOEData _AOEData) 
     {
         if (shielded) return;
+        GameObject shieldPrefab = _AOEData.effectPrefab;
         // TOODO: replace with shield or prevent?
         // we may wish to shield with different effects 
         if (shieldObj != null && shieldObj?.name != shieldPrefab.name) Destroy(shieldObj);

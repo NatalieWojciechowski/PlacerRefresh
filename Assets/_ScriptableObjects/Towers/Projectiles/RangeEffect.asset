@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
-  m_Name: buffAOE
+  m_Name: RangeEffect
   m_EditorClassIdentifier: 
-  spawnPrefab: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
+  aoePrefab: {fileID: 6075313622514558837, guid: eaf3beeb1ece16a46852dd0c2107ddbf,
     type: 3}
+  effectPrefab: {fileID: 0}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
-  category: Buff
+  category: Generic
   pulseDelay: 0.25
+  pulseEffectAmount: 0
   aoeRange: 1
   RemoveOnContact: 0
-  maxLifetime: 2
+  maxLifetime: 0

@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 9138386183964431687}
   - component: {fileID: 1069908270750789694}
   m_Layer: 0
-  m_Name: RangedEffect
+  m_Name: _GenericAOEArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6075313622514558837}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -140,9 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6075313622514558837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91cafbb5d185f64189b0d80c9626d5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 518ddc679dc970b49b7fb091dc93de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   td_AOEData: {fileID: 11400000, guid: 7f9cde895a9750f488279e8a9f0f0b77, type: 2}
   _collider: {fileID: 2383966792333270657}
-  buffEffectPreafb: {fileID: 0}
+  buffEffectPrefab: {fileID: 0}
+  _owningBuilding: {fileID: 0}

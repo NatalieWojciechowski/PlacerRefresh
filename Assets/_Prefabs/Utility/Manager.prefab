@@ -9,11 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8170463112796182928}
-  - component: {fileID: 8170463112796182930}
   - component: {fileID: 8170463112796182941}
   - component: {fileID: 374612242618927910}
   - component: {fileID: 636555464}
-  - component: {fileID: 636555469}
   - component: {fileID: 4921803755875007727}
   - component: {fileID: 3041499697387829704}
   - component: {fileID: 7304342282725939434}
@@ -39,19 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8170463112796182930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8170463112796182934}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b3495ad9ef80e4fb9f5cf6064ea725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  route: {fileID: 0}
 --- !u!114 &8170463112796182941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,10 +61,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 8170463112796182934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aec7d5983a40d064e8ca6f4a5fbffa83, type: 3}
+  m_Script: {fileID: 11500000, guid: 9207a2d77ff613f42ac5e0ff54db9574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 0}
+  toolbarCtrl: {fileID: 0}
+  builderRaycaster: {fileID: 0}
+  pieces: []
+  RaycastLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  SnapBuild: 1
+  RaycastOffsetPosition: {x: 0, y: 0, z: 0}
+  buildOffset: {x: 0, y: 0, z: 0}
+  BuiltBuildings: []
+  TowersParent: {fileID: 0}
+  buildClip: {fileID: 0}
 --- !u!114 &636555464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,23 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8170463112796182934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ffca4227b3a3c45bb86ecf8f3912d9, type: 3}
+  m_Script: {fileID: 11500000, guid: a3914b2feb226804fb5441d05d69dfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentSelected: {fileID: 0}
-  Selectables: []
---- !u!114 &636555469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8170463112796182934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5630c46778c19504f9cbae12c92d8dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 0}
 --- !u!114 &4921803755875007727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,27 +119,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8170463112796182934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6b39066bb8f9294ab5d340492de5095, type: 3}
+  m_Script: {fileID: 11500000, guid: 433d9d760dbbb5046946e10ef55fd53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolbarCtrl: {fileID: 0}
-  builderRaycaster: {fileID: 0}
-  pieces:
-  - {fileID: 546669087867309034, guid: f5889999acd721e4294848f6a573ad5e, type: 3}
-  - {fileID: 7926945883062772877, guid: 592cb6f501535e14f80a2f2bb21190b1, type: 3}
-  - {fileID: 7432458902547865836, guid: 8eacc92dcae41d744981439f6cd5bc8a, type: 3}
-  - {fileID: 2162988829660461613, guid: f4341f7c999015e47ae571646f136ceb, type: 3}
-  - {fileID: 3909326374663763282, guid: 57edd59909f377f49b39581d9edaac50, type: 3}
-  - {fileID: 1340276701811755694, guid: 32337dee36db001499473907e796ef24, type: 3}
-  RaycastLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  SnapBuild: 1
-  RaycastOffsetPosition: {x: 0, y: 0, z: 1}
-  buildOffset: {x: 0, y: 0, z: 0}
-  BuiltBuildings: []
-  TowersParent: {fileID: 0}
-  buildClip: {fileID: 8300000, guid: 9dc750595ba1c9f40a56855b46944b70, type: 3}
+  _waypointRoute: {fileID: 0}
+  Routes: []
+  _spawners: []
+  WaveIntervalDelay: 2
+  CurrentWave: 0
 --- !u!114 &7304342282725939434
 MonoBehaviour:
   m_ObjectHideFlags: 0

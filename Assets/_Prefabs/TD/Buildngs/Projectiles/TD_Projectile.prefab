@@ -76,7 +76,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   curveStartScale: 1
   curveFinalScale: 0
-  impactEffects: {fileID: 0}
+  impactEffects: {fileID: 1096893136476370, guid: 24b82347924701148a13c746edfb6b22,
+    type: 3}
   hitClip: {fileID: 8300000, guid: cbe275e321a390548acaf5af39b6ff4e, type: 3}
 --- !u!65 &4212694524400293280
 BoxCollider:
