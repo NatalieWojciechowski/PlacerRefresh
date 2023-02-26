@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public static SceneLoader instance;
+
     [SerializeField]
     string nextSceneName = "TowerDefenseFreshMap";
     bool shouldTransition = false;
@@ -12,7 +14,8 @@ public class SceneLoader : MonoBehaviour
     public enum GameScene
     {
         MainMenu,
-        Level1
+        Level1,
+        Settings
     }
 
     private string SceneToName(GameScene gameScene)
@@ -37,7 +40,12 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        if (instance != null) Destroy(this);
+        instance = this;
+
+        //DontDestroyOnLoad(this);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()

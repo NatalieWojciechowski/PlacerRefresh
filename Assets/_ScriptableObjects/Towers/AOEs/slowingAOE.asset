@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
   m_Name: slowingAOE
   m_EditorClassIdentifier: 
-  aoePrefab: {fileID: 0}
-  effectPrefab: {fileID: 0}
+  aoePrefab: {fileID: 626328547744828783, guid: a8ad995d0080dd049919137ee22c9f9b,
+    type: 3}
+  effectPrefab: {fileID: 7964148526588268621, guid: 02a559536f0e45c4bb61c4e014588360,
+    type: 3}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
   category: Damage

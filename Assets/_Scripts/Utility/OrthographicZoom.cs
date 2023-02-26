@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class OrthographicZoom : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class OrthographicZoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!cam) cam = Camera.main;
         homePosition = cam.transform.position;
         targetZoom = cam.orthographicSize;
         moveVector = Vector2.zero;
@@ -33,13 +35,20 @@ public class OrthographicZoom : MonoBehaviour
 
     private void OnEnable()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         UIControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
         PlayerControlsManager.PlayerMove += PlayerControlsManager_PlayerMove;
         PlayerControlsManager.GoHome += ReturnHome;
     }
 
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if (!cam) cam = Camera.main;
+    }
+
     private void OnDisable()
     {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
         UIControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
         PlayerControlsManager.PlayerMove -= PlayerControlsManager_PlayerMove;
         PlayerControlsManager.GoHome -= ReturnHome;

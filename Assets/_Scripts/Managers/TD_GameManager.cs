@@ -44,7 +44,17 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
         Lose
     }
 
-    private void Awake()
+    //private void Awake()
+    //{
+    //    // TODO: This seems to be calling the methods while registering
+    //    EventManager.OnEnemyPass += TookDmg;
+    //    EventManager.OnWaveFinish += WaveFinished;
+    //    EventManager.OnMoneySpent += OnPlayerSpend;
+    //    currentWaveIndex = 0;
+    //    if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
+    //}
+
+    private void OnEnable()
     {
         // TODO: This seems to be calling the methods while registering
         EventManager.OnEnemyPass += TookDmg;

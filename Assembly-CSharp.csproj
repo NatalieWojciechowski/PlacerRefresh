@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Utility\TD_Camera.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Trader.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\CharacterAttack.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Shared\Code\Character Movement Kit\Input\View\TopDownView.cs" />
@@ -96,8 +97,9 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\SaveQuestData.cs" />
     <Compile Include="Assets\3rdParty\MapMagic\Compatibility\CTS\CTSOutput.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\ConstructingPanel.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectActivator.cs" />
+    <Compile Include="Assets\_Scripts\Managers\TD_BuildManager.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UIManager.cs" />
+    <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectActivator.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Storage\Structs\SerializeVector3.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\FX\ButtonAudio.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Generator\BiomeData.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\UIManager.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\ItemData.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_Projectile.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\TowerDamageAOE.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\UI\Demo_UI_Pieces_Selection.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Billboard.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\UIPanel.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\3rdParty\Shared\Ramps\Runtime\RampAsset.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\NavMesh\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\_Scripts\Managers\UIControlsManager.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\ShopPanel.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Conditions\ExternalCollisionCondition.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
@@ -223,6 +227,7 @@
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_ChangeAlignment.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Area\Enums\AreaShape.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_RotateRight.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\PaperEnemy.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Conditions\ExternalGeneralCondition.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Basic_Interaction.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneUserControl2Axis.cs" />
@@ -244,6 +249,7 @@
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_RotateLeft.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Constants.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\TD_Wave.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_OpenChangeAlignmentOptions.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Saving and Loading\Button_LoadGridObjects.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Demos\Shared Contents\Scripts\Camera\Demo_ProtectCameraFromWallClip.cs" />
@@ -315,8 +321,11 @@
     <Compile Include="Assets\3rdParty\Easy Build System\Demos &amp; Add-Ons\Add-Ons\The Forest Like\Scripts\Demo_Upgradable_Interaction.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Tools\PhysicsTool.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Storage\Enums\StorageType.cs" />
+    <Compile Include="Assets\_Scripts\UI\TD_BuildToolbar.cs" />
     <Compile Include="Assets\3rdParty\Blobcreate\Shared\Code\Projectile Behaviour Base\ProjectileBehaviour.cs" />
+    <Compile Include="Assets\_Scripts\Managers\BuilderControlsManager.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_CloseObjectSelection.cs" />
+    <Compile Include="Assets\_Scripts\Managers\TD_AudioManager.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Characters\RollerBall\Scripts\BallUserControl.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Tools\MapMinimapWrap.cs" />
@@ -345,6 +354,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Events\Data\CustomEffect.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\GridControlManager.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Position Offset\Scripts\UI Buttons\Button_SaveGridObjects.cs" />
+    <Compile Include="Assets\_Scripts\UI\TowerTooltip.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Group\GroupBehaviour.cs" />
@@ -360,6 +370,7 @@
     <Compile Include="Assets\3rdParty\Blobcreate\Projectile Toolkit\Demos\Scripts\Misc\RPTester.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Controls\TheControls.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_BuildingData.cs" />
+    <Compile Include="Assets\LevelIndicator.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Zone.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\ParticleSystems\Scripts\AfterburnerPhysicsForce.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneController.cs" />
@@ -396,6 +407,7 @@
     <Compile Include="Assets\3rdParty\ProTips\Scripts\Behaviors\TooltipTrigger.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\UI Buttons\Button_RotateLeft.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\ColonistDestructible.cs" />
+    <Compile Include="Assets\TD_MainMenu.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Cameras\Scripts\AutoCam.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\GameData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\AttributeData.cs" />
@@ -521,6 +533,7 @@
     <Compile Include="Assets\3rdParty\Easy Build System\Features\Scripts\Core\Base\Area\AreaBehaviour.cs" />
     <Compile Include="Assets\3rdParty\TowerDefenceTemplate\Scripts\Bullet.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\TheGame.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\TD_Selectable.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\CSObject.cs" />
     <Compile Include="Assets\3rdParty\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
@@ -535,6 +548,7 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\AssetData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\IntSelector.cs" />
     <Compile Include="Assets\3rdParty\ProTips\Demos (safe to delete)\Scripts\SetCustomVectorOverride.cs" />
+    <Compile Include="Assets\_Scripts\Managers\PlayerControlsManager.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Events\UI\DialogueChoiceButton.cs" />
     <Compile Include="Assets\_Scripts\Buildings\TD_Building.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Basic Grid Demo\Scripts\GridCoordinates\GridCoordinateManager.cs" />
@@ -546,6 +560,7 @@
     <Compile Include="Assets\3rdParty\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAudio.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\LevelsPanel.cs" />
+    <Compile Include="Assets\TD_GameSerializer.cs" />
     <Compile Include="Assets\_Scripts\Enemies\TD_Spawner.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\FX\PauseAnim.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\BuildPanel.cs" />
@@ -566,6 +581,7 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\Scripts\LandingGear.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\ObjectResetter.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
+    <Compile Include="Assets\_Scripts\Buildings\AreaEffect.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Custom Placement Demo\Scripts\GridControlManager.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\CharacterEquip.cs" />
     <Compile Include="Assets\3rdParty\HypertonicGames\GridPlacement\Samples\Move Grid Demo\Scripts\UI Buttons\Button_Delete.cs" />
@@ -584,6 +600,7 @@
     <Compile Include="Assets\_Scripts\Managers\I_TDSaveCoordinator.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Actions\ActionSleep.cs" />
     <Compile Include="Assets\3rdParty\ProTips\Scripts\Enums\TipPosition.cs" />
+    <Compile Include="Assets\TD_SelectionManager.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Gameplay\Item.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\QuestData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Actions\ActionBasic.cs" />
@@ -631,23 +648,6 @@
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TooltipTarget.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\SpawnGroupData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TheUI.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\PaperEnemy.cs" />
-    <Compile Include="Assets\_Scripts\Managers\UIControlsManager.cs" />
-    <Compile Include="Assets\_Scripts\Enemies\TD_Wave.cs" />
-    <Compile Include="Assets\LevelIndicator.cs" />
-    <Compile Include="Assets\_Scripts\Buildings\TD_Selectable.cs" />
-    <Compile Include="Assets\TD_SelectionManager.cs" />
-    <Compile Include="Assets\_Scripts\Managers\PlayerControlsManager.cs" />
-    <Compile Include="Assets\_Scripts\Managers\BuilderControlsManager.cs" />
-    <Compile Include="Assets\_Scripts\Managers\TD_BuildManager.cs" />
-    <Compile Include="Assets\_Scripts\UI\TowerTooltip.cs" />
-    <Compile Include="Assets\_Scripts\Buildings\AreaEffect.cs" />
-    <Compile Include="Assets\TD_GameSerializer.cs" />
-    <Compile Include="Assets\_Scripts\Buildings\TowerDamageAOE.cs" />
-    <Compile Include="Assets\_Scripts\Managers\TD_AudioManager.cs" />
-    <Compile Include="Assets\_Scripts\Utility\TD_Camera.cs" />
-    <Compile Include="Assets\_Scripts\UI\TD_BuildToolbar.cs" />
-    <Compile Include="Assets\TD_MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdParty\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

@@ -7,7 +7,7 @@ public class TowerDamageAOE : AreaEffect
 {
     //private AreaTower _owningBuilding;
     private TD_Enemy _parentTarget;
-    private CapsuleCollider _capsuleCollider;
+    [SerializeField] private CapsuleCollider _capsuleCollider;
 
     /// <summary>
     /// Represents the region that remains active while enemies are in range. 
@@ -21,7 +21,7 @@ public class TowerDamageAOE : AreaEffect
     protected override void Start()
     {
         //_owningBuilding = GetComponentInParent<AreaTower>();
-        _capsuleCollider = GetComponent<CapsuleCollider>();
+        if (!_capsuleCollider) _capsuleCollider = GetComponent<CapsuleCollider>();
         //AdjustRange(_owningBuilding.GetStats().AttackRange);
     }
 
@@ -37,7 +37,7 @@ public class TowerDamageAOE : AreaEffect
     {
         //if (!_owningBuilding) return;
         transform.localScale = Vector3.one;
-        _capsuleCollider.radius = td_AOEData.aoeRange;
+        if (_capsuleCollider) _capsuleCollider.radius = td_AOEData.aoeRange;
     }
 
 #if UNITY_EDITOR
