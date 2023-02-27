@@ -89,12 +89,12 @@ public class TD_Spawner : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (!TD_GameManager.current) return;
+        if (!TD_GameManager.instance) return;
         if (waveHelpers.Count == 0 && !SetupWaveHelpers()) return;
-        if (TD_GameManager.current.CurrentWaveIndex >= waveHelpers.Count) return;
+        if (TD_GameManager.instance.CurrentWaveIndex >= waveHelpers.Count) return;
 
 
-        TD_Wave currentWave = waveHelpers[TD_GameManager.current.CurrentWaveIndex];
+        TD_Wave currentWave = waveHelpers[TD_GameManager.instance.CurrentWaveIndex];
         if (currentWave == null || !SpawnAllowed) return;
         CurrentWaveComplete = currentWave.Defeated;
         //Debug.Log(currentWave);
@@ -232,6 +232,6 @@ public class TD_Spawner : MonoBehaviour
     private bool IsDelayTimerMet()
     {
         // TODO: store this and update on change ; dont keep checking!
-        return (Time.time - lastSpawnTime > Waves[TD_GameManager.current.CurrentWaveIndex].spawnInterval);
+        return (Time.time - lastSpawnTime > Waves[TD_GameManager.instance.CurrentWaveIndex].spawnInterval);
     }
 }

@@ -1081,18 +1081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &256649470 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7061751110874439190, guid: c1dc07857b5220e488e7c9bae380f9fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 6841192097589641087}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 256649458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce130346655266643b1dcca59b1cd9fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &256649481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5730,6 +5718,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6841192096459840658, guid: c1dc07857b5220e488e7c9bae380f9fc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6841192096540938152, guid: c1dc07857b5220e488e7c9bae380f9fc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6020,6 +6013,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7061751110874439190, guid: c1dc07857b5220e488e7c9bae380f9fc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7331066647023070187, guid: c1dc07857b5220e488e7c9bae380f9fc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -6065,26 +6063,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379222005524178656, guid: c1dc07857b5220e488e7c9bae380f9fc,
-        type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 256649470}
-    - target: {fileID: 8379222005524178656, guid: c1dc07857b5220e488e7c9bae380f9fc,
-        type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TowerDeselected
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379222005524178656, guid: c1dc07857b5220e488e7c9bae380f9fc,
-        type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EventManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379222005524178656, guid: c1dc07857b5220e488e7c9bae380f9fc,
-        type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2162152105875612266, guid: c1dc07857b5220e488e7c9bae380f9fc, type: 3}

@@ -44,7 +44,7 @@ public class TD_Wave
     {
         startTime = Time.time;
         // TODO: Invoke Event?
-        EventManager.current.WaveStarted(waveIndex);
+        EventManager.instance.WaveStarted(waveIndex);
     }
 
     public void WaveSpawningComplete()
@@ -62,7 +62,7 @@ public class TD_Wave
         defeated = true;
         completeTime = Time.time;
         // TODO: Invoke event?
-        EventManager.current.WaveFinished(waveIndex);
+        EventManager.instance.WaveFinished(waveIndex);
     }
 
     public TD_EnemyData GetEnemy(int enemyIndex)

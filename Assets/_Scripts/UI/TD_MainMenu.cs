@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TD_MainMenu : MonoBehaviour
+public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
 {
     [SerializeField] Button ContinueButton;
     [SerializeField] Button ClearDataButton;
@@ -22,6 +23,8 @@ public class TD_MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetButtonInteractable();
+        SceneManager.activeSceneChanged += OnSceneChange;
         UpdateSaveDataExist();
         ContinueButton.onClick.AddListener(OnContinue);
         ClearDataButton.onClick.AddListener(OnClearData);
@@ -30,8 +33,18 @@ public class TD_MainMenu : MonoBehaviour
         ExitButton.onClick.AddListener(OnPlayerExit);
     }
 
+    private void ResetButtonInteractable()
+    {
+        ContinueButton.interactable = false;
+        ClearDataButton.interactable = false;
+        NewGameButton.interactable = true;
+        SettingsButton.interactable = false;
+        ExitButton.interactable = true;
+    }
+
     private void OnDisable()
     {
+        SceneManager.activeSceneChanged -= OnSceneChange;
         ContinueButton.onClick.RemoveListener(OnContinue);
         ClearDataButton.onClick.RemoveListener(OnClearData);
         NewGameButton.onClick.RemoveListener(OnNewGame);
@@ -39,6 +52,7 @@ public class TD_MainMenu : MonoBehaviour
         ExitButton.onClick.RemoveListener(OnPlayerExit);
     }
 
+    #region ButtonEffects
     private void OnContinue()
     {
         LoadAndContinue();
@@ -60,6 +74,7 @@ public class TD_MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
 
     private void UpdateSaveDataExist()
     {
@@ -67,25 +82,46 @@ public class TD_MainMenu : MonoBehaviour
         ContinueButton.interactable = HasSaveData;
         // Clear DataButton
         ClearDataButton.gameObject.SetActive(HasSaveData);
+        ClearDataButton.interactable = HasSaveData;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void LoadAndContinue()
+    #region ButtonEffectHelpers
+
+    void LoadAndContinue()
     {
         if (!HasSaveData) return;
-        if (TD_GameSerializer.LoadGame())
-            SceneLoader.instance.SetNextScene(SceneLoader.GameScene.Level1);
+        TD_GameManager.instance.useSaveData = true;
+        //if (TD_GameSerializer.LoadGame())
+        SceneLoader.instance.SetNextScene(SceneLoader.GameScene.Level1);
     }
 
-    public void ClearSaveData()
+    void ClearSaveData()
     {
         if (!HasSaveData) return;
         TD_GameSerializer.ResetData();
         UpdateSaveDataExist();
     }
+    #endregion
+
+    #region Interfaces
+    public void OnSceneChange(Scene current, Scene next)
+    {
+        if (next.name == SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu))
+        {
+            ReInit();
+        }
+    }
+
+    public void ReInit()
+    {
+        UpdateSaveDataExist();
+        ResetButtonInteractable();
+    }
+    #endregion
 }

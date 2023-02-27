@@ -18,7 +18,7 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
 
 
     #region Connections
-    public static TD_BuildManager current;
+    public static TD_BuildManager instance;
     public TD_BuildToolbar toolbarCtrl;
     public Physics2DRaycaster builderRaycaster;
 
@@ -49,18 +49,20 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
     // Start is called before the first frame update
     void Start()
     {
-        if (BuiltBuildings == null) BuiltBuildings = new();
-        if (!builderRaycaster) builderRaycaster = Camera.main.GetComponent<Physics2DRaycaster>();
-        SafeTransition(BuildState.Idle, 0.01255f);
-        if (!TowersParent) TowersParent = transform;
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;        
+            if (BuiltBuildings == null) BuiltBuildings = new();
+            if (!builderRaycaster) builderRaycaster = Camera.main.GetComponent<Physics2DRaycaster>();
+            SafeTransition(BuildState.Idle, 0.01255f);
+            if (!TowersParent) TowersParent = transform;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
     }
 
     private void OnEnable()
     {
-        if (current != null) Destroy(this);
-        current = this;
-
         PlayerControlsManager.PlayerCancel += OnPlayerCancel;
         PlayerControlsManager.PlayerAccept += OnPlayerAccept;
         UIControlsManager.UICancel += OnPlayerCancel;
@@ -196,31 +198,31 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
     #region Player Actions
     public static GameObject StartPlacement(GameObject buildPrefab)
     {
-        EventManager.current.TowerDeselected();
-        if (current.previewObj != null) Destroy(current.previewObj);
-        current.previewObj = Instantiate(buildPrefab, current.transform);
-        current.SafeTransition(BuildState.Blueprint);
-        current.previewObj.transform.position = current.lastHitPos;
-        EventManager.current.TowerBlueprint(current.previewObj.GetComponent<TD_Building>());
-        return current.previewObj;
+        EventManager.instance.TowerDeselected();
+        if (instance.previewObj != null) Destroy(instance.previewObj);
+        instance.previewObj = Instantiate(buildPrefab, instance.transform);
+        instance.SafeTransition(BuildState.Blueprint);
+        instance.previewObj.transform.position = instance.lastHitPos;
+        EventManager.instance.TowerBlueprint(instance.previewObj.GetComponent<TD_Building>());
+        return instance.previewObj;
     }
 
     private void FinishPlacement()
     {
-        current.SafeTransition(BuildState.Placing);
+        instance.SafeTransition(BuildState.Placing);
         previewObj.transform.SetParent(TowersParent);
         previewObj.transform.SetPositionAndRotation(lastHitPos, Quaternion.identity);
         previewObj.GetComponent<TD_Building>()?.OnPlacementConfirm(previewObj.transform);
-        EventManager.current.TowerPlaced(previewObj.GetComponent<TD_Building>());
+        EventManager.instance.TowerPlaced(previewObj.GetComponent<TD_Building>());
         BuiltBuildings.Add(previewObj);
         previewObj = null;
-        current.SafeTransition(BuildState.Cooldown);
+        instance.SafeTransition(BuildState.Cooldown);
     }
 
     protected void OnPlayerCancel(object source, EventArgs eventArgs)
     {
         Debug.Log("OnPlayerCancel" + source);
-        current.SafeTransition(BuildState.Idle);
+        instance.SafeTransition(BuildState.Idle);
         Destroy(previewObj);
     }
 

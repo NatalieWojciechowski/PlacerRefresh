@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class TowerTooltip : MonoBehaviour
 {
-    public static TowerTooltip current;
+    public static TowerTooltip instance;
 
     private TD_Building selectedBuilding;
     [SerializeField]
@@ -30,6 +30,8 @@ public class TowerTooltip : MonoBehaviour
     private TMP_Text dmgTypeText;
     [SerializeField]
     private TMP_Text enemiesKilledText;
+
+    [SerializeField] GameObject BlockingRegion;
 
     private float lastAction = 0f;
     private float _cooldownPeriod = 0.5f;
@@ -57,9 +59,14 @@ public class TowerTooltip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
-        ResetUI();
+        if (instance == null)
+        {        
+            instance = this;
+            ResetUI();
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
+
     }
 
     // Update is called once per frame

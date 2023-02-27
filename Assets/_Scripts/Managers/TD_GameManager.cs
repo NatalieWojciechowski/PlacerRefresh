@@ -2,13 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
+public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSceneChange
 {
-    public static TD_GameManager current;
+    public static TD_GameManager instance;
 
     private int coreHealth = 5;
     private int currentWaveIndex = -1;
+
+    public bool useSaveData = false;
 
     /// <summary>
     /// Whether or not the Wave is ready to go; will shift to true when user toggles wave to start
@@ -16,9 +19,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     private bool playerReady = false;
     public bool HasStarted { get => (this.playerReady && currentWaveIndex >= 0); }
     private bool waitingForStart = true;
-    public bool IsWaitingForStart { get => TD_EnemyManager.current.IsCurrentWaveComplete(); }
-
-    public TD_UIManager uIManager;
+    public bool IsWaitingForStart { get => TD_EnemyManager.instance.IsCurrentWaveComplete(); }
 
     [SerializeField] private int startingCurrency = 20;
     private int currentCurrency = 0;
@@ -61,7 +62,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
         EventManager.OnWaveFinish += WaveFinished;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
-        if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
+        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
     }
 
     private void OnDisable()
@@ -74,12 +75,20 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     // Start is called before the first frame update
     void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
-        gameState = GameState.MainMenu;
-        currentCurrency = startingCurrency;
-        if (!uIManager) uIManager = FindObjectOfType<TD_UIManager>();
-        currentWaveIndex = 0;
+        if (instance == null)
+        {
+            instance = this;
+            if (useSaveData) TD_GameSerializer.LoadGame();
+            else
+            {
+                gameState = GameState.MainMenu;
+                currentCurrency = startingCurrency;
+                currentWaveIndex = 0;
+            }
+            if (!effectsBin) effectsBin = gameObject;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
     }
 
     // Update is called once per frame
@@ -96,7 +105,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 
     private void GetTotalWaves()
     {
-        if (TD_EnemyManager.current) totalWaves = TD_EnemyManager.current.GetTotalWaves();
+        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
     }
 
     public void PlayerStart()
@@ -106,30 +115,30 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
 
     private void GameOver()
     {
-        EventManager.current.Lose();
+        EventManager.instance.Lose();
     }
 
     private void WaveFinished(int ctx)
     {
         if (!playerReady) return;
-        if (!TD_EnemyManager.current || TD_EnemyManager.current.TotalWaves < 1) return;
+        if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
         // We may have more than one spawner contributing to the wave, make sure all are done first
-        if (ctx == currentWaveIndex && TD_EnemyManager.current.IsCurrentWaveComplete()
+        if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveComplete()
             && playerReady)            
             NextWave();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
-        uIManager.UpdateDisplay();
+        TD_UIManager.instance.UpdateDisplay();
     }
 
     private void NextWave()
     {
         playerReady = false;
         currentWaveIndex++;
-        if (currentWaveIndex > TD_EnemyManager.current.TotalWaves)
+        if (currentWaveIndex > TD_EnemyManager.instance.TotalWaves)
         {
-            currentWaveIndex = TD_EnemyManager.current.TotalWaves;
-            EventManager.current.Win();
+            currentWaveIndex = TD_EnemyManager.instance.TotalWaves;
+            EventManager.instance.Win();
         }
     }
 
@@ -137,13 +146,14 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     {
         if (currentCurrency - purchaseCost < 0) return false;
         currentCurrency -= purchaseCost;
+        Debug.Log("Current Money:" + currentCurrency.ToString());
         return true;
     }
 
     private void TookDmg(int coreDmg)
     {
         coreHealth -= coreDmg;
-        uIManager.UpdateDisplay();
+        TD_UIManager.instance.UpdateDisplay();
     }
     public enum GameSpeedOptions
     {
@@ -211,6 +221,19 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator
     {
         saveData.playerMoney = CurrentCurrency;
         saveData.currentWaveIndex = CurrentWaveIndex;
+    }
+
+    public void OnSceneChange(Scene current, Scene next)
+    {
+        if (useSaveData &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+            TD_GameSerializer.LoadGame();
+    }
+
+    public void ReInit()
+    {
+        throw new NotImplementedException();
     }
     #endregion
 }

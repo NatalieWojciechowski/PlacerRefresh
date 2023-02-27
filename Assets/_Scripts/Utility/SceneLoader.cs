@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     string nextSceneName = "TowerDefenseFreshMap";
     bool shouldTransition = false;
+
     Coroutine corLoad;
 
     public enum GameScene
@@ -18,7 +19,7 @@ public class SceneLoader : MonoBehaviour
         Settings
     }
 
-    private string SceneToName(GameScene gameScene)
+    public static string SceneToName(GameScene gameScene)
     {
         string sceneName = "";
         switch (gameScene) {
@@ -40,12 +41,13 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        if (instance != null) Destroy(this);
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
 
-        //DontDestroyOnLoad(this);
-
-        DontDestroyOnLoad(gameObject);
     }
 
     void Update()

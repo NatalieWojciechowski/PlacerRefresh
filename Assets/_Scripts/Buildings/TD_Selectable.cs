@@ -43,9 +43,9 @@ public class TD_Selectable : MonoBehaviour, IPointerClickHandler
     {
         // Dont select the building we just placed
         // TODO: perhaps just have a "build time" for the building before collider active?
-        if (TD_BuildManager.current.GetBuildState() == TD_BuildManager.BuildState.Cooldown) return;
+        if (TD_BuildManager.instance.GetBuildState() == TD_BuildManager.BuildState.Cooldown) return;
 
-        if (selectedBuilding.IsRunning) EventManager.current.TowerSelected(selectedBuilding);
+        if (selectedBuilding.IsRunning) EventManager.instance.TowerSelected(selectedBuilding);
     }
 
     // Start is called before the first frame update

@@ -4847,6 +4847,7 @@ MonoBehaviour:
   dmgAmtText: {fileID: 1054658310867311364}
   dmgTypeText: {fileID: 2175054634115561858}
   enemiesKilledText: {fileID: 203292474299441052}
+  BlockingRegion: {fileID: 6841192097378869904}
 --- !u!114 &6841192096061226839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8829,13 +8830,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11500000, guid: e3ffca4227b3a3c45bb86ecf8f3912d9, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 3883860859387797181, guid: c97d24a8d491e5247bd7cd9717b06a62,
+            type: 3}
+          m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
+          m_MethodName: TowerDeselected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

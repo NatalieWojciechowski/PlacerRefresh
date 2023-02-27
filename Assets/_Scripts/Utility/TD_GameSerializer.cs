@@ -54,15 +54,18 @@ public class TD_GameSerializer : MonoBehaviour
 
     private void OnEnable()
     {
-        if (instance != null) Destroy(this);
-        instance = this;
         _fullSavePath = $"{Application.persistentDataPath}/{saveFileName}";
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
     }
 
     // Update is called once per frame
@@ -86,7 +89,7 @@ public class TD_GameSerializer : MonoBehaviour
             //FileStream file = File.Create(Application.persistentDataPath
             //             + $"/{instance.saveFileName}");
             SaveData data = new SaveData();
-            TD_GameManager.current.AddToSaveData(ref data);
+            TD_GameManager.instance.AddToSaveData(ref data);
             bf.Serialize(file, data);
         }
         Debug.Log("Game data saved!");
@@ -101,8 +104,8 @@ public class TD_GameSerializer : MonoBehaviour
             using (var file = File.Open($"{Application.persistentDataPath}/{saveFileName}", FileMode.OpenOrCreate))
             {
                 SaveData data = (SaveData)bf.Deserialize(file);
-                TD_GameManager.current.InitFromData(data);
-                TD_BuildManager.current.InitFromData(data);
+                TD_GameManager.instance.InitFromData(data);
+                TD_BuildManager.instance.InitFromData(data);
                 Debug.Log("Game data loaded!");
                 return true;
             }

@@ -30,7 +30,7 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public void OnAccept(InputAction.CallbackContext context)
     {
         Debug.Log("UI OnAccept" + context);
-        EventManager.current.GenericAccept();
+        EventManager.instance.GenericAccept();
         //PlayerAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue(), 0);
@@ -49,7 +49,7 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public void OnCancel(InputAction.CallbackContext context)
     {
         Debug.Log("UI OnCancel!" + context);
-        EventManager.current.GenericCancel();
+        EventManager.instance.GenericCancel();
         UICancel(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager current;
+    public static EventManager instance;
 
     #region Wave Events
     public static UnityAction<int> OnEnemyPass;
@@ -92,15 +92,20 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (current != null) Destroy(this);
-        current = this;
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
 
-        //enemyPassEvent = new();
-        //waveStartEvent = new();
-        //waveFinishEvent = new();
-        //towerSelectEvent = new();
-        //towerDeselectEvent = new();
-        //moneySpentEvent = new();
+        ////enemyPassEvent = new();
+        ////waveStartEvent = new();
+        ////waveFinishEvent = new();
+        ////towerSelectEvent = new();
+        ////towerDeselectEvent = new();
+        ////moneySpentEvent = new();
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -122,7 +127,7 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public void WaveStarted(int waveIndex)
     {
-        if (!TD_GameManager.current.HasStarted) TD_GameManager.current.PlayerStart();
+        if (!TD_GameManager.instance.HasStarted) TD_GameManager.instance.PlayerStart();
         // Wave finish + timer OR button push for start next
         // TODO: Maybe checkpoints included for user prompt before start? 
         Debug.Log($"Enemy Wave Started: {waveIndex}");
@@ -136,7 +141,7 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public void WaveFinished(int waveIndex)
     {
-        if (!TD_GameManager.current.HasStarted) return;
+        if (!TD_GameManager.instance.HasStarted) return;
         // Enemies finish spawning + died / get to end
         Debug.Log($"Enemy Wave Finished: {waveIndex}");
         //current.waveFinishEvent.Invoke(waveIndex);

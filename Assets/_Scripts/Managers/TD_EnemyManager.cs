@@ -6,7 +6,7 @@ using UnityStandardAssets.Utility;
 
 public class TD_EnemyManager : MonoBehaviour
 {
-    public static TD_EnemyManager current { get; private set; }
+    public static TD_EnemyManager instance { get; private set; }
 
     [SerializeField]
     WaypointRoute _waypointRoute;
@@ -31,10 +31,7 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (current != null) Destroy(this);
-        current = this;
         if (_spawners == null) _spawners = new();
-
         timeRemaining = WaveIntervalDelay;
         RefreshSpawners();
             //else _spawners.Clear();
@@ -61,17 +58,22 @@ public class TD_EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
         //if (_enemies == null) _enemies = new();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Routes == null || Routes.Count < 1 || !TD_GameManager.current) return;
+        if (Routes == null || Routes.Count < 1 || !TD_GameManager.instance) return;
         if (_spawners.Count < 1) RefreshSpawners();
         //!TD_GameManager.current.HasStarted) return;
-        if (TD_GameManager.current.HasStarted)
+        if (TD_GameManager.instance.HasStarted)
         {
             timeRemaining -= Time.deltaTime;
             if (timeRemaining <= 0) TryStartSpawers();
@@ -87,14 +89,14 @@ public class TD_EnemyManager : MonoBehaviour
     {
         Debug.Log("Wave Complete for all Spawners");
         _waveActive = false;
-        StartWaveInterval(TD_GameManager.current.CurrentWaveIndex);
-        EventManager.OnWaveFinish(TD_GameManager.current.CurrentWaveIndex);
+        StartWaveInterval(TD_GameManager.instance.CurrentWaveIndex);
+        EventManager.OnWaveFinish(TD_GameManager.instance.CurrentWaveIndex);
     }
 
     private void TryStartSpawers()
     {
         RefreshSpawners();
-        if (TD_GameManager.current.CurrentWaveIndex < TotalWaves)
+        if (TD_GameManager.instance.CurrentWaveIndex < TotalWaves)
         {
             ToggleSpawners(true);
             _waveActive = true;

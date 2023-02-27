@@ -14,7 +14,7 @@ public class TD_EnemyManagerEditor : Editor
 
         if (GUILayout.Button("RestartWave"))
         {
-            TD_GameManager.current.RestartWaves();
+            TD_GameManager.instance.RestartWaves();
         }
     }
 }

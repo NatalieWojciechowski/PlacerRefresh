@@ -166,7 +166,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
         //    Debug.Log("Raycast Hit -> " + hit.transform.name);
         //}
 
-        EventManager.current.GenericAccept();
+        EventManager.instance.GenericAccept();
         PlayerAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 

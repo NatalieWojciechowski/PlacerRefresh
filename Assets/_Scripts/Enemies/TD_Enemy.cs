@@ -68,12 +68,12 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
     {
         enemyState = EnemyState.Spawn;
         // TODO: With multi spawners, need find closest
-        if (fullRoute == null) fullRoute = TD_EnemyManager.current.WaypointRoute;
+        if (fullRoute == null) fullRoute = TD_EnemyManager.instance.WaypointRoute;
         if (_rigidbody == null) _rigidbody = GetComponent<Rigidbody>();
         if (_animator == null) _animator = GetComponentInChildren<Animator>();
         if (!prevWaypoint) prevWaypoint = this.transform;
 
-        if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.current.HealthBarContainer.transform);
+        if (!HealthBar) HealthBar = Instantiate(HealthBarPrefab, TD_UIManager.instance.HealthBarContainer.transform);
         HealthBar.transform.localScale = Vector3.one;
 
         InitEnemy();
@@ -106,12 +106,12 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         // TODO: Probability/ flag on drops?;
         if (CorpseSpawnPrefab)
         {
-            GameObject drop = Instantiate(CorpseSpawnPrefab, TD_GameManager.current.EffectsBin?.transform);
+            GameObject drop = Instantiate(CorpseSpawnPrefab, TD_GameManager.instance.EffectsBin?.transform);
             drop.transform.position = transform.position;
         }
         DeathEffects?.SetActive(true);
         // In case enemy got to end vs being destroyed
-        if (_currentHealth <= 0) TD_GameManager.current.AddCoins(_deathReward);
+        if (_currentHealth <= 0) TD_GameManager.instance.AddCoins(_deathReward);
 
         if (shieldObj) Destroy(shieldObj);
         Destroy(this.gameObject);

@@ -12,9 +12,14 @@ public class TD_SelectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (instance != null) Destroy(this);
-        instance = this;
-        if (Selectables == null) Selectables = new();
+        if (instance == null)
+        {
+            instance = this;
+            if (Selectables == null) Selectables = new();
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
+
     }
 
     // Update is called once per frame

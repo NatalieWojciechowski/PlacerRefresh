@@ -5,11 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TD_UIManager : MonoBehaviour
+public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
 {
-    public static TD_UIManager current;
+    public static TD_UIManager instance;
     [SerializeField] TD_GameSerializer GameSerializer;
 
     public GameObject coreStatus;
@@ -43,15 +44,12 @@ public class TD_UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (current != null) Destroy(gameObject);
-        current = this;
-
         EventManager.OnTowerSelect += OnTowerSelect;
         EventManager.OnTowerDeselect += UpdateDisplay;
         EventManager.OnWaveStart += OnWaveStart;
         EventManager.GameOver += OnGameLose;
         EventManager.GameWon += OnGameWin;
-        WaveStart.GetComponent<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
+        WaveStart.GetComponent<Button>().onClick.AddListener(delegate { EventManager.instance.WaveStarted(TD_GameManager.instance.CurrentWaveIndex); });
         //waveStatus.GetComponentInChildren<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         speedButtons[0]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE));
@@ -79,7 +77,12 @@ public class TD_UIManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else Destroy(this);
     }
 
     private void OnTowerSelect(TD_Building selectedBuilding)
@@ -89,21 +92,21 @@ public class TD_UIManager : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        if (!TD_GameManager.current || !TD_EnemyManager.current) return;
-        if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.current.CoreHealth.ToString();
+        if (!TD_GameManager.instance || !TD_EnemyManager.instance) return;
+        if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.instance.CoreHealth.ToString();
         //if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
         if (waveStatus)
         {
-            int currentWave = TD_GameManager.current.CurrentWaveIndex + 1;
-            if (!TD_EnemyManager.current.WaveActive) currentWave--;
-            waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.current.TotalWaves}";
+            int currentWave = TD_GameManager.instance.CurrentWaveIndex + 1;
+            if (!TD_EnemyManager.instance.WaveActive) currentWave--;
+            waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.instance.TotalWaves}";
         }
-        if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.current.CurrentCurrency.ToString();
-        if (WaveStart) WaveStart.SetActive(TD_GameManager.current.CoreHealth > 0 && !TD_EnemyManager.current.WaveActive || TD_EnemyManager.current.IsCurrentWaveComplete());
+        if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.instance.CurrentCurrency.ToString();
+        if (WaveStart) WaveStart.SetActive(TD_GameManager.instance.CoreHealth > 0 && !TD_EnemyManager.instance.WaveActive || TD_EnemyManager.instance.IsCurrentWaveComplete());
 
-        if (pieces_Selection && TD_BuildManager.current)
+        if (pieces_Selection && TD_BuildManager.instance)
         {
-            TD_BuildManager.current.UpdateBuildToolbar();
+            TD_BuildManager.instance.UpdateBuildToolbar();
         }
     }
 
@@ -156,20 +159,20 @@ public class TD_UIManager : MonoBehaviour
     private void adjustBuildButtons()
     {
         Button[] buildButtons = pieces_Selection.gameObject.GetComponentsInChildren<Button>();
-        if (buildButtons.Length == 0 || buildButtons.Length != TD_BuildManager.current.Pieces.Count) return;
+        if (buildButtons.Length == 0 || buildButtons.Length != TD_BuildManager.instance.Pieces.Count) return;
         
-        for (int i = 0; i < TD_BuildManager.current.Pieces.Count; i++)
+        for (int i = 0; i < TD_BuildManager.instance.Pieces.Count; i++)
         {
-            if (TD_BuildManager.current.Pieces[i] == null || buildButtons[i] == null) continue;
+            if (TD_BuildManager.instance.Pieces[i] == null || buildButtons[i] == null) continue;
 
             Button currentButton = buildButtons[i];
             TD_Building buildingCtrl;
-            TD_BuildManager.current.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
+            TD_BuildManager.instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
             if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
             {
                 currentButton.image.color = Color.white;
                 int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
-                currentButton.enabled = TD_GameManager.current.CanAfford(bCost);
+                currentButton.enabled = TD_GameManager.instance.CanAfford(bCost);
             } else {
                 currentButton.enabled = false;
                 currentButton.image.color = Color.red;
@@ -192,12 +195,25 @@ public class TD_UIManager : MonoBehaviour
         if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
         else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
         mainMenuPanel.SetActive(!menuOpen);
-        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.current.HasStarted || TD_EnemyManager.current.IsCurrentWaveComplete();
+        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.HasStarted || TD_EnemyManager.instance.IsCurrentWaveComplete();
     }
 
     public void SaveAndExit()
     {
         TD_GameSerializer.SaveGame();
         FindObjectOfType<SceneLoader>().SetNextScene(SceneLoader.GameScene.MainMenu);
+    }
+
+    public void OnSceneChange(Scene current, Scene next)
+    {
+        if (mainMenuPanel.activeSelf) ToggleMenu();
+        ReInit();
+    }
+
+    public void ReInit()
+    {
+        this.UpdateDisplay();
+
+        // TODO: This might need to also init the click handlers on non-menu levels
     }
 }

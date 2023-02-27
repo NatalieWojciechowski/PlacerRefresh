@@ -91,7 +91,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
     protected virtual void BuildingInit(TD_BuildingData sourceBuildingData = null)
     {
         // Any adjustments to make with building data now that we have the base? 
-        if (!sourceBuildingData || !_baseBuildingData || !TD_GameManager.current) return;
+        if (!sourceBuildingData || !_baseBuildingData || !TD_GameManager.instance) return;
         SetStats(sourceBuildingData);
         SetupHelpers();
     }
@@ -246,10 +246,10 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
 
     internal bool TryUpgrade()
     {
-        if (!TD_GameManager.current.CanAfford(_sBuildingData.UpgradeCost) ||
+        if (!TD_GameManager.instance.CanAfford(_sBuildingData.UpgradeCost) ||
             _sBuildingData.Level >= _sBuildingData.MaxLevel) return false;
         _sBuildingData.LevelUp();
-        TD_GameManager.current.SpendMoney(_sBuildingData.UpgradeCost);
+        TD_GameManager.instance.SpendMoney(_sBuildingData.UpgradeCost);
         TryBuildingState(BuildingState.Upgrading);
         // TODO: handle case of building ugprade to another?
         return true;
@@ -260,8 +260,8 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
         // May have conditions like "immovable" or corrupted, etc
         if (_sBuildingData.CanSell)
         {
-            TD_GameManager.current.AddCoins(_sBuildingData.SellValue());
-            EventManager.current.TowerDeselected();
+            TD_GameManager.instance.AddCoins(_sBuildingData.SellValue());
+            EventManager.instance.TowerDeselected();
             // TODO: remove from BuildManager
             Destroy(this.gameObject);
         }
@@ -363,8 +363,9 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
         IsRunning = true;
         RangeIndicator?.SetActive(false);
         SetupLevelIndicators();
-        EventManager.current.MoneySpent(_sBuildingData.PurchaseCost);
-        EventManager.current.TowerPlaced(this);
+        EventManager.instance.MoneySpent(_sBuildingData.PurchaseCost);
+        // TODO: Might have an extra call on this ATM
+        EventManager.instance.TowerPlaced(this);
     }
 
     private void SetupLevelIndicators()
@@ -430,7 +431,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
     private bool TryPurchase(int spend)
     {
         //int spend = _baseBuildingData.PurchaseCost;
-        bool _canAfford = TD_GameManager.current.CanAfford(spend);
+        bool _canAfford = TD_GameManager.instance.CanAfford(spend);
         if (_canAfford)
             TD_BuildManager.StartPlacement(gameObject);
         return _canAfford;
