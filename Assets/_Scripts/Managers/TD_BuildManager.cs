@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
+public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSceneChange
 {
     public enum BuildState
     {
@@ -63,6 +64,8 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
 
     private void OnEnable()
     {
+        SceneManager.activeSceneChanged += OnSceneChange;
+        SceneManager.sceneLoaded += OnSceneLoad;
         PlayerControlsManager.PlayerCancel += OnPlayerCancel;
         PlayerControlsManager.PlayerAccept += OnPlayerAccept;
         UIControlsManager.UICancel += OnPlayerCancel;
@@ -72,6 +75,8 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
 
     private void OnDisable()
     {
+        SceneManager.activeSceneChanged -= OnSceneChange;
+        SceneManager.sceneLoaded -= OnSceneLoad;
         PlayerControlsManager.PlayerCancel -= OnPlayerCancel;
         // TODO: Consider making an event from the build manager for the player controls to trigger the accept / cancel from there & broadcast
         PlayerControlsManager.PlayerAccept -= OnPlayerAccept;
@@ -321,5 +326,24 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator
             if (building.TryGetComponent<TD_Building>(out toAdd))
                 toAdd.AddToSaveData(ref saveData);
         }
+    }
+
+    public void OnSceneChange(Scene current, Scene next)
+    {
+
+    }
+
+    public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
+    {
+        if (TD_GameManager.instance && TD_GameManager.instance.useSaveData &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+            TD_GameSerializer.LoadGame();
+        else ReInit();
+    }
+
+    public void ReInit()
+    {
+        if (BuiltBuildings.Count > 0) BuiltBuildings.Clear();
     }
 }

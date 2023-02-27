@@ -44,6 +44,8 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
 
     private void OnEnable()
     {
+        SceneManager.activeSceneChanged += OnSceneChange;
+        SceneManager.sceneLoaded += OnSceneLoad;
         EventManager.OnTowerSelect += OnTowerSelect;
         EventManager.OnTowerDeselect += UpdateDisplay;
         EventManager.OnWaveStart += OnWaveStart;
@@ -61,6 +63,8 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
 
     private void OnDisable()
     {
+        SceneManager.activeSceneChanged -= OnSceneChange;
+        SceneManager.sceneLoaded -= OnSceneLoad;
         EventManager.OnTowerSelect -= OnTowerSelect;
         EventManager.OnTowerDeselect -= UpdateDisplay;
         EventManager.GameOver -= OnGameLose;
@@ -206,8 +210,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
 
     public void OnSceneChange(Scene current, Scene next)
     {
-        if (mainMenuPanel.activeSelf) ToggleMenu();
-        ReInit();
+
     }
 
     public void ReInit()
@@ -215,5 +218,11 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         this.UpdateDisplay();
 
         // TODO: This might need to also init the click handlers on non-menu levels
+    }
+
+    public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
+    {
+        if (mainMenuPanel.activeSelf) ToggleMenu();
+        ReInit();
     }
 }

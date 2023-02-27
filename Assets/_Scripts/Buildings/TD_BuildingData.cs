@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "MooStudios/TD_BuildingData")]
+[Serializable]
 public class TD_BuildingData : ScriptableObject
 {
     #region Display

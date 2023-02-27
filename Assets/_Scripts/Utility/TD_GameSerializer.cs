@@ -90,6 +90,7 @@ public class TD_GameSerializer : MonoBehaviour
             //             + $"/{instance.saveFileName}");
             SaveData data = new SaveData();
             TD_GameManager.instance.AddToSaveData(ref data);
+            TD_BuildManager.instance.AddToSaveData(ref data);
             bf.Serialize(file, data);
         }
         Debug.Log("Game data saved!");

@@ -25,6 +25,7 @@ public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
     {
         ResetButtonInteractable();
         SceneManager.activeSceneChanged += OnSceneChange;
+        SceneManager.sceneLoaded += OnSceneLoad;
         UpdateSaveDataExist();
         ContinueButton.onClick.AddListener(OnContinue);
         ClearDataButton.onClick.AddListener(OnClearData);
@@ -45,6 +46,7 @@ public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
     private void OnDisable()
     {
         SceneManager.activeSceneChanged -= OnSceneChange;
+        SceneManager.sceneLoaded -= OnSceneLoad;
         ContinueButton.onClick.RemoveListener(OnContinue);
         ClearDataButton.onClick.RemoveListener(OnClearData);
         NewGameButton.onClick.RemoveListener(OnNewGame);
@@ -112,16 +114,21 @@ public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
     #region Interfaces
     public void OnSceneChange(Scene current, Scene next)
     {
-        if (next.name == SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu))
-        {
-            ReInit();
-        }
+
     }
 
     public void ReInit()
     {
         UpdateSaveDataExist();
         ResetButtonInteractable();
+    }
+
+    public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
+    {
+        if (current.name == SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu))
+        {
+            ReInit();
+        }
     }
     #endregion
 }

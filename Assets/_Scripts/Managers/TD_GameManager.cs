@@ -57,6 +57,8 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private void OnEnable()
     {
+        SceneManager.activeSceneChanged += OnSceneChange;        
+        SceneManager.sceneLoaded += OnSceneLoad;
         // TODO: This seems to be calling the methods while registering
         EventManager.OnEnemyPass += TookDmg;
         EventManager.OnWaveFinish += WaveFinished;
@@ -67,6 +69,9 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private void OnDisable()
     {
+        SceneManager.activeSceneChanged -= OnSceneChange;
+        SceneManager.sceneLoaded -= OnSceneLoad;
+        SceneManager.activeSceneChanged -= OnSceneChange;
         EventManager.OnEnemyPass -= TookDmg;
         EventManager.OnWaveFinish -= WaveFinished;
         EventManager.OnMoneySpent -= OnPlayerSpend;
@@ -78,13 +83,13 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         if (instance == null)
         {
             instance = this;
-            if (useSaveData) TD_GameSerializer.LoadGame();
-            else
-            {
-                gameState = GameState.MainMenu;
-                currentCurrency = startingCurrency;
-                currentWaveIndex = 0;
-            }
+            //if (useSaveData) TD_GameSerializer.LoadGame();
+            //else
+            //{
+            gameState = GameState.MainMenu;
+            currentCurrency = startingCurrency;
+            currentWaveIndex = 0;
+            //}
             if (!effectsBin) effectsBin = gameObject;
             DontDestroyOnLoad(instance);
         }
@@ -225,7 +230,15 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     public void OnSceneChange(Scene current, Scene next)
     {
-        if (useSaveData &&
+        //if (useSaveData && TD_BuildManager.instance &&
+        //    current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
+        //    current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+        //    TD_GameSerializer.LoadGame();
+    }
+
+    public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
+    {
+        if (useSaveData && TD_BuildManager.instance &&
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
             TD_GameSerializer.LoadGame();
