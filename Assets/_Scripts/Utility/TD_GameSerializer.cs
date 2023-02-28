@@ -12,15 +12,18 @@ public class SaveData
     {
         public Guid Guid;
         public float Health;
-        public Transform Transform;
-        public Transform NextWaypoint;
+        public Vector3 position;
+        public Vector3 NextWaypoint;
     }
 
     [Serializable] public struct TowerSaveData
     {
         public Guid Guid;
         public TD_BuildingData TD_BuildingData;
-        public Transform Transform;
+        public Vector3 position;
+        public bool isRunning;
+        public int currentTier;
+        public TD_Building.BuildingState buildingState;
     }
 
     // Game State
@@ -49,7 +52,7 @@ public class SaveData
 public class TD_GameSerializer : MonoBehaviour
 {
     public static TD_GameSerializer instance { get; private set; }
-    static string saveFileName = "td_game_save.dat";
+    static string saveFileName = "td_game_save.json";
     private string _fullSavePath;
 
     private void OnEnable()
@@ -80,39 +83,46 @@ public class TD_GameSerializer : MonoBehaviour
         return File.Exists(Application.persistentDataPath + $"/{saveFileName}");
     }
 
+    public static string PersistentDataPath()
+    {
+        return $"{Application.persistentDataPath}/{saveFileName}";
+    }
+
     public static void SaveGame()
     {
-        BinaryFormatter bf = new BinaryFormatter();
-        using (var file = File.Open($"{Application.persistentDataPath}/{saveFileName}", FileMode.OpenOrCreate))
-        {
-            //bf.Serialize(filePin, data);
-            //FileStream file = File.Create(Application.persistentDataPath
-            //             + $"/{instance.saveFileName}");
+        var file = File.Open(PersistentDataPath(), FileMode.OpenOrCreate);
+        if (file.CanWrite) {
+            file.Close();
             SaveData data = new SaveData();
+
             TD_GameManager.instance.AddToSaveData(ref data);
             TD_BuildManager.instance.AddToSaveData(ref data);
-            bf.Serialize(file, data);
+            string jsonData = JsonUtility.ToJson(data, true);
+
+            File.WriteAllTextAsync(PersistentDataPath(), jsonData);
         }
         Debug.Log("Game data saved!");
     }
 
     public static bool LoadGame()
     {
-        if (File.Exists(Application.persistentDataPath
-                       + $"/{saveFileName}"))
+        if (File.Exists(PersistentDataPath()))
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            using (var file = File.Open($"{Application.persistentDataPath}/{saveFileName}", FileMode.OpenOrCreate))
+            string dataText = File.ReadAllText(PersistentDataPath());
+            if (dataText.Length > 1)
             {
-                SaveData data = (SaveData)bf.Deserialize(file);
-                TD_GameManager.instance.InitFromData(data);
-                TD_BuildManager.instance.InitFromData(data);
+                SaveData data = JsonUtility.FromJson<SaveData>(dataText);
+
+                if (TD_GameManager.instance) TD_GameManager.instance.InitFromData(data);
+                if (TD_BuildManager.instance) TD_BuildManager.instance.InitFromData(data);
                 Debug.Log("Game data loaded!");
+
                 return true;
             }
         }
         else
-            Debug.LogError("There is no save data!");
+            TD_GameManager.instance.useSaveData = false;
+            Debug.Log("There is no save data!");
         return false;
     }
 
@@ -127,5 +137,6 @@ public class TD_GameSerializer : MonoBehaviour
         }
         else
             Debug.LogError("No save data to delete.");
+        TD_GameManager.instance.useSaveData = false;
     }
 }

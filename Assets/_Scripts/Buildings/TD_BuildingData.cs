@@ -7,7 +7,7 @@ public class TD_BuildingData : ScriptableObject
 {
     #region Display
     public string displayName = "Turret";
-    public Sprite icon;
+    [SerializeReference] public Sprite icon;
     public string description;
     public string category;
     #endregion
@@ -16,8 +16,8 @@ public class TD_BuildingData : ScriptableObject
     public float health = 2f;
     public float attackSpeed = 1f;
     public float attackRange = 0.5f;
-    public GameObject buildingPrefab;
-    public GameObject projectilePrefab;
+    [SerializeReference] public GameObject buildingPrefab;
+    [SerializeReference] public GameObject projectilePrefab;
     public float projectileDelay = 0.5f;
     public float baseDamage = 1f;
     public float aoeActiveDuration = 0.5f;
@@ -29,7 +29,7 @@ public class TD_BuildingData : ScriptableObject
 
     #region Interactions
     // TODO: maybe different upgrade paths etc -- currently unusede
-    public TD_BuildingData upgradesTo;
+    [SerializeReference] public TD_BuildingData upgradesTo;
     public bool canSell = true;
     #endregion
 }
@@ -37,6 +37,7 @@ public class TD_BuildingData : ScriptableObject
 /// <summary>
 ///  Represents the modified values of a particular tower. Damage or current level for an individual tower will be managed by this. 
 /// </summary>
+[Serializable]
 public struct BuildingData
 {
 
@@ -60,7 +61,8 @@ public struct BuildingData
 
     public TD_BuildingData RawBuildingData { get => _BuildingData; }
     public string DisplayName { get; }
-    public int Level { get => _currentLevel; }
+    public int Level { get => _currentLevel; set => setLevel(value); }
+
     public int MaxLevel { get; }
     public float AttackRange { get; private set; }
     public float AttackSpeed { get; }
@@ -75,16 +77,27 @@ public struct BuildingData
     /// </summary>
     public int LevelUp()
     {
-        _currentLevel += 1 ;
+        _currentLevel += 1;
+        return EnforceLevelBounds();
+    }
+
+    private int EnforceLevelBounds()
+    {
         if (_currentLevel > MaxLevel) _currentLevel = MaxLevel;
         else
         {
             //// Adjust Stats
-            float lvlScale =  _currentLevel * 0.25f;
-            AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale/5));
+            float lvlScale = _currentLevel * 0.25f;
+            AttackRange += (float)Math.Round(_BuildingData.attackRange * (lvlScale / 5));
             Damage += (float)Math.Min(Math.Round(_BuildingData.baseDamage * (lvlScale)), 1);
         }
         return _currentLevel;
+    }
+
+    private void setLevel(int toLevel)
+    {
+        _currentLevel = toLevel;
+        EnforceLevelBounds();
     }
 
     internal int SellValue()

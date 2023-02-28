@@ -230,23 +230,33 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     public void OnSceneChange(Scene current, Scene next)
     {
-        //if (useSaveData && TD_BuildManager.instance &&
-        //    current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
-        //    current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
-        //    TD_GameSerializer.LoadGame();
+        if (TD_BuildManager.instance &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+            ToggleSubManagers(false);
     }
 
     public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
     {
         if (useSaveData && TD_BuildManager.instance &&
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
-            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings) )
+        {
+            ToggleSubManagers(true);
             TD_GameSerializer.LoadGame();
+        }
+        ReInit();
     }
 
     public void ReInit()
     {
-        throw new NotImplementedException();
+        if (!useSaveData) currentCurrency = startingCurrency;
+    }
+
+    private void ToggleSubManagers(bool toState)
+    {
+        if (TD_BuildManager.instance) TD_BuildManager.instance.gameObject.SetActive(toState);
+        if (TD_UIManager.instance) TD_UIManager.instance.gameObject.SetActive(toState);
     }
     #endregion
 }

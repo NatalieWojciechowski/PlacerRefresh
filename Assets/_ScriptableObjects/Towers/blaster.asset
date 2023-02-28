@@ -19,7 +19,8 @@ MonoBehaviour:
   health: 2
   attackSpeed: 1.5
   attackRange: 5
-  buildingPrefab: {fileID: 0}
+  buildingPrefab: {fileID: 3380066980908504201, guid: f5889999acd721e4294848f6a573ad5e,
+    type: 3}
   projectilePrefab: {fileID: 7868345671137580175, guid: 3bac0910a63771e45ad40f6a00fd7a40,
     type: 3}
   projectileDelay: 0.25

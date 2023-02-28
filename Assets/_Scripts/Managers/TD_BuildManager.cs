@@ -52,7 +52,8 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSc
     {
         if (instance == null)
         {
-            instance = this;        
+            instance = this;
+            OnSceneLoad(SceneManager.GetActiveScene(), LoadSceneMode.Single);
             if (BuiltBuildings == null) BuiltBuildings = new();
             if (!builderRaycaster) builderRaycaster = Camera.main.GetComponent<Physics2DRaycaster>();
             SafeTransition(BuildState.Idle, 0.01255f);
@@ -308,13 +309,15 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSc
     public void InitFromData(SaveData saveData)
     {
         if (this.BuiltBuildings == null) this.BuiltBuildings = new();
+        else BuiltBuildings.Clear();
         foreach (SaveData.TowerSaveData tData in saveData.constructedBuildings)
         {
             GameObject constructingTower = Instantiate(tData.TD_BuildingData.buildingPrefab);
             TD_Building buildingController = constructingTower.GetComponent<TD_Building>();
-            constructingTower.transform.SetPositionAndRotation(tData.Transform.position, tData.Transform.rotation);
+            constructingTower.transform.SetPositionAndRotation(tData.position, Quaternion.identity);
             buildingController.SetStats(tData.TD_BuildingData);
             buildingController.InitFromData(tData);
+            BuiltBuildings.Add(constructingTower);
         }
     }
 
@@ -339,11 +342,12 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSc
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
             TD_GameSerializer.LoadGame();
-        else ReInit();
+        
+        ReInit();
     }
 
     public void ReInit()
     {
-        if (BuiltBuildings.Count > 0) BuiltBuildings.Clear();
+        if (BuiltBuildings != null && BuiltBuildings.Count > 0) BuiltBuildings.Clear();
     }
 }

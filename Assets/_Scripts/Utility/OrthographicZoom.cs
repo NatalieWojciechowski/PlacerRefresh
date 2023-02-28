@@ -43,7 +43,7 @@ public class OrthographicZoom : MonoBehaviour
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if (!cam) cam = Camera.main;
+        cam = Camera.main;
     }
 
     private void OnDisable()
@@ -103,10 +103,14 @@ public class OrthographicZoom : MonoBehaviour
 
     private void AdjustZoom()
     {
-        targetZoom -= Mouse.current.scroll.ReadValue().normalized.y * sensitivity;
-        targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
-        float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
-        cam.orthographicSize = newSize;
+        if (!cam) cam = Camera.main;
+        else
+        {
+            targetZoom -= Mouse.current.scroll.ReadValue().normalized.y * sensitivity;
+            targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+            float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
+            cam.orthographicSize = newSize;
+        }
     }
 
     private void LateUpdate()

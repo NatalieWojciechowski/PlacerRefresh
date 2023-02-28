@@ -16,5 +16,15 @@ public class TD_GameSerializerEditor : Editor
         {
             TD_GameSerializer.ResetData();
         }
+
+        if (GUILayout.Button("Save Data"))
+        {
+            TD_GameSerializer.SaveGame();
+        }
+
+        if (GUILayout.Button("Load Game"))
+        {
+            TD_GameSerializer.LoadGame();
+        }
     }
 }

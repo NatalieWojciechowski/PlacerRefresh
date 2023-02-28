@@ -201,12 +201,12 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("OnFire" + context);
+        Debug.Log("OnFire");
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        Debug.Log("OnLook" + context);
+        Debug.Log("OnLook");
     }
 
     public void OnHome(InputAction.CallbackContext context)

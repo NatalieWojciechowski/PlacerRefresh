@@ -17,6 +17,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
      * - upkeep for them like little residents and tower strength based off their population
      */
 
+
     [SerializeField] protected BuildingData _sBuildingData;
 
     [SerializeField]
@@ -62,7 +63,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
         Weakest,
     }
 
-    protected enum BuildingState
+    public enum BuildingState
     {
         Blueprint,
         Idle,
@@ -384,7 +385,7 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
         if (LevelUI)
         {
             //SpriteRenderer[] levelPips = LevelIndicator.GetComponentsInChildren<SpriteRenderer>();
-            //LevelUI.GetComponent<LevelIndicator>()?.InitIndicator(this);
+            LevelUI.GetComponent<LevelIndicator>()?.InitIndicator(this);
         }
         if (inRangeEffects)
         {
@@ -441,7 +442,14 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
     {
         BuildingUUID = saveData.Guid;
         _baseBuildingData = saveData.TD_BuildingData;
-        transform.SetPositionAndRotation(saveData.Transform.position, saveData.Transform.rotation);
+        BuildingInit(_baseBuildingData);
+        //_sBuildingData = new BuildingData(_baseBuildingData);
+        //SetStats(_baseBuildingData);
+        _sBuildingData.Level = saveData.currentTier;
+        IsRunning = saveData.isRunning;
+        transform.SetPositionAndRotation(saveData.position, Quaternion.identity);
+        UpdateHelpers();
+        TryBuildingState(saveData.buildingState);
     }
 
     public void AddToSaveData(ref SaveData saveData)
@@ -449,7 +457,10 @@ public class TD_Building : MonoBehaviour, I_TDBulidingSaveCoordinator
         SaveData.TowerSaveData TowerSaveData = new SaveData.TowerSaveData();
         TowerSaveData.Guid = BuildingUUID;
         TowerSaveData.TD_BuildingData = _baseBuildingData;
-        TowerSaveData.Transform = transform;
+        TowerSaveData.position = transform.position;
+        TowerSaveData.isRunning = IsRunning;
+        TowerSaveData.buildingState = buildingState;
+        TowerSaveData.currentTier = _sBuildingData.Level;
         saveData.constructedBuildings.Add(TowerSaveData);
         Debug.Log("AddToSaveData", this);
     }

@@ -272,8 +272,8 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
     public void InitFromData(SaveData.EnemySaveData enemySaveData)
     {
         EnemyUUID = enemySaveData.Guid;
-        nextWaypoint = enemySaveData.NextWaypoint;
-        transform.SetPositionAndRotation(enemySaveData.Transform.position, enemySaveData.Transform.rotation);
+        nextWaypoint.SetPositionAndRotation(enemySaveData.NextWaypoint, Quaternion.identity);
+        transform.SetPositionAndRotation(enemySaveData.position, Quaternion.identity);
     }
 
     public void AddToSaveData(ref SaveData saveData)
@@ -281,8 +281,8 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         SaveData.EnemySaveData EnemySaveData = new SaveData.EnemySaveData();
         EnemySaveData.Guid = EnemyUUID;
         EnemySaveData.Health = _currentHealth;
-        EnemySaveData.Transform = transform;
-        EnemySaveData.NextWaypoint = nextWaypoint;
+        EnemySaveData.position = transform.position;
+        EnemySaveData.NextWaypoint = nextWaypoint.position;
         saveData.currentEnemies.Add(EnemySaveData);
     }
 }
