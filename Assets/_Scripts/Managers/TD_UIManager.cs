@@ -22,8 +22,6 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     public GameObject playerMoney;
     public GameObject mainMenuPanel;
     public GameObject SaveAndExitButton;
-
-    public GameObject pieces_Selection;
     public GameObject HealthBarContainer;
 
     public ModelShark.TooltipStyle tooltipStyle;
@@ -86,7 +84,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
             instance = this;
             DontDestroyOnLoad(instance);
         }
-        else Destroy(this);
+        else Destroy(gameObject);
     }
 
     private void OnTowerSelect(TD_Building selectedBuilding)
@@ -98,7 +96,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     {
         if (!TD_GameManager.instance || !TD_EnemyManager.instance) return;
         if (coreStatus) coreStatus.GetComponentInChildren<TMP_Text>().text = TD_GameManager.instance.CoreHealth.ToString();
-        //if (TD_GameManager.current.CoreHealth <= 0) gameOverStatus.SetActive(true);
+
         if (waveStatus)
         {
             int currentWave = TD_GameManager.instance.CurrentWaveIndex + 1;
@@ -106,9 +104,18 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
             waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.instance.TotalWaves}";
         }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.instance.CurrentCurrency.ToString();
-        if (WaveStart) WaveStart.SetActive(TD_GameManager.instance.CoreHealth > 0 && !TD_EnemyManager.instance.WaveActive || TD_EnemyManager.instance.IsCurrentWaveComplete());
+        if (WaveStart)
+        {
+            // If game over or 
+            bool showStartButton = (
+                TD_GameManager.instance.CoreHealth > 0 &&
+                (!TD_EnemyManager.instance.WaveActive ||
+                TD_GameManager.instance.IsWaitingForStart)
+            );
+            WaveStart.SetActive(showStartButton);
+        }
 
-        if (pieces_Selection && TD_BuildManager.instance)
+        if (TD_BuildManager.instance)
         {
             TD_BuildManager.instance.UpdateBuildToolbar();
         }
@@ -160,29 +167,29 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     //    Debug.Log("Sell", FindObjectOfType<TowerTooltip>());
     //}
 
-    private void adjustBuildButtons()
-    {
-        Button[] buildButtons = pieces_Selection.gameObject.GetComponentsInChildren<Button>();
-        if (buildButtons.Length == 0 || buildButtons.Length != TD_BuildManager.instance.Pieces.Count) return;
+    //private void adjustBuildButtons()
+    //{
+    //    Button[] buildButtons = towerToolbar.gameObject.GetComponentsInChildren<Button>();
+    //    if (buildButtons.Length == 0 || buildButtons.Length != TD_BuildManager.instance.Pieces.Count) return;
         
-        for (int i = 0; i < TD_BuildManager.instance.Pieces.Count; i++)
-        {
-            if (TD_BuildManager.instance.Pieces[i] == null || buildButtons[i] == null) continue;
+    //    for (int i = 0; i < TD_BuildManager.instance.Pieces.Count; i++)
+    //    {
+    //        if (TD_BuildManager.instance.Pieces[i] == null || buildButtons[i] == null) continue;
 
-            Button currentButton = buildButtons[i];
-            TD_Building buildingCtrl;
-            TD_BuildManager.instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
-            if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
-            {
-                currentButton.image.color = Color.white;
-                int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
-                currentButton.enabled = TD_GameManager.instance.CanAfford(bCost);
-            } else {
-                currentButton.enabled = false;
-                currentButton.image.color = Color.red;
-            }
-        }
-    }
+    //        Button currentButton = buildButtons[i];
+    //        TD_Building buildingCtrl;
+    //        TD_BuildManager.instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
+    //        if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
+    //        {
+    //            currentButton.image.color = Color.white;
+    //            int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
+    //            currentButton.enabled = TD_GameManager.instance.CanAfford(bCost);
+    //        } else {
+    //            currentButton.enabled = false;
+    //            currentButton.image.color = Color.red;
+    //        }
+    //    }
+    //}
 
     //private void OnUserSpend(int bCost)
     //{

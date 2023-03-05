@@ -8,32 +8,38 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 {
     public static TD_GameManager instance;
 
+    #region Members
+    public bool useSaveData = false;
+
     private int coreHealth = 5;
     private int currentWaveIndex = -1;
+    private int totalWaves = 0;
+    private int currentCurrency = 0;
+    [SerializeField] private int startingCurrency = 20;
 
-    public bool useSaveData = false;
+    public int CurrentCurrency { get => currentCurrency; }
+    public int CurrentWaveIndex { get => currentWaveIndex; }
+    public int TotalWaves { get => totalWaves; }
+    public int CoreHealth { get => coreHealth; }
 
     /// <summary>
     /// Whether or not the Wave is ready to go; will shift to true when user toggles wave to start
     /// </summary>
     private bool playerReady = false;
-    public bool HasStarted { get => (this.playerReady && currentWaveIndex >= 0); }
+    /// <summary>
+    /// Will be false when a wave completes, true when the user clicks start button
+    /// </summary>
+    public bool PlayerReady { get => playerReady; }
+    public bool HasStarted { get => (currentWaveIndex >= 0); }
     private bool waitingForStart = true;
-    public bool IsWaitingForStart { get => TD_EnemyManager.instance.IsCurrentWaveComplete(); }
-
-    [SerializeField] private int startingCurrency = 20;
-    private int currentCurrency = 0;
-    public int CurrentCurrency { get => currentCurrency; }
-    public int CurrentWaveIndex { get => currentWaveIndex; }
-    private int totalWaves = 0;
-    public int TotalWaves { get => totalWaves; }
-    public int CoreHealth { get => coreHealth; }
+    public bool IsWaitingForStart { get => (!this.playerReady && !TD_EnemyManager.instance.WaveActive); }
 
     [SerializeField] private GameObject effectsBin;
-
     public GameObject EffectsBin { get => effectsBin; }
 
     GameState gameState;
+    #endregion
+
     protected enum GameState
     {
         MainMenu,
@@ -44,7 +50,17 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         Win,
         Lose
     }
+    public enum GameSpeedOptions
+    {
+        PAUSE,
+        NORMAL,
+        FAST,
+        FASTER,
+        FASTEST
+    }
 
+
+    #region Lifecycle
     //private void Awake()
     //{
     //    // TODO: This seems to be calling the methods while registering
@@ -57,11 +73,12 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private void OnEnable()
     {
-        SceneManager.activeSceneChanged += OnSceneChange;        
+        SceneManager.activeSceneChanged += OnSceneChange;
         SceneManager.sceneLoaded += OnSceneLoad;
         // TODO: This seems to be calling the methods while registering
         EventManager.OnEnemyPass += TookDmg;
         EventManager.OnWaveFinish += WaveFinished;
+        EventManager.OnWaveStart += WaveStarted;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
         if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
@@ -74,6 +91,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         SceneManager.activeSceneChanged -= OnSceneChange;
         EventManager.OnEnemyPass -= TookDmg;
         EventManager.OnWaveFinish -= WaveFinished;
+        EventManager.OnWaveStart -= WaveStarted;
         EventManager.OnMoneySpent -= OnPlayerSpend;
     }
 
@@ -102,71 +120,46 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         if (totalWaves == 0) GetTotalWaves();
         if (coreHealth <= 0) GameOver();
     }
+    #endregion
 
-    public void RestartWaves()
-    {
-        currentWaveIndex = 0;
-    }
-
-    private void GetTotalWaves()
-    {
-        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
-    }
-
-    public void PlayerStart()
-    {
-        playerReady = true;
-    }
-
-    private void GameOver()
-    {
-        EventManager.instance.Lose();
-    }
-
+    #region Events
     private void WaveFinished(int ctx)
     {
-        if (!playerReady) return;
-        if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
-        // We may have more than one spawner contributing to the wave, make sure all are done first
-        if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveComplete()
-            && playerReady)            
-            NextWave();
+        if (!HasStarted) return;  
+        NextWave();
+        //if (!playerReady) return;
+        //if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
+        //// We may have more than one spawner contributing to the wave, make sure all are done first
+        //if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveComplete()
+        //    && playerReady)
+        //    NextWave();
+        //// Any additonal animations, etc?
+        //// EX: "LAST WAVE!" indicator or perhaps dialogue events?
+        TD_UIManager.instance.UpdateDisplay();
+    }
+    private void WaveStarted(int ctx)
+    {
+        //if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
+
+        ////if (playerReady) PlayerStart();
+        //// We may have more than one spawner contributing to the wave, make sure all are done first
+        //if (ctx == currentWaveIndex && !TD_EnemyManager.instance.WaveActive && playerReady)
+        //    NextWave();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
         TD_UIManager.instance.UpdateDisplay();
     }
-
-    private void NextWave()
+    private void OnPlayerSpend(int ctx)
     {
-        playerReady = false;
-        currentWaveIndex++;
-        if (currentWaveIndex > TD_EnemyManager.instance.TotalWaves)
-        {
-            currentWaveIndex = TD_EnemyManager.instance.TotalWaves;
-            EventManager.instance.Win();
-        }
+        // TODO: do we need to check value here for anything ? popup for not being able to afford n resetting? debts? 
+        SpendMoney(ctx);
     }
+    #endregion
 
-    public bool SpendMoney(int purchaseCost)
+    #region Public
+    public void RestartWaves()
     {
-        if (currentCurrency - purchaseCost < 0) return false;
-        currentCurrency -= purchaseCost;
-        Debug.Log("Current Money:" + currentCurrency.ToString());
-        return true;
-    }
-
-    private void TookDmg(int coreDmg)
-    {
-        coreHealth -= coreDmg;
-        TD_UIManager.instance.UpdateDisplay();
-    }
-    public enum GameSpeedOptions
-    {
-        PAUSE,
-        NORMAL,
-        FAST,
-        FASTER,
-        FASTEST
+        currentWaveIndex = 0;
     }
 
     public static void SetGameSpeed(GameSpeedOptions gameSpeedRequest)
@@ -196,24 +189,69 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
             default: break;
         }
     }
-
-    internal void AddCoins(int deathReward)
+    public void AddCoins(int deathReward)
     {
         currentCurrency += deathReward;
         // TODO: Check for max? check for quest conditions, etc?
     }
 
-    internal bool CanAfford(int purchaseCost)
+    public bool CanAfford(int purchaseCost)
     {
         return currentCurrency >= purchaseCost;
     }
 
-    private void OnPlayerSpend(int ctx)
+
+    public void PlayerStart()
     {
-        // TODO: do we need to check value here for anything ? popup for not being able to afford n resetting? debts? 
-        SpendMoney(ctx);
+        playerReady = true;
+        NextWave();
     }
 
+    public bool SpendMoney(int purchaseCost)
+    {
+        if (currentCurrency - purchaseCost < 0) return false;
+        currentCurrency -= purchaseCost;
+        Debug.Log("Current Money:" + currentCurrency.ToString());
+        return true;
+    }
+
+
+    #endregion
+
+    #region Private
+
+    private void ToggleSubManagers(bool toState)
+    {
+        if (TD_BuildManager.instance) TD_BuildManager.instance.gameObject.SetActive(toState);
+        if (TD_UIManager.instance) TD_UIManager.instance.gameObject.SetActive(true);
+    }
+    private void GetTotalWaves()
+    {
+        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
+    }
+
+    private void GameOver()
+    {
+        EventManager.instance.Lose();
+    }
+
+    private void NextWave()
+    {
+        
+        playerReady = false;
+        currentWaveIndex++;
+        if (currentWaveIndex >= TD_EnemyManager.instance.TotalWaves)
+        {
+            currentWaveIndex = TD_EnemyManager.instance.TotalWaves;
+            EventManager.instance.Win();
+        }
+    }
+    private void TookDmg(int coreDmg)
+    {
+        coreHealth -= coreDmg;
+        TD_UIManager.instance.UpdateDisplay();
+    }
+    #endregion
 
     #region Interface
     public void InitFromData(SaveData saveData)
@@ -251,12 +289,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     public void ReInit()
     {
         if (!useSaveData) currentCurrency = startingCurrency;
-    }
-
-    private void ToggleSubManagers(bool toState)
-    {
-        if (TD_BuildManager.instance) TD_BuildManager.instance.gameObject.SetActive(toState);
-        if (TD_UIManager.instance) TD_UIManager.instance.gameObject.SetActive(toState);
     }
     #endregion
 }

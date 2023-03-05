@@ -127,7 +127,7 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public void WaveStarted(int waveIndex)
     {
-        if (!TD_GameManager.instance.HasStarted) TD_GameManager.instance.PlayerStart();
+        //if (!TD_GameManager.instance.PlayerReady) TD_GameManager.instance.PlayerStart();
         // Wave finish + timer OR button push for start next
         // TODO: Maybe checkpoints included for user prompt before start? 
         Debug.Log($"Enemy Wave Started: {waveIndex}");

@@ -9,11 +9,11 @@ public class TD_Spawner : MonoBehaviour
     public List<WaveDetails> Waves;
     public bool SpawnAllowed = false;
     //private int currentWaveIndex = 0;
-    private List<TD_EnemyData> _enemiesToSpawn;
-    private List<TD_Enemy> _enemiesAlive;
+    [SerializeField] private List<TD_EnemyData> _enemiesToSpawn;
+    [SerializeField] private List<TD_Enemy> _enemiesAlive;
     private int currentEnemyIndex = 0;
     //private List<TD_Wave> _waves;
-    private List<GameObject> spawnedEntities;
+    [SerializeField] private List<GameObject> spawnedEntities;
     private List<TD_Wave> waveHelpers;
     public bool CurrentWaveComplete = false;
 
@@ -56,24 +56,6 @@ public class TD_Spawner : MonoBehaviour
         else ActiveSpawnerEffects.SetActive(false);
     }
 
-    //private void OnEnable()
-    //{
-    //    //int _waveIndex = 0;
-    //    //foreach (WaveDetails waveDetail in Waves)
-    //    //{
-    //    //    waveHelpers.Add(new TD_Wave(_waveIndex, this, waveDetail));
-    //    //    _waveIndex++;
-    //    //}
-    //    //EventManager.OnWaveStart += (waveIndx) => SpawnNextWave();            
-    //}
-
-
-    //private void OnDisable()
-    //{
-    //    waveHelpers.Clear();
-    //    //EventManager.OnWaveStart -= (waveIndx) => SpawnNextWave();
-    //}
-
     // Start is called before the first frame update
     void Start()
     {
@@ -96,9 +78,9 @@ public class TD_Spawner : MonoBehaviour
 
         TD_Wave currentWave = waveHelpers[TD_GameManager.instance.CurrentWaveIndex];
         if (currentWave == null || !SpawnAllowed) return;
+        CheckEnemies();
         CurrentWaveComplete = currentWave.Defeated;
-        //Debug.Log(currentWave);
-        //Debug.Log(IsDelayTimerMet());
+
         // If still have initialized with enemies & we havent spawned them all
         if (currentWave.AllSpawned)
         {
@@ -109,15 +91,25 @@ public class TD_Spawner : MonoBehaviour
             //Debug.Log(_enemiesAlive.Count);
             if (_enemiesAlive.Count <= 0)
             {
-                currentWave.EndWave();
-                // Reset this for the next iteration in case we are at the end 
                 currentEnemyIndex = 0;
                 CurrentWaveComplete = true;
+                spawnedEntities.RemoveAll((entity) => (entity == null));
+                currentWave.EndWave();
+                // Reset this for the next iteration in case we are at the end 
             }
         }
         else if (IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
         //else if (spawnedEntities.Count >= _enemiesToSpawn.Count && SpawnAllowed) AddWave(GetWaveEnemies(_nextWaveIndex), true);
         //else Debug.DebugBreak();
+    }
+
+    private void CheckEnemies()
+    {
+        _enemiesAlive.RemoveAll((enemy) => (enemy == null));
+        //foreach(TD_Enemy enemy in _enemiesAlive)
+        //{
+        //    if (enemy == null) _enemiesAlive.RemoveAll()
+        //}
     }
 
     private bool SetupWaveHelpers()
@@ -130,29 +122,6 @@ public class TD_Spawner : MonoBehaviour
         }
         return _waveIndex != 0;
     }
-
-    //protected void Spawn(TD_Wave currentWave)
-    //{
-    //    if (currentWave.AllSpawned)
-    //    {
-    //        currentWave.EndWave();
-    //    } else
-    //    {
-    //        SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
-    //    }
-    //    // TODO: change this to use something like IEnemy...
-    //    //if (current < _enemiesToSpawn.Count) SpawnEnemy(_enemiesToSpawn[_nextEnemyIndex]);
-    //}
-
-
-    //IEnumerable<TD_EnemyData> EnemyQueue()
-    //{
-    //    foreach (TD_EnemyData enemy  in _enemiesToSpawn)
-    //    {
-    //        yield return enemy;
-    //    }
-    //    yield return ;
-    //}
 
     protected bool SpawnPlacementValid()
     {
@@ -185,41 +154,6 @@ public class TD_Spawner : MonoBehaviour
             lastSpawnTime = Time.time;
         }
     }
-
-    ///// <summary>
-    ///// Wrapper for actual access to the wave data
-    ///// </summary>
-    ///// <param name="waveIndex"></param>
-    ///// <returns></returns>
-    //private List<TD_EnemyData> GetWaveEnemies(int waveIndex)
-    //{
-    //    if (waveIndex >= Waves.Count) return null;
-    //    return Waves[waveIndex]?.waveContents;
-    //    //if (_waveEnemies.Count < 1)
-    //    //    return null;
-    //    //return _enemiesToSpawn
-    //    // TODO:
-    //    // Send event for wave start
-    //}
-
-    ///// <summary>
-    ///// Whether a brand new wave or adding (early start) To the existing wave, add to spawn queue.
-    ///// </summary>
-    ///// <param name="tD_Enemies"></param>
-    ///// <param name="clearPrevious">Whether or not to clear out the tracking lists</param>
-    //private void AddWave(List<TD_EnemyData> tD_Enemies, bool clearPrevious = true)
-    //{
-    //    if (tD_Enemies == null || tD_Enemies.Count < 1) return;
-    //    if (clearPrevious)
-    //    {
-    //        currentEnemyIndex = 0;
-    //        _enemiesToSpawn.Clear();
-    //        spawnedEntities.Clear();
-    //    }
-    //    _enemiesToSpawn.AddRange(tD_Enemies);
-    //    //EventManager.WaveStarted(_nextWaveIndex);
-    //    //currentWaveIndex++;
-    //}
 
     protected Vector3 AdjustedSpawnPosition()
     {

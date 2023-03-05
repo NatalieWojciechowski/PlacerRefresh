@@ -8,33 +8,31 @@ public class TD_EnemyManager : MonoBehaviour
 {
     public static TD_EnemyManager instance { get; private set; }
 
-    [SerializeField]
-    WaypointRoute _waypointRoute;
-    [SerializeField]
-    List<WaypointRoute> Routes;
-    List<TD_Enemy> _enemies;
-    [SerializeField]
-    List<TD_Spawner> _spawners;
-    float timeRemaining = -10f;
+    [SerializeField] WaypointRoute _waypointRoute;
+    [SerializeField] List<WaypointRoute> Routes;
+    [SerializeField] List<TD_Spawner> _spawners;
+
+    /// <summary>
+    /// The time between individual waves; not between individual spawns
+    /// </summary>
     public float WaveIntervalDelay = 2f;
-    private int _requestedWaveIndx;
+    float waveIntervalRemaining = -10f;
+    public bool AutoStart = true;
+    
     private bool _waveActive = false;
     public bool WaveActive { get => _waveActive; }
 
-
-    public int CurrentWave = 0;
-    private int _totalWaves;
     public int TotalWaves { get => GetTotalWaves(); }
 
 
     public WaypointRoute WaypointRoute { get => _waypointRoute; set => _waypointRoute = value; }
 
+    #region Lifecycle
     private void OnEnable()
     {
         if (_spawners == null) _spawners = new();
-        timeRemaining = WaveIntervalDelay;
+        waveIntervalRemaining = WaveIntervalDelay;
         RefreshSpawners();
-            //else _spawners.Clear();
         EventManager.OnWaveStart += enableWave;
     }
 
@@ -43,17 +41,6 @@ public class TD_EnemyManager : MonoBehaviour
         EventManager.OnWaveStart -= enableWave;
     }
 
-    private void enableWave(int waveIndex)
-    {
-        _waveActive = true;
-    }
-
-    private void StartWaveInterval(int waveIndx)
-    {
-        _requestedWaveIndx = waveIndx;
-        // TODO: Scale based on how far into the waves?
-        timeRemaining = WaveIntervalDelay;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -70,38 +57,91 @@ public class TD_EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Routes == null || Routes.Count < 1 || !TD_GameManager.instance) return;
+        if (!TD_GameManager.instance) return;
         if (_spawners.Count < 1) RefreshSpawners();
-        //!TD_GameManager.current.HasStarted) return;
-        if (TD_GameManager.instance.HasStarted)
-        {
-            timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0) TryStartSpawers();
-        }
+
+        // TODO: Change this to a coroutine
         if (_waveActive)
         {
-            CheckEnemyState();
-            if (IsCurrentWaveComplete()) OnCurrentWaveComplete();
+            if (IsCurrentWaveComplete()) NotifyCurrentWaveComplete();
+        } else if (!_waveActive) {
+            // If not active we should the countdown for autostart waves
+            waveIntervalRemaining -= Time.deltaTime;
+
+            //
+            if (TD_GameManager.instance.PlayerReady || ShouldAutoStart())
+            {
+                TryStartWave();
+            }
         }
     }
 
-    private void OnCurrentWaveComplete()
+    #endregion
+
+    #region Events
+    private void NotifyCurrentWaveComplete()
     {
         Debug.Log("Wave Complete for all Spawners");
         _waveActive = false;
-        StartWaveInterval(TD_GameManager.instance.CurrentWaveIndex);
+        RestartWaveInterval();
+
         EventManager.OnWaveFinish(TD_GameManager.instance.CurrentWaveIndex);
     }
 
-    private void TryStartSpawers()
+    #endregion
+
+    #region Public
+    /// <summary>
+    /// Will return the max wave count for all Spawners.
+    /// </summary>
+    /// <returns></returns>
+    public int GetTotalWaves()
+    {
+        int largestWaveCount = 0;
+        foreach (TD_Spawner _spawner in _spawners)
+        {
+            if (_spawner.Waves.Count > largestWaveCount) largestWaveCount = _spawner.Waves.Count;
+        }
+        return largestWaveCount;
+    }
+
+    /// <summary>
+    /// Check if ALL spawners in the manager have completed their current wave
+    /// </summary>
+    /// <returns></returns>
+    public bool IsCurrentWaveComplete()
+    {
+        bool anyInProgress = false;
+        foreach (TD_Spawner spawner in _spawners)
+        {
+            if (!spawner.CurrentWaveComplete) anyInProgress = true;
+        }
+        return !anyInProgress;
+    }
+    #endregion
+
+    #region Private
+
+    private void enableWave(int waveIndex)
+    {
+        TryStartWave();
+    }
+
+    /// <summary>
+    /// Start timer for next autostart
+    /// </summary>
+    private void RestartWaveInterval()
+    {
+        waveIntervalRemaining = WaveIntervalDelay;
+    }
+
+    private void TryStartWave()
     {
         RefreshSpawners();
         if (TD_GameManager.instance.CurrentWaveIndex < TotalWaves)
         {
             ToggleSpawners(true);
             _waveActive = true;
-            //Debug.Log("This may have been start spawn initially");
-            //EventManager.current.WaveFinished(TD_GameManager.current.CurrentWaveIndex);
         }
     }
 
@@ -123,32 +163,13 @@ public class TD_EnemyManager : MonoBehaviour
         }
     }
 
-    private void CheckEnemyState()
-    {
-
-    }
-
     /// <summary>
-    /// Will return the max wave count for all Spawners.
+    /// Either autostart not enabled or timer expired
     /// </summary>
     /// <returns></returns>
-    public int GetTotalWaves()
+    private bool ShouldAutoStart()
     {
-        int largestWaveCount = 0;
-        foreach(TD_Spawner _spawner in _spawners)
-        {
-            if (_spawner.Waves.Count > largestWaveCount) largestWaveCount = _spawner.Waves.Count;
-        }
-        return largestWaveCount;
+        return AutoStart && IsCurrentWaveComplete() && waveIntervalRemaining <= 0;
     }
-
-    public bool IsCurrentWaveComplete()
-    {
-        bool anyInProgress = false;
-        foreach (TD_Spawner spawner in _spawners)
-        {
-            if (!spawner.CurrentWaveComplete) anyInProgress = true;
-        }
-        return !anyInProgress;
-    }
+    #endregion
 }

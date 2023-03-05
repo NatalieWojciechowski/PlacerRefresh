@@ -43,7 +43,8 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
             // Do something else
 
         }
-        UIAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
+        UIAccept?.Invoke(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
+        //UIAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
     }
 
     public void OnCancel(InputAction.CallbackContext context)
@@ -104,6 +105,7 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
     public void OnSubmit(InputAction.CallbackContext context)
     {
         Debug.Log("UI OnSubmit" + context);
+        OnAccept(context);
     }
 
     public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)

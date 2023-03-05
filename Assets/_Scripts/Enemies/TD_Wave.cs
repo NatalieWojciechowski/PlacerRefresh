@@ -20,6 +20,8 @@ public class TD_Wave
 
     private bool defeated = false;
     public bool Defeated { get => defeated; }
+    public float StartTime { get => startTime; set => startTime = value; }
+    public float CompleteTime { get => completeTime; set => completeTime = value; }
 
     private bool checkAllDefeated()
     {
@@ -51,7 +53,7 @@ public class TD_Wave
     {
         //Debug.Log("WAVE SPAWNING COMPLETE");
         allSpawned = true;
-        //completeTime = Time.time;
+        completeTime = Time.time;
     }
 
     public void EndWave()
