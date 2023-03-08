@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 560425865151104702}
   - component: {fileID: 3144419002189840056}
   - component: {fileID: 6167647127335346390}
+  - component: {fileID: 260135962}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -275,6 +276,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 07c4a0f3-8eb7-4889-8930-168c77e3f1c7
     m_ActionName: Player/Home[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 560425865151104702}
+        m_TargetAssemblyTypeName: PlayerControlsManager, Assembly-CSharp
+        m_MethodName: OnGodModeToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e15677ce-08f3-4097-86a7-44d8a1014501
+    m_ActionName: Player/GodModeToggle[/Keyboard/numpadMultiply]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: DesktopDefault
   m_DefaultActionMap: Player
@@ -295,8 +312,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   maxZoom: 20
   minZoom: 5
-  sensitivity: 0.5
-  speed: 25
+  zoomSensitivity: 1
+  zoomMoveSpeed: 30
   movementSpeed: 20
 --- !u!82 &933183647
 AudioSource:
@@ -431,3 +448,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07317e60161305a439514baf7bfd54a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &260135962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060736097545982703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464c60b4908d9ac4ba48b0386a8026bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 1

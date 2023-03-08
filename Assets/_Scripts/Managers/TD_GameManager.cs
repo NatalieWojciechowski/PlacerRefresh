@@ -268,10 +268,11 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     public void OnSceneChange(Scene current, Scene next)
     {
-        if (TD_BuildManager.instance &&
-            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
-            current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
-            ToggleSubManagers(false);
+        if (EventManager.instance) EventManager.instance.TowerDeselected();
+        //if (TD_BuildManager.instance &&
+        //    next.name != SceneLoader.SceneToName(SceneLoader.GameScene.MainMenu) &&
+        //    next.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings))
+            //ToggleSubManagers(false);
     }
 
     public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)

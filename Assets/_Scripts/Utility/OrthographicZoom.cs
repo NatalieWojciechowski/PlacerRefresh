@@ -14,8 +14,8 @@ public class OrthographicZoom : MonoBehaviour
     public Camera cam;
     public float maxZoom = 5;
     public float minZoom = 20;
-    public float sensitivity = 1;
-    public float speed = 30;
+    public float zoomSensitivity = 1;
+    public float zoomMoveSpeed = 30;
     float targetZoom;
     Vector2 moveVector;
     InputAction moveAction;
@@ -106,9 +106,9 @@ public class OrthographicZoom : MonoBehaviour
         if (!cam) cam = Camera.main;
         else
         {
-            targetZoom -= Mouse.current.scroll.ReadValue().normalized.y * sensitivity;
+            targetZoom -= Mouse.current.scroll.ReadValue().normalized.y * zoomSensitivity;
             targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
-            float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, speed * Time.deltaTime);
+            float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, zoomMoveSpeed * Time.deltaTime);
             cam.orthographicSize = newSize;
         }
     }

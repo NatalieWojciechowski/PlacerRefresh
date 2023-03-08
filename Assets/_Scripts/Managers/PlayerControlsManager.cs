@@ -15,6 +15,8 @@ public class PlayerInputEventArgs : EventArgs
 
 public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
 {
+    public static PlayerControlsManager instance;
+
     // MyPlayerControls is the C# class that Unity generated.
     // It encapsulates the data from the .inputactions asset we created
     // and automatically looks up all the maps and actions for us.
@@ -44,6 +46,13 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
         //UIMode();
         //controls.TD_BuilderControls.Enable();
         //controls.Player.Enable();
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
     }
 
     private void EnableAllControls()

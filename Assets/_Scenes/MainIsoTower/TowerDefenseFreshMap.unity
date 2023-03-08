@@ -1272,37 +1272,6 @@ MonoBehaviour:
   overflowProtection: 1
   positionBounds: 0
   GuiCanvas: {fileID: 0}
---- !u!1 &260135961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9060736097545982703, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1965551044}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &260135962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260135961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464c60b4908d9ac4ba48b0386a8026bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnabled: 1
---- !u!114 &260135965 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 560425865151104702, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1965551044}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260135961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7ba062b079c4c438e729d6f4269da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &281933249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2477,8 +2446,8 @@ MonoBehaviour:
   cam: {fileID: 1038674719}
   maxZoom: 20
   minZoom: 3
-  sensitivity: 0.5
-  speed: 10
+  zoomSensitivity: 1
+  zoomMoveSpeed: 30
   movementSpeed: 10
 --- !u!114 &636555473
 MonoBehaviour:
@@ -2786,7 +2755,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5904e-41, y: 3.273703e+28, z: 4.5904e-41, w: 0}
+  m_BoundingSphereOverride: {x: 2.3565257e+20, y: 7.7781596e+31, z: 4.6304126e+27,
+    w: 0.0000000029802294}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4414,7 +4384,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 5.25e-43, y: 51764.594, z: 5.25e-43, w: 81582.31}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0.000008817275}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -7977,56 +7947,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
-      value: e15677ce-08f3-4097-86a7-44d8a1014501
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
-      value: Player/GodModeToggle[/Keyboard/numpadMultiply]
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 260135965}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnGodModeToggle
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerControlsManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060736097545982674, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 9060736097545982701, guid: cd8b42bea1414f9419eec8e5c7d8c04c,
         type: 3}
       propertyPath: m_RootOrder
@@ -9835,6 +9755,11 @@ PrefabInstance:
       propertyPath: effectsBin
       value: 
       objectReference: {fileID: 1356604866}
+    - target: {fileID: 8170463112796182941, guid: 2b8bc2db07f04c2488b61b642eb6241b,
+        type: 3}
+      propertyPath: useSaveData
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8170463112796182941, guid: 2b8bc2db07f04c2488b61b642eb6241b,
         type: 3}
       propertyPath: startingCurrency

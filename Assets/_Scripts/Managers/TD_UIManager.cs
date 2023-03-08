@@ -206,7 +206,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
         else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
         mainMenuPanel.SetActive(!menuOpen);
-        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.HasStarted || TD_EnemyManager.instance.IsCurrentWaveComplete();
+        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.PlayerReady || TD_EnemyManager.instance.IsCurrentWaveComplete();
     }
 
     public void SaveAndExit()
