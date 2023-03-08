@@ -214,4 +214,9 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
         Debug.Log("SEND CAMERA HOME");
         GoHome(this, new PlayerInputEventArgs(Vector2.zero));
     }
+
+    public void OnGodModeToggle(InputAction.CallbackContext context)
+    {
+        EventManager.instance.ToggleGodMode();
+    }
 }

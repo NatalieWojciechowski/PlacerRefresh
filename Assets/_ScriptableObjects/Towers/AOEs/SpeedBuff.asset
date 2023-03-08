@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bffe0a93179b14199f5f72cc29347f, type: 3}
+  m_Name: SpeedBuff
+  m_EditorClassIdentifier: 
+  aoePrefab: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
+    type: 3}
+  effectPrefab: {fileID: 6075313622514558837, guid: b667d5287636eb64f9da6cf256d7896c,
+    type: 3}
+  aoeAnimator: {fileID: 0}
+  particleSystem: {fileID: 0}
+  category: Buff
+  pulseDelay: 0.25
+  pulseEffectAmount: 0
+  aoeRange: 1
+  RemoveOnContact: 0
+  maxLifetime: 2

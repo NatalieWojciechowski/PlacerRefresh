@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e352802a1ccd34da994d68e41cb013, type: 3}
+  m_Name: enemy_oiled_pig
+  m_EditorClassIdentifier: 
+  displayName: Oiled Pig
+  health: 2
+  moveSpeed: 2
+  spawnPrefab: {fileID: 5042135239528872435, guid: 751e34cad23c05b48822742440ae9f88,
+    type: 3}
+  dmgToCore: 2
+  reward: 2
+  corpseSpawnPrefab: {fileID: 0}

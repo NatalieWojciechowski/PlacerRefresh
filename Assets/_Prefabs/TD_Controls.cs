@@ -185,6 +185,15 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GodModeToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""e15677ce-08f3-4097-86a7-44d8a1014501"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -416,6 +425,17 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""DesktopDefault"",
                     ""action"": ""Home"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6f369f6-d0dd-4b65-9c48-8be2fc84eb50"",
+                    ""path"": ""<Keyboard>/numpadMultiply"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GodModeToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -973,6 +993,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Home = m_Player.FindAction("Home", throwIfNotFound: true);
+        m_Player_GodModeToggle = m_Player.FindAction("GodModeToggle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1097,6 +1118,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Home;
+    private readonly InputAction m_Player_GodModeToggle;
     public struct PlayerActions
     {
         private @TD_Controls m_Wrapper;
@@ -1105,6 +1127,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Home => m_Wrapper.m_Player_Home;
+        public InputAction @GodModeToggle => m_Wrapper.m_Player_GodModeToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1126,6 +1149,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Home.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
                 @Home.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
                 @Home.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHome;
+                @GodModeToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodModeToggle;
+                @GodModeToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodModeToggle;
+                @GodModeToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGodModeToggle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1142,6 +1168,9 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
                 @Home.started += instance.OnHome;
                 @Home.performed += instance.OnHome;
                 @Home.canceled += instance.OnHome;
+                @GodModeToggle.started += instance.OnGodModeToggle;
+                @GodModeToggle.performed += instance.OnGodModeToggle;
+                @GodModeToggle.canceled += instance.OnGodModeToggle;
             }
         }
     }
@@ -1272,6 +1301,7 @@ public partial class @TD_Controls : IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnHome(InputAction.CallbackContext context);
+        void OnGodModeToggle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -410,6 +410,7 @@
     <Compile Include="Assets\_Scripts\UI\TD_MainMenu.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Cameras\Scripts\AutoCam.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\GameData.cs" />
+    <Compile Include="Assets\_Scripts\Managers\TDGodMode.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\Data\AttributeData.cs" />
     <Compile Include="Assets\3rdParty\ColonySimulator\Scripts\UI\TooltipBox.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneUserControl4Axis.cs" />

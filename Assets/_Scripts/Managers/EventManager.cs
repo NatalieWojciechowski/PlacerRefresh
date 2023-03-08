@@ -62,21 +62,25 @@ public class EventManager : MonoBehaviour
     public static event EventHandler GameOver;
     public static event EventHandler GameWon;
 
+    public delegate void OnGodModeToggleEvent();
+    public static event EventHandler OnGodModeToggle;
+
+
     public enum TD_Events
     {
         GenericCancel,
         GenericAccept,
     }
 
-    public static Action<CustomEventArgs> A_GenericCancel;
-    public static Action<CustomEventArgs> A_GenericAccept;
+    //public static Action<CustomEventArgs> A_GenericCancel;
+    //public static Action<CustomEventArgs> A_GenericAccept;
     public static event EventHandler<CustomEventArgs> CancelTriggered;
     public static CustomArgsEvent OnCancel;
     public static CustomArgsEvent OnAccept;
 
-    public delegate void TD_EventHandler(object source, EventArgs args);
-    public event TD_EventHandler EventTriggered;
-    public static event Action<TD_Events> tdEventTriggered;
+    //public delegate void TD_EventHandler(object source, EventArgs args);
+    //public event TD_EventHandler EventTriggered;
+    //public static event Action<TD_Events> tdEventTriggered;
 
 
     public static UnityAction<TD_Building> OnTowerBlueprint;
@@ -214,5 +218,10 @@ public class EventManager : MonoBehaviour
     protected virtual void OnEventHandled()
     {
         
+    }
+
+    public void ToggleGodMode()
+    {
+        OnGodModeToggle?.Invoke(this, EventArgs.Empty);
     }
 }
