@@ -18,7 +18,7 @@ MonoBehaviour:
   category: Area
   health: 2
   attackSpeed: 4
-  attackRange: 5
+  attackRange: 6
   buildingPrefab: {fileID: 3702185055643861488, guid: 57edd59909f377f49b39581d9edaac50,
     type: 3}
   projectilePrefab: {fileID: 0}

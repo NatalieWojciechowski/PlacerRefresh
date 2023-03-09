@@ -80,7 +80,8 @@ public class TowerDamageAOE : AreaEffect
         TD_Enemy cEnemy;
         if (collision.gameObject.TryGetComponent<TD_Enemy>(out cEnemy))
         {
-            cEnemy.TakeDamage(td_AOEData.pulseEffectAmount);
+            Debug.Log("collision stay skipped");
+            //cEnemy.TakeDamage(td_AOEData.pulseEffectAmount);
         }
         Debug.Log("Collision stay dmg");
         //if (!PulseStillGoing()) EndPulse();

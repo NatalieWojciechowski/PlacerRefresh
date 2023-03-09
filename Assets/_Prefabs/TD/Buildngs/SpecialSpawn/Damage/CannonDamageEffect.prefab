@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 4577745006664550781, guid: 607635dd3bd88324ba72cd1138f40bee,
         type: 3}
       propertyPath: m_Name
-      value: DamageEffect
+      value: CannonDamageEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7494858845354530961, guid: 607635dd3bd88324ba72cd1138f40bee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7794887657543389559, guid: 607635dd3bd88324ba72cd1138f40bee,
         type: 3}

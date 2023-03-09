@@ -18,7 +18,7 @@ MonoBehaviour:
   category: Turret
   health: 2
   attackSpeed: 1
-  attackRange: 15
+  attackRange: 12
   buildingPrefab: {fileID: 3997572766233273678, guid: f4341f7c999015e47ae571646f136ceb,
     type: 3}
   projectilePrefab: {fileID: 7708929701459535268, guid: ebedbfd277cbdcc49a93b2104bae4a86,

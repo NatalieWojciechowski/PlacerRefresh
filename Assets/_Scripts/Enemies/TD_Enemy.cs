@@ -36,6 +36,8 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
 
     protected Coroutine stateTransition;
 
+    private Vector3 deathPosition;
+
     public Guid EnemyUUID { get; private set; }
     public float Health { get => _currentHealth; }
 
