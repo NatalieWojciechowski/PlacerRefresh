@@ -99,8 +99,9 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
 
         if (waveStatus)
         {
-            int currentWave = TD_GameManager.instance.CurrentWaveIndex + 1;
-            if (!TD_EnemyManager.instance.WaveActive) currentWave--;
+            int currentWave = TD_GameManager.instance.CurrentWaveIndex;
+            if (TD_EnemyManager.instance.IsCurrentWaveComplete()) currentWave += 1;
+            //if (!TD_EnemyManager.instance.WaveActive) currentWave--;
             waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.instance.TotalWaves}";
         }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.instance.CurrentCurrency.ToString();

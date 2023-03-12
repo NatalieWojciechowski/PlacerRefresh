@@ -53,7 +53,7 @@ public class TD_Wave
     {
         //Debug.Log("WAVE SPAWNING COMPLETE");
         allSpawned = true;
-        completeTime = Time.time;
+        //completeTime = Time.time;
     }
 
     public void EndWave()

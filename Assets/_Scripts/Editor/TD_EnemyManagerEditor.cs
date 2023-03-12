@@ -12,9 +12,20 @@ public class TD_EnemyManagerEditor : Editor
 
         DrawDefaultInspector();
 
-        if (GUILayout.Button("RestartWave"))
+        if (GUILayout.Button("Restart Wave"))
         {
             TD_GameManager.instance.RestartWaves();
+        }
+
+        if (GUILayout.Button("Start Wave"))
+        {
+            EventManager.instance.WaveStarted(TD_GameManager.instance.CurrentWaveIndex);
+            //TD_GameManager.instance.PlayerStart();
+        }
+
+        if (GUILayout.Button("Wipe Wave"))
+        {
+            TD_GameManager.instance.WipeWave();
         }
     }
 }

@@ -137,6 +137,8 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         {
             TryChangeState(EnemyState.Damaged);
             _currentHealth -= projectileDamage;
+            // Make sure the bar does not distort for overdamage
+            if (_currentHealth < 0) _currentHealth = -.025f;
             HealthBar.GetComponentsInChildren<Image>()[1].transform.localScale = new Vector3(_currentHealth / _maxHealth, 1, 1);
 
             // Setup transition back to moving

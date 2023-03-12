@@ -54,9 +54,9 @@ public class TD_Boss : TD_Enemy
     protected void OnEnable()
     {
         bossState = BossState.Init;
+        TD_AudioManager.instance.PlayMusic(TD_AudioManager.instance.BossMusic);
         if (dialogueCoroutine != null) StopCoroutine(dialogueCoroutine);
         dialogueCoroutine = StartCoroutine(StartDialogue());
-
     }
 
     protected override void OnDestroy()

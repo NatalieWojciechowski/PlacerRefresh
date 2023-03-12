@@ -60,6 +60,19 @@ public class TD_EnemyManager : MonoBehaviour
         if (!TD_GameManager.instance) return;
         if (_spawners.Count < 1) RefreshSpawners();
 
+        /* 
+         * EM will track each Spawner:
+         * - Should check if all spawned
+         * - Should check if all defeated
+         * - Check ALL spawners have completed each of these / have wrapper around collections
+         * 
+         * Spawners toggle their spawn allowed themselves either on event start OR autostart
+         * - Will spawn allowed false after all wave has spawned
+         * - Until the player has re-enabled by clicking button OR the timer has expired
+         */
+
+
+
         // TODO: Change this to a coroutine
         if (_waveActive)
         {
@@ -81,11 +94,11 @@ public class TD_EnemyManager : MonoBehaviour
     #region Events
     private void NotifyCurrentWaveComplete()
     {
+        ToggleSpawners(false);
         Debug.Log("Wave Complete for all Spawners");
-        _waveActive = false;
         RestartWaveInterval();
 
-        EventManager.OnWaveFinish(TD_GameManager.instance.CurrentWaveIndex);
+        EventManager.instance.WaveFinished(TD_GameManager.instance.CurrentWaveIndex);
     }
 
     #endregion
@@ -118,13 +131,21 @@ public class TD_EnemyManager : MonoBehaviour
         }
         return !anyInProgress;
     }
+    public void ClearAndEndWave()
+    {
+        ToggleSpawners(false);
+        foreach (TD_Spawner spawner in _spawners)
+        {
+            spawner.DefeatCurrentWave();
+        }
+    }
     #endregion
 
     #region Private
 
     private void enableWave(int waveIndex)
     {
-        TryStartWave();
+        if (waveIndex == TD_GameManager.instance.CurrentWaveIndex) TryStartWave();
     }
 
     /// <summary>
@@ -141,7 +162,6 @@ public class TD_EnemyManager : MonoBehaviour
         if (TD_GameManager.instance.CurrentWaveIndex < TotalWaves)
         {
             ToggleSpawners(true);
-            _waveActive = true;
         }
     }
 
@@ -157,6 +177,7 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void ToggleSpawners(bool isEnabled)
     {
+        _waveActive = isEnabled;
         foreach (TD_Spawner spawner in _spawners)
         {
             spawner.SpawnAllowed = isEnabled;

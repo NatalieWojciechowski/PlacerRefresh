@@ -22,6 +22,12 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     public int TotalWaves { get => totalWaves; }
     public int CoreHealth { get => coreHealth; }
 
+    public void WipeWave()
+    {
+        // TODO: Guardrails?
+        TD_EnemyManager.instance.ClearAndEndWave();
+    }
+
     /// <summary>
     /// Whether or not the Wave is ready to go; will shift to true when user toggles wave to start
     /// </summary>
@@ -125,16 +131,12 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     #region Events
     private void WaveFinished(int ctx)
     {
-        if (!HasStarted) return;  
-        NextWave();
-        //if (!playerReady) return;
-        //if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
+        if (!HasStarted) return;
         //// We may have more than one spawner contributing to the wave, make sure all are done first
-        //if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveComplete()
-        //    && playerReady)
-        //    NextWave();
+        if (TD_EnemyManager.instance.IsCurrentWaveComplete()) NextWave();
         //// Any additonal animations, etc?
         //// EX: "LAST WAVE!" indicator or perhaps dialogue events?
+
         TD_UIManager.instance.UpdateDisplay();
     }
     private void WaveStarted(int ctx)
@@ -204,7 +206,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     public void PlayerStart()
     {
         playerReady = true;
-        NextWave();
+        //NextWave();
     }
 
     public bool SpendMoney(int purchaseCost)
@@ -237,7 +239,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private void NextWave()
     {
-        
+        if (!TD_EnemyManager.instance.IsCurrentWaveComplete()) return;
         playerReady = false;
         currentWaveIndex++;
         if (currentWaveIndex >= TD_EnemyManager.instance.TotalWaves)
@@ -282,6 +284,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
             current.name != SceneLoader.SceneToName(SceneLoader.GameScene.Settings) )
         {
             ToggleSubManagers(true);
+            TD_AudioManager.instance.PlayMusic(TD_AudioManager.instance.BasicLevelMusic);
             TD_GameSerializer.LoadGame();
         }
         ReInit();

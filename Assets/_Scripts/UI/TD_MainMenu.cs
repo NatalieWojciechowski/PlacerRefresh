@@ -119,6 +119,7 @@ public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
 
     public void ReInit()
     {
+        TD_AudioManager.instance.PlayMusic(TD_AudioManager.instance.MainMenuMusic);
         UpdateSaveDataExist();
         ResetButtonInteractable();
     }
