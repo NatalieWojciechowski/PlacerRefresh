@@ -18,7 +18,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     public GameObject gameWinStatus;
     public GameObject waveStatus;
     public GameObject SpeedControls;
-    public GameObject WaveStart;
+    public GameObject WaveStartButton;
     public GameObject playerMoney;
     public GameObject mainMenuPanel;
     public GameObject SaveAndExitButton;
@@ -49,7 +49,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         EventManager.OnWaveStart += OnWaveStart;
         EventManager.GameOver += OnGameLose;
         EventManager.GameWon += OnGameWin;
-        WaveStart.GetComponent<Button>().onClick.AddListener(delegate { EventManager.instance.WaveStarted(TD_GameManager.instance.CurrentWaveIndex); });
+        WaveStartButton.GetComponent<Button>().onClick.AddListener(OnWaveStart);
         //waveStatus.GetComponentInChildren<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         speedButtons[0]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE));
@@ -69,7 +69,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         EventManager.GameWon -= OnGameWin;
         EventManager.OnWaveStart -= OnWaveStart;
         //waveStatus.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
-        WaveStart.GetComponent<Button>().onClick.RemoveAllListeners();
+        WaveStartButton.GetComponent<Button>().onClick.RemoveAllListeners();
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         foreach (Button button in speedButtons)
         {
@@ -87,6 +87,13 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         else Destroy(gameObject);
     }
 
+    private void OnWaveStart()
+    {
+        if (EventManager.instance == null) return;
+        EventManager.instance.WaveStarted(TD_GameManager.instance.CurrentWaveIndex);
+        UpdateDisplay();
+    }
+
     private void OnTowerSelect(TD_Building selectedBuilding)
     {
         UpdateDisplay();
@@ -100,20 +107,18 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         if (waveStatus)
         {
             int currentWave = TD_GameManager.instance.CurrentWaveIndex;
-            if (TD_EnemyManager.instance.IsCurrentWaveComplete()) currentWave += 1;
+            if (TD_EnemyManager.instance.SpawnersActive || TD_GameManager.instance.IsWaitingForStart) currentWave += 1;
             //if (!TD_EnemyManager.instance.WaveActive) currentWave--;
             waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.instance.TotalWaves}";
         }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.instance.CurrentCurrency.ToString();
-        if (WaveStart)
+        if (WaveStartButton)
         {
-            // If game over or 
             bool showStartButton = (
                 TD_GameManager.instance.CoreHealth > 0 &&
-                (!TD_EnemyManager.instance.WaveActive ||
-                TD_GameManager.instance.IsWaitingForStart)
+                (!TD_EnemyManager.instance.AutoStart && TD_GameManager.instance.IsWaitingForStart)
             );
-            WaveStart.SetActive(showStartButton);
+            WaveStartButton.SetActive(showStartButton);
         }
 
         if (TD_BuildManager.instance)
@@ -207,7 +212,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
         else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
         mainMenuPanel.SetActive(!menuOpen);
-        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.PlayerReady || TD_EnemyManager.instance.IsCurrentWaveComplete();
+        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.PlayerReady || TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
     }
 
     public void SaveAndExit()

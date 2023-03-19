@@ -49,3 +49,6 @@ o units attack / disable / destroy towers? perhaps when they die too close to th
 
 ## Additional Notes
 
+o Spawner Fix
+	- Attempting to resolve the player vs autostart feature wound up causing some bugs over time, untangling some of it has lead to this not quite working atm.
+	o Consider changing this all to state machine...

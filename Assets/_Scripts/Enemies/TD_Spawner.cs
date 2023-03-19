@@ -57,33 +57,38 @@ public class TD_Spawner : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        // Game State Checks
         if (!TD_GameManager.instance) return;
         if (waveHelpers.Count == 0 && !SetupWaveHelpers()) return;
         if (TD_GameManager.instance.CurrentWaveIndex >= waveHelpers.Count) return;
 
+        // Wave State Checks
         TD_Wave currentWave = GetCurrentWave();
         if (currentWave == null) return;
-        CleanupNullInAlive();
-        CurrentWaveComplete = currentWave.Defeated;
+        if (SpawnAllowed && IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
+        if (spawnedEntities.Count > 0) CheckWaveCompleted(currentWave);
+    }
 
-        // If still have initialized with enemies & we havent spawned them all
-        if (currentWave.AllSpawned)
+    private void CheckWaveCompleted(TD_Wave currentWave)
+    {
+        _enemiesAlive.RemoveAll((enemy) => enemy == null);
+        if (_enemiesAlive.Count <= 0)
         {
-            // TODO: This toggle may need a split for indx vs bool passing
-            ToggleSpawnerEffects(TD_GameManager.instance.CurrentWaveIndex);
-            SpawnAllowed = false;
-            ActiveSpawnerEffects.SetActive(false);
-
-            currentWave.WaveSpawningComplete();
-            // Check for Enemies all defeatd / reached end before setting to next wave
-            _enemiesAlive.RemoveAll((enemy) => enemy == null);
-            if (_enemiesAlive.Count <= 0)
-            {
-                WaveCleanup(currentWave);
-                // Reset this for the next iteration in case we are at the end 
-            }
+            WaveCleanup(currentWave);
         }
-        else if (SpawnAllowed && IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
+    }
+
+    public void OnAllWaveSpawned(TD_Wave currentWave)
+    {
+        // TODO: This toggle may need a split for indx vs bool passing
+        ToggleSpawnerEffects(TD_GameManager.instance.CurrentWaveIndex);
+        SpawnAllowed = false;
+        ActiveSpawnerEffects.SetActive(false);
+
+        //currentWave.WaveSpawningComplete();
+        // Check for Enemies all defeatd / reached end before setting to next wave
+        _enemiesAlive.RemoveAll((enemy) => enemy == null);
+
     }
 
 
@@ -105,12 +110,6 @@ public class TD_Spawner : MonoBehaviour
         else ActiveSpawnerEffects.SetActive(false);
 
         ActiveSpawnerEffects.SetActive(toggleToState);
-    }
-
-
-    private void CleanupNullInAlive()
-    {
-        _enemiesAlive.RemoveAll((enemy) => (enemy == null));
     }
 
     public void DefeatCurrentWave()

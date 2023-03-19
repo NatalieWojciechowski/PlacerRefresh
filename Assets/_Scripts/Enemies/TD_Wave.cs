@@ -11,10 +11,15 @@ public class TD_Wave
     private TD_Spawner spawner;
     private WaveDetails waveDetails;
     private List<TD_EnemyData> enemiesToSpawn;
-    private List<string> enemiesAlive;
     private int enemiesSpawnedCount = 0;
 
-    public bool AllSpawned { get => allSpawned || checkAllSpawned(); }
+
+    private bool waveStarted = false;
+    private bool waveSpawned = false;
+    private bool waveEnded = false;
+
+
+    public bool AllSpawned { get => allSpawned; }
     private bool finished = false;
     private bool allSpawned = false;
 
@@ -25,6 +30,7 @@ public class TD_Wave
 
     private bool checkAllDefeated()
     {
+
         //TD_EnemyData enemiesRemaining = enemiesToSpawn.Find((enemy) => { return enemy != null; });
         return allSpawned; // && enemiesRemaining;
     }
@@ -39,50 +45,52 @@ public class TD_Wave
         spawner = _spawner;
         waveDetails = _waveDetails;
         enemiesToSpawn = new();
-        InitWave(waveDetails.waveContents);
+        enemiesToSpawn.AddRange(waveDetails.waveContents);
     }
 
+    /// <summary>
+    /// Trigger wave started event and update startTime. Passes index of THIS wave when triggering event.
+    /// </summary>
     public void StartWave()
     {
+        if (waveStarted) return;
+        waveStarted = true;
         startTime = Time.time;
         // TODO: Invoke Event?
         EventManager.instance.WaveStarted(waveIndex);
     }
 
-    public void WaveSpawningComplete()
-    {
-        //Debug.Log("WAVE SPAWNING COMPLETE");
-        allSpawned = true;
-        //completeTime = Time.time;
-    }
-
     public void EndWave()
     {
-        if (finished == true) return;
+        if (defeated) return;
+        waveEnded = true;
         Debug.Log("END WAVE");
-        finished = true;
         defeated = true;
         completeTime = Time.time;
         // TODO: Invoke event?
         EventManager.instance.WaveFinished(waveIndex);
     }
+    public void WaveSpawningComplete()
+    {
+        if (allSpawned == true) return;
+        allSpawned = true;
+        spawner.OnAllWaveSpawned(this);
+    }
 
     public TD_EnemyData GetEnemy(int enemyIndex)
     {
+        if (waveEnded) return null;
+        if (!waveStarted) StartWave();
         // TODO: better handling around out of range exception here 
         if (enemyIndex < enemiesToSpawn.Count)
         {
             enemiesSpawnedCount++;
             return enemiesToSpawn[enemyIndex];
         }
+        if (!waveEnded && checkAllSpawned()) WaveSpawningComplete();
         return null;
     }
 
-    private void InitWave(List<TD_EnemyData> enemies)
-    {
-        enemiesToSpawn.AddRange(enemies);
-        startTime = Time.time;
-    }
     private bool checkAllSpawned()
     {
         return (enemiesSpawnedCount > 0 && enemiesSpawnedCount == enemiesToSpawn.Count);

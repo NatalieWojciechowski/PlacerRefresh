@@ -18,6 +18,9 @@ public class EventManager : MonoBehaviour
 
     public static UnityAction<int> OnWaveFinish;
     private CustomIntEvent waveFinishEvent;
+
+    public static UnityAction<int> OnWaveGroupFinish;
+    private CustomIntEvent waveGroupFinishEvent;
     #endregion
     //public static Action<int> WaveFinishedAction = (ctx) => { OnWaveFinish(ctx); };
     //private Event waveFinishEvent;
@@ -150,6 +153,14 @@ public class EventManager : MonoBehaviour
         Debug.Log($"Enemy Wave Finished: {waveIndex}");
         //current.waveFinishEvent.Invoke(waveIndex);
         OnWaveFinish?.Invoke(waveIndex);
+    }
+    public void WaveGroupFinished(int waveIndex)
+    {
+        if (!TD_GameManager.instance.HasStarted) return;
+        // Enemies finish spawning + died / get to end
+        Debug.Log($"Enemy Wave Group Finished: {waveIndex}");
+        //current.waveFinishEvent.Invoke(waveIndex);
+        OnWaveGroupFinish?.Invoke(waveIndex);
     }
 
     public void TowerSelected(TD_Building bSelected)

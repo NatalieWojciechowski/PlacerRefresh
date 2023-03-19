@@ -38,7 +38,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     public bool PlayerReady { get => playerReady; }
     public bool HasStarted { get => (currentWaveIndex >= 0); }
     private bool waitingForStart = true;
-    public bool IsWaitingForStart { get => (!this.playerReady && !TD_EnemyManager.instance.WaveActive); }
+    public bool IsWaitingForStart { get => (!this.playerReady && !TD_EnemyManager.instance.SpawnersActive); }
 
     [SerializeField] private GameObject effectsBin;
     public GameObject EffectsBin { get => effectsBin; }
@@ -129,26 +129,33 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     #endregion
 
     #region Events
+    /// <summary>
+    /// GM will poll the EM to see if ALL of the waves have finished. If so, we wait for input
+    /// </summary>
+    /// <param name="ctx"></param>
     private void WaveFinished(int ctx)
     {
         if (!HasStarted) return;
         //// We may have more than one spawner contributing to the wave, make sure all are done first
-        if (TD_EnemyManager.instance.IsCurrentWaveComplete()) NextWave();
+        //if (TD_EnemyManager.instance.IsCurrentWaveComplete()) NextWave();
         //// Any additonal animations, etc?
         //// EX: "LAST WAVE!" indicator or perhaps dialogue events?
+
+        waitingForStart = TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
 
         TD_UIManager.instance.UpdateDisplay();
     }
     private void WaveStarted(int ctx)
     {
-        //if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
+        if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
 
         ////if (playerReady) PlayerStart();
         //// We may have more than one spawner contributing to the wave, make sure all are done first
-        //if (ctx == currentWaveIndex && !TD_EnemyManager.instance.WaveActive && playerReady)
-        //    NextWave();
+        if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveGroupComplete())
+            NextWave();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
+
         TD_UIManager.instance.UpdateDisplay();
     }
     private void OnPlayerSpend(int ctx)
@@ -239,8 +246,8 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private void NextWave()
     {
-        if (!TD_EnemyManager.instance.IsCurrentWaveComplete()) return;
-        playerReady = false;
+        if (!TD_EnemyManager.instance.IsCurrentWaveGroupComplete()) return;
+        
         currentWaveIndex++;
         if (currentWaveIndex >= TD_EnemyManager.instance.TotalWaves)
         {

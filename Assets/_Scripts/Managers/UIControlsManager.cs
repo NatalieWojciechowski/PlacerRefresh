@@ -29,9 +29,10 @@ public class UIControlsManager : MonoBehaviour, TD_Controls.IUIActions
 
     public void OnAccept(InputAction.CallbackContext context)
     {
-        Debug.Log("UI OnAccept" + context);
+        //Debug.Log("UI OnAccept" + context);
         EventManager.instance.GenericAccept();
         //PlayerAccept(this, new PlayerInputEventArgs(Mouse.current.position.ReadValue()));
+        if (Camera.main == null || Mouse.current == null) return;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue(), 0);
         RaycastHit2D ray2D = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(mousePos));

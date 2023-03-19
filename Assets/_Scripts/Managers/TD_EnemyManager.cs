@@ -19,8 +19,8 @@ public class TD_EnemyManager : MonoBehaviour
     float waveIntervalRemaining = -10f;
     public bool AutoStart = true;
     
-    private bool _waveActive = false;
-    public bool WaveActive { get => _waveActive; }
+    private bool _spawnersActive = false;
+    public bool SpawnersActive { get => _spawnersActive; }
 
     public int TotalWaves { get => GetTotalWaves(); }
 
@@ -71,13 +71,11 @@ public class TD_EnemyManager : MonoBehaviour
          * - Until the player has re-enabled by clicking button OR the timer has expired
          */
 
-
-
         // TODO: Change this to a coroutine
-        if (_waveActive)
+        if (_spawnersActive)
         {
-            if (IsCurrentWaveComplete()) NotifyCurrentWaveComplete();
-        } else if (!_waveActive) {
+            if (IsCurrentWaveGroupComplete()) OnCurrentWaveGroupComplete();
+        } else if (!_spawnersActive) {
             // If not active we should the countdown for autostart waves
             waveIntervalRemaining -= Time.deltaTime;
 
@@ -92,13 +90,14 @@ public class TD_EnemyManager : MonoBehaviour
     #endregion
 
     #region Events
-    private void NotifyCurrentWaveComplete()
+    private void OnCurrentWaveGroupComplete()
     {
         ToggleSpawners(false);
-        Debug.Log("Wave Complete for all Spawners");
+        Debug.Log("Wave Group Complete for all Spawners");
         RestartWaveInterval();
 
         EventManager.instance.WaveFinished(TD_GameManager.instance.CurrentWaveIndex);
+
     }
 
     #endregion
@@ -122,7 +121,7 @@ public class TD_EnemyManager : MonoBehaviour
     /// Check if ALL spawners in the manager have completed their current wave
     /// </summary>
     /// <returns></returns>
-    public bool IsCurrentWaveComplete()
+    public bool IsCurrentWaveGroupComplete()
     {
         bool anyInProgress = false;
         foreach (TD_Spawner spawner in _spawners)
@@ -177,7 +176,7 @@ public class TD_EnemyManager : MonoBehaviour
 
     private void ToggleSpawners(bool isEnabled)
     {
-        _waveActive = isEnabled;
+        _spawnersActive = isEnabled;
         foreach (TD_Spawner spawner in _spawners)
         {
             spawner.SpawnAllowed = isEnabled;
@@ -190,7 +189,7 @@ public class TD_EnemyManager : MonoBehaviour
     /// <returns></returns>
     private bool ShouldAutoStart()
     {
-        return AutoStart && IsCurrentWaveComplete() && waveIntervalRemaining <= 0;
+        return AutoStart && IsCurrentWaveGroupComplete() && waveIntervalRemaining <= 0;
     }
     #endregion
 }
