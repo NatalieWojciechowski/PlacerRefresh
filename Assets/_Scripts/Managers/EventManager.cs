@@ -13,6 +13,9 @@ public class EventManager : MonoBehaviour
     public static UnityAction<int> OnEnemyPass;
     private CustomIntEvent enemyPassEvent;
 
+    public static UnityAction OnPlayerReady;
+    private CustomIntEvent playerReadyEvent;
+
     public static UnityAction<int> OnWaveStart;
     private CustomIntEvent waveStartEvent;
 
@@ -68,34 +71,20 @@ public class EventManager : MonoBehaviour
     public delegate void OnGodModeToggleEvent();
     public static event EventHandler OnGodModeToggle;
 
-
     public enum TD_Events
     {
         GenericCancel,
         GenericAccept,
     }
 
-    //public static Action<CustomEventArgs> A_GenericCancel;
-    //public static Action<CustomEventArgs> A_GenericAccept;
     public static event EventHandler<CustomEventArgs> CancelTriggered;
     public static CustomArgsEvent OnCancel;
     public static CustomArgsEvent OnAccept;
 
-    //public delegate void TD_EventHandler(object source, EventArgs args);
-    //public event TD_EventHandler EventTriggered;
-    //public static event Action<TD_Events> tdEventTriggered;
-
-
     public static UnityAction<TD_Building> OnTowerBlueprint;
     public static UnityAction<TD_Building> OnTowerPlace;
-
-
-
-
     //private CustomBuildingEvent towerSelectEvent;
     #endregion
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -105,20 +94,12 @@ public class EventManager : MonoBehaviour
             DontDestroyOnLoad(instance);
         }
         else Destroy(this);
-
-        ////enemyPassEvent = new();
-        ////waveStartEvent = new();
-        ////waveFinishEvent = new();
-        ////towerSelectEvent = new();
-        ////towerDeselectEvent = new();
-        ////moneySpentEvent = new();
-        //DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public static void EnemyPassedCore(int coreDmg)
@@ -134,12 +115,14 @@ public class EventManager : MonoBehaviour
     /// <param name="waveIndex"></param>
     public void WaveStarted(int waveIndex)
     {
-        //if (!TD_GameManager.instance.PlayerReady) TD_GameManager.instance.PlayerStart();
-        // Wave finish + timer OR button push for start next
-        // TODO: Maybe checkpoints included for user prompt before start? 
         Debug.Log($"Enemy Wave Started: {waveIndex}");
-        //current.waveStartEvent.Invoke(waveIndex);
-        OnWaveStart?.Invoke(waveIndex); 
+        OnWaveStart?.Invoke(waveIndex);
+    }
+
+    public void PlayerReady()
+    {
+        if (!TD_GameManager.instance.PlayerReady)
+            OnPlayerReady?.Invoke();
     }
 
     /// <summary>
@@ -212,7 +195,7 @@ public class EventManager : MonoBehaviour
     public void GenericAccept()
     {
         CustomEventArgs args = new CustomEventArgs();
-        Debug.Log($"Accept: ");
+        //Debug.Log($"Accept: ");
         OnAccept?.Invoke(args);
     }
 

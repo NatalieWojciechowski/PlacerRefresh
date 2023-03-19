@@ -49,7 +49,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         EventManager.OnWaveStart += OnWaveStart;
         EventManager.GameOver += OnGameLose;
         EventManager.GameWon += OnGameWin;
-        WaveStartButton.GetComponent<Button>().onClick.AddListener(OnWaveStart);
+        WaveStartButton.GetComponent<Button>().onClick.AddListener(OnPlayerStart);
         //waveStatus.GetComponentInChildren<Button>().onClick.AddListener(delegate { EventManager.current.WaveStarted(TD_GameManager.current.CurrentWaveIndex); });
         Button[] speedButtons = SpeedControls.GetComponentsInChildren<Button>();
         speedButtons[0]?.onClick.AddListener(() => TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE));
@@ -87,10 +87,10 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         else Destroy(gameObject);
     }
 
-    private void OnWaveStart()
+    private void OnPlayerStart()
     {
         if (EventManager.instance == null) return;
-        EventManager.instance.WaveStarted(TD_GameManager.instance.CurrentWaveIndex);
+        EventManager.instance.PlayerReady();
         UpdateDisplay();
     }
 

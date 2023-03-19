@@ -45,7 +45,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     GameState gameState;
     #endregion
-
+    protected Coroutine stateTransition;
     protected enum GameState
     {
         MainMenu,
@@ -85,9 +85,11 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         EventManager.OnEnemyPass += TookDmg;
         EventManager.OnWaveFinish += WaveFinished;
         EventManager.OnWaveStart += WaveStarted;
+        EventManager.OnPlayerReady += OnPlayerReady;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
         if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
+        TryChangeState(GameState.SceneInit);
     }
 
     private void OnDisable()
@@ -98,7 +100,14 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         EventManager.OnEnemyPass -= TookDmg;
         EventManager.OnWaveFinish -= WaveFinished;
         EventManager.OnWaveStart -= WaveStarted;
+        EventManager.OnPlayerReady -= OnPlayerReady;
         EventManager.OnMoneySpent -= OnPlayerSpend;
+    }
+
+    private void OnPlayerReady()
+    {
+        playerReady = true;
+        if (TD_EnemyManager.instance.IsCurrentWaveGroupComplete()) IncrementAndCheckWin();
     }
 
     // Start is called before the first frame update
@@ -107,13 +116,11 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         if (instance == null)
         {
             instance = this;
-            //if (useSaveData) TD_GameSerializer.LoadGame();
-            //else
-            //{
+
             gameState = GameState.MainMenu;
             currentCurrency = startingCurrency;
             currentWaveIndex = 0;
-            //}
+
             if (!effectsBin) effectsBin = gameObject;
             DontDestroyOnLoad(instance);
         }
@@ -124,7 +131,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     void Update()
     {
         if (totalWaves == 0) GetTotalWaves();
-        if (coreHealth <= 0) GameOver();
+        if (coreHealth <= 0) TryChangeState(GameState.Lose);
     }
     #endregion
 
@@ -142,20 +149,21 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         //// EX: "LAST WAVE!" indicator or perhaps dialogue events?
 
         waitingForStart = TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
-
+        if (gameState == GameState.WaveActive && waitingForStart) TryChangeState(GameState.Hold);
+        if (ctx >= TD_EnemyManager.instance.TotalWaves - 1) TryChangeState(GameState.Win);
         TD_UIManager.instance.UpdateDisplay();
     }
+
     private void WaveStarted(int ctx)
     {
         if (!TD_EnemyManager.instance || TD_EnemyManager.instance.TotalWaves < 1) return;
+        TryChangeState(GameState.WaveActive);
 
-        ////if (playerReady) PlayerStart();
         //// We may have more than one spawner contributing to the wave, make sure all are done first
-        if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveGroupComplete())
-            NextWave();
+        //if (ctx == currentWaveIndex && TD_EnemyManager.instance.IsCurrentWaveGroupComplete())
+        //    IncrementAndCheckWin();
         // Any additonal animations, etc?
         // EX: "LAST WAVE!" indicator or perhaps dialogue events?
-
         TD_UIManager.instance.UpdateDisplay();
     }
     private void OnPlayerSpend(int ctx)
@@ -209,13 +217,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         return currentCurrency >= purchaseCost;
     }
 
-
-    public void PlayerStart()
-    {
-        playerReady = true;
-        //NextWave();
-    }
-
     public bool SpendMoney(int purchaseCost)
     {
         if (currentCurrency - purchaseCost < 0) return false;
@@ -223,8 +224,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         Debug.Log("Current Money:" + currentCurrency.ToString());
         return true;
     }
-
-
     #endregion
 
     #region Private
@@ -238,28 +237,80 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     {
         if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
     }
-
-    private void GameOver()
+    private void IncrementAndCheckWin()
     {
-        EventManager.instance.Lose();
-    }
-
-    private void NextWave()
-    {
-        if (!TD_EnemyManager.instance.IsCurrentWaveGroupComplete()) return;
-        
+        playerReady = false;
         currentWaveIndex++;
-        if (currentWaveIndex >= TD_EnemyManager.instance.TotalWaves)
-        {
-            currentWaveIndex = TD_EnemyManager.instance.TotalWaves;
-            EventManager.instance.Win();
-        }
+        if (currentWaveIndex >= TD_EnemyManager.instance.TotalWaves) TryChangeState(GameState.Win);
+        else EventManager.OnWaveStart(currentWaveIndex);
     }
+
     private void TookDmg(int coreDmg)
     {
         coreHealth -= coreDmg;
         TD_UIManager.instance.UpdateDisplay();
     }
+
+    private void TryChangeState(GameState toState = GameState.Hold)
+    {
+        if (gameState == GameState.Win || gameState == GameState.Lose) return;
+        switch (toState)
+        {
+            case GameState.MainMenu:
+
+            break;
+
+            case GameState.Loading:
+                // TODO: Loading screen? 
+            Debug.Log("LOADING");
+            break;
+
+            case GameState.SceneInit:
+            waitingForStart = true;
+            playerReady = false;
+            break;
+
+            case GameState.WaveActive:
+            waitingForStart = false;
+            playerReady = false;
+            break;
+
+            case GameState.Hold:
+            waitingForStart = true;
+            break;
+
+            case GameState.Win:
+            EventManager.instance.Win();
+            break;
+
+            case GameState.Lose:
+            EventManager.instance.Lose();
+            break;
+
+            default:
+            SafeTransition(GameState.SceneInit, 0.5f);
+            break;
+        }
+        gameState = toState;
+    }
+
+    /// <summary>
+    /// Provides a delayed state shift and wrapped with verifying coroutines
+    /// </summary>
+    /// <param name="nextState"></param>
+    /// <param name="delay"></param>
+    protected void SafeTransition(GameState nextState, float delay)
+    {
+        // Setup transition back to moving
+        if (stateTransition != null) { StopCoroutine(stateTransition); stateTransition = null; }
+        stateTransition = StartCoroutine(StateTransition(nextState, delay));
+    }
+    protected IEnumerator StateTransition(GameState nextState, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        TryChangeState(nextState);
+    }
+
     #endregion
 
     #region Interface
@@ -267,6 +318,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     {
         currentCurrency = saveData.playerMoney;
         currentWaveIndex = saveData.currentWaveIndex;
+
     }
 
     public void AddToSaveData(ref SaveData saveData)

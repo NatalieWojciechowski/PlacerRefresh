@@ -15,8 +15,7 @@ public class TD_Spawner : MonoBehaviour
     //private List<TD_Wave> _waves;
     [SerializeField] private List<GameObject> spawnedEntities;
     private List<TD_Wave> waveHelpers;
-    public bool CurrentWaveComplete = false;
-
+    public bool IsCurrentWaveComplete { get => CheckWaveCompleted(); }
     public GameObject ActiveSpawnerEffects;
 
     [SerializeField]
@@ -61,21 +60,41 @@ public class TD_Spawner : MonoBehaviour
         if (!TD_GameManager.instance) return;
         if (waveHelpers.Count == 0 && !SetupWaveHelpers()) return;
         if (TD_GameManager.instance.CurrentWaveIndex >= waveHelpers.Count) return;
-
-        // Wave State Checks
-        TD_Wave currentWave = GetCurrentWave();
-        if (currentWave == null) return;
-        if (SpawnAllowed && IsDelayTimerMet() && SpawnPlacementValid()) SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
-        if (spawnedEntities.Count > 0) CheckWaveCompleted(currentWave);
+        UpdateWaveState();
     }
 
-    private void CheckWaveCompleted(TD_Wave currentWave)
+    private void UpdateWaveState()
     {
+        // Wave State Checks
+        TD_Wave currentWave = GetCurrentWave();
+        if (currentWave == null || currentWave.AllDefeated) return;
+
+        if (!CheckWaveCompleted())
+        {
+            // Wave ongoing, more to spawn
+            if (SpawnAllowed && IsDelayTimerMet() && SpawnPlacementValid())
+                SpawnEnemy(currentWave.GetEnemy(currentEnemyIndex));
+            //// CHECK STILL ACTIVE STATE
+            //if (!CheckWaveCompleted() && spawnedEntities.Count > 0)
+            //{
+            //    // CHECK END STATE
+            //    if (CheckWaveCompleted()) WaveCleanup(currentWave);
+            //}
+        }
+        else if (spawnedEntities.Count > 0) WaveCleanup(currentWave);
+    }
+
+    private bool CheckWaveCompleted()
+    {
+        TD_Wave currentWave = GetCurrentWave(); 
+        if (currentWave == null || !GetCurrentWave().AllSpawned) return false;
         _enemiesAlive.RemoveAll((enemy) => enemy == null);
         if (_enemiesAlive.Count <= 0)
         {
-            WaveCleanup(currentWave);
+            WaveCleanup(GetCurrentWave());
+            return true;
         }
+        return false;
     }
 
     public void OnAllWaveSpawned(TD_Wave currentWave)
@@ -84,10 +103,13 @@ public class TD_Spawner : MonoBehaviour
         ToggleSpawnerEffects(TD_GameManager.instance.CurrentWaveIndex);
         SpawnAllowed = false;
         ActiveSpawnerEffects.SetActive(false);
+        ////currentWave.WaveSpawningComplete();
+        //// Check for Enemies all defeatd / reached end before setting to next wave
+        //_enemiesAlive.RemoveAll((enemy) => enemy == null);
+    }
 
-        //currentWave.WaveSpawningComplete();
-        // Check for Enemies all defeatd / reached end before setting to next wave
-        _enemiesAlive.RemoveAll((enemy) => enemy == null);
+    public void OnAllWaveDefeated(TD_Wave targetWave)
+    {
 
     }
 
@@ -103,11 +125,11 @@ public class TD_Spawner : MonoBehaviour
         {
             TD_Wave targetWave = waveHelpers[waveIndx];
             if (!targetWave.AllSpawned) toggleToState = true;
-            // If current wave done spawning or if spawner has empty wave this round
-            else if (targetWave.WaveDetails?.waveContents?.Count < 0 || (targetWave.AllSpawned)) toggleToState = false;
+            // If current wave done spawning or if spawner has empty wave this round 
+            // These currently couold be ommited; left in if we need more granular control
+            else if (targetWave.WaveDetails?.waveContents?.Count < 1 || (targetWave.AllSpawned)) toggleToState = false;
             else Debug.Log("TOGGLE SPAWNER EFFECTS IN STRANGE STATE: INDEX" + waveIndx);
         }
-        else ActiveSpawnerEffects.SetActive(false);
 
         ActiveSpawnerEffects.SetActive(toggleToState);
     }
@@ -124,8 +146,10 @@ public class TD_Spawner : MonoBehaviour
 
     private void WaveCleanup(TD_Wave currentWave)
     {
+        SpawnAllowed = false;
         currentEnemyIndex = 0;
-        CurrentWaveComplete = true;
+        _enemiesToSpawn.RemoveAll((entity) => (entity == null));
+        _enemiesAlive.RemoveAll((entity) => (entity == null));
         spawnedEntities.RemoveAll((entity) => (entity == null));
         currentWave.EndWave();
     }
@@ -133,7 +157,7 @@ public class TD_Spawner : MonoBehaviour
     private TD_Wave GetCurrentWave()
     {
         TD_Wave currentWave = null;
-        if (waveHelpers != null && TD_GameManager.instance) currentWave = waveHelpers[TD_GameManager.instance.CurrentWaveIndex];
+        if (waveHelpers != null && TD_GameManager.instance && TD_GameManager.instance.CurrentWaveIndex < waveHelpers.Count) currentWave = waveHelpers[TD_GameManager.instance.CurrentWaveIndex];
         return currentWave;
     }
 

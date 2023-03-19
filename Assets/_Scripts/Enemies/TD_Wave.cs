@@ -15,27 +15,16 @@ public class TD_Wave
 
 
     private bool waveStarted = false;
-    private bool waveSpawned = false;
     private bool waveEnded = false;
 
-
-    public bool AllSpawned { get => allSpawned; }
-    private bool finished = false;
     private bool allSpawned = false;
+    public bool AllSpawned { get => checkAllSpawned(); }
 
-    private bool defeated = false;
-    public bool Defeated { get => defeated; }
+
+    private bool allDefeated = false;
+    public bool AllDefeated { get => checkAllDefeated(); }
     public float StartTime { get => startTime; set => startTime = value; }
     public float CompleteTime { get => completeTime; set => completeTime = value; }
-
-    private bool checkAllDefeated()
-    {
-
-        //TD_EnemyData enemiesRemaining = enemiesToSpawn.Find((enemy) => { return enemy != null; });
-        return allSpawned; // && enemiesRemaining;
-    }
-
-    //public float waveCompletedDuration;
 
     public WaveDetails WaveDetails;
 
@@ -62,19 +51,13 @@ public class TD_Wave
 
     public void EndWave()
     {
-        if (defeated) return;
+        if (allDefeated) return;
         waveEnded = true;
         Debug.Log("END WAVE");
-        defeated = true;
+        allDefeated = true;
         completeTime = Time.time;
         // TODO: Invoke event?
         EventManager.instance.WaveFinished(waveIndex);
-    }
-    public void WaveSpawningComplete()
-    {
-        if (allSpawned == true) return;
-        allSpawned = true;
-        spawner.OnAllWaveSpawned(this);
     }
 
     public TD_EnemyData GetEnemy(int enemyIndex)
@@ -87,12 +70,23 @@ public class TD_Wave
             enemiesSpawnedCount++;
             return enemiesToSpawn[enemyIndex];
         }
-        if (!waveEnded && checkAllSpawned()) WaveSpawningComplete();
+        if (!waveEnded && checkAllSpawned()) onSpawningComplete();
         return null;
     }
 
     private bool checkAllSpawned()
     {
         return (enemiesSpawnedCount > 0 && enemiesSpawnedCount == enemiesToSpawn.Count);
+    }
+    private bool checkAllDefeated()
+    {
+        return allDefeated || spawner.IsCurrentWaveComplete; // && enemiesRemaining;
+    }
+
+    public void onSpawningComplete()
+    {
+        if (allSpawned == true) return;
+        allSpawned = true;
+        spawner.OnAllWaveSpawned(this);
     }
 }

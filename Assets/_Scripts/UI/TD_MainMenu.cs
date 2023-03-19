@@ -65,6 +65,7 @@ public class TD_MainMenu : MonoBehaviour, I_RefreshOnSceneChange
     }
     private void OnNewGame()
     {
+        TD_GameManager.instance.useSaveData = false;
         SceneLoader.instance.SetNextScene(SceneLoader.GameScene.Level1);
     }
 

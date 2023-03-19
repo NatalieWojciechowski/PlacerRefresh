@@ -18,7 +18,7 @@ public class TD_EnemyManager : MonoBehaviour
     public float WaveIntervalDelay = 2f;
     float waveIntervalRemaining = -10f;
     public bool AutoStart = true;
-    
+
     private bool _spawnersActive = false;
     public bool SpawnersActive { get => _spawnersActive; }
 
@@ -126,7 +126,7 @@ public class TD_EnemyManager : MonoBehaviour
         bool anyInProgress = false;
         foreach (TD_Spawner spawner in _spawners)
         {
-            if (!spawner.CurrentWaveComplete) anyInProgress = true;
+            if (!spawner.IsCurrentWaveComplete) anyInProgress = true;
         }
         return !anyInProgress;
     }

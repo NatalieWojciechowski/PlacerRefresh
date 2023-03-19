@@ -108,7 +108,7 @@ public class TD_Projectile : MonoBehaviour
     private IEnumerator AllowStateTime(ProjectileState nextState, float delay)
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("Now allow state change");
+        //Debug.Log("Now allow state change");
         TryChangeState(nextState);
     }
 
