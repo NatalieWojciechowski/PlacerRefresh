@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TD_AudioManager : MonoBehaviour
 {
     public AudioSource SharedAudioSource;
+    public AudioSource MusicAudioSource;
+    public AudioSource FXAudioSource;
 
     public static TD_AudioManager instance;
 
@@ -20,6 +23,7 @@ public class TD_AudioManager : MonoBehaviour
 
     private float musicVolume = 1f;
     private float sfxVolume = 1f;
+    private float mainVolume = 1f;
 
     private void Awake()
     {
@@ -60,5 +64,25 @@ public class TD_AudioManager : MonoBehaviour
     public void PlayClip(AudioClip clip, Vector3 atPosition)
     {
         if (clip) AudioSource.PlayClipAtPoint(clip, atPosition, sfxVolume);
+    }
+
+    public void SetMainVolume(float toVolume)
+    {
+        toVolume = Mathf.Clamp(toVolume, 0f, 1f);
+        SharedAudioSource.volume = toVolume;
+    }
+
+    public void SetMusicVolume(float toVolume)
+    {
+        toVolume = Mathf.Clamp(toVolume, 0f, 1f * SharedAudioSource.volume);
+        if (MusicAudioSource) MusicAudioSource.volume = toVolume;
+        else SetMainVolume(toVolume);
+    }
+
+    public void SetFXVolume(float toVolume)
+    {
+        toVolume = Mathf.Clamp(toVolume, 0f, 1f) * SharedAudioSource.volume;
+        if (FXAudioSource) FXAudioSource.volume = toVolume;
+        else SetMainVolume(toVolume);
     }
 }
