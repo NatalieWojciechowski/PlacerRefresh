@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SharedAudioSource: {fileID: 378664885813868013}
+  MusicAudioSource: {fileID: 0}
+  FXAudioSource: {fileID: 0}
   MainMenuMusic: {fileID: 8300000, guid: 1724b2961c74aa8458778ecc251def2a, type: 3}
   BasicLevelMusic: {fileID: 8300000, guid: 9cecc78ef810b8843bdc76636f58f1ee, type: 3}
   BossMusic: {fileID: 8300000, guid: 567e3ce65d6705b4d8cf3b7264b66aa8, type: 3}

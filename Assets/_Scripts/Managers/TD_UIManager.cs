@@ -21,6 +21,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     public GameObject WaveStartButton;
     public GameObject playerMoney;
     public GameObject mainMenuPanel;
+    public GameObject settingsPanel;
     public GameObject SaveAndExitButton;
     public GameObject HealthBarContainer;
 
@@ -112,8 +113,10 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
             waveStatus.GetComponentsInChildren<TMP_Text>()[1].text = $"{currentWave} / {TD_GameManager.instance.TotalWaves}";
         }
         if (playerMoney) playerMoney.GetComponentsInChildren<TMP_Text>()[0].text = TD_GameManager.instance.CurrentCurrency.ToString();
+
         if (WaveStartButton)
         {
+            // Dont allow early wave start if midwave already
             bool showStartButton = (
                 TD_GameManager.instance.CoreHealth > 0 &&
                 (!TD_EnemyManager.instance.AutoStart && TD_GameManager.instance.IsWaitingForStart)
@@ -121,6 +124,11 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
             WaveStartButton.SetActive(showStartButton);
         }
 
+        // TODO: Can this just be !showStartButton ?
+        // We only want to be able to save if not mid-wave
+        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.PlayerReady || TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
+
+        // We may have added new buildings or something cannot be afforded anymore
         if (TD_BuildManager.instance)
         {
             TD_BuildManager.instance.UpdateBuildToolbar();
@@ -152,67 +160,37 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
         UpdateDisplay();
     }
 
-
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    Debug.Log(eventData.selectedObject);
-    //}
-
-    //public void OnPointerUp(PointerEventData eventData)
-    //{
-    //    Debug.Log(eventData.selectedObject);
-    //}
-
-    //public void UpgradeSelectedTower()
-    //{
-    //    Debug.Log("UPGRADE", FindObjectOfType<TowerTooltip>());
-    //}
-
-    //public void SellSelectedTower()
-    //{
-    //    Debug.Log("Sell", FindObjectOfType<TowerTooltip>());
-    //}
-
-    //private void adjustBuildButtons()
-    //{
-    //    Button[] buildButtons = towerToolbar.gameObject.GetComponentsInChildren<Button>();
-    //    if (buildButtons.Length == 0 || buildButtons.Length != TD_BuildManager.instance.Pieces.Count) return;
-        
-    //    for (int i = 0; i < TD_BuildManager.instance.Pieces.Count; i++)
-    //    {
-    //        if (TD_BuildManager.instance.Pieces[i] == null || buildButtons[i] == null) continue;
-
-    //        Button currentButton = buildButtons[i];
-    //        TD_Building buildingCtrl;
-    //        TD_BuildManager.instance.Pieces[i].gameObject.TryGetComponent<TD_Building>(out buildingCtrl);
-    //        if (buildingCtrl && buildingCtrl.GetStats().RawBuildingData)
-    //        {
-    //            currentButton.image.color = Color.white;
-    //            int bCost = buildingCtrl.GetStats().RawBuildingData.PurchaseCost;
-    //            currentButton.enabled = TD_GameManager.instance.CanAfford(bCost);
-    //        } else {
-    //            currentButton.enabled = false;
-    //            currentButton.image.color = Color.red;
-    //        }
-    //    }
-    //}
-
-    //private void OnUserSpend(int bCost)
-    //{
-    //    if (!gameObject.activeSelf) return;
-    //    EventManager.current.MoneySpent(bCost);
-    //    // Prevent the user from placing another after only purchasing once
-    //    // TODO: This doesnt behave as we would expect; still doesnt prevent more building
-    //    //BuildManager.Instance.StopAllCoroutines();
-    //    UpdateDisplay();
-    //}
     public void ToggleMenu()
     {
-        bool menuOpen = mainMenuPanel.activeSelf;
-        if (menuOpen) TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
-        else TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
-        mainMenuPanel.SetActive(!menuOpen);
-        if (SaveAndExitButton) SaveAndExitButton.GetComponent<Button>().interactable = !TD_GameManager.instance.PlayerReady || TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
+        bool alreadyOpen = mainMenuPanel.activeSelf;
+        if (alreadyOpen)
+        {
+            // Unpause
+            TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.NORMAL);
+        }
+        else
+        {
+            TD_GameManager.SetGameSpeed(TD_GameManager.GameSpeedOptions.PAUSE);
+            if (settingsPanel) settingsPanel.SetActive(false);
+        }
+        mainMenuPanel.SetActive(!alreadyOpen);
+    }
+
+
+    public void ToggleSettings()
+    {
+        if (settingsPanel == null) return;
+        // Do we ALREADY have the panel open? 
+        bool settingsOpen = settingsPanel.activeSelf;
+        // Game should already be paused from the toggle menu at this point; we also dont want to unpause yet
+        settingsPanel.SetActive(!settingsOpen);
+    }
+
+    public void ApplySettings()
+    {
+        // AUDIO manager has made the actual updates; without this we will discard changes
+        PlayerPrefs.Save();
+        ToggleSettings();
     }
 
     public void SaveAndExit()
@@ -236,6 +214,7 @@ public class TD_UIManager : MonoBehaviour, I_RefreshOnSceneChange
     public void OnSceneLoad(Scene current, LoadSceneMode loadSceneMode)
     {
         if (mainMenuPanel.activeSelf) ToggleMenu();
+        if (settingsPanel && settingsPanel.activeSelf) ToggleMenu();
         ReInit();
     }
 }

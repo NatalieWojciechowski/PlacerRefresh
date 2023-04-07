@@ -11,16 +11,16 @@ o More than one Level design
 
 ### Functionality
 
-o Unlock Towers / career panel?
+~ Unlock Towers / career panel?
 
 ### Appearance
 
 o More Unified theme / look?
 o FX
-	o Fix the toonFx as most do not render in game view
-		o have to change the material / shader for the material 
+	x Fix the toonFx as most do not render in game view
+		x have to change the material / shader for the material 
 	o Audio
-		o Background Music?
+		x Background Music?
 		o Improved tower FX?
 		o Hurt audio?
 		o Boss sounds
@@ -35,7 +35,7 @@ o No animals harmed in making! (cuz of the pigs)
 
 #### Game Features
 
-o Wave wait / send early fix (partially implemented but regression)
+x Wave wait / send early fix (partially implemented but regression)
 o Cut Scene?
 	- Opening has that truck driving with the pigs in the back, once crashed they start to spawn
 	  - Then the golems & boss were those who were annoyed/ affected by the crash and awoke
@@ -43,7 +43,9 @@ o Cut Scene?
 #### Enemy Features
 
 o Enemy upgrade Gates
+	=> As the enemies pass through the gates throughout the level, they either get stronger, buff nearby allies, or similar (speed up?)
 o Enemy oil slick / speed buff
+	=> Partly implemented; the buff currently created is a bit too hardcoded and needs some refactoring
 o units attack / disable / destroy towers? perhaps when they die too close to them 
   or certain enemies will "explode"
 

@@ -12,12 +12,6 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 6897865198137076439}
-    - target: {fileID: 2012461764919160237, guid: 2bbb046b5c4691f4bb8ef70cc7373569,
-        type: 3}
-      propertyPath: DeathEffects
-      value: 
-      objectReference: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
-        type: 3}
     - target: {fileID: 5778099039827064106, guid: 2bbb046b5c4691f4bb8ef70cc7373569,
         type: 3}
       propertyPath: m_Name

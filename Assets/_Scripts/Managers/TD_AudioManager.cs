@@ -25,6 +25,13 @@ public class TD_AudioManager : MonoBehaviour
     private float sfxVolume = 1f;
     private float mainVolume = 1f;
 
+    private enum VolumeChannels
+    {
+        MainVolume,
+        SFXVolume,
+        MusicVolume,
+    };
+
     private void Awake()
     {
 
@@ -37,8 +44,9 @@ public class TD_AudioManager : MonoBehaviour
 
         if (!SharedAudioSource) SharedAudioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
-        musicVolume = PlayerPrefs.GetFloat("music_volume", 1f);
-        sfxVolume = PlayerPrefs.GetFloat("sfx_volume", 1f);
+        mainVolume = PlayerPrefs.GetFloat(VolumeChannels.MainVolume.ToString(), 1f);
+        musicVolume = PlayerPrefs.GetFloat(VolumeChannels.MusicVolume.ToString(), 1f);
+        sfxVolume = PlayerPrefs.GetFloat(VolumeChannels.SFXVolume.ToString(), 1f);
     }
 
     // Start is called before the first frame update
@@ -70,6 +78,7 @@ public class TD_AudioManager : MonoBehaviour
     {
         toVolume = Mathf.Clamp(toVolume, 0f, 1f);
         SharedAudioSource.volume = toVolume;
+        PlayerPrefs.SetFloat(VolumeChannels.MainVolume.ToString(), toVolume);
     }
 
     public void SetMusicVolume(float toVolume)
@@ -77,6 +86,7 @@ public class TD_AudioManager : MonoBehaviour
         toVolume = Mathf.Clamp(toVolume, 0f, 1f * SharedAudioSource.volume);
         if (MusicAudioSource) MusicAudioSource.volume = toVolume;
         else SetMainVolume(toVolume);
+        PlayerPrefs.SetFloat(VolumeChannels.MusicVolume.ToString(), toVolume);
     }
 
     public void SetFXVolume(float toVolume)
@@ -84,5 +94,6 @@ public class TD_AudioManager : MonoBehaviour
         toVolume = Mathf.Clamp(toVolume, 0f, 1f) * SharedAudioSource.volume;
         if (FXAudioSource) FXAudioSource.volume = toVolume;
         else SetMainVolume(toVolume);
+        PlayerPrefs.SetFloat(VolumeChannels.SFXVolume.ToString(), toVolume);
     }
 }

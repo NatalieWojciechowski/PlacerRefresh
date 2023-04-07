@@ -75,7 +75,7 @@ public class PlayerControlsManager : MonoBehaviour, TD_Controls.IPlayerActions
     public void OnMoveAlt(InputAction.CallbackContext context)
     {
         //Debug.Log("PCM => OnMove" + context.ToString());
-        Debug.Log("context.action.ReadValue<Vector2>()" + context.action.ReadValue<Vector2>().ToString());
+        //Debug.Log("context.action.ReadValue<Vector2>()" + context.action.ReadValue<Vector2>().ToString());
         if (context.action.triggered && context.action.ReadValue<Vector2>().magnitude != 0 && context.action.phase == InputActionPhase.Performed)
         {
             //Perform Trigger Pressed Actions
