@@ -20,7 +20,7 @@ public class TD_EnemyBuff : MonoBehaviour
     public float activeTime = 0f;
     public float maxDuration = 1f;
 
-    public GameObject BuffSpawnPrefab;
+    //public GameObject BuffSpawnPrefab;
     public string DisplayName;
 
     // Start is called before the first frame update
@@ -39,8 +39,21 @@ public class TD_EnemyBuff : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        TD_Enemy enemyHit = collision.gameObject.GetComponent<TD_Enemy>();
+        if (enemyHit) ApplyBuff(enemyHit);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TD_Enemy enemyHit = other.gameObject.GetComponent<TD_Enemy>();
+        if (enemyHit) ApplyBuff(enemyHit);
+    }
+
     public void ApplyBuff(TD_Enemy tD_Enemy)
     {
+        Debug.Log("APPLY BUFF" + DisplayName);
         buffedEnemy = tD_Enemy;
         if (corEffects != null) StopCoroutine(corEffects);
         // In case the enemy has been destroyed, else apply effects
@@ -51,15 +64,14 @@ public class TD_EnemyBuff : MonoBehaviour
     {
         // Create the effects when the buff is first Started;
         startTime = Time.time;
-        Debug.Log("Buff STARTING");
+        Debug.Log("Buff STARTING" + DisplayName);
+        TD_Enemy.BuffStats changeEffect = new TD_Enemy.BuffStats();
+        changeEffect.Speed = 0.5f;
+        buffedEnemy.ChangeBuffStats(changeEffect);
         yield return new WaitForSeconds(delay);
-        Debug.Log("Buff ENDING");
+        Debug.Log("Buff ENDING" + DisplayName);
+        changeEffect.Speed = -changeEffect.Speed;
+        buffedEnemy.ChangeBuffStats(changeEffect);
         GameObject.Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        TD_Enemy enemyHit = collision.gameObject.GetComponent<TD_Enemy>();
-        if (enemyHit) ApplyBuff(enemyHit);
     }
 }

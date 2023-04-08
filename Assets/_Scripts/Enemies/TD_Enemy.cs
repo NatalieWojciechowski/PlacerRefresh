@@ -55,6 +55,13 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
     private bool shielded;
     private GameObject shieldObj;
 
+    public struct BuffStats
+    {
+        public float Health;
+        public float Speed;
+    }
+    BuffStats BuffModifiers;
+
     protected virtual private void Awake()
     {
         EnemyUUID = Guid.NewGuid();
@@ -206,6 +213,13 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
     //{
     //    buff.ApplyBuff(this);
     //}
+
+    public void ChangeBuffStats(BuffStats changeStats)
+    {
+        // TODO: Have the buffs as as list so we can apply/remove more easily
+        _currentHealth += changeStats.Health;
+        _moveSpeed += changeStats.Speed;
+    }
 
     public void GiveShield(TD_AOEData _AOEData) 
     {

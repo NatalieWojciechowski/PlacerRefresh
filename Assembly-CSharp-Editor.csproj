@@ -892,6 +892,14 @@
       <Project>{B3FBC1B1-9019-DA5F-C750-AD6627D4E33E}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{715CE5DD-8DB9-8A19-031F-C156A6143113}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{B3613CDA-9B8E-7223-5467-FC6DDE5A4B58}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
       <Project>{8F7850C4-B0B0-0DF5-9BE0-DD520CB5E835}</Project>
       <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
@@ -1047,14 +1055,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{81D675CD-33E7-D08E-12E2-CFD7BFEE95A5}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
-      <Project>{B3613CDA-9B8E-7223-5467-FC6DDE5A4B58}</Project>
-      <Name>com.unity.cinemachine.editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Cinemachine.csproj">
-      <Project>{715CE5DD-8DB9-8A19-031F-C156A6143113}</Project>
-      <Name>Cinemachine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

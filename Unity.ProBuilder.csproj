@@ -108,8 +108,8 @@
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\ProBuilderEnum.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\SelectionModifierBehaviour.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Shapes\Arch.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\SelectionPickerRendererHDRP.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\MeshHandle.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\SelectionPickerRendererHDRP.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\ProBuilderMeshFunction.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\ProBuilderSnapping.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.6\Runtime\Core\MeshUtility.cs" />
