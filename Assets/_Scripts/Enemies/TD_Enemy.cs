@@ -202,6 +202,11 @@ public class TD_Enemy : MonoBehaviour, I_TDEnemySaveCoordinator
         TryChangeState(EnemyState.Idle);
     }
 
+    //public void AppendStats(TD_EnemyBuff buff)
+    //{
+    //    buff.ApplyBuff(this);
+    //}
+
     public void GiveShield(TD_AOEData _AOEData) 
     {
         if (shielded) return;

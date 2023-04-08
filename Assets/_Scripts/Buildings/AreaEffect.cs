@@ -60,6 +60,7 @@ public class AreaEffect : MonoBehaviour
         _pulseDelay = td_AOEData.pulseDelay;
         AdjustRange(td_AOEData.aoeRange);
         maxTime = td_AOEData.maxLifetime;
+        if (maxTime == 0) maxTime = 10000000f;
     }
 
     // Update is called once per frame

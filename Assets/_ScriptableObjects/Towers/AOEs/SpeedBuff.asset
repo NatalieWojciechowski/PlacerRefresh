@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aoePrefab: {fileID: 1579491176250168380, guid: 94afd9d7fd805784ca96fa4bf81ead9e,
     type: 3}
-  effectPrefab: {fileID: 6075313622514558837, guid: b667d5287636eb64f9da6cf256d7896c,
+  effectPrefab: {fileID: 5143567605099488157, guid: a12862b8530400248aabe705e6d2bdef,
     type: 3}
   aoeAnimator: {fileID: 0}
   particleSystem: {fileID: 0}
@@ -23,4 +23,4 @@ MonoBehaviour:
   pulseEffectAmount: 0
   aoeRange: 1
   RemoveOnContact: 0
-  maxLifetime: 2
+  maxLifetime: 0
