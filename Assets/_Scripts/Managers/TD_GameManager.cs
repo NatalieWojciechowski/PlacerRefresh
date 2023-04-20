@@ -13,13 +13,12 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
     private int coreHealth = 5;
     private int currentWaveIndex = -1;
-    private int totalWaves = 0;
     private int currentCurrency = 0;
     [SerializeField] private int startingCurrency = 20;
 
     public int CurrentCurrency { get => currentCurrency; }
     public int CurrentWaveIndex { get => currentWaveIndex; }
-    public int TotalWaves { get => totalWaves; }
+    public int TotalWaves { get => TD_EnemyManager.instance.GetTotalWaves(); }
     public int CoreHealth { get => coreHealth; }
 
     public void WipeWave()
@@ -88,7 +87,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         EventManager.OnPlayerReady += OnPlayerReady;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
-        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
         TryChangeState(GameState.SceneInit);
     }
 
@@ -130,7 +128,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     // Update is called once per frame
     void Update()
     {
-        if (totalWaves == 0) GetTotalWaves();
         if (coreHealth <= 0) TryChangeState(GameState.Lose);
     }
     #endregion
@@ -150,7 +147,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
         waitingForStart = TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
         if (gameState == GameState.WaveActive && waitingForStart) TryChangeState(GameState.Hold);
-        if (ctx >= TD_EnemyManager.instance.TotalWaves - 1) TryChangeState(GameState.Win);
+        if (ctx >= TD_EnemyManager.instance.TotalWaves - 1 && TD_EnemyManager.instance.IsCurrentWaveGroupComplete()) TryChangeState(GameState.Win);
         TD_UIManager.instance.UpdateDisplay();
     }
 
@@ -232,10 +229,6 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     {
         if (TD_BuildManager.instance) TD_BuildManager.instance.gameObject.SetActive(toState);
         if (TD_UIManager.instance) TD_UIManager.instance.gameObject.SetActive(true);
-    }
-    private void GetTotalWaves()
-    {
-        if (TD_EnemyManager.instance) totalWaves = TD_EnemyManager.instance.GetTotalWaves();
     }
     private void IncrementAndCheckWin()
     {

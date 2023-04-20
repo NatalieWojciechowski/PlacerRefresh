@@ -326,7 +326,7 @@ public class TD_BuildManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSc
         TD_Building toAdd;
         foreach (GameObject building in BuiltBuildings)
         {
-            if (building.TryGetComponent<TD_Building>(out toAdd))
+            if (building != null && building.TryGetComponent<TD_Building>(out toAdd))
                 toAdd.AddToSaveData(ref saveData);
         }
     }

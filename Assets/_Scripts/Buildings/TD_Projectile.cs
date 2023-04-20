@@ -155,6 +155,8 @@ public class TD_Projectile : MonoBehaviour
         myTarget = buildingTarget.gameObject;
         mAnimator = GetComponent<Animator>();
         totalTravelNeeded = TotalTimeForPath(transform.position, myTarget.transform.position);
+        var ro = Quaternion.LookRotation(myTarget.transform.position - transform.position);
+        transform.rotation = ro;
 
         // Initial Velocity
         Vector3 iVelocity = transform.forward * projectileSpeed;
@@ -164,7 +166,7 @@ public class TD_Projectile : MonoBehaviour
 
         //double range =  (iVelocity*iVelocity * Math.Sin(2 * totalDistance)) / Physics.gravity.y;
         //float range = iVelocity * Mathf.Cos(launchAngle);
-        
+
 
         // If we are using fixed velocity, determine time.
 
