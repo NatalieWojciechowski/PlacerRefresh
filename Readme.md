@@ -2,6 +2,19 @@
 
 # "All The Way Home"
 
+## Highlights
+
+
+![Start Screen](Assets/Highlights/StartScreen.png)
+
+![New Game](Assets/Highlights/NewGame.png)
+
+![Mid-Wave And Shields](Assets/Highlights/MidWaveShielded.png)
+
+![Boss](Assets/Highlights/Boss.png)
+
+
+
 ## Pending Items
 
 ### Design
@@ -54,3 +67,4 @@ o units attack / disable / destroy towers? perhaps when they die too close to th
 o Spawner Fix
 	- Attempting to resolve the player vs autostart feature wound up causing some bugs over time, untangling some of it has lead to this not quite working atm.
 	o Consider changing this all to state machine...
+
