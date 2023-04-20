@@ -5,13 +5,13 @@
 ## Highlights
 
 
-![Start Screen](Assets/Highlights/StartScreen.png)
+![Start Screen](Assets/Highlights/StartScreen.PNG)
 
-![New Game](Assets/Highlights/NewGame.png)
+![New Game](Assets/Highlights/NewGame.PNG)
 
-![Mid-Wave And Shields](Assets/Highlights/MidWaveShielded.png)
+![Mid-Wave And Shields](Assets/Highlights/MidWaveShielded.PNG)
 
-![Boss](Assets/Highlights/Boss.png)
+![Boss](Assets/Highlights/Boss.PNG)
 
 
 
