@@ -104,6 +104,11 @@ public class TD_GameSerializer : MonoBehaviour
         Debug.Log("Game data saved!");
     }
 
+    public static void ForceLoadGame()
+    {
+        LoadGame();
+    }
+
     public static bool LoadGame()
     {
         if (File.Exists(PersistentDataPath()))

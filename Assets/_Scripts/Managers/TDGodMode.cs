@@ -30,7 +30,9 @@ public class TDGodMode : MonoBehaviour
 
     private void EventManager_OnGodModeToggle(object sender, EventArgs e)
     {
+        Debug.Log("Toggle God Mode FROM" + isEnabled);
         isEnabled = !isEnabled;
+        Debug.Log("Toggle God Mode TO" + isEnabled);
 
         if (isEnabled) TD_GameManager.instance.AddCoins(100);
     }
@@ -39,6 +41,6 @@ public class TDGodMode : MonoBehaviour
     void Update()
     {
         // Trigger Event in Game Manager? 
-
+        if (!TD_GameManager.instance.CanAfford(100)) TD_GameManager.instance.AddCoins(100);
     }
 }

@@ -20,7 +20,7 @@
 ### Design
 
 o More than one Level design
-	o At least a tutorial type map 
+o Tutorial type map 
 
 ### Functionality
 
@@ -52,6 +52,9 @@ x Wave wait / send early fix (partially implemented but regression)
 o Cut Scene?
 	- Opening has that truck driving with the pigs in the back, once crashed they start to spawn
 	  - Then the golems & boss were those who were annoyed/ affected by the crash and awoke
+o Revisit the Tower Upgrade UI 
+o Rebalance the cost / Upgrade / Range / Selling ratios
+=> Also, the unit scaling does not allow for clean upgrade jumps by %
 
 #### Enemy Features
 
@@ -61,6 +64,9 @@ o Enemy oil slick / speed buff
 	=> Partly implemented; the buff currently created is a bit too hardcoded and needs some refactoring
 o units attack / disable / destroy towers? perhaps when they die too close to them 
   or certain enemies will "explode"
+o Enemy Kill Fx / Drop Animation?
+o Enemy hover Selection?
+
 
 ## Additional Notes
 
@@ -68,3 +74,10 @@ o Spawner Fix
 	- Attempting to resolve the player vs autostart feature wound up causing some bugs over time, untangling some of it has lead to this not quite working atm.
 	o Consider changing this all to state machine...
 
+### Screens / Menus TODOs
+o Upgrade Menu
+=> Perk selection instead
+o Scene Transitions
+o Controls ?
+o Improved Build Bar UI
+o 

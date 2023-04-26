@@ -45,6 +45,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     GameState gameState;
     #endregion
     protected Coroutine stateTransition;
+    protected Coroutine sanityCheckCor;
     protected enum GameState
     {
         MainMenu,
@@ -84,6 +85,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         EventManager.OnEnemyPass += TookDmg;
         EventManager.OnWaveFinish += WaveFinished;
         EventManager.OnWaveStart += WaveStarted;
+        EventManager.OnWaveGroupFinish += WaveGroupFinished;
         EventManager.OnPlayerReady += OnPlayerReady;
         EventManager.OnMoneySpent += OnPlayerSpend;
         currentWaveIndex = 0;
@@ -98,6 +100,7 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
         EventManager.OnEnemyPass -= TookDmg;
         EventManager.OnWaveFinish -= WaveFinished;
         EventManager.OnWaveStart -= WaveStarted;
+        EventManager.OnWaveGroupFinish -= WaveGroupFinished;
         EventManager.OnPlayerReady -= OnPlayerReady;
         EventManager.OnMoneySpent -= OnPlayerSpend;
     }
@@ -129,6 +132,9 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     void Update()
     {
         if (coreHealth <= 0) TryChangeState(GameState.Lose);
+        // Setup transition back to moving
+
+        else if (sanityCheckCor == null) sanityCheckCor = StartCoroutine(RoundSanityCheck(2f));
     }
     #endregion
 
@@ -147,6 +153,11 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
 
         waitingForStart = TD_EnemyManager.instance.IsCurrentWaveGroupComplete();
         if (gameState == GameState.WaveActive && waitingForStart) TryChangeState(GameState.Hold);
+        TD_UIManager.instance.UpdateDisplay();
+    }
+
+    private void WaveGroupFinished(int ctx)
+    {
         if (ctx >= TD_EnemyManager.instance.TotalWaves - 1 && TD_EnemyManager.instance.IsCurrentWaveGroupComplete()) TryChangeState(GameState.Win);
         TD_UIManager.instance.UpdateDisplay();
     }
@@ -302,6 +313,20 @@ public class TD_GameManager : MonoBehaviour, I_TDSaveCoordinator, I_RefreshOnSce
     {
         yield return new WaitForSeconds(delay);
         TryChangeState(nextState);
+    }
+
+    /// <summary>
+    /// Make sure that the round should continue, but only check occassionally
+    /// </summary>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    protected IEnumerator RoundSanityCheck(float delay)
+    {
+        Debug.Log("RoundSanityCheck");
+        yield return new WaitForSeconds(delay);
+        if (TD_EnemyManager.instance.IsCurrentWaveGroupComplete())
+            EventManager.instance.WaveGroupFinished(currentWaveIndex);
+        if (sanityCheckCor != null) { StopCoroutine(sanityCheckCor); sanityCheckCor = null; }
     }
 
     #endregion
